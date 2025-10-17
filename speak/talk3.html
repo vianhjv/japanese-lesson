@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 3: Thể Lịch sự & Thông thường | Học tiếng Nhật cùng An</title>
+    
+<style>
+    /* --- CSS không thay đổi, giữ nguyên như phiên bản trước --- */
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6; margin: 0; background-color: #f3eadc; 
+    }
+    .page-header, .page-footer { text-align: center; padding: 20px; }
+    .scene-container { max-width: 900px; margin: 20px auto; position: relative; }
+    .scene-background-image {
+        display: block; width: 100%; height: auto; border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        transition: opacity 0.4s ease;
+    }
+    .dialogue-overlay {
+        position: relative; margin-top: -80px; margin-left: 20px; margin-right: 20px;
+        padding: 25px; background: rgba(200, 180, 140, 0.55);
+        border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    }
+    @media (max-width: 600px) {
+        .dialogue-overlay { margin-top: -40px; padding: 15px; margin-left: 10px; margin-right: 10px; }
+    }
+    .dialogue-display-window { color: #333; min-height: 120px; transition: opacity 0.15s ease; }
+    .speaker-container { display: flex; align-items: center; margin-bottom: 10px; }
+    .speaker { font-weight: 800; font-size: 1.1rem; }
+    .speaker.yamada { color: #34495e; }
+    .speaker.suzuki { color: #e67e22; }
+    .speaker.an { color: #e84393; }
+    .dialogue-content-wrapper { display: flex; align-items: flex-start; gap: 15px; }
+    .dialogue-play-btn { 
+        background-color: #228B22; border: none; width: 40px; height: 40px; border-radius: 50%;
+        font-size: 1.2rem; cursor: pointer; color: white; transition: all 0.2s;
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .dialogue-texts { flex-grow: 1; }
+    .japanese-text {
+        font-size: clamp(1.2rem, 4vw, 1.6rem); line-height: 1.8;
+        margin: 0 0 8px 0; color: #2c3e50; font-weight: 500;
+    }
+    ruby { ruby-align: center; }
+    rt { font-size: 0.6em; color: #7f8c8d; user-select: none; }
+    .vietnamese-text {
+        font-size: 1rem; color: #555; margin-top: 0;
+        border-left: 3px solid #228B22; padding-left: 10px;
+    }
+    .highlight-word { background-color: #fffa90; border-radius: 4px; }
+    .grammar-teinei, .grammar-futsuu {
+        font-weight: bold; border-bottom: 2px dotted; padding: 0 2px; border-radius: 3px;
+    }
+    .grammar-teinei { color: #2980b9; border-color: #2980b9; background-color: rgba(52, 152, 219, 0.05); }
+    .grammar-futsuu { color: #c0392b; border-color: #c0392b; background-color: rgba(231, 76, 60, 0.05); }
+    .controls-wrapper { margin-top: 20px; padding-top: 10px; border-top: 1px solid rgba(0,0,0,0.05); }
+    .scene-nav { display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 15px; }
+    .scene-btn {
+        background-color: #f0f0f0; border: 1px solid #ccc; color: #555;
+        padding: 5px 15px; border-radius: 15px; cursor: pointer; transition: all 0.2s ease;
+    }
+    .scene-btn.active { background-color: #34495e; color: white; border-color: #34495e; font-weight: bold; }
+    .dialogue-nav { display: flex; justify-content: center; align-items: center; gap: 20px; }
+    #counter { color: #777; font-weight: 500; min-width: 50px; text-align: center; }
+    .nav-btn {
+        background-color: white; border: 1px solid #ccc; color: #333;
+        padding: 8px 20px; border-radius: 20px; cursor: pointer; transition: all 0.2s ease;
+    }
+    .nav-btn:disabled { opacity: 0.5; cursor: default; }
+</style>
+</head>
+<body>
+
+    <div class="page-header">
+        <h2>Bài 3: Thể Lịch sự (丁寧形) & Thể Thông thường (普通形)</h2>
+        <p>Luyện Nghe, Nói, Ngữ pháp, Từ vựng thi JLPT N4</p>
+    </div>
+
+    <div class="scene-container">
+        <img src="lesson3-scene1.jpg" alt="Minh họa hội thoại" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nguồn dữ liệu (Ẩn) -->
+    <div class="dialogue-source" style="display: none;">
+        
+        <!-- === CẢNH 1: BẠN CÓ THỂ ĐỔI TÊN CẢNH TẠI ĐÂY === -->
+        <div class="scene" data-scene-name="Với Trưởng phòng" data-background-image="lesson3-1-An-Yamada.jpg">
+            <!-- Line 1 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker yamada" data-character="yamada">山田部長 (Yamada-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンさん、おはよう。<ruby>週末<rt>しゅうまつ</rt></ruby>のレポートはもう<span class="grammar-teinei"><ruby>終<rt>お</rt></ruby>わりました</span>か。</p>
+                        <p class="vietnamese-text">Chào buổi sáng, An. Báo cáo cuối tuần đã xong chưa?</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Line 2 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>部長<rt>ぶちょう</rt></ruby>、おはようございます。はい、もう<span class="grammar-teinei"><ruby>終<rt>お</rt></ruby>わりました</span>。<ruby>今日<rt>きょう</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby>、メールで<span class="grammar-teinei"><ruby>送<rt>おく</rt></ruby>ります</span>。</p>
+                        <p class="vietnamese-text">Chào buổi sáng Trưởng phòng ạ. Vâng, đã xong rồi ạ. Chiều nay em sẽ gửi qua mail.</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Line 3 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker yamada" data-character="yamada">山田部長 (Yamada-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうですか。<span class="grammar-teinei">わかりました</span>。</p>
+                        <p class="vietnamese-text">Vậy à. Tôi hiểu rồi.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- === CẢNH 2: BẠN CÓ THỂ ĐỔI TÊN CẢNH TẠI ĐÂY === -->
+        <div class="scene" data-scene-name="Với Suzuki" data-background-image="lesson3-2-An-Suzuki.jpg">
+            <!-- Line 4 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">鈴木 (Suzuki)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンちゃん、おはよー！<ruby>部長<rt>ぶちょう</rt></ruby>、<ruby>朝<rt>あさ</rt></ruby>から<span class="grammar-futsuu"><ruby>厳<rt>きび</rt></ruby>しい</span>ね。で、レポート、もう<span class="grammar-futsuu"><ruby>終<rt>お</rt></ruby>わった</span>？</p>
+                        <p class="vietnamese-text">An-chan, chào buổi sáng! Trưởng phòng sáng ra đã nghiêm khắc nhỉ. Mà này, báo cáo xong chưa?</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Line 5 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">うん、<ruby>鈴木<rt>すずき</rt></ruby>さん、おはよ！うん、さっき<span class="grammar-futsuu"><ruby>終<rt>お</rt></ruby>わった</span>よ。<ruby>今日<rt>きょう</rt></ruby>の<ruby>午後<rt>ごご</rt></ruby>、メールで<span class="grammar-futsuu"><ruby>送<rt>おく</rt></ruby>る</span>ね。</p>
+                        <p class="vietnamese-text">Ừ, chào buổi sáng Suzuki! Ừ, tớ xong lúc nãy rồi. Chiều nay tớ sẽ gửi mail nhé.</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Line 6 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">鈴木 (Suzuki)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">よかった！じゃあ、お<ruby>昼<rt>ひる</rt></ruby>はラーメンでも<span class="grammar-futsuu"><ruby>食<rt>た</rt></ruby>べない</span>？</p>
+                        <p class="vietnamese-text">Tốt quá! Vậy thì, trưa nay đi ăn ramen không?</p>
+                    </div>
+                </div>
+            </div>
+             <!-- Line 7 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">うん、<span class="grammar-futsuu">いいね</span>！</p>
+                        <p class="vietnamese-text">Ừ, hay đấy!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // === PHẦN 0: BỘ QUẢN LÝ GIỌNG ĐỌC (Không thay đổi) ===
+    const voiceManager = {
+        characterMap: {}, defaultVoice: null, voicesLoaded: false,
+        preferences: { 'an': 'nanami', 'suzuki': 'haruka', 'yamada': 'ichiro', 'tanaka': 'keita' },
+        init: function() {
+            const load = () => this.loadVoices(); load();
+            if (speechSynthesis.onvoiceschanged !== undefined) { speechSynthesis.onvoiceschanged = load; }
+        },
+        loadVoices: function() {
+            if (this.voicesLoaded) return;
+            const japaneseVoices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('ja'));
+            if (japaneseVoices.length === 0) return;
+            this.defaultVoice = japaneseVoices[0];
+            const found = {};
+            japaneseVoices.forEach(v => {
+                const name = v.name.toLowerCase();
+                for (const [key, kw] of Object.entries(this.preferences)) { if (name.includes(kw)) found[kw] = v; }
+            });
+            const female = japaneseVoices.filter(v => /nanami|haruka|ayumi/i.test(v.name));
+            const male = japaneseVoices.filter(v => /ichiro|keita|kenji/i.test(v.name));
+            const assign = (char, gender, idx) => found[this.preferences[char]] || (gender.length > 0 ? gender[idx % gender.length] : this.defaultVoice);
+            this.characterMap = {
+                'an': assign('an', female, 0), 'suzuki': assign('suzuki', female, 1),
+                'yamada': assign('yamada', male, 0), 'tanaka': assign('tanaka', male, 1)
+            };
+            this.voicesLoaded = true;
+            if (typeof activateSpeechForCurrentLine === 'function') activateSpeechForCurrentLine();
+        },
+        getVoiceFor: function(charName) {
+            if (!this.voicesLoaded) this.loadVoices();
+            return this.characterMap[charName] || this.defaultVoice;
+        }
+    };
+    voiceManager.init();
+
+    // === PHẦN 1: BỘ MÁY ĐỌC VÀ HIGHLIGHT (ĐÃ SỬA LỖI) ===
+    let currentSpeechHandler = null;
+
+
+function createSpeechHandler(targetElement, characterName) {
+        let originalHTML = targetElement.innerHTML;
+        let charMap = []; 
+        let plainText = '';
+        let utterance = null;
+        let isPlaying = false;
+        let isPaused = false; // << THÊM BIẾN TRẠNG THÁI NÀY
+
+        function _prepareForSpeech() {
+            plainText = ''; charMap = [];
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = originalHTML;
+            function processNode(node) {
+                if (node.nodeType === Node.TEXT_NODE) { plainText += node.textContent; } 
+                else if (node.nodeType === Node.ELEMENT_NODE) {
+                    if (node.tagName === 'RT') return;
+                    Array.from(node.childNodes).forEach(processNode);
+                }
+            }
+            processNode(tempDiv);
+            
+            const tempDivForHighlight = document.createElement('div');
+            tempDivForHighlight.innerHTML = originalHTML;
+            function wrapCharacters(node) {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    const fragment = document.createDocumentFragment();
+                    for (const char of node.textContent) {
+                        const span = document.createElement('span'); span.textContent = char;
+                        fragment.appendChild(span);
+                    }
+                    node.parentNode.replaceChild(fragment, node);
+                } else if (node.nodeType === Node.ELEMENT_NODE) {
+                    if (node.tagName === 'RT') return;
+                    Array.from(node.childNodes).forEach(wrapCharacters);
+                }
+            }
+            wrapCharacters(tempDivForHighlight);
+            targetElement.innerHTML = tempDivForHighlight.innerHTML;
+            charMap = Array.from(targetElement.querySelectorAll('span:not([class])')).filter(span => !span.closest('rt'));
+        }
+
+        function _cleanup() {
+            targetElement.innerHTML = originalHTML;
+            isPlaying = false;
+            isPaused = false; // << ĐẢM BẢO RESET KHI DỌN DẸP
+            const btn = displayWindow.querySelector('.dialogue-play-btn');
+            if(btn) btn.innerHTML = '🔊';
+        }
+
+        // --- HÀM PLAY ĐÃ ĐƯỢC NÂNG CẤP HOÀN CHỈNH ---
+        function play() {
+            if (currentSpeechHandler && currentSpeechHandler !== this) {
+                currentSpeechHandler.stop();
+            }
+            currentSpeechHandler = this;
+            const btn = displayWindow.querySelector('.dialogue-play-btn');
+
+            // 1. Trường hợp: Đang tạm dừng -> Bấm để TIẾP TỤC
+            if (isPlaying && isPaused) {
+                speechSynthesis.resume();
+                isPaused = false;
+                if(btn) btn.innerHTML = '⏸';
+                return;
+            }
+            
+            // 2. Trường hợp: Đang phát -> Bấm để TẠM DỪNG
+            if (isPlaying && !isPaused) {
+                speechSynthesis.pause();
+                isPaused = true;
+                if(btn) btn.innerHTML = '▶';
+                return;
+            }
+            
+            // 3. Trường hợp: Đang dừng -> Bấm để BẮT ĐẦU PHÁT
+            speechSynthesis.cancel();
+            _prepareForSpeech();
+            isPlaying = true;
+            isPaused = false;
+            if(btn) btn.innerHTML = '⏸';
+            
+            utterance = new SpeechSynthesisUtterance(plainText);
+            utterance.lang = 'ja-JP';
+            utterance.rate = 1; 
+            utterance.voice = voiceManager.getVoiceFor(characterName);
+
+            utterance.onboundary = (event) => {
+                if (event.name !== 'word') return;
+                targetElement.querySelectorAll('.highlight-word').forEach(el => el.classList.remove('highlight-word'));
+                for (let i = 0; i < event.charLength; i++) {
+                    const charIndex = event.charIndex + i;
+                    if (charMap[charIndex]) { charMap[charIndex].classList.add('highlight-word'); }
+                }
+            };
+            utterance.onend = () => { _cleanup(); currentSpeechHandler = null; };
+            utterance.onerror = (event) => { console.error('Lỗi đọc:', event); _cleanup(); currentSpeechHandler = null; };
+            speechSynthesis.speak(utterance);
+        }
+
+        function stop() {
+            // Kiểm tra cả 2 trạng thái
+            if(isPlaying || isPaused) {
+                speechSynthesis.cancel();
+                _cleanup();
+                currentSpeechHandler = null;
+            }
+        }
+        return { play, stop };
+    }
+
+
+
+    // === PHẦN 2: ĐIỀU KHIỂN HỘI THOẠI ĐA CẢNH (ĐÃ NÂNG CẤP) ===
+    const displayWindow = document.querySelector('.dialogue-display-window');
+    const scenes = document.querySelectorAll('.dialogue-source .scene');
+    const sceneNavContainer = document.getElementById('sceneNav');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('counter');
+    const bgImage = document.querySelector('.scene-background-image');
+    
+    let currentSceneIndex = 0;
+    let currentLineIndex = 0;
+
+    window.activateSpeechForCurrentLine = function() {
+        if (currentSpeechHandler) currentSpeechHandler.stop();
+        const currentPlayBtn = displayWindow.querySelector('.dialogue-play-btn');
+        const currentTextElem = displayWindow.querySelector('.japanese-text');
+        const currentSpeakerElem = displayWindow.querySelector('.speaker');
+
+        if (currentPlayBtn && currentTextElem && currentSpeakerElem) {
+            const charName = currentSpeakerElem.dataset.character;
+            currentLineHandler = createSpeechHandler(currentTextElem, charName);
+            const newBtn = currentPlayBtn.cloneNode(true);
+            currentPlayBtn.parentNode.replaceChild(newBtn, currentPlayBtn);
+            newBtn.addEventListener('click', () => currentLineHandler.play());
+        }
+    }
+
+    function showLine(sceneIdx, lineIdx) {
+        const scene = scenes[sceneIdx];
+        const linesInScene = scene.querySelectorAll('.dialogue-line');
+        if (lineIdx >= 0 && lineIdx < linesInScene.length) {
+            currentLineIndex = lineIdx;
+            
+            displayWindow.style.opacity = 0;
+            setTimeout(() => {
+                if (currentSpeechHandler) currentSpeechHandler.stop();
+                displayWindow.innerHTML = linesInScene[lineIdx].innerHTML;
+                activateSpeechForCurrentLine();
+                counter.textContent = `${lineIdx + 1} / ${linesInScene.length}`;
+                updateNavButtons();
+                displayWindow.style.opacity = 1;
+            }, 150);
+        }
+    }
+
+    function loadScene(sceneIdx) {
+        if (sceneIdx >= 0 && sceneIdx < scenes.length) {
+            currentSceneIndex = sceneIdx;
+            const newBg = scenes[sceneIdx].dataset.backgroundImage;
+            if (bgImage.src !== newBg) {
+                bgImage.style.opacity = 0;
+                setTimeout(() => {
+                    bgImage.src = newBg;
+                    bgImage.alt = `Bối cảnh cảnh ${sceneIdx + 1}`;
+                    bgImage.style.opacity = 1;
+                }, 400);
+            }
+            document.querySelectorAll('.scene-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === sceneIdx);
+            });
+            showLine(sceneIdx, 0);
+        }
+    }
+
+    function setupSceneNav() {
+        scenes.forEach((scene, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'scene-btn';
+            // Lấy tên cảnh từ data-attribute, nếu không có thì dùng tên mặc định
+            btn.textContent = scene.dataset.sceneName || `Cảnh ${index + 1}`;
+            btn.addEventListener('click', () => loadScene(index));
+            sceneNavContainer.appendChild(btn);
+        });
+    }
+
+    function updateNavButtons() {
+        const linesInScene = scenes[currentSceneIndex].querySelectorAll('.dialogue-line');
+        prevBtn.disabled = (currentLineIndex === 0);
+        nextBtn.disabled = (currentLineIndex === linesInScene.length - 1);
+    }
+
+    nextBtn.addEventListener('click', () => {
+        const linesInScene = scenes[currentSceneIndex].querySelectorAll('.dialogue-line');
+        if (currentLineIndex < linesInScene.length - 1) {
+            showLine(currentSceneIndex, currentLineIndex + 1);
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentLineIndex > 0) {
+            showLine(currentSceneIndex, currentLineIndex - 1);
+        }
+    });
+
+    // Khởi chạy
+    if (scenes.length > 0) {
+        setupSceneNav();
+        loadScene(0);
+    }
+});
+</script>
+
+</body>
+</html>
