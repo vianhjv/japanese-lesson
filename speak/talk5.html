@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TIÊU ĐỀ BÀI HỌC -->
+    <title>Bài 5: Đưa ra lời khuyên | Học tiếng Nhật cùng An</title>
+    
+    <!-- Link tới file CSS bên ngoài -->
+    <link rel="stylesheet" href="styles-talk.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <!-- TÊN BÀI HỌC VÀ MÔ TẢ -->
+        <h2>Bài 5: Hội thoại - Đưa ra lời khuyên khi đi du lịch</h2>
+        <p>Luyện tập mẫu câu ～てみたい, ～なら, và ～れば để nói về mong muốn và đưa ra gợi ý.</p>
+    </div>
+
+    <!-- Container chính cho ứng dụng hội thoại -->
+    <div class="scene-container">
+        <!-- Thay "lesson5-lunch-break.jpg" bằng tên file ảnh của bạn -->
+        <img src="lesson5-lunch-break.jpg" alt="Minh họa hội thoại" class="scene-background-image">
+        
+        <div class="dialogue-overlay">
+            <!-- Khu vực hiển thị lời thoại -->
+            <div class="dialogue-display-window"></div>
+            
+            <!-- Khu vực điều khiển -->
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- NỘI DUNG BÀI HỌC SỐ 5 -->
+    <!-- =============================================================== -->
+    <div class="dialogue-source" style="display: none;">
+        
+        <!-- === CẢNH 1: Giờ ăn trưa tại công ty === -->
+        <div class="scene" data-scene-name="Giờ ăn trưa tại công ty" data-background-image="lesson5-lunch.jpg">
+            
+            <!-- Lời thoại 1 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">わあ、この<ruby>写真<rt>しゃしん</rt></ruby>、きれいですね。<ruby>京都<rt>きょうと</rt></ruby>ですか。<ruby>私<rt>わたし</rt></ruby>、<ruby>今度<rt>こんど</rt></ruby>の<ruby>休<rt>やす</rt></ruby>みに、<ruby>京都<rt>きょうと</rt></ruby>へ<span class="highlight-word"><ruby>行<rt>い</rt></ruby>ってみたいです</span>。</p>
+                        <p class="vietnamese-text">Woa, bức ảnh này đẹp quá. Là Kyoto phải không ạ? Kỳ nghỉ tới, em muốn thử đi Kyoto.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 2 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">鈴木 (Suzuki)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>京都<rt>きょうと</rt></ruby>？いいじゃない！<ruby>京都<rt>きょうと</rt></ruby>へ<span class="highlight-word"><ruby>行<rt>い</rt></ruby>くなら</span>、<ruby>絶対<rt>ぜったい</rt></ruby>に<ruby>秋<rt>あき</rt></ruby>がいいよ。<ruby>紅葉<rt>こうよう</rt></ruby>が<ruby>最高<rt>さいこう</rt></ruby>だから。</p>
+                        <p class="vietnamese-text">Kyoto à? Hay đấy chứ! Nếu là đi Kyoto thì chắc chắn mùa thu là đẹp nhất. Vì lá đỏ tuyệt vời lắm.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 3 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうだね。でも、<ruby>秋<rt>あき</rt></ruby>は<ruby>観光客<rt>かんこうきゃく</rt></ruby>がとても<ruby>多<rt>おお</rt></ruby>いよ。アンさんが<ruby>静<rt>しず</rt></ruby>かな<ruby>旅行<rt>りょこう</rt></ruby>が<ruby>好<rt>す</rt></ruby>き<span class="highlight-word">なら</span>、<ruby>冬<rt>ふゆ</rt></ruby>もいいかもしれないね。</p>
+                        <p class="vietnamese-text">Đúng vậy. Nhưng mùa thu khách du lịch đông lắm. Nếu An thích du lịch yên tĩnh thì mùa đông cũng có thể là một lựa chọn tốt đấy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 4 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">なるほど。でも、<ruby>冬<rt>ふゆ</rt></ruby>は<ruby>寒<rt>さむ</rt></ruby>くないですか。</p>
+                        <p class="vietnamese-text">Em hiểu rồi. Nhưng mùa đông không lạnh ạ?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 5 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">うん、<ruby>少<rt>すこ</rt></ruby>し<ruby>寒<rt>さむ</rt></ruby>いけど、もし<ruby>雪<rt>ゆき</rt></ruby>が<span class="highlight-word"><ruby>降<rt>ふ</rt></ruby>れば</span>、<ruby>金閣寺<rt>きんかくじ</rt></ruby>は<ruby>夢<rt>ゆめ</rt></ruby>のようにきれいだよ。<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>見<rt>み</rt></ruby>せるよ。ほら。</p>
+                        <p class="vietnamese-text">Ừ, hơi lạnh một chút, nhưng nếu tuyết rơi thì chùa Vàng đẹp như một giấc mơ vậy. Anh cho em xem ảnh này. Đây.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 6 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>本当<rt>ほんとう</rt></ruby>だ！すごい…！<ruby>雪景色<rt>ゆきげしき</rt></ruby>も<ruby>素敵<rt>すてき</rt></ruby>ですね。</p>
+                        <p class="vietnamese-text">Thật ạ! Đẹp quá...! Cảnh tuyết cũng tuyệt vời nhỉ.</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Lời thoại 7 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">鈴木 (Suzuki)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">どちらの<ruby>季節<rt>きせつ</rt></ruby>も<ruby>魅力的<rt>みりょくてき</rt></ruby>だね。アンさん、よく<span class="highlight-word"><ruby>考<rt>かんが</rt></ruby>えれば</span>、いいプランが<ruby>作<rt>つく</rt></ruby>れるよ。</p>
+                        <p class="vietnamese-text">Mùa nào cũng có sức hấp dẫn riêng nhỉ. An này, nếu em suy nghĩ kỹ thì sẽ lập được một kế hoạch tốt thôi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 8 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい！お<ruby>二人<rt>ふたり</rt></ruby>とも、ありがとうございます！もっと<ruby>調<rt>しら</rt></ruby>べてみます！</p>
+                        <p class="vietnamese-text">Vâng! Em cảm ơn cả hai anh chị! Em sẽ tìm hiểu thêm ạ!</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <!-- Link tới file JavaScript bên ngoài -->
+    <script src="script-talk.js"></script>
+
+</body>
+</html>

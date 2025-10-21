@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- TIÊU ĐỀ BÀI HỌC -->
+    <title>Bài 4: Thể Khả năng (可能形) | Học tiếng Nhật cùng An</title>
+    
+    <!-- Link tới file CSS bên ngoài -->
+    <link rel="stylesheet" href="styles-talk.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <!-- TÊN BÀI HỌC VÀ MÔ TẢ -->
+        <h2>Bài 4: Hội thoại - Thể Khả năng (可能形)</h2>
+        <p>Luyện tập cách nói về năng lực và khả năng làm một việc gì đó.</p>
+    </div>
+
+    <!-- Container chính cho ứng dụng hội thoại -->
+    <div class="scene-container">
+        <!-- Thay "lesson4-team-meeting.jpg" bằng tên file ảnh của bạn -->
+        <img src="lesson4-team-meeting.jpg" alt="Minh họa hội thoại" class="scene-background-image">
+        
+        <div class="dialogue-overlay">
+            <!-- Khu vực hiển thị lời thoại -->
+            <div class="dialogue-display-window"></div>
+            
+            <!-- Khu vực điều khiển -->
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- NỘI DUNG BÀI HỌC SỐ 4 -->
+    <!-- =============================================================== -->
+    <div class="dialogue-source" style="display: none;">
+        
+        <!-- === CẢNH 1: Tại buổi họp team === -->
+        <div class="scene" data-scene-name="Tại buổi họp team" data-background-image="lesson4-team-meeting.jpg">
+            
+            <!-- Lời thoại 1 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker yamada" data-character="yamada">山田部長 (Yamada-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>来週<rt>らいしゅう</rt></ruby>から<ruby>新<rt>あたら</rt></ruby>しいプロジェクトが<ruby>始<rt>はじ</rt></ruby>まります。クライアントの<ruby>希望<rt>きぼう</rt></ruby>で、「Design Pro」というソフトを<ruby>使<rt>つか</rt></ruby>います。チームの<ruby>中<rt>なか</rt></ruby>で、<ruby>誰<rt>だれ</rt></ruby>かこのソフトが<span class="highlight-word">つかえますか</span>。</p>
+                        <p class="vietnamese-text">Từ tuần sau một dự án mới sẽ bắt đầu. Theo yêu cầu của khách hàng, chúng ta sẽ dùng một phần mềm tên là "Design Pro". Trong team mình, có ai có thể sử dụng phần mềm này không?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lời thoại 2 (Dẫn chuyện) -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker narrator" data-character="narrator">(Dẫn chuyện)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" style="visibility: hidden;">🔇</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text" style="font-style: italic; color: #666;">(みんなはすこししずかになります。)</p>
+                        <p class="vietnamese-text" style="font-style: italic;">(Mọi người hơi im lặng.)</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 3 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An (Tiếng lòng)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>私<rt>わたし</rt></ruby>はまだ<ruby>勉強中<rt>べんきょうちゅう</rt></ruby>で、<ruby>基本操作<rt>きほんそうさ</rt></ruby>しか<span class="highlight-word">できません</span>…。</p>
+                        <p class="vietnamese-text">Mình vẫn đang học, chỉ có thể làm được các thao tác cơ bản thôi...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 4 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、<ruby>部長<rt>ぶちょう</rt></ruby>。<ruby>私<rt>わたし</rt></ruby>が<span class="highlight-word">つかえます</span>。<ruby>経験<rt>けいけん</rt></ruby>があります。</p>
+                        <p class="vietnamese-text">Vâng, thưa Trưởng phòng. Tôi có thể sử dụng được ạ. Tôi có kinh nghiệm rồi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 5 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker yamada" data-character="yamada">山田部長 (Yamada-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうか、<ruby>田中<rt>たなか</rt></ruby>さん。<ruby>頼<rt>たの</rt></ruby>んだぞ。</p>
+                        <p class="vietnamese-text">Vậy à, Tanaka. Trông cậy vào cậu nhé.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 6 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">鈴木 (Suzuki)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>田中<rt>たなか</rt></ruby>さん、<ruby>先週<rt>せんしゅう</rt></ruby><ruby>導入<rt>どうにゅう</rt></ruby>された<ruby>新<rt>あたら</rt></ruby>しいパソコンなら、もっと<ruby>速<rt>はや</rt></ruby>く<ruby>作業<rt>さぎょう</rt></ruby>が<span class="highlight-word">できます</span>よ。</p>
+                        <p class="vietnamese-text">Anh Tanaka, nếu dùng cái máy tính mới được lắp đặt tuần trước thì anh có thể làm việc nhanh hơn đấy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 7 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ああ、そうだね。ありがとう、<ruby>鈴木<rt>すずき</rt></ruby>さん。</p>
+                        <p class="vietnamese-text">À, đúng nhỉ. Cảm ơn nhé, Suzuki.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 8 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">すごいですね！<ruby>私<rt>わたし</rt></ruby>も<ruby>早<rt>はや</rt></ruby>く<ruby>色々<rt>いろいろ</rt></ruby>なソフトが<span class="highlight-word">つかえるように</span><ruby>頑張<rt>がんば</rt></ruby>ります！</p>
+                        <p class="vietnamese-text">(Nói với Tanaka) Tuyệt vời quá ạ! Em cũng sẽ cố gắng để sớm có thể sử dụng được nhiều phần mềm khác nhau!</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <!-- Link tới file JavaScript bên ngoài -->
+    <script src="script-talk.js"></script>
+
+</body>
+</html>
