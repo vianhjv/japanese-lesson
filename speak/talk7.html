@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- TIÊU ĐỀ BÀI HỌC -->
+    <title>Bài 5: Thể Bị động (受身形) | Học tiếng Nhật cùng An</title>
+    
+    <!-- Link tới file CSS, giữ nguyên -->
+    <link rel="stylesheet" href="styles-talk.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <!-- TÊN BÀI HỌC VÀ MÔ TẢ -->
+        <h2>Bài 5: Hội thoại - Thể Bị động (受身形)</h2>
+        <p>Luyện tập cách sử dụng thể bị động trong các tình huống công sở.</p>
+    </div>
+
+    <!-- Container chính cho ứng dụng hội thoại -->
+    <div class="scene-container">
+        <!-- Ảnh nền mặc định (của cảnh đầu tiên) -->
+        <img src="lunch-break.jpg" alt="Minh họa hội thoại giờ nghỉ trưa" class="scene-background-image">
+        
+        <div class="dialogue-overlay">
+            <!-- Khu vực hiển thị lời thoại (JavaScript sẽ tự điền vào đây) -->
+            <div class="dialogue-display-window"></div>
+            
+            <!-- Khu vực điều khiển (Giữ nguyên) -->
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- NỘI DUNG BÀI HỌC SỐ 5 -->
+    <!-- =============================================================== -->
+    <div class="dialogue-source" style="display: none;">
+        
+        <!-- === CẢNH 1: Giờ nghỉ trưa === -->
+        <div class="scene" data-scene-name="Giờ nghỉ trưa" data-background-image="lunch-break.jpg">
+            
+            <!-- Lời thoại 1.1 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">鈴木 (Suzuki)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンさん！さっき、<ruby>山田<rt>やまだ</rt></ruby><ruby>部長<rt>ぶちょう</rt></ruby>に<span style="color:red"><ruby>褒<rt>ほ</rt></ruby>められていた</span>よ！すごいね！</p>
+                        <p class="vietnamese-text">An-san! Vừa nãy, chị thấy em được Trưởng phòng Yamada khen đó! Giỏi quá nhỉ!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lời thoại 1.2 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">えっ、<ruby>本当<rt>ほんとう</rt></ruby>ですか、<ruby>鈴木<rt>すずき</rt></ruby><ruby>先輩<rt>せんぱい</rt></ruby>。<ruby>私<rt>わたし</rt></ruby>は<ruby>直接<rt>ちょくせつ</rt></ruby><span style="color:red"><ruby>呼<rt>よ</rt></ruby>ばれていない</span>ので、<ruby>知<rt>し</rt></ruby>りませんでした。</p>
+                        <p class="vietnamese-text">Ể, thật vậy ạ, chị Suzuki. Em không được gọi trực tiếp nên không biết ạ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 1.3 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">うん、<ruby>僕<rt>ぼく</rt></ruby>も<ruby>聞<rt>き</rt></ruby>いたよ。「<ruby>新<rt>あたら</rt></ruby>しい<ruby>企画<rt>きかく</rt></ruby>のアイデアが<ruby>素晴<rt>すば</rt></ruby>らしい」って。その<ruby>企画書<rt>きかくしょ</rt></ruby>、もうすぐみんなに<span style="color:red"><ruby>発表<rt>はっぴょう</rt></ruby>される</span>らしいね。</p>
+                        <p class="vietnamese-text">Ừ, anh cũng nghe thấy. Sếp nói "Ý tưởng cho dự án mới thật tuyệt vời". Nghe nói bản kế hoạch đó sắp được công bố cho mọi người rồi nhỉ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 1.4 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい…。<ruby>実<rt>じつ</rt></ruby>は、<ruby>田中<rt>たなか</rt></ruby>さんにもいろいろ<span style="color:red"><ruby>助<rt>たす</rt></ruby>けられて</span>、やっと<ruby>完成<rt>かんせい</rt></ruby>したんです。</p>
+                        <p class="vietnamese-text">Vâng... Thực ra là em đã được anh Tanaka giúp đỡ rất nhiều nên cuối cùng mới hoàn thành được đó ạ.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+        <!-- === CẢNH 2: Bàn về tiệc chào mừng === -->
+        <div class="scene" data-scene-name="Bàn về tiệc chào mừng" data-background-image="office-party-talk.jpg">
+            
+            <!-- Lời thoại 2.1 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">鈴木 (Suzuki)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">よかったね！あ、そうだ。アンさん、<ruby>今週末<rt>こんしゅうまつ</rt></ruby>、<ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>飲<rt>の</rt></ruby>み<ruby>会<rt>かい</rt></ruby>に<span style="color:red"><ruby>誘<rt>さそ</rt></ruby>われた</span>？</p>
+                        <p class="vietnamese-text">Tốt quá nhỉ! À, đúng rồi. An-san, em có được mời đi tiệc nhậu của công ty cuối tuần này không?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lời thoại 2.2 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">いえ、まだです。</p>
+                        <p class="vietnamese-text">Dạ chưa ạ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 2.3 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>多分<rt>たぶん</rt></ruby>、<ruby>後<rt>あと</rt></ruby>で<ruby>部長<rt>ぶちょう</rt></ruby>から<ruby>正式<rt>せいしき</rt></ruby>に<span style="color:red"><ruby>知<rt>し</rt></ruby>らされる</span>と<ruby>思<rt>おも</rt></ruby>うよ。<ruby>新入<rt>しんにゅう</rt></ruby><ruby>社員<rt>しゃいん</rt></ruby>の<ruby>歓迎会<rt>かんげいかい</rt></ruby>だからね。</p>
+                        <p class="vietnamese-text">Chắc là lát nữa em sẽ được Trưởng phòng thông báo chính thức thôi. Vì đây là tiệc chào mừng nhân viên mới mà.</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <!-- Link tới file JavaScript, giữ nguyên -->
+    <script src="script-talk.js"></script>
+
+</body>
+</html>
