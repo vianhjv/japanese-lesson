@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- LESSON TITLE -->
+    <title>Lesson 9: Causative-Passive Form (使役受身の形) | Learn Japanese with An</title>
+    
+    <!-- Link to CSS file, keep as is -->
+    <link rel="stylesheet" href="styles-talk1026.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <!-- LESSON NAME AND DESCRIPTION -->
+        <h2>Lesson 9: Conversation - Causative-Passive Form (使役受身の形)</h2>
+        <p>An checks in on Tanaka, who had a tiring weekend after being forced to work by his boss.</p>
+    </div>
+
+    <!-- Main container for the dialogue application -->
+    <div class="scene-container">
+        <img src="lesson9.jpg" alt="Illustration of a Monday morning at the office, with a tired-looking Tanaka being asked how he is by An." class="scene-background-image">
+        
+        <div class="dialogue-overlay">
+            <!-- Dialogue display area -->
+            <div class="dialogue-display-window"></div>
+            
+            <!-- Controls area -->
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Prev</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- LESSON 9 CONTENT -->
+    <!-- =============================================================== -->
+    <div class="dialogue-source" style="display: none;">
+        
+        <!-- === SCENE 1: A Tiring Day === -->
+        <div class="scene" data-scene-name="A Tiring Day" data-background-image="lesson9.jpg">
+            
+            <!-- Dialogue 1 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>田中<rt>たなか</rt></ruby>さん、おはようございます。なんだか、とても<ruby>疲<rt>つか</rt></ruby>れているみたいですけど、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですか。</p>
+                        <p class="vietnamese-text">Mr. Tanaka, good morning. You look very tired, are you okay?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Dialogue 2 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ああ、アンさん…。<ruby>実<rt>じつ</rt></ruby>は、<ruby>昨日<rt>きのう</rt></ruby>、<ruby>部長<rt>ぶちょう</rt></ruby>にいきなり<span class="highlight-word"><ruby>休日出勤<rt>きゅうじつしゅっきん</rt></ruby>させられた</span>んですよ。</p>
+                        <p class="vietnamese-text">Oh, An-san... Actually, yesterday, the department head suddenly made me come in to work on my day off.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialogue 3 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ええっ、<ruby>日曜日<rt>にちようび</rt></ruby>なのに？<ruby>大変<rt>たいへん</rt></ruby>でしたね。</p>
+                        <p class="vietnamese-text">What, even on a Sunday? That must have been tough.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialogue 4 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>本当<rt>ほんとう</rt></ruby>にね。<ruby>朝早<rt>あさはや</rt></ruby>くから<ruby>会社<rt>かいしゃ</rt></ruby>に<span class="highlight-word"><ruby>来<rt>こ</rt></ruby>させられて</span>、<ruby>一日中<rt>いちにちじゅう</rt></ruby>、<ruby>長<rt>なが</rt></ruby>いレポートを<span class="highlight-word"><ruby>書<rt>か</rt></ruby>かされた</span>んだ。</p>
+                        <p class="vietnamese-text">Tell me about it. I was made to come to the office early in the morning, and then I was forced to write a long report all day.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialogue 5 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">うわあ、それは<ruby>大変<rt>たいへん</rt></ruby>…。</p>
+                        <p class="vietnamese-text">Wow, that's really rough...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialogue 6 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">それだけじゃない。<ruby>夜<rt>よる</rt></ruby>はクライアントとの<ruby>接待<rt>せったい</rt></ruby>があって、お<ruby>酒<rt>さけ</rt></ruby>が<ruby>飲<rt>の</rt></ruby>めないのに、<ruby>無理<rt>むり</rt></ruby>やり<span class="highlight-word"><ruby>飲<rt>の</rt></ruby>まされた</span>んです。</p>
+                        <p class="vietnamese-text">That's not all. At night, there was a client dinner, and even though I can't drink alcohol, I was forced to drink.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialogue 7 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>無理<rt>むり</rt></ruby>やり？ひどいですね。</p>
+                        <p class="vietnamese-text">Forced to drink? That's terrible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialogue 8 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">でしょう？<ruby>本当<rt>ほんとう</rt></ruby>は<ruby>家<rt>いえ</rt></ruby>でゆっくり<ruby>休<rt>やす</rt></ruby>みたかったのに…。<ruby>今日<rt>きょう</rt></ruby>はもう<ruby>仕事<rt>しごと</rt></ruby>をしたくない<ruby>気分<rt>きぶん</rt></ruby>だよ。</p>
+                        <p class="vietnamese-text">Right? I really just wanted to relax at home... Today, I'm just not in the mood to work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dialogue 9 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>同情<rt>どうじょう</rt></ruby>します…。<ruby>温<rt>あたた</rt></ruby>かいコーヒーでもいかがですか。</p>
+                        <p class="vietnamese-text">I sympathize with you... How about a warm cup of coffee?</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+    <!-- =============================================================== -->
+    <!-- NEW VOCABULARY SECTION -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>New Vocabulary (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                
+                <!-- Vocab 1: 休日出勤 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>休日出勤<rt>きゅうじつしゅっきん</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="休日出勤">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Hiragana:</span> きゅうじつしゅっきん</p>
+                        <p><span class="label">Type:</span> Noun</p>
+                        <p><span class="label">Meaning:</span> Working on a day off</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">部長に休日出勤させられました。</p>
+                            <button class="vocab-play-btn" data-speak-text="部長に休日出勤させられました。">🔊</button>
+                        </div>
+                        <p class="vi-sentence">I was made to work on a day off by my boss.</p>
+                    </div>
+                </li>
+
+                <!-- Vocab 2: いきなり -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">いきなり</h4>
+                        <button class="vocab-play-btn" data-speak-text="いきなり">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Hiragana:</span> いきなり</p>
+                        <p><span class="label">Type:</span> Adverb</p>
+                        <p><span class="label">Meaning:</span> Suddenly, unexpectedly</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">いきなり雨が降ってきた。</p>
+                            <button class="vocab-play-btn" data-speak-text="いきなり雨が降ってきた。">🔊</button>
+                        </div>
+                        <p class="vi-sentence">It suddenly started to rain.</p>
+                    </div>
+                </li>
+
+                <!-- Vocab 3: 一日中 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>一日中<rt>いちにちじゅう</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="一日中">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Hiragana:</span> いちにちじゅう</p>
+                        <p><span class="label">Type:</span> Noun (Adverbial)</p>
+                        <p><span class="label">Meaning:</span> All day long</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">昨日は一日中、家にいました。</p>
+                            <button class="vocab-play-btn" data-speak-text="昨日は一日中、家にいました。">🔊</button>
+                        </div>
+                        <p class="vi-sentence">I was at home all day yesterday.</p>
+                    </div>
+                </li>
+
+                <!-- Vocab 4: クライアント -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">クライアント</h4>
+                        <button class="vocab-play-btn" data-speak-text="クライアント">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Hiragana:</span> くらいあんと</p>
+                        <p><span class="label">Type:</span> Noun</p>
+                        <p><span class="label">Meaning:</span> Client</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">これからクライアントと打ち合わせです。</p>
+                            <button class="vocab-play-btn" data-speak-text="これからクライアントと打ち合わせです。">🔊</button>
+                        </div>
+                        <p class="vi-sentence">I have a meeting with a client now.</p>
+                    </div>
+                </li>
+
+                <!-- Vocab 5: 接待 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>接待<rt>せったい</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="接待">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Hiragana:</span> せったい</p>
+                        <p><span class="label">Type:</span> Noun</p>
+                        <p><span class="label">Meaning:</span> Entertaining clients, business dinner</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">夜は接待があります。</p>
+                            <button class="vocab-play-btn" data-speak-text="夜は接待があります。">🔊</button>
+                        </div>
+                        <p class="vi-sentence">There's a client dinner tonight.</p>
+                    </div>
+                </li>
+
+                <!-- Vocab 6: 無理やり -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>無理<rt>むり</rt></ruby>やり</h4>
+                        <button class="vocab-play-btn" data-speak-text="無理やり">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Hiragana:</span> むりやり</p>
+                        <p><span class="label">Type:</span> Adverb</p>
+                        <p><span class="label">Meaning:</span> Forcibly, against one's will</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">無理やりお酒を飲まされました。</p>
+                            <button class="vocab-play-btn" data-speak-text="無理やりお酒を飲まされました。">🔊</button>
+                        </div>
+                        <p class="vi-sentence">I was forced to drink alcohol.</p>
+                    </div>
+                </li>
+
+                <!-- Vocab 7: 気分 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>気分<rt>きぶん</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="気分">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Hiragana:</span> きぶん</p>
+                        <p><span class="label">Type:</span> Noun</p>
+                        <p><span class="label">Meaning:</span> Mood, feeling</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">今日は仕事をする気分じゃない。</p>
+                            <button class="vocab-play-btn" data-speak-text="今日は仕事をする気分じゃない。">🔊</button>
+                        </div>
+                        <p class="vi-sentence">I'm not in the mood to work today.</p>
+                    </div>
+                </li>
+
+                <!-- Vocab 8: 同情する -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>同情<rt>どうじょう</rt></ruby>する</h4>
+                        <button class="vocab-play-btn" data-speak-text="同情する">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Hiragana:</span> どうじょうする</p>
+                        <p><span class="label">Type:</span> Verb (III)</p>
+                        <p><span class="label">Meaning:</span> To sympathize</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">彼の話に同情しました。</p>
+                            <button class="vocab-play-btn" data-speak-text="彼の話に同情しました。">🔊</button>
+                        </div>
+                        <p class="vi-sentence">I sympathized with his story.</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+    
+    <!-- =============================================================== -->
+    <!-- GRAMMAR ANALYSIS SECTION -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+
+            <h2>Part 4: Grammar Analysis (文法の解説)</h2>
+
+            <div class="grammar-card">
+                <h3>1. Nuance Comparison (Important!)</h3>
+                <div class="grammar-explanation">
+                    <p>To fully understand, let's compare how the same situation is expressed in two different forms:</p>
+                </div>
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Form</th>
+                            <th>Example</th>
+                            <th>Nuance</th>
+                            <th>Who is the focus?</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Causative</strong><br>(使役形)</td>
+                            <td>部長は私を残業させた。</td>
+                            <td>Objective, simply states the boss's action.</td>
+                            <td>The Boss</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Causative-Passive</strong><br>(使役受身形)</td>
+                            <td>私は部長に残業<span class="grammar-point">させられた</span>。</td>
+                            <td>Negative, emphasizes "my" dissatisfaction and feeling of being forced.</td>
+                            <td>"My" suffering</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. Conjugation Rules</h3>
+                
+                <h4>Detailed Conjugation Table</h4>
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Group</th>
+                            <th>Rule</th>
+                            <th>Example</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Group I</strong><br>(Short form)</td>
+                            <td>Ending <strong>u</strong> → <strong>a</strong> + <strong>される</strong></td>
+                            <td>書く (kaku) → 書か<span class="grammar-point">される</span><br>待つ (matsu) → 待た<span class="grammar-point">される</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Group I (Exception)</strong></td>
+                            <td>Verbs ending in <strong>す (su)</strong> MUST use the long form: <br>Ending <strong>su</strong> → <strong>sa</strong> + <strong>せられる</strong></td>
+                            <td>話す (hanasu) → 話<span class="grammar-point">させられる</span><br>(話さされる is not used as it's hard to pronounce)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Group II</strong></td>
+                            <td>Drop <strong>ます</strong> + <strong>させられる</strong></td>
+                            <td>食べる (taberu) → 食べ<span class="grammar-point">させられる</span><br>やめる (yameru) → やめ<span class="grammar-point">させられる</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Group III</strong></td>
+                            <td>Irregular</td>
+                            <td>する (suru) → <span class="grammar-point">させられる</span><br>来る (kuru) → <span class="grammar-point">来させられる</span> (ko-saserareru)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- =============================================================== -->
+    <!-- GRAMMAR PRACTICE SECTION -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Part 5: Grammar Practice (練習)</h2>
+        <div class="quiz-container">
+
+            <!-- Question 1 -->
+            <div class="quiz-card">
+                <p class="question-text">1. How do you conjugate the verb「歌う」(to sing) into the Causative-Passive form?</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true">a) 歌わされる</button>
+                    <button class="option-btn">b) 歌わせる</button>
+                    <button class="option-btn">c) 歌われる</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> 歌う is a Group I verb. Change the `う` ending to `わ` and add `される`. <br/>(b) is the causative form, (c) is the passive form.
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-card">
+                <p class="question-text">2. How do you conjugate the verb「やめる」(to quit) into the Causative-Passive form?</p>
+                <div class="options-container">
+                    <button class="option-btn">a) やめられる</button>
+                    <button class="option-btn" data-correct="true">b) やめさせられる</button>
+                    <button class="option-btn">c) やめさせる</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> やめる is a Group II verb. Drop `ます` and add `させられる`. <br/>(a) is the potential/passive form, (c) is the causative form.
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-card">
+                <p class="question-text">3. Complete the sentence: 社長に日曜も会社に (来る) → ？</p>
+                <div class="options-container">
+                    <button class="option-btn">a) 来られました</button>
+                    <button class="option-btn">b) 来させました</button>
+                    <button class="option-btn" data-correct="true">c) 来させられました</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> 来る (kuru) is a Group III verb, which conjugates to 来させられる. (I was made to come to the company on Sunday by the president.)
+                </div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="quiz-card">
+                <p class="question-text">4. Complete the sentence: 兄にご飯を (作る) → ？</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true">a) 作らされました</button>
+                    <button class="option-btn">b) 作らせました</button>
+                    <button class="option-btn">c) 作られました</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> 作る (tsukuru) is a Group I verb. Change `る` → `ら` + `されました`. (I was made to cook by my older brother.)
+                </div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="quiz-card">
+                <p class="question-text">5. Complete the sentence: 父に家の仕事を (手伝う) → ？</p>
+                <div class="options-container">
+                    <button class="option-btn">a) 手伝わせました</button>
+                    <button class="option-btn" data-correct="true">b) 手伝わされました</button>
+                    <button class="option-btn">c) 手伝われました</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> 手伝う (tetsudau) is a Group I verb. Change `う` → `わ` + `されました`. (I was made to help with housework by my father.)
+                </div>
+            </div>
+            
+            <!-- Question 6 -->
+            <div class="quiz-card">
+                <p class="question-text">6. Complete the sentence: 先輩に、たくさんの資料を (コピーする) → ？</p>
+                <div class="options-container">
+                    <button class="option-btn">a) コピーされました</button>
+                    <button class="option-btn" data-correct="true">c) コピーさせられました</button>
+                    <button class="option-btn">b) コピーさせました</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> する is a Group III verb, which conjugates to させられる. (I was made to copy many documents by my senior.)
+                </div>
+            </div>
+
+            <!-- Question 7 -->
+            <div class="quiz-card">
+                <p class="question-text">7. Complete the sentence: 部長に、たくさんの荷物を (持つ) → ？</p>
+                <div class="options-container">
+                    <button class="option-btn">a) 持たせました</button>
+                    <button class="option-btn">b) 持たれました</button>
+                    <button class="option-btn" data-correct="true">c) 持たされました</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> 持つ (motsu) is a Group I verb. Change `つ` → `た` + `されました`. (I was made to carry a lot of luggage by the department head.)
+                </div>
+            </div>
+
+            <!-- Question 8 -->
+            <div class="quiz-card">
+                <p class="question-text">8. Complete the sentence: 私は母に部屋を (掃除する) → ？</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true">a) 掃除させられました</button>
+                    <button class="option-btn">b) 掃除されました</button>
+                    <button class="option-btn">c) 掃除させました</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> 掃除する is a Group III verb, which conjugates to させられる. (I was made to clean my room by my mother.)
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- Link to JavaScript file, keep at the end -->
+    <script src="script-talk1026readFurigana.js"></script>
+
+</body>
+</html>
