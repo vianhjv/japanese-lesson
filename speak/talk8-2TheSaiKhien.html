@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- TIÊU ĐỀ BÀI HỌC -->
+    <title>Bài 8: Thể Sai Khiến (使役形) | Học tiếng Nhật cùng An</title>
+    
+    <!-- Link tới file CSS, giữ nguyên -->
+    <link rel="stylesheet" href="styles-talk1026.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <!-- TÊN BÀI HỌC VÀ MÔ TẢ -->
+        <h2>Bài 8: Hội thoại - Thể Sai Khiến (使役形)</h2>
+        <p>Trưởng phòng Suzuki giao việc cho An trước chuyến công tác đột xuất.</p>
+    </div>
+
+    <!-- Container chính cho ứng dụng hội thoại -->
+    <div class="scene-container">
+        <!-- Ảnh nền mặc định (của cảnh đầu tiên) -->
+        <img src="lesson8-2.jpg" alt="Minh họa hội thoại buổi sáng ở văn phòng" class="scene-background-image">
+        
+        <div class="dialogue-overlay">
+            <!-- Khu vực hiển thị lời thoại (JavaScript sẽ tự điền vào đây) -->
+            <div class="dialogue-display-window"></div>
+            
+            <!-- Khu vực điều khiển (Giữ nguyên) -->
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- NỘI DUNG BÀI HỌC SỐ 8 -->
+    <!-- =============================================================== -->
+    <div class="dialogue-source" style="display: none;">
+        
+        <!-- === CẢNH 1: Giao việc buổi sáng === -->
+        <div class="scene" data-scene-name="Giao việc" data-background-image="lesson8-2.jpg">
+            
+            <!-- Lời thoại 1 -->
+            <div class="dialogue-line">
+                <!-- data-character="yamada" để dùng giọng nam cho Trưởng phòng -->
+                <div class="speaker-container"><span class="speaker suzuki" data-character="yamada">鈴木部長 (Suzuki-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>安<rt>あん</rt></ruby>さん、ちょっといいかな。</p>
+                        <p class="vietnamese-text">An này, cho tôi một chút thời gian được không?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lời thoại 2 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、<ruby>部長<rt>ぶちょう</rt></ruby>。</p>
+                        <p class="vietnamese-text">Vâng, thưa Trưởng phòng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 3 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="yamada">鈴木部長 (Suzuki-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>急<rt>きゅう</rt></ruby>な<ruby>出張<rt>しゅっちょう</rt></ruby>で、<ruby>明日<rt>あした</rt></ruby>から<ruby>大阪<rt>おおさか</rt></ruby>に<span class="highlight-word"><ruby>行<rt>い</rt></ruby>かせてもらう</span>ことになったんだ。</p>
+                        <p class="vietnamese-text">Tôi có chuyến công tác đột xuất nên được (công ty) cho phép đi Osaka từ ngày mai.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 4 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうなんですか。</p>
+                        <p class="vietnamese-text">Vậy ạ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 5 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="yamada">鈴木部長 (Suzuki-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">それで、<ruby>留守<rt>るす</rt></ruby>の<ruby>間<rt>あいだ</rt></ruby>、<ruby>安<rt>あん</rt></ruby>さんにいくつか<ruby>仕事<rt>しごと</rt></ruby>を<ruby>お願<rt>ねが</rt></ruby>いしたいんだが。</p>
+                        <p class="vietnamese-text">Vì vậy, trong lúc tôi đi vắng, tôi muốn nhờ bạn một vài công việc.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 6 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、もちろんです。ぜひ、<ruby>私<rt>わたし</rt></ruby>に<span class="highlight-word"><ruby>やらせてください</ruby></span>。</p>
+                        <p class="vietnamese-text">Vâng, tất nhiên rồi ạ. Xin hãy để cho em làm ạ!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 7 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="yamada">鈴木部長 (Suzuki-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ありがとう。まず、<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>資料<rt>しりょう</rt></ruby>は<ruby>田中<rt>たなか</rt></ruby>さんに<span class="highlight-word"><ruby>準備<rt>じゅんび</rt></ruby>してもらいます</span>。</p>
+                        <p class="vietnamese-text">Cảm ơn. Đầu tiên, tôi sẽ nhờ Tanaka chuẩn bị tài liệu cuộc họp.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 8 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、<ruby>田中<rt>たなか</rt></ruby>さんにですね。</p>
+                        <p class="vietnamese-text">Vâng, giao cho anh Tanaka ạ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 9 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="yamada">鈴木部長 (Suzuki-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そして、<ruby>安<rt>あん</rt></ruby>さんには<ruby>新<rt>あたら</rt></ruby>しいお<ruby>客<rt>きゃく</rt></ruby>さんへのメールをお<ruby>願<rt>ねが</rt></ruby>いしたい。<ruby>内容<rt>ないよう</rt></ruby>は<ruby>後<rt>あと</rt></ruby>で<ruby>指示<rt>しじ</rt></ruby>するから。</p>
+                        <p class="vietnamese-text">Và, tôi muốn nhờ bạn gửi mail cho khách hàng mới. Nội dung thì lát nữa tôi sẽ chỉ thị.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 10 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>承知<rt>しょうち</rt></ruby>いたしました。</p>
+                        <p class="vietnamese-text">Em đã rõ ạ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 11 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="yamada">鈴木部長 (Suzuki-buchou)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">あと、<ruby>息子<rt>むすこ</rt></ruby>が<ruby>最近<rt>さいきん</rt></ruby>ゲームばかりしているから、<ruby>週末<rt>しゅうまつ</rt></ruby>は<ruby>勉強<rt>べんきょう</rt></ruby><span class="highlight-word">させないと</span>いけないんだ。<ruby>出張<rt>しゅっちょう</rt></ruby>から<ruby>帰<rt>かえ</rt></ruby>ったら<ruby>大変<rt>たいへん</rt></ruby>だよ。</p>
+                        <p class="vietnamese-text">À còn nữa, con trai tôi gần đây toàn chơi game nên cuối tuần tôi phải bắt nó học bài. Sau chuyến công tác về chắc sẽ vất vả đây.</p>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Lời thoại 12 -->
+             <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ふふ、<ruby>部長<rt>ぶちょう</rt></ruby>も<ruby>大変<rt>たいへん</rt></ruby>ですね。</p>
+                        <p class="vietnamese-text">Hihi, Trưởng phòng cũng vất vả nhỉ.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+
+
+<!-- =============================================================== -->
+<!-- PHẦN TỪ VỰNG MỚI -->
+<!-- =============================================================== -->
+<div class="vocabulary-section">
+    <div class="vocabulary-container">
+        <h3>Từ Vựng Mới (新しい言葉)</h3>
+        <ul class="vocabulary-list">
+            
+            <!-- Từ vựng 1: 集まる -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>集まる<rt>あつまる</rt></ruby></h4>
+                    <button class="vocab-play-btn" data-speak-text="集まる">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> あつまる</p>
+                    <p><span class="label">Loại từ:</span> Động từ (I)</p>
+                    <p><span class="label">Nghĩa:</span> Tập trung, tập hợp</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence">会議室に集まってください。</p>
+                        <button class="vocab-play-btn" data-speak-text="会議室に集まってください。">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Xin hãy tập trung ở phòng họp.</p>
+                </div>
+            </li>
+
+            <!-- Từ vựng 2: 分担する -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>分担<rt>ぶんたん</rt></ruby>する</h4>
+                    <button class="vocab-play-btn" data-speak-text="分担する">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> ぶんたんする</p>
+                    <p><span class="label">Loại từ:</span> Động từ (III)</p>
+                    <p><span class="label">Nghĩa:</span> Phân chia, phân công</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence">仕事を分担しましょう。</p>
+                        <button class="vocab-play-btn" data-speak-text="仕事を分担しましょう。">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Chúng ta hãy cùng phân chia công việc nào.</p>
+                </div>
+            </li>
+
+            <!-- Từ vựng 3: 市場調査 -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>市場調査<rt>しじょうちょうさ</rt></ruby></h4>
+                    <button class="vocab-play-btn" data-speak-text="市場調査">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> しじょうちょうさ</p>
+                    <p><span class="label">Loại từ:</span> Danh từ</p>
+                    <p><span class="label">Nghĩa:</span> Điều tra thị trường</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence">来週、市場調査を始めます。</p>
+                        <button class="vocab-play-btn" data-speak-text="来週、市場調査を始めます。">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Tuần sau chúng tôi sẽ bắt đầu điều tra thị trường.</p>
+                </div>
+            </li>
+
+            <!-- Từ vựng 4: 日程 -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>日程<rt>にってい</rt></ruby></h4>
+                    <button class="vocab-play-btn" data-speak-text="日程">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> にってい</p>
+                    <p><span class="label">Loại từ:</span> Danh từ</p>
+                    <p><span class="label">Nghĩa:</span> Lịch trình, kế hoạch</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence">出張の日程を決めました。</p>
+                        <button class="vocab-play-btn" data-speak-text="出張の日程を決めました。">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Tôi đã quyết định lịch trình đi công tác.</p>
+                </div>
+            </li>
+
+            <!-- Từ vựng 5: 翻訳する -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>翻訳<rt>ほんやく</rt></ruby>する</h4>
+                    <button class="vocab-play-btn" data-speak-text="翻訳する">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> ほんやくする</p>
+                    <p><span class="label">Loại từ:</span> Động từ (III)</p>
+                    <p><span class="label">Nghĩa:</span> Biên dịch</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence">このメールを日本語に翻訳してください。</p>
+                        <button class="vocab-play-btn" data-speak-text="このメールを日本語に翻訳してください。">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Hãy dịch email này sang tiếng Nhật giúp tôi.</p>
+                </div>
+            </li>
+
+            <!-- Từ vựng 6: 期待する -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>期待<rt>きたい</rt></ruby>する</h4>
+                    <button class="vocab-play-btn" data-speak-text="期待する">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> きたいする</p>
+                    <p><span class="label">Loại từ:</span> Động từ (III)</p>
+                    <p><span class="label">Nghĩa:</span> Kỳ vọng, mong đợi</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence">あなたの活躍を期待しています。</p>
+                        <button class="vocab-play-btn" data-speak-text="あなたの活躍を期待しています。">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Chúng tôi đang kỳ vọng vào sự thành công của bạn.</p>
+                </div>
+            </li>
+
+            <!-- Từ vựng 7: 無理をする -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>無理<rt>むり</rt></ruby>をする</h4>
+                    <button class="vocab-play-btn" data-speak-text="無理をする">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> むりをする</p>
+                    <p><span class="label">Loại từ:</span> Động từ (III)</p>
+                    <p><span class="label">Nghĩa:</span> Làm việc quá sức</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence">あまり無理をしないでくださいね。</p>
+                        <button class="vocab-play-btn" data-speak-text="あまり無理をしないでくださいね。">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Bạn đừng làm việc quá sức nhé.</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<!-- =============================================================== -->
+<!-- PHẦN GIẢI THÍCH NGỮ PHÁP VÀ LUYỆN TẬP -->
+<!-- =============================================================== -->
+
+<!-- === TEMPLATE HƯỚNG DẪN: PHẦN NGỮ PHÁP ===
+
+    Chào bạn, đây là template cho phần trình bày ngữ pháp.
+    Hãy làm theo các quy tắc dưới đây để tạo ra các bài học đồng nhất và chuyên nghiệp.
+
+    QUY TẮC 1: KHỐI CHỨA CHÍNH
+    - Toàn bộ phần ngữ pháp và bài tập sẽ nằm trong một thẻ <div class="grammar-section">...</div>
+      Điều này giúp tạo nền và không gian riêng cho khu vực này.
+
+    QUY TẮC 2: "THẺ" NỘI DUNG (QUAN TRỌNG NHẤT)
+    - Mỗi một phần giải thích logic (ví dụ: "Giải Mã", "Ý nghĩa 1", "Bài tập") phải được bọc trong
+      một thẻ <div class="grammar-card">...</div>.
+    - Việc này giúp tạo hiệu ứng hover (nền vàng) và tự động xếp chồng trên di động.
+
+    QUY TẮC 3: TIÊU ĐỀ
+    - Tiêu đề của mỗi thẻ nên dùng thẻ <h3>. Ví dụ: <h3>1. Ý nghĩa 1: Bắt buộc...</h3>
+
+    QUY TẮC 4: CÁC LỚP (CLASS) ĐỊNH DẠNG ĐẶC BIỆT
+    - Để nhấn mạnh một điểm ngữ pháp chính (màu đỏ đậm), hãy bọc nó trong thẻ span:
+      <span class="grammar-point">Nội dung cần nhấn mạnh</span>
+
+    - Để định dạng câu ví dụ tiếng Nhật (màu xanh dương), hãy bọc nó trong thẻ p:
+      <p class="example-jp">ここに日本語の例文を書きます。</p>
+
+    - Để định dạng phần dịch tiếng Việt (in nghiêng, màu xám), hãy bọc nó trong thẻ p:
+      <p class="example-vn">(Đây là phần dịch tiếng Việt.)</p>
+      
+    QUY TẮC 5: PHẦN BÀI TẬP
+    - Sử dụng thẻ <ul> với class="practice-list" để tạo danh sách bài tập.
+    - Mỗi bài tập là một thẻ <li>. Dùng dấu "→" để ngăn cách câu hỏi và trả lời.
+
+    Chỉ cần tuân thủ các quy tắc trên, bạn sẽ có một phần ngữ pháp đẹp mắt và chuyên nghiệp.
+
+-->
+
+
+
+<div class="grammar-section">
+    <div class="grammar-container">
+
+        <h2>Phần 4: Phân Tích Ngữ Pháp (文法の解説)</h2>
+
+
+<!-- Card 1: Tổng quan về Ngữ pháp -->
+<div class="grammar-card">
+    <h3>Tổng quan về Thể Sai khiến (使役形)</h3>
+    
+    <p>
+        <strong>Câu hỏi </strong> 
+        Tại sao Trưởng phòng Yamada lại nói <span class="grammar-point">「だれに レポートを書かせる」</span> hay <span class="grammar-point">「日程を決めさせてほしい」</span>? Ngược lại, tại sao An lại nói <span class="grammar-point">「私にやらせてください」</span>? Thể ～させる diễn tả điều gì?
+    </p>
+    
+    <p>
+        <strong> Mục đích & Bối cảnh </strong> 
+        <span class="grammar-point">Thể Sai khiến ～させる (使役形)</span> được dùng khi một người tác động lên người khác để họ thực hiện một hành động. 
+<p> <span class="grammar-point">Nó có hai sắc thái chính: "bắt buộc/yêu cầu" và "cho phép". </span> </p>
+ Việc lựa chọn ý nghĩa nào phụ thuộc hoàn toàn vào ngữ cảnh và mối quan hệ giữa những người tham gia hội thoại.
+    </p>
+
+    <p>
+        <strong>Các mẫu ngữ pháp：</strong>
+        Dưới đây, chúng ta sẽ đi vào từng cách sử dụng và quy tắc chi tiết.
+    </p>
+</div>
+
+
+
+
+
+        <!-- THẺ 1: Ý nghĩa 1 -->
+        <div class="grammar-card">
+            <h3>1. Ý nghĩa 1: Bắt buộc, yêu cầu (強制・指示)</h3>
+            
+            <!-- Phần giải thích -->
+            <div class="grammar-explanation">
+                <p><strong>Giải thích:</strong> Thường dùng khi người có vị thế cao hơn (sếp, cha mẹ, giáo viên) yêu cầu người khác làm một việc.</p>
+            </div>
+            
+            <!-- Cặp ví dụ 1 -->
+            <div class="grammar-example-pair">
+                <p class="grammar-jp">市場調査のレポートは<ruby>田中<rt>たなか</rt></ruby>くんに<span class="grammar-point">書かせる</span>つもりだ。</p>
+                <p class="grammar-vn">Tôi định sẽ để/bắt cậu Tanaka viết báo cáo điều tra thị trường.</p>
+            </div>
+
+            <!-- Cặp ví dụ 2 -->
+            <div class="grammar-example-pair">
+                <p class="grammar-jp"><ruby>母<rt>はは</rt></ruby>は<ruby>弟<rt>おとうと</rt></ruby>に<ruby>部屋<rt>へや</rt></ruby>を<span class="grammar-point">掃除させました</span>。</p>
+                <p class="grammar-vn">Mẹ tôi đã bắt em trai dọn phòng.</p>
+            </div>
+        </div>
+        
+        <!-- THẺ 2: Ý nghĩa 2 -->
+        <div class="grammar-card">
+            <h3>2. Ý nghĩa 2: Cho phép, để cho (許可・放任)</h3>
+            
+            <div class="grammar-explanation">
+                <p><strong>Giải thích:</strong> Dùng khi cho phép ai đó làm gì. Dạng câu <span class="grammar-point">～させてください</span> (Xin hãy cho phép tôi...) rất phổ biến.</p>
+            </div>
+
+            <div class="grammar-example-pair">
+                <p class="grammar-jp">はい、<ruby>私<rt>わたし</rt></ruby>に<span class="grammar-point">やらせてください</span>！</p>
+                <p class="grammar-vn">Vâng, xin hãy để em làm ạ!</p>
+            </div>
+
+            <div class="grammar-example-pair">
+                <p class="grammar-jp"><ruby>疲<rt>つか</rt></ruby>れたら、ちゃんと<span class="grammar-point">休ませる</span>から。</p>
+                <p class="grammar-vn">Nếu mệt thì tôi sẽ cho nghỉ ngơi.</p>
+            </div>
+        </div>
+
+        <!-- THẺ 3: Công thức (Ví dụ về cách dùng khung công thức mới) -->
+        <div class="grammar-card">
+            <h3>3. Quy tắc trợ từ を và に</h3>
+            <div class="grammar-explanation">
+                <p>Trợ từ thay đổi tùy thuộc vào động từ là <strong>Tự động từ</strong> hay <strong>Tha động từ</strong>.</p>
+            </div>
+            
+            <div class="grammar-formula">
+                Người thực hiện + <span class="grammar-point">を</span> + V(tự) sai khiến
+            </div>
+            <div class="grammar-example-pair">
+                <p class="grammar-jp"><ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>田中<rt>たなか</rt></ruby>さん<span class="grammar-point">を</span><ruby>出張<rt>しゅっちょう</rt></ruby>させます。</p>
+                <p class="grammar-vn">Sếp cho anh Tanaka đi công tác.</p>
+            </div>
+
+            <div class="grammar-formula">
+                Người thực hiện + <span class="grammar-point">に</span> + Tân ngữ <span class="grammar-point">を</span> + V(tha) sai khiến
+            </div>
+             <div class="grammar-example-pair">
+                <p class="grammar-jp"><ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>田中<rt>たなか</rt></ruby>さん<span class="grammar-point">に</span>レポートを<ruby>書<rt>か</rt></ruby>かせます。</p>
+                <p class="grammar-vn">Sếp bắt anh Tanaka viết báo cáo.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+<div class="quiz-section">
+    <h2>Phần 5: Luyện Tập Ngữ Pháp (練習)</h2>
+
+    <!-- KHUÔN MẪU ĐỂ TẠO CÂU HỎI MỚI (COPY KHỐI NÀY) -->
+    <!-- 
+        HƯỚNG DẪN TÁI SỬ DỤNG:
+        1. Copy toàn bộ khối <div class="quiz-card">...</div> dưới đây.
+        2. Dán nó vào sau câu hỏi cuối cùng để tạo một câu hỏi mới.
+        3. Thay đổi nội dung trong thẻ <p class="question-text">.
+        4. Thay đổi nội dung của 3 nút <button class="option-btn">.
+        5. QUAN TRỌNG: Di chuyển thuộc tính data-correct="true" vào đúng nút <button> là đáp án đúng.
+        6. Thay đổi nội dung giải thích trong <div class="explanation-box">.
+        -->
+    <div class="quiz-container">
+        
+        <!-- BÀI TẬP MẪU 1 -->
+        <div class="quiz-card">
+            <p class="question-text">1. わたしは子どもにへやを(かたづける) → ?</p>
+            <div class="options-container">
+                <button class="option-btn">a) かたづけらせます</button>
+                <button class="option-btn" data-correct="true">b) かたづけさせます</button>
+                <button class="option-btn">c) かたづけます</button>
+            </div>
+            <div class="explanation-box" style="display: none;">
+                💡 <strong>Giải thích:</strong> かたづける là động từ Nhóm II. Bỏ る và thêm させます.
+            </div>
+        </div>
+
+        <!-- BÀI TẬP MẪU 2 -->
+        <div class="quiz-card">
+            <p class="question-text">2. 社長はよくみんなを(わらう) → ?</p>
+            <div class="options-container">
+                <button class="option-btn" data-correct="true">a) わらわせます</button>
+                <button class="option-btn">b) わらいます</button>
+                <button class="option-btn">c) わらわさせます</button>
+            </div>
+            <div class="explanation-box" style="display: none;">
+                💡 <strong>Giải thích:</strong> 笑う (わらう) là động từ Nhóm I, kết thúc bằng う. Chuyển う thành わ và thêm せます.
+            </div>
+        </div>
+
+        <!-- BÀI TẬP MẪU 3 -->
+        <div class="quiz-card">
+            <p class="question-text">3. 先生は生徒に自由に意見を (言う) → ?</p>
+            <div class="options-container">
+                <button class="option-btn">a) 言います</button>
+                <button class="option-btn">b) 言わました</button>
+                <button class="option-btn" data-correct="true">c) 言わせました</button>
+            </div>
+            <div class="explanation-box" style="display: none;">
+                💡 <strong>Giải thích:</strong> 言う (いう) là động từ Nhóm I, kết thúc bằng う. Chuyển う thành わ và thêm せました (thể quá khứ).
+            </div>
+        </div>
+        
+        <!-- DÁN CÁC CÂU HỎI MỚI CỦA BẠN VÀO ĐÂY -->
+
+    </div>
+</div>
+
+    <!-- Link tới file JavaScript, giữ nguyên -->
+    <script src="script-talk1026readFurigana.js"></script>
+
+</body>
+</html>
