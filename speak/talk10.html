@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- TIÊU ĐỀ BÀI HỌC -->
+    <title>Bài 1: Các mẫu câu so sánh | Học tiếng Nhật cùng An</title>
+    
+    <!-- Link CSS và JS dùng chung, không thay đổi -->
+    <link rel="stylesheet" href="styles-talk1029.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <!-- TÊN BÀI HỌC VÀ MÔ TẢ -->
+        <h2>Bài 1: Hội thoại - Các mẫu câu so sánh</h2>
+        <p>Luyện tập cách so sánh hơn, kém, và lựa chọn giữa hai vật.</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 1: HỘI THOẠI (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <!-- TODO: Thay "lesson1.jpg" bằng tên file ảnh của bạn -->
+        <img src="lesson1.jpg" alt="An và Tanaka nói chuyện trong giờ nghỉ" class="scene-background-image">
+        
+        <div class="dialogue-overlay">
+            <!-- Khu vực hiển thị lời thoại -->
+            <div class="dialogue-display-window"></div>
+            
+            <!-- Khu vực điều khiển -->
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NỘI DUNG HỘI THOẠI -->
+    <div class="dialogue-source" style="display: none;">
+        
+        <!-- === CẢNH 1: Tại giờ nghỉ trưa === -->
+        <div class="scene" data-scene-name="Nghỉ trưa" data-background-image="lesson1-1.jpg">
+            
+            <!-- Lời thoại 1 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンさん、<ruby>新<rt>あたら</rt></ruby>しい<ruby>仕事<rt>しごと</rt></ruby>はどう？<ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby><span class="dialogue-highlight">より</span><ruby>大変<rt>たいへん</rt></ruby>？</p>
+                        <p class="vietnamese-text">An-san, công việc mới thế nào? Có vất vả hơn công việc trước không?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lời thoại 2 (ĐÃ THAY ĐỔI) -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、<ruby>少<rt>すこ</rt></ruby>し<ruby>大変<rt>たいへん</rt></ruby>ですが、やりがいがあります。それに、<ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby><span class="dialogue-highlight">より</span>ずっと<ruby>楽<rt>たの</rt></ruby>しいです。</p>
+                        <p class="vietnamese-text">Vâng, có hơi vất vả một chút nhưng rất đáng làm ạ. Hơn nữa, nó vui hơn công việc trước rất nhiều.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 3 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうか、よかった。じゃあ、<ruby>仕事<rt>しごと</rt></ruby><span class="dialogue-highlight">と</span>プライベート<span class="dialogue-highlight">と</span>、<span class="dialogue-highlight">どちらが</span><ruby>大切<rt>たいせつ</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>う？</p>
+                        <p class="vietnamese-text">Ra vậy, tốt quá nhỉ. Vậy thì, giữa công việc và cuộc sống riêng tư, bạn nghĩ cái nào quan trọng hơn?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 4 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">うーん、<ruby>難<rt>むずか</rt></ruby>しい<ruby>質問<rt>しつもん</rt></ruby>ですね。どちらも<ruby>大切<rt>たいせつ</rt></ruby>ですが、<ruby>私<rt>わたし</rt></ruby>はプライベート<span class="dialogue-highlight">のほうが</span><ruby>少<rt>すこ</rt></ruby>しだけ<ruby>大切<rt>たいせつ</rt></ruby>かな。</p>
+                        <p class="vietnamese-text">Ừm, câu hỏi khó nhỉ. Cả hai đều quan trọng, nhưng tôi nghĩ cuộc sống riêng tư quan trọng hơn một chút.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        
+    </div>
+
+    <div class="dialogue-source" style="display: none;">
+        <!-- === CẢNH 2 Tại giờ nghỉ trưa === -->
+        <div class="scene" data-scene-name="Sở thích thể thao" data-background-image="lesson1-2.jpg">
+
+            <!-- Lời thoại 5 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>僕<rt>ぼく</rt></ruby>もそう<ruby>思<rt>おも</rt></ruby>う。アンさんはスポーツが<ruby>好<rt>す</rt></ruby>きだよね。サッカー<span class="dialogue-highlight">と</span><ruby>野球<rt>やきゅう</rt></ruby><span class="dialogue-highlight">と</span>、<span class="dialogue-highlight">どちらが</span><ruby>好<rt>す</rt></ruby>き？</p>
+                        <p class="vietnamese-text">Tôi cũng nghĩ vậy. An-san thích thể thao nhỉ. Giữa bóng đá và bóng chày, bạn thích cái nào hơn?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 6 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>私<rt>わたし</rt></ruby>はサッカー<span class="dialogue-highlight">のほうが</span><ruby>好<rt>す</rt></ruby>きです。<ruby>見<rt>み</rt></ruby>るのも<ruby>楽<rt>たの</rt></ruby>しいですし。</p>
+                        <p class="vietnamese-text">Em thích bóng đá hơn ạ. Xem cũng vui nữa.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lời thoại 7 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">田中 (Tanaka)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうなんだ。<ruby>僕<rt>ぼく</rt></ruby>は<ruby>野球<rt>やきゅう</rt></ruby>が<ruby>好<rt>す</rt></ruby>きで、<ruby>何<rt>なに</rt></ruby><span class="dialogue-highlight">より</span><ruby>野球観戦<rt>やきゅうかんせん</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby>の<ruby>楽<rt>たの</rt></ruby>しみなんだ。</p>
+                        <p class="vietnamese-text">Ra vậy. Tôi thì thích bóng chày, xem bóng chày là niềm vui lớn nhất hơn bất cứ thứ gì khác.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lời thoại 8 -->
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">アン (An)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">へえ、そうなんですね！<ruby>今度<rt>こんど</rt></ruby>、<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>見<rt>み</rt></ruby>に<ruby>行<rt>い</rt></ruby>きませんか。</p>
+                        <p class="vietnamese-text">Ồ, ra là vậy ạ! Lần tới, chúng ta đi xem cùng nhau không?</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    </div>
+
+
+
+<!-- =============================================================== -->
+<!-- PHẦN 2: TỪ VỰNG MỚI (新しい言葉) -->
+<!-- =============================================================== -->
+<div class="vocabulary-section">
+    <div class="vocabulary-container">
+        <h3>Từ Vựng Mới (新しい言葉)</h3>
+        <ul class="vocabulary-list">
+            
+            <!-- TỪ 1: 大変 -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>大変<rt>たいへん</rt></ruby></h4>
+                    <button class="vocab-play-btn" data-speak-text="たいへん">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> たいへん</p>
+                    <p><span class="label">Loại từ:</span> Tính từ な</p>
+                    <p><span class="label">Nghĩa:</span> Vất vả, khó khăn</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence">この<ruby>仕事<rt>しごと</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>大変<rt>たいへん</rt></ruby>ですが、<ruby>面白<rt>おもしろ</rt></ruby>いです。</p>
+                        <button class="vocab-play-btn" data-speak-text="この仕事は少し大変ですが、面白いです">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Công việc này hơi vất vả nhưng thú vị.</p>
+                </div>
+            </li>
+
+            <!-- TỪ 2: やりがいがある -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term">やりがいがある</h4>
+                    <button class="vocab-play-btn" data-speak-text="やりがいがある">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> やりがいがある</p>
+                    <p><span class="label">Loại từ:</span> Cụm động từ</p>
+                    <p><span class="label">Nghĩa:</span> Đáng làm, có ý nghĩa, bổ ích</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><ruby>給料<rt>きゅうりょう</rt></ruby>は<ruby>高<rt>たか</rt></ruby>くないですが、やりがいがある<ruby>仕事<rt>しごと</rt></ruby>です。</p>
+                        <button class="vocab-play-btn" data-speak-text="給料は高くないですが、やりがいがある仕事です">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Lương không cao nhưng là một công việc rất đáng làm.</p>
+                </div>
+            </li>
+
+            <!-- TỪ 3: プライベート -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term">プライベート</h4>
+                    <button class="vocab-play-btn" data-speak-text="プライベート">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> ぷらいべーと</p>
+                    <p><span class="label">Loại từ:</span> Danh từ</p>
+                    <p><span class="label">Nghĩa:</span> Riêng tư, cuộc sống cá nhân</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><ruby>仕事<rt>しごと</rt></ruby>とプライベートのバランスが<ruby>大切<rt>たいせつ</rt></ruby>です。</p>
+                        <button class="vocab-play-btn" data-speak-text="仕事とプライベートのバランスが大切です">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Sự cân bằng giữa công việc và cuộc sống riêng tư rất quan trọng.</p>
+                </div>
+            </li>
+
+            <!-- TỪ 4: 大切 -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>大切<rt>たいせつ</rt></ruby></h4>
+                    <button class="vocab-play-btn" data-speak-text="たいせつ">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> たいせつ</p>
+                    <p><span class="label">Loại từ:</span> Tính từ な</p>
+                    <p><span class="label">Nghĩa:</span> Quan trọng</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><ruby>家族<rt>かぞく</rt></ruby>は<ruby>私<rt>わたし</rt></ruby>にとって<ruby>一番<rt>いちばん</rt></ruby><ruby>大切<rt>たいせつ</rt></ruby>です。</p>
+                        <button class="vocab-play-btn" data-speak-text="家族は私にとって一番大切です">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Gia đình là điều quan trọng nhất đối với tôi.</p>
+                </div>
+            </li>
+
+            <!-- TỪ 5: 野球 -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>野球<rt>やきゅう</rt></ruby></h4>
+                    <button class="vocab-play-btn" data-speak-text="やきゅう">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> やきゅう</p>
+                    <p><span class="label">Loại từ:</span> Danh từ</p>
+                    <p><span class="label">Nghĩa:</span> Bóng chày</p>
+                </div>
+               <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><ruby>弟<rt>おとうと</rt></ruby>の<ruby>夢<rt>ゆめ</rt></ruby>は<ruby>野球<rt>やきゅう</rt></ruby>の<ruby>選手<rt>せんしゅ</rt></ruby>になることです。</p>
+                        <button class="vocab-play-btn" data-speak-text="弟の夢は野球の選手になることです">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Ước mơ của em trai tôi là trở thành một cầu thủ bóng chày.</p>
+                </div>
+            </li>
+
+            <!-- TỪ 6: 観戦 -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>観戦<rt>かんせん</rt></ruby></h4>
+                    <button class="vocab-play-btn" data-speak-text="かんせん">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> かんせん</p>
+                    <p><span class="label">Loại từ:</span> Danh từ (thường đi với する)</p>
+                    <p><span class="label">Nghĩa:</span> Xem (một trận đấu thể thao)</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><ruby>週末<rt>しゅうまつ</rt></ruby>はテレビでサッカーを<ruby>観戦<rt>かんせん</rt></ruby>しました。</p>
+                        <button class="vocab-play-btn" data-speak-text="週末はテレビでサッカーを観戦しました">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Cuối tuần tôi đã xem bóng đá trên TV.</p>
+                </div>
+            </li>
+
+            <!-- TỪ 7: 楽しみ -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>楽<rt>たの</rt></ruby>しみ</h4>
+                    <button class="vocab-play-btn" data-speak-text="たのしみ">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> たのしみ</p>
+                    <p><span class="label">Loại từ:</span> Danh từ</p>
+                    <p><span class="label">Nghĩa:</span> Niềm vui, sự mong đợi</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><ruby>旅行<rt>りょこう</rt></ruby>は<ruby>私<rt>わたし</rt></ruby>の<ruby>一番<rt>いちばん</rt></ruby>の<ruby>楽<rt>たの</rt></ruby>しみです。</p>
+                        <button class="vocab-play-btn" data-speak-text="旅行は私の一番の楽しみです">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Du lịch là niềm vui lớn nhất của tôi.</p>
+                </div>
+            </li>
+
+            <!-- TỪ 8: 今度 -->
+            <li class="vocab-card">
+                <div class="vocab-word-header">
+                    <h4 class="vocab-term"><ruby>今度<rt>こんど</rt></ruby></h4>
+                    <button class="vocab-play-btn" data-speak-text="こんど">🔊</button>
+                </div>
+                <div class="vocab-details">
+                    <p><span class="label">Hiragana:</span> こんど</p>
+                    <p><span class="label">Loại từ:</span> Danh từ, Trạng từ</p>
+                    <p><span class="label">Nghĩa:</span> Lần tới</p>
+                </div>
+                <div class="vocab-example">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><ruby>今度<rt>こんど</rt></ruby>、<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>映画<rt>えいが</rt></ruby>を<ruby>見<rt>み</rt></ruby>に<ruby>行<rt>い</rt></ruby>きませんか。</p>
+                        <button class="vocab-play-btn" data-speak-text="今度、一緒に映画を見に行きませんか">🔊</button>
+                    </div>
+                    <p class="vi-sentence">Lần tới, chúng ta đi xem phim cùng nhau không?</p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+</div>
+
+
+<!-- =============================================================== -->
+<!-- PHẦN 3: PHÂN TÍCH NGỮ PHÁP (文法の解説) -->
+<!-- =============================================================== -->
+
+<!-- =============================================================== -->
+<!-- PHẦN 3: PHÂN TÍCH NGỮ PHÁP (文法の解説) - PHIÊN BẢN NÂNG CẤP -->
+<!-- =============================================================== -->
+<div class="grammar-section">
+    <div class="grammar-container">
+        <h2>Phần 3: Phân Tích Ngữ Pháp (文法の解説)</h2>
+        
+        <!-- LUẬN ĐIỂM A: So sánh hơn ～より -->
+        <div class="grammar-card">
+            <h3>A. So sánh hơn: A は B より + Tính từ</h3>
+            <div class="grammar-explanation">
+                <p>Đây là mẫu câu so sánh cơ bản nhất, dùng để diễn tả mức độ của chủ thể (A) "hơn" một đối tượng khác (B).</p>
+                <p><strong>Công thức:</strong> <span class="g-subj-a">A</span> は <span class="g-obj-b">B</span> <span class="grammar-point">より</span> + <span class="g-predicate">Tính từ / Động từ</span></p>
+            </div>
+            <div class="grammar-example-group">
+                <p class="grammar-jp">① <span class="g-subj-a"><ruby>新<rt>あたら</rt></ruby>しい<ruby>仕事<rt>しごと</rt></ruby></span>は<span class="g-obj-b"><ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby></span><span class="grammar-point">より</span><span class="g-predicate"><ruby>楽<rt>たの</rt></ruby>しいです</span>。(Từ hội thoại)</p>
+                <p class="grammar-vn">→ Công việc mới vui hơn công việc trước.</p>
+                <p class="grammar-jp">② <span class="g-subj-a"><ruby>中国<rt>ちゅうごく</rt></ruby></span>は<span class="g-obj-b"><ruby>日本<rt>にほん</rt></ruby></span><span class="grammar-point">より</span><span class="g-predicate"><ruby>大<rt>おお</rt></ruby>きいです</span>。</p>
+                <p class="grammar-vn">→ Trung Quốc lớn hơn Nhật Bản.</p>
+            </div>
+        </div>
+
+        <!-- LUẬN ĐIỂM B: So sánh kém ～ほど～ない -->
+        <div class="grammar-card">
+            <h3>B. So sánh kém: A は B ほど + Phủ định</h3>
+            <div class="grammar-explanation">
+                <p>Mẫu câu này dùng để diễn tả mức độ của A "không bằng" B. Đây là cách nói ngược lại của `～より`.</p>
+                <p><strong>Công thức:</strong> <span class="g-subj-a">A</span> は <span class="g-obj-b">B</span> <span class="grammar-point">ほど</span> + <span class="g-predicate">Tính từ / Động từ (dạng phủ định)</span></p>
+                <div class="highlight-box">
+                    💡 <strong>Lưu ý Vàng:</strong> Ghi nhớ quy tắc bất biến này!
+                    <ul>
+                        <li><span class="grammar-point">～より</span>: Luôn đi với câu <strong>khẳng định</strong> (A HƠN B).</li>
+                        <li><span class="grammar-point">～ほど</span>: Luôn đi với câu <strong>phủ định</strong> (A KHÔNG BẰNG B).</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="grammar-example-group">
+                <p class="grammar-jp">① <span class="g-subj-a"><ruby>今年<rt>ことし</rt></ruby>の<ruby>夏<rt>なつ</rt></ruby></span>は<span class="g-obj-b"><ruby>去年<rt>きょねん</rt></ruby></span><span class="grammar-point">ほど</span><span class="g-predicate"><ruby>暑<rt>あつ</rt></ruby>くないですね</span>。</p>
+                <p class="grammar-vn">→ Mùa hè năm nay không nóng bằng năm ngoái nhỉ.</p>
+                <p class="grammar-jp">② <span class="g-subj-a"><ruby>弟<rt>おとうと</rt></ruby></span>は<span class="g-obj-b"><ruby>兄<rt>あに</rt></ruby></span><span class="grammar-point">ほど</span><span class="g-predicate"><ruby>背<rt>せ</rt></ruby>が<ruby>高<rt>たか</rt></ruby>くありません</span>。</p>
+                <p class="grammar-vn">→ Em trai tôi không cao bằng anh trai.</p>
+                <p class="grammar-jp">③ <span class="g-subj-a"><ruby>私<rt>わたし</rt></ruby></span>は<span class="g-obj-b"><ruby>田中<rt>たなか</rt></ruby>さん</span><span class="grammar-point">ほど</span><span class="g-predicate"><ruby>日本語<rt>にほんご</rt></ruby>が<ruby>上手<rt>じょうず</rt></ruby>に<ruby>話<rt>はな</rt></ruby>せません</span>。</p>
+                <p class="grammar-vn">→ Tôi không thể nói tiếng Nhật giỏi bằng anh Tanaka.</p>
+            </div>
+        </div>
+
+        <!-- LUẬN ĐIỂM C: Lựa chọn ～と～とどちらが & ～のほうが -->
+        <div class="grammar-card">
+            <h3>C. Lựa chọn: A と B と どちらが～か？ & Trả lời: ～のほうが</h3>
+            <div class="grammar-explanation">
+                <p>Đây là cặp mẫu câu dùng để hỏi và trả lời về sự lựa chọn giữa hai đối tượng.</p>
+                <p><strong>Câu hỏi:</strong> <span class="g-subj-a">A</span> と <span class="g-obj-b">B</span> と <span class="grammar-point">どちらが</span> <span class="g-predicate">～か</span>？</p>
+                <p><strong>Trả lời:</strong> <span class="g-subj-a">(Lựa chọn)</span> <span class="grammar-point">のほうが</span> <span class="g-predicate">～です</span>。</p>
+            </div>
+            <div class="grammar-example-group">
+                <p class="grammar-jp">① A: <span class="g-subj-a">サッカー</span>と<span class="g-obj-b"><ruby>野球<rt>やきゅう</rt></ruby></span>と、<span class="grammar-point">どちらが</span><span class="g-predicate"><ruby>好<rt>す</rt></ruby>きですか</span>。(Từ hội thoại)</p>
+                <p class="grammar-vn">→ Giữa bóng đá và bóng chày, bạn thích cái nào hơn?</p>
+                <p class="grammar-jp">　 B: <span class="g-subj-a">サッカー</span><span class="grammar-point">のほうが</span><span class="g-predicate"><ruby>好<rt>す</rt></ruby>きです</span>。(Từ hội thoại)</p>
+                <p class="grammar-vn">→ Tôi thích bóng đá hơn.</p>
+            </div>
+        </div>
+        
+        <!-- LUẬN ĐIỂM D: So sánh nhất đặc biệt 何より -->
+        <div class="grammar-card">
+            <h3>D. So sánh nhất (Cách nói đặc biệt): 何より</h3>
+            <div class="grammar-explanation">
+                <p>Cụm từ <span class="grammar-point">「Từ nghi vấn + より/も」</span> có nghĩa là "...hơn bất cứ thứ gì / bất kỳ ai...".</p>
+            </div>
+            <div class="grammar-example-group">
+                <p class="grammar-jp">① <span class="g-subj-a"><ruby>私<rt>わたし</rt></ruby></span>は<span class="grammar-point"><ruby>何<rt>なに</rt></ruby>より</span><span class="g-predicate"><ruby>野球観戦<rt>やきゅうかんせん</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby>の<ruby>楽<rt>たの</rt></ruby>しみなんだ</span>。(Từ hội thoại)</p>
+                <p class="grammar-vn">→ Với tôi, xem bóng chày là niềm vui lớn nhất, hơn bất cứ thứ gì khác.</p>
+                <p class="grammar-jp">② <span class="g-subj-a"><ruby>私<rt>わたし</rt></ruby></span>は<span class="grammar-point"><ruby>誰<rt>だれ</rt></ruby>よりも</span><span class="g-predicate"><ruby>母<rt>はは</rt></ruby>のことが<ruby>好<rt>す</rt></ruby>きです</span>。</p>
+                <p class="grammar-vn">→ Tôi yêu mẹ hơn bất kỳ ai trên đời.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- =============================================================== -->
+<!-- PHẦN 4: LUYỆN TẬP NGỮ PHÁP (練習) -->
+<!-- =============================================================== -->
+<div class="quiz-section">
+    <h2>Phần 4: Luyện Tập Ngữ Pháp (練習)</h2>
+    <div class="quiz-container">
+        
+        <!-- CÂU HỎI 1 -->
+        <div class="quiz-card">
+            <p class="question-text">1. <ruby>日本<rt>にほん</rt></ruby>では１<ruby>月<rt>がつ</rt></ruby>と２<ruby>月<rt>がつ</rt></ruby>と、(　　) が<ruby>寒<rt>さむ</rt></ruby>いですか。</p>
+            <div class="options-container">
+                <button class="option-btn">どちらも</button>
+                <button class="option-btn" data-correct="true">どちら</button>
+                <button class="option-btn">どんな</button>
+            </div>
+            <div class="explanation-box" style="display: none;">
+                💡 <strong>Giải thích:</strong> Mẫu câu hỏi lựa chọn giữa hai đối tượng <span class="g-subj-a">A</span> và <span class="g-obj-b">B</span> là <span class="grammar-point">「A と B と、どちらが～か」</span>.
+            </div>
+        </div>
+
+        <!-- CÂU HỎI 2 -->
+        <div class="quiz-card">
+            <p class="question-text">2. <ruby>今年<rt>ことし</rt></ruby>の<ruby>試験<rt>しけん</rt></ruby>は<ruby>去年<rt>きょねん</rt></ruby> (　　) <ruby>難<rt>むずか</rt></ruby>しくなかったです。</p>
+            <div class="options-container">
+                <button class="option-btn">より</button>
+                <button class="option-btn">のほう</button>
+                <button class="option-btn" data-correct="true">ほど</button>
+            </div>
+            <div class="explanation-box" style="display: none;">
+                💡 <strong>Giải thích:</strong> Vế sau của câu ở dạng phủ định (<span class="g-predicate">～なかったです</span>). Trong so sánh, khi đi với dạng phủ định, chúng ta luôn dùng <span class="grammar-point">ほど</span> để diễn tả ý "không bằng".
+            </div>
+        </div>
+
+        <!-- CÂU HỎI 3 -->
+        <div class="quiz-card">
+            <p class="question-text">3. このドラマ<span style="font-weight: bold;">より</span>、きのうのドラマ (　　) がおもしろかったね。</p>
+            <div class="options-container">
+                <button class="option-btn" data-correct="true">のほう</button>
+                <button class="option-btn">ほど</button>
+                <button class="option-btn">だけ</button>
+            </div>
+            <div class="explanation-box" style="display: none;">
+                💡 <strong>Giải thích:</strong> <span class="grammar-point">のほう</span> thường được dùng để nhấn mạnh sự lựa chọn mang tính chủ quan. Cấu trúc <span class="g-obj-b">B</span> <span class="grammar-point">より</span>、 <span class="g-subj-a">A</span> <span class="grammar-point">のほう</span> が～ (So với B thì A ... hơn) rất phổ biến.
+            </div>
+        </div>
+
+        <!-- CÂU HỎI 4 -->
+        <div class="quiz-card">
+            <p class="question-text">4. <ruby>飛行機<rt>ひこうき</rt></ruby>は<ruby>新幹線<rt>しんかんせん</rt></ruby> (　　) <ruby>速<rt>はや</rt></ruby>いです。</p>
+            <div class="options-container">
+                <button class="option-btn">ほど</button>
+                <button class="option-btn" data-correct="true">より</button>
+                <button class="option-btn">のほう</button>
+            </div>
+            <div class="explanation-box" style="display: none;">
+                💡 <strong>Giải thích:</strong> Đây là câu so sánh hơn ở dạng khẳng định (<span class="g-predicate">速いです</span>). Vì vậy, chúng ta phải dùng <span class="grammar-point">より</span>.
+            </div>
+        </div>
+        
+        <!-- CÂU HỎI 5 -->
+        <div class="quiz-card">
+            <p class="question-text">5. <ruby>私<rt>わたし</rt></ruby>は (　　) も<ruby>彼女<rt>かのじょ</rt></ruby>のことが<ruby>好<rt>す</rt></ruby>きです。</p>
+            <div class="options-container">
+                <button class="option-btn">どこより</button>
+                <button class="option-btn">なに</button>
+                <button class="option-btn" data-correct="true">だれより</button>
+            </div>
+            <div class="explanation-box" style="display: none;">
+                💡 <strong>Giải thích:</strong> Mẫu câu <span class="grammar-point">「Từ nghi vấn + より/よりも」</span> dùng để so sánh nhất. Trong trường hợp này, đối tượng là người ("cô ấy"), nên từ nghi vấn phù hợp nhất là <span class="grammar-point">だれより</span> (hơn bất kỳ ai).
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<!-- =============================================================== -->
+<!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) -->
+<!-- =============================================================== -->
+
+<!-- =============================================================== -->
+<!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (PHIÊN BẢN TƯƠNG TÁC) -->
+<!-- =============================================================== -->
+
+
+
+<!-- =============================================================== -->
+<!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (GIAO DIỆN NÂNG CẤP) -->
+<!-- =============================================================== -->
+<div class="reading-comprehension-section">
+    <div class="reading-comprehension-container">
+        <h2>Phần 5: Đọc Hiểu Ứng Dụng (読解練習)</h2>
+
+        <!-- Thêm một wrapper chung cho nội dung đọc hiểu -->
+        <div class="reading-wrapper">
+            
+            <!-- Card 1: Chứa bài đọc và các nút điều khiển -->
+            <div class="reading-card">
+                <h3>Bối cảnh & Bài đọc</h3>
+                <p class="context-description"><strong>Bối cảnh:</strong> An viết email cho một người bạn ở Việt Nam, kể về công việc mới của mình và so sánh nó với công việc cũ.</p>
+
+                <!-- Đây là component tương tác chính -->
+
+<div class="readable-passage-component">
+    <h4>📧 Email của An</h4>
+    
+    <!-- Khối văn bản đã được đơn giản hóa, rất dễ bảo trì -->
+    <div class="text-to-be-read">
+        <p><strong><ruby>件名<rt>けんめい</rt></ruby>：<ruby>新<rt>あたら</rt></ruby>しい<ruby>仕事<rt>しごと</rt></ruby>について</strong></p>
+        <p>お<ruby>元気<rt>げんき</rt></ruby>ですか。</p>
+        <p><ruby>日本<rt>にほん</rt></ruby>での<ruby>新<rt>あたら</rt></ruby>しい<ruby>仕事<rt>しごと</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まって、もう<ruby>一ヶ月<rt>いっかげつ</rt></ruby>が<ruby>経<rt>た</rt></ruby>ちました。</p>
+        <p><ruby>今<rt>いま</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby>は、<ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby><span class="grammar-point">より</span>ずっとやりがいがあります。</p>
+        <p><ruby>覚<rt>おぼ</rt></ruby>えることは<ruby>多<rt>おお</rt></ruby>いですが、<ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby>ほど<ruby>単調<rt>たんちょう</rt></ruby>ではありません。</p>
+        <p>それに、<ruby>給料<rt>きゅうりょう</rt></ruby>も<ruby>前<rt>まえ</rt></ruby>の<ruby>会社<rt>かいしゃ</rt></ruby><span class="grammar-point">より</span><ruby>高<rt>たか</rt></ruby>いので、<ruby>嬉<rt>うれ</rt></ruby>しいです。</p>
+        <p><ruby>同僚<rt>どうりょう</rt></ruby>の<ruby>田中<rt>たなか</rt></ruby>さんは、いつも<ruby>助<rt>たす</rt></ruby>けてくれます。</p>
+        <p><ruby>東京<rt>とうきょう</rt></ruby><span class="grammar-point">と</span><ruby>私<rt>わたし</rt></ruby>の<ruby>故郷<rt>こきょう</rt></ruby><span class="grammar-point">と</span>、<span class="grammar-point">どちらが</span><ruby>好<rt>す</rt></ruby>きかと<ruby>聞<rt>き</rt></ruby>かれたら、まだ<ruby>故郷<rt>こきょう</rt></ruby><span class="grammar-point">のほうが</span><ruby>好<rt>す</rt></ruby>きだと<ruby>答<rt>こた</rt></ruby>えますが、<ruby>東京<rt>とうきょう</rt></ruby>の<ruby>生活<rt>せいかつ</rt></ruby>もだんだん<ruby>楽<rt>たの</rt></ruby>しくなってきました。</p>
+        <p>また<ruby>連絡<rt>れんらく</rt></ruby>しますね。</p>
+        <p>アンより</p>
+    </div>
+    
+    <!-- Khối điều khiển audio (giữ nguyên cấu trúc) -->
+    <div class="passage-audio-controls">
+        <button class="control-btn play-pause">▶️ Bắt đầu</button>
+        <button class="control-btn stop">⏹️ Dừng hẳn</button>
+        <div class="speed-controls">
+            <span>Tốc độ:</span>
+            <button class="speed-btn" data-speed="0.8">0.8x</button>
+            <button class="speed-btn active" data-speed="1">1x</button>
+            <button class="speed-btn" data-speed="1.2">1.2x</button>
+        </div>
+    </div>
+
+    <!-- Khối xem bản dịch (giữ nguyên cấu trúc) -->
+    <div class="translation-wrapper">
+        <details>
+            <summary>📜 Xem bản dịch</summary>
+            <div class="translation-content">
+                <p><strong>Chủ đề: Về công việc mới</strong></p>
+                <p>Bạn có khỏe không? Công việc mới của mình ở Nhật đã bắt đầu được một tháng rồi. Công việc hiện tại đáng làm hơn nhiều so với công việc trước. Dù có nhiều thứ phải nhớ nhưng nó không đơn điệu bằng công việc cũ. Hơn nữa, lương cũng cao hơn công ty trước nên mình rất vui. Anh Tanaka, đồng nghiệp của mình,luôn giúp đỡ mình. Nếu được hỏi giữa Tokyo và quê hương, mình thích nơi nào hơn, thì mình vẫn sẽ trả lời là mình thích quê hương hơn, nhưng cuộc sống ở Tokyo cũng dần trở nên thú vị hơn. Mình sẽ liên lạc lại sau nhé. Thân, An.</p>
+            </div>
+        </details>
+    </div>
+</div>
+
+
+
+
+
+            <!-- Card 2: Chứa các câu hỏi trắc nghiệm -->
+            <div class="reading-card">
+                <h3>Câu hỏi đọc hiểu</h3>
+                <!-- Tái sử dụng lại cấu trúc quiz-container và quiz-card đã có -->
+                <div class="quiz-container">
+                     <div class="quiz-card">
+                        <p class="question-text">1. アンさんの<ruby>新<rt>あたら</rt></ruby>しい<ruby>仕事<rt>しごと</rt></ruby>について、<ruby>正<rt>ただ</rt></ruby>しいものはどれですか。<br>(Về công việc mới của An, điều nào sau đây là đúng?)</p>
+                        <div class="options-container">
+                            <button class="option-btn">a) <ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby>より<ruby>給料<rt>きゅうりょう</rt></ruby>が<ruby>低<rt>ひく</rt></ruby>い。(Lương thấp hơn việc cũ)</button>
+                            <button class="option-btn">b) <ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby><span class="highlight-word"> ほど</span>やりがいがない。(Không đáng làm bằng việc cũ)</button>
+                            <button class="option-btn" data-correct="true">c) <ruby>覚<rt>おぼ</rt></ruby>えることは<ruby>多<rt>おお</rt></ruby>いが、<ruby>単調<rt>たんちょう</rt></ruby>ではない。(Nhiều thứ phải nhớ nhưng không đơn điệu)</button>
+                        </div>
+                        <div class="explanation-box" style="display: none;">
+                            💡 <strong>Giải thích:</strong> Bài viết có câu 「覚えることは多いですが、前の仕事ほど単調ではありません」, hoàn toàn trùng khớp với đáp án c.
+                        </div>
+                    </div>
+                    <div class="quiz-card">
+                        <p class="question-text">2. アンさんは<ruby>東京<rt>とうきょう</rt></ruby><span class="highlight-word">と</span><ruby>故郷<rt>こきょう</rt></ruby><span class="highlight-word">と</span>と<span class="highlight-word">どちらのほうが</span><ruby>好<rt>す</rt></ruby>きですか。<br>(An thích Tokyo và quê hương, nơi nào hơn?)</p>
+                        <div class="options-container">
+                            <button class="option-btn">a) <ruby>東京<rt>とうきょう</rt></ruby>のほうが<ruby>好<rt>す</rt></ruby>きだ。(Thích Tokyo hơn)</button>
+                            <button class="option-btn" data-correct="true">b) <ruby>故郷<rt>こきょう</rt></ruby>のほうが<ruby>好<rt>す</rt></ruby>きだ。(Thích quê hương hơn)</button>
+                            <button class="option-btn">c) どちらも<ruby>同<rt>おな</rt></ruby>じくらい<ruby>好<rt>す</rt></ruby>きだ。(Thích cả hai như nhau)</button>
+                        </div>
+                        <div class="explanation-box" style="display: none;">
+                            💡 <strong>Giải thích:</strong> An viết rằng 「まだ故郷のほうが好きだと答えます」(vẫn sẽ trả lời là thích quê hương hơn).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <!-- Link tới file JavaScript bên ngoài script-talk1029.js -->
+    <script src="script-talk1029.js"></script>
+
+</body>
+</html>
