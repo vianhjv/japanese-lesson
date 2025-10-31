@@ -1,1 +1,125 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLPT - Shadowing - Luyện Nghe- Nói - Ngữ Pháp -Từ Vựng </title>
+    <!-- Dùng chung file style và script đã có -->
+    <link rel="stylesheet" href="styles1016.css">
 
+
+    
+    <!-- === SỬA ĐỔI QUAN TRỌNG: CHUYỂN SCRIPT VÀO HEAD === -->
+
+    
+    <!-- Tải script chính của bạn sau cùng, với thuộc tính defer -->
+    <!-- 'defer' đảm bảo script chỉ chạy sau khi HTML được phân tích xong -->
+     <!-- <script src="script1016.js" defer></script>  -->
+
+
+    <!-- === THÊM CÁC THƯ VIỆN SAU VÀO ĐÂY === -->
+  
+
+
+</head>
+<body>
+ <div class="main-container">
+        <main class="main-content">
+            <!-- THANH ĐIỀU HƯỚNG (GIỮ NGUYÊN) -->
+            <div class="top-nav-container">
+                <nav class="sidebar-nav">
+                    <ul>
+                        <li><a href="#section-dialogue" class="nav-link active" data-section="dialogue">
+                            <span class="nav-icon">🗣️</span> Hội thoại & Từ vựng
+                        </a></li>
+                        <li><a href="#section-grammar" class="nav-link" data-section="grammar">
+                            <span class="nav-icon">✍️</span> Ngữ pháp & Bài tập
+                        </a></li>
+                        <li><a href="#section-reading" class="nav-link" data-section="reading">
+                            <span class="nav-icon">📖</span> Đọc hiểu
+                        </a></li>
+                        <li><a href="#section-tools" class="nav-link" data-section="tools">
+                            <span class="nav-icon">🛠️</span> Luyện Nghe・Nói
+                        </a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!--    <header class="main-header">
+                <h1>Bài 3: <ruby>丁寧形<rt>ていねいけい</rt></ruby>と<ruby>普通形<rt>ふつうけい</rt></ruby> - Thể Lịch sự & Thể Thông thường</h1>
+                <p>Sách: Shin Kanzen Master N4 - Ngữ pháp - Trang 16, 17</p>
+            </header>
+
+            <!-- Section 1: Hội thoại & Từ vựng --> -->
+
+
+
+
+
+
+
+
+
+
+<!-- Section 5: Công cụ -->
+<section id="section-tools" class="content-section">
+    <div class="section-container section-container--tools">
+        <div class="section-title">
+            <h2>Phần 5: Trình Đọc Văn Bản (<ruby>ツール<rt>ツール</rt></ruby>)</h2>
+        </div>
+         <div class="section-body">
+             <div class="text-reader-card">
+                  <div class="text-reader-body">
+                    <p class="app-description"> Luyện nghe và nói theo bất kì đoạn văn bản nào nhập vào! </p>
+                    <div class="text-reader-app">
+                        <textarea id="text-to-read-input" placeholder="ここに日本語のテキストを貼り付けてください... (Dán văn bản tiếng Nhật của bạn vào đây...)" rows="6"></textarea>
+
+
+                         <!-- VÙNG HIỂN THỊ KẾT QUẢ FURIGANA (MỚI) -->
+                   <div id="furigana-output" class="email-content" style="display:none; min-height: 150px; line-height: 2.5;"></div>
+
+
+                        <div id="reader-output" class="email-content" style="display:none; min-height: 150px;"></div>
+                        <div class="reading-controls app-controls audio-controls">
+
+                            <div class="app-main-buttons">
+
+
+
+            <!-- Nút Play/Stop cũ -->
+
+                                <button id="read-text-btn" class="control-btn play-pause">▶️ Play</button>
+                                <button id="stop-text-btn" class="control-btn stop">⏹️ Stop</button>
+
+
+            <!-- Nút này sẽ chạy chức năng phân tích -->
+            <button id="add-furigana-btn" class="control-btn play-pause">📝 Add Furigana</button>
+
+                            </div>
+                            <div class="app-settings">
+                                <div class="voice-selector-wrapper">
+                                    <label for="voice-select">Giọng đọc:</label>
+                                    <select id="voice-select" class="control-select"><option>Đang tải...</option></select>
+                                </div>
+                                <div class="speed-controls">
+                                    <span>Tốc độ:</span>
+                                    <button class="speed-btn app-speed" data-speed="0.8">0.8x</button>
+                                    <button class="speed-btn app-speed active" data-speed="1">1x</button>
+                                    <button class="speed-btn app-speed" data-speed="1.2">1.2x</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+             </div>
+         </div>
+    </div>
+</section>
+
+
+        </main>
+
+    </div>
+       <script src="script1016.js" ></script>
+</body>
+</html>
