@@ -1,0 +1,6 @@
+[build]
+  # Thư mục chứa file frontend (HTML, CSS, JS)
+  publish = "public"
+  
+  # Thư mục chứa các file backend (serverless functions)
+  functions = "netlify/functions"
