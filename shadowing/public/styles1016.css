@@ -564,7 +564,7 @@ rt { font-size: 0.65em; color: #555; }
     background: #2dd4bf; 
 
     /* Giảm mạnh padding dọc để tiết kiệm không gian, giữ padding ngang */
-    padding: 8px 8px; 
+    padding: 2px 2px; 
 }
 
 /* YÊU CẦU 4: Định dạng cho ảnh minh họa mới thêm vào */
