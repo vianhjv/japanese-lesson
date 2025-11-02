@@ -558,21 +558,27 @@ rt { font-size: 0.65em; color: #555; }
 
 /* === TÙY CHỈNH CHO SHADOWING TOOL === */
 
+/* === TÙY CHỈNH CHO SHADOWING TOOL (PHIÊN BẢN SỬA LỖI MARGIN) === */
+
 /* YÊU CẦU 2 & 3: Sửa nền và padding cho tiêu đề */
 .section-container--tools .section-title {
-    /* Đổi nền thành màu xanh ngọc giống viền ô nhập liệu */
     background: #2dd4bf; 
-
-    /* Giảm mạnh padding dọc để tiết kiệm không gian, giữ padding ngang */
-    padding: 2px 2px; 
+    padding: 8px 20px; 
 }
 
-/* YÊU CẦU 4: Định dạng cho ảnh minh họa mới thêm vào */
+/* === DÒNG SỬA LỖI QUAN TRỌNG NHẤT === */
+/* Loại bỏ lề mặc định của thẻ h2 để tiêu đề vừa khít */
+.section-container--tools .section-title h2 {
+    margin: 0;
+}
+/* ======================================= */
+
+/* YÊU CẦU 4: Định dạng cho ảnh minh họa (giữ nguyên) */
 .shadowing-promo-image {
-    width: 100%; /* Giúp ảnh co dãn theo kích thước màn hình */
-    max-width: 450px; /* Đặt chiều rộng tối đa để không bị quá to trên màn hình lớn */
-    display: block; /* Cần thiết để căn giữa ảnh bằng margin */
-    margin: 0 auto 25px auto; /* Căn giữa ảnh và tạo khoảng cách 25px với text bên dưới */
-    border-radius: 12px; /* Bo góc cho mềm mại, hợp với thiết kế chung */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng nhẹ cho đẹp */
+    width: 100%; 
+    max-width: 450px; 
+    display: block; 
+    margin: 0 auto 25px auto; 
+    border-radius: 12px; 
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); 
 }
