@@ -557,21 +557,25 @@ rt { font-size: 0.65em; color: #555; }
 }
 
 /* === TÙY CHỈNH CHO SHADOWING TOOL === */
+/* === DÒNG SỬA LỖI QUAN TRỌNG NHẤT (PHIÊN BẢN CUỐI CÙNG) === */
+/* Loại bỏ lề VÀ giảm chiều cao dòng để tiêu đề vừa khít nhất có thể */
+.section-container--tools .section-title h2 {
+    margin: 0;
+    line-height: 1; /* <-- ĐÂY LÀ THAY ĐỔI THEN CHỐT */
+}
+/* ================================================================= */
+
 
 /* === TÙY CHỈNH CHO SHADOWING TOOL (PHIÊN BẢN SỬA LỖI MARGIN) === */
 
 /* YÊU CẦU 2 & 3: Sửa nền và padding cho tiêu đề */
 .section-container--tools .section-title {
     background: #2dd4bf; 
-    padding: 8px 20px; 
+    padding: 8px 8px; 
 }
 
 /* === DÒNG SỬA LỖI QUAN TRỌNG NHẤT === */
-/* Loại bỏ lề mặc định của thẻ h2 để tiêu đề vừa khít */
-.section-container--tools .section-title h2 {
-    margin: 0;
-}
-/* ======================================= */
+
 
 /* YÊU CẦU 4: Định dạng cho ảnh minh họa (giữ nguyên) */
 .shadowing-promo-image {
@@ -582,3 +586,6 @@ rt { font-size: 0.65em; color: #555; }
     border-radius: 12px; 
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); 
 }
+
+
+
