@@ -2056,3 +2056,77 @@ rt {
     transition: background-color 0.1s ease-out; /* Hiệu ứng chuyển màu mượt mà */
     border-radius: 3px;
 }
+
+
+/* ====================================================== */
+/* === CSS CHO THANH ĐIỀU HƯỚNG (PHIÊN BẢN TỐI ƯU MOBILE) === */
+/* ====================================================== */
+
+/* --- 1. CSS CƠ BẢN (CHO MÀN HÌNH LỚN) --- */
+.main-nav {
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Căn giữa trên màn hình lớn */
+}
+
+.main-nav a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap; /* Ngăn không cho chữ bị xuống dòng */
+}
+
+.main-nav a:hover {
+    background-color: #2dd4bf;
+    color: #ffffff;
+}
+
+/* Đẩy nội dung trang xuống để không bị thanh nav che */
+.container {
+    padding-top: 60px; /* Chiều cao ước tính của nav trên desktop */
+}
+
+
+/* --- 2. TỐI ƯU CHO DI ĐỘNG (MOBILE) --- */
+/* Áp dụng các quy tắc này cho màn hình có chiều rộng từ 768px trở xuống */
+@media (max-width: 768px) {
+    .main-nav ul {
+        /* Dàn đều các mục ra toàn bộ chiều rộng */
+        justify-content: space-around; 
+    }
+
+    .main-nav a {
+        /* Giảm padding để tiết kiệm không gian */
+        padding: 15px 10px; 
+        /* Giảm nhẹ cỡ chữ để vừa vặn hơn */
+        font-size: 14px;
+    }
+
+    /* Trên mobile, có thể nav chỉ cao 50px, điều chỉnh lại */
+    .container {
+        padding-top: 55px; 
+    }
+}
+
+/* Tối ưu cho màn hình RẤT NHỎ (ví dụ iPhone 5/SE) */
+@media (max-width: 480px) {
+    .main-nav a {
+        padding: 15px 5px; /* Giảm padding ngang tới mức tối thiểu */
+        font-size: 12px; /* Chữ nhỏ hơn nữa */
+    }
+}
