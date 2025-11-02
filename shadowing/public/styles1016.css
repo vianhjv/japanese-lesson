@@ -556,4 +556,23 @@ rt { font-size: 0.65em; color: #555; }
     cursor: wait;
 }
 
+/* === TÙY CHỈNH CHO SHADOWING TOOL === */
 
+/* YÊU CẦU 2 & 3: Sửa nền và padding cho tiêu đề */
+.section-container--tools .section-title {
+    /* Đổi nền thành màu xanh ngọc giống viền ô nhập liệu */
+    background: #2dd4bf; 
+
+    /* Giảm mạnh padding dọc để tiết kiệm không gian, giữ padding ngang */
+    padding: 8px 8px; 
+}
+
+/* YÊU CẦU 4: Định dạng cho ảnh minh họa mới thêm vào */
+.shadowing-promo-image {
+    width: 100%; /* Giúp ảnh co dãn theo kích thước màn hình */
+    max-width: 450px; /* Đặt chiều rộng tối đa để không bị quá to trên màn hình lớn */
+    display: block; /* Cần thiết để căn giữa ảnh bằng margin */
+    margin: 0 auto 25px auto; /* Căn giữa ảnh và tạo khoảng cách 25px với text bên dưới */
+    border-radius: 12px; /* Bo góc cho mềm mại, hợp với thiết kế chung */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Thêm đổ bóng nhẹ cho đẹp */
+}
