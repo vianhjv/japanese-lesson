@@ -72,111 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // === PHẦN 1: BỘ MÁY ĐỌC (ĐÃ SỬA LỖI TRIỆT ĐỂ) ===
 
 // === PHẦN 1: BỘ MÁY ĐỌC (NÂNG CẤP VỚI HIGHLIGHT) ===
-    let currentSpeechUtterance = null; // Quản lý utterance hiện tại để có thể dừng
+// === PHẦN 1: BỘ MÁY ĐỌC (PHIÊN BẢN SỬA LỖI TẠM DỪNG HOÀN CHỈNH) ===
 
-    function createSpeechHandler(targetElement, characterName) {
-        // Biến để lưu trạng thái gốc và các thẻ span để highlight
-        const originalHTML = targetElement.innerHTML;
-        let charMap = [];
-        let plainText = '';
 
-        // Hàm dọn dẹp, trả lại HTML gốc sau khi đọc xong hoặc dừng
-        function cleanup() {
-            targetElement.innerHTML = originalHTML;
-            const btn = displayWindow.querySelector('.dialogue-play-btn');
-            if (btn) btn.innerHTML = '🔊';
-        }
 
-        // [MỚI] Bọc từng ký tự trong thẻ <span> để chuẩn bị highlight
-        function prepareForSpeech() {
-            plainText = '';
-            charMap = [];
 
-            function wrapCharsInSpans(parentNode) {
-                const nodes = Array.from(parentNode.childNodes);
-                for (const node of nodes) {
-                    // Chỉ xử lý các node text không nằm trong thẻ RT (furigana)
-                    if (node.nodeType === 3 && node.parentNode.nodeName !== 'RT') {
-                        const text = node.textContent;
-                        const fragment = document.createDocumentFragment();
-                        for (const char of text) {
-                            plainText += char;
-                            const span = document.createElement('span');
-                            span.textContent = char;
-                            fragment.appendChild(span);
-                            charMap.push(span);
-                        }
-                        parentNode.replaceChild(fragment, node);
-                    } else if (node.nodeType === 1) {
-                        wrapCharsInSpans(node); // Đệ quy vào các node element khác
-                    }
-                }
-            }
-            wrapCharsInSpans(targetElement);
-        }
 
-        // Hàm xử lý chính khi click nút play
-        const handleClick = () => {
-            // Nếu đang đọc, dừng lại và dọn dẹp
-            if (speechSynthesis.speaking) {
-                speechSynthesis.cancel(); 
-                cleanup(); // Dọn dẹp ngay lập tức
-                return;
-            }
 
-            // Chuẩn bị văn bản và các thẻ span
-            prepareForSpeech();
-            
-            if (!plainText.trim()) {
-                console.error("Văn bản rỗng, không có gì để đọc.");
-                return;
-            }
 
-            const voice = voiceManager.getVoiceFor(characterName);
-            if (!voice) {
-                console.error(`Không tìm thấy giọng đọc cho nhân vật ${characterName}.`);
-                return;
-            }
-            
-            currentSpeechUtterance = new SpeechSynthesisUtterance(plainText);
-            currentSpeechUtterance.lang = 'ja-JP';
-            currentSpeechUtterance.rate = 1.0;
-            currentSpeechUtterance.voice = voice;
-            
-            const btn = displayWindow.querySelector('.dialogue-play-btn');
-            if (btn) btn.innerHTML = '⏹️';
-
-            // [MỚI] Sự kiện onboundary để highlight từng từ
-            currentSpeechUtterance.onboundary = (event) => {
-                // Xóa highlight cũ
-                charMap.forEach(span => span.classList.remove('dialogue-word-highlight'));
-                
-                // Highlight từ mới
-                if (event.name === 'word') {
-                    for (let i = 0; i < event.charLength; i++) {
-                        const charIndex = event.charIndex + i;
-                        if (charMap[charIndex]) {
-                            charMap[charIndex].classList.add('dialogue-word-highlight');
-                        }
-                    }
-                }
-            };
-
-            currentSpeechUtterance.onend = () => {
-                cleanup();
-                currentSpeechUtterance = null;
-            };
-            currentSpeechUtterance.onerror = (event) => {
-                console.error('SpeechSynthesis Error:', event);
-                cleanup();
-                currentSpeechUtterance = null;
-            };
-            
-            speechSynthesis.speak(currentSpeechUtterance);
-        };
-        
-        return { play: handleClick };
-    }
 
 
 
@@ -193,44 +96,190 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLineIndex = 0;
     let currentLineHandler = null;
 
-    // Hàm này sẽ gán lại sự kiện click cho nút play của dòng thoại hiện tại
-    window.activateSpeechForCurrentLine = function() {
-        const currentPlayBtn = displayWindow.querySelector('.dialogue-play-btn');
-        const currentTextElem = displayWindow.querySelector('.japanese-text');
-        const currentSpeakerElem = displayWindow.querySelector('.speaker');
 
-        if (currentPlayBtn && currentTextElem && currentSpeakerElem) {
-            const charName = currentSpeakerElem.dataset.character;
-            currentLineHandler = createSpeechHandler(currentTextElem, charName);
-            
-            // Tạo một nút mới để xóa bỏ các event listener cũ
-            const newBtn = currentPlayBtn.cloneNode(true);
-            currentPlayBtn.parentNode.replaceChild(newBtn, currentPlayBtn);
-            
-            // Gán sự kiện click duy nhất
-            newBtn.addEventListener('click', currentLineHandler.play);
+
+// =========================================================================
+// == PHẦN 1 & 2: HỆ THỐNG ĐIỀU KHIỂN HỘI THOẠI (PHIÊN BẢN ỔN ĐỊNH) ==
+// =========================================================================
+
+// Biến toàn cục duy nhất để quản lý handler của dòng thoại đang hoạt động
+let activeDialogueHandler = null;
+
+/**
+ * "Bộ não" xử lý việc đọc cho MỘT dòng thoại.
+ * Nó tự quản lý trạng thái và giao diện của chính nó.
+ */
+function createSpeechHandler(targetElement, characterName) {
+    const originalHTML = targetElement.innerHTML;
+    let charMap = [];
+    let plainText = '';
+    let utterance = null;
+    let status = 'stopped'; // Các trạng thái: 'stopped', 'playing', 'paused'
+
+    const btn = displayWindow.querySelector('.dialogue-play-btn');
+
+    // Chuẩn bị văn bản và các thẻ span để highlight
+    function _prepareForSpeech() {
+        plainText = '';
+        charMap = [];
+        targetElement.innerHTML = originalHTML; // Luôn bắt đầu từ HTML sạch
+
+        function wrapCharsInSpans(parentNode) {
+            const nodes = Array.from(parentNode.childNodes);
+            for (const node of nodes) {
+                if (node.nodeType === 3 && node.parentNode.nodeName !== 'RT') {
+                    const text = node.textContent;
+                    const fragment = document.createDocumentFragment();
+                    for (const char of text) {
+                        plainText += char;
+                        const span = document.createElement('span');
+                        span.textContent = char;
+                        fragment.appendChild(span);
+                        charMap.push(span);
+                    }
+                    parentNode.replaceChild(fragment, node);
+                } else if (node.nodeType === 1) {
+                    wrapCharsInSpans(node);
+                }
+            }
         }
+        wrapCharsInSpans(targetElement);
     }
 
-    function showLine(sceneIdx, lineIdx) {
-        // Trước khi hiển thị dòng mới, dừng bất kỳ âm thanh nào đang phát
-        speechSynthesis.cancel();
-
-        const scene = scenes[sceneIdx];
-        const linesInScene = scene.querySelectorAll('.dialogue-line');
-        if (lineIdx >= 0 && lineIdx < linesInScene.length) {
-            currentLineIndex = lineIdx;
-            
-            displayWindow.style.opacity = 0;
-            setTimeout(() => {
-                displayWindow.innerHTML = linesInScene[lineIdx].innerHTML;
-                activateSpeechForCurrentLine(); // Kích hoạt lại nút play cho dòng mới
-                counter.textContent = `${lineIdx + 1} / ${linesInScene.length}`;
-                updateNavButtons();
-                displayWindow.style.opacity = 1;
-            }, 150);
-        }
+    // Dọn dẹp và khôi phục trạng thái ban đầu
+    function _cleanup() {
+        targetElement.innerHTML = originalHTML;
+        status = 'stopped';
+        if (btn) btn.innerHTML = '🔊';
+        utterance = null;
     }
+
+    // Bắt đầu đọc từ đầu
+    function _play() {
+        speechSynthesis.cancel(); // Dừng mọi thứ khác
+        _prepareForSpeech();
+
+        if (!plainText.trim()) return;
+        const voice = voiceManager.getVoiceFor(characterName);
+        if (!voice) return;
+
+        utterance = new SpeechSynthesisUtterance(plainText);
+        utterance.lang = 'ja-JP';
+        utterance.rate = 1.0;
+        utterance.voice = voice;
+
+        utterance.onboundary = (event) => {
+            charMap.forEach(span => span.classList.remove('dialogue-word-highlight'));
+            if (event.name === 'word') {
+                for (let i = 0; i < event.charLength; i++) {
+                    if (charMap[event.charIndex + i]) {
+                        charMap[event.charIndex + i].classList.add('dialogue-word-highlight');
+                    }
+                }
+            }
+        };
+
+        utterance.onend = _cleanup;
+        utterance.onerror = (event) => {
+            console.error('SpeechSynthesis Error:', event);
+            _cleanup();
+        };
+
+        speechSynthesis.speak(utterance);
+        status = 'playing';
+        if (btn) btn.innerHTML = '⏹️';
+    }
+
+    function _pause() {
+        speechSynthesis.pause();
+        status = 'paused';
+        if (btn) btn.innerHTML = '▶️';
+    }
+
+    function _resume() {
+        speechSynthesis.resume();
+        status = 'playing';
+        if (btn) btn.innerHTML = '⏹️';
+    }
+
+    // Hàm công khai để điều khiển từ bên ngoài
+    return {
+        togglePlayPause: function() {
+            switch (status) {
+                case 'stopped':
+                    _play();
+                    break;
+                case 'playing':
+                    _pause();
+                    break;
+                case 'paused':
+                    _resume();
+                    break;
+            }
+        },
+        // Hàm này được gọi khi chuyển sang câu thoại khác
+        stopAndCleanup: function() {
+            if (status !== 'stopped') {
+                speechSynthesis.cancel(); // Dừng đọc
+                _cleanup(); // Khôi phục HTML
+            }
+        }
+    };
+}
+
+/**
+ * Gán handler mới cho dòng thoại hiện tại
+ */
+window.activateSpeechForCurrentLine = function() {
+    const currentPlayBtn = displayWindow.querySelector('.dialogue-play-btn');
+    const currentTextElem = displayWindow.querySelector('.japanese-text');
+    const currentSpeakerElem = displayWindow.querySelector('.speaker');
+
+    if (currentPlayBtn && currentTextElem && currentSpeakerElem) {
+        const charName = currentSpeakerElem.dataset.character;
+        // Tạo và gán handler mới vào biến toàn cục
+        activeDialogueHandler = createSpeechHandler(currentTextElem, charName);
+        
+        const newBtn = currentPlayBtn.cloneNode(true);
+        currentPlayBtn.parentNode.replaceChild(newBtn, currentPlayBtn);
+        
+        // Nút bấm giờ sẽ gọi hàm toggle của handler đang hoạt động
+        newBtn.addEventListener('click', () => activeDialogueHandler.togglePlayPause());
+    }
+}
+
+/**
+ * Hiển thị một dòng thoại cụ thể
+ */
+function showLine(sceneIdx, lineIdx) {
+    // BƯỚC QUAN TRỌNG: Dừng và dọn dẹp handler của câu thoại TRƯỚC ĐÓ
+    if (activeDialogueHandler) {
+        activeDialogueHandler.stopAndCleanup();
+        activeDialogueHandler = null;
+    }
+
+    const scene = scenes[sceneIdx];
+    const linesInScene = scene.querySelectorAll('.dialogue-line');
+    if (lineIdx >= 0 && lineIdx < linesInScene.length) {
+        currentLineIndex = lineIdx;
+        
+        displayWindow.style.opacity = 0;
+        setTimeout(() => {
+            // Hiển thị nội dung HTML sạch của câu thoại mới
+            displayWindow.innerHTML = linesInScene[lineIdx].innerHTML;
+            
+            // Kích hoạt handler MỚI cho câu thoại này
+            activateSpeechForCurrentLine(); 
+            
+            counter.textContent = `${lineIdx + 1} / ${linesInScene.length}`;
+            updateNavButtons();
+            displayWindow.style.opacity = 1;
+        }, 150);
+    }
+}
+
+
+
 
     function loadScene(sceneIdx) {
         if (sceneIdx >= 0 && sceneIdx < scenes.length) {
@@ -251,7 +300,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function setupSceneNav() {
+
+
+// Dán vào file script-talk1029.js để THAY THẾ hàm setupSceneNav cũ
+
+function setupSceneNav() {
+    // Xóa các nút cũ đi để đảm bảo sạch sẽ (phòng trường hợp có lỗi)
+    sceneNavContainer.innerHTML = '';
+
+    // QUAN TRỌNG: Chỉ hiển thị thanh điều hướng cảnh khi có nhiều hơn 1 cảnh
+    if (scenes.length > 1) {
+        sceneNavContainer.style.display = 'flex'; // Hiện lại thanh nav nếu nó bị ẩn
         scenes.forEach((scene, index) => {
             const btn = document.createElement('button');
             btn.className = 'scene-btn';
@@ -259,7 +318,14 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.addEventListener('click', () => loadScene(index));
             sceneNavContainer.appendChild(btn);
         });
+    } else {
+        // Nếu chỉ có 1 cảnh, ẩn hoàn toàn thanh điều hướng đi
+        sceneNavContainer.style.display = 'none';
     }
+}
+
+
+
 
     function updateNavButtons() {
         const linesInScene = scenes[currentSceneIndex].querySelectorAll('.dialogue-line');
