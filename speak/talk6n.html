@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 6: Nội Quy Văn Phòng | Học tiếng Nhật cùng An</title>
+    <link rel="stylesheet" href="styles-talk1029.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h2>Bài 6: Nội Quy Văn Phòng</h2>
+        <p>Học cách xin phép (～てもいい), diễn tả nghĩa vụ (～なければなりません), cấm đoán (～てはいけません), và sự không cần thiết (～なくてもいい).</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 1: HỘI THOẠI (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <img src="https://i.imgur.com/gGf23aI.jpeg" alt="An và Tanaka ở lại văn phòng làm việc muộn" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogue-source" style="display: none;">
+        <!-- Toàn bộ hội thoại trong 1 cảnh -->
+        <div class="scene" data-scene-name="Làm thêm giờ" data-background-image="https://i.imgur.com/gGf23aI.jpeg">
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">お<ruby>疲<rt>つか</rt></ruby>れ<ruby>様<rt>さま</rt></ruby>です、アンさん。そろそろ<ruby>帰<rt>かえ</rt></ruby>りますか？</p>
+                        <p class="vietnamese-text">Chào An. Em chuẩn bị về chưa?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">お<ruby>疲<rt>つか</rt></ruby>れ<ruby>様<rt>さま</rt></ruby>です。<ruby>田中<rt>たなか</rt></ruby><ruby>先輩<rt>せんぱい</rt></ruby>はもうお<ruby>帰<rt>かえ</rt></ruby>りですか。<ruby>私<rt>わたし</rt></ruby>はレポートの<ruby>準備<rt>じゅんび</rt></ruby>があるので、もう<ruby>少<rt>すこ</rt></ruby>しここにいたいです。</p>
+                        <p class="vietnamese-text">Chào anh ạ. Anh Tanaka sắp về rồi ạ? Em có việc cần chuẩn bị cho bản báo cáo nên em muốn ở lại thêm một chút.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">あのう、<ruby>夜<rt>よる</rt></ruby><ruby>遅<rt>おそ</rt></ruby>くまで<ruby>残業<rt>ざんぎょう</rt></ruby><span class="g-verb-form">して</span><span class="grammar-point">もいいですか</span>？</p>
+                        <p class="vietnamese-text">Ừm, em làm thêm giờ đến khuya có được không ạ?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ええ、もちろんいいですよ。でも、<ruby>会社<rt>かいしゃ</rt></ruby>のルールがいくつかありますから、<ruby>気<rt>き</rt></ruby>をつけてください。</p>
+                        <p class="vietnamese-text">À, tất nhiên là được. Nhưng có một vài quy tắc của công ty nên em hãy chú ý nhé.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ルールですか。<ruby>教<rt>おし</rt></ruby>えていただけますか。</p>
+                        <p class="vietnamese-text">Quy tắc ạ? Anh có thể chỉ cho em được không ạ?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">まず、セキュリティのため、<ruby>夜<rt>よる</rt></ruby>10<ruby>時<rt>じ</rt></ruby>までには<ruby>必<rt>かなら</rt></ruby>ず<ruby>退社<rt>たいしゃ</rt></ruby><span class="g-verb-form">しな</span><span class="grammar-point">ければなりません</span>。</p>
+                        <p class="vietnamese-text">Trước hết, vì lý do an ninh, em bắt buộc phải rời công ty trước 10 giờ đêm.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、10<ruby>時<rt>じ</rt></ruby>ですね。<ruby>分<rt>わ</rt></ruby>かりました。</p>
+                        <p class="vietnamese-text">Vâng, 10 giờ ạ. Em hiểu rồi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">それから、とても<ruby>重要<rt>じゅうよう</rt></ruby>なことですが、<ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>内部<rt>ないぶ</rt></ruby><ruby>資料<rt>しりょう</rt></ruby>は<ruby>絶対<rt>ぜったい</rt></ruby>に<ruby>持<rt>も</rt></ruby>って<span class="g-verb-form"><ruby>帰<rt>かえ</rt></ruby>って</span><span class="grammar-point">はいけません</span>よ。</p>
+                        <p class="vietnamese-text">Thêm nữa, một điều rất quan trọng là em tuyệt đối không được mang tài liệu nội bộ của công ty về nhà nhé.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>承知<rt>しょうち</rt></ruby>しました。パソコンもここに<ruby>置<rt>お</rt></ruby>いておきます。</p>
+                        <p class="vietnamese-text">Em đã rõ ạ. Máy tính em cũng sẽ để lại đây.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">あと、30<ruby>分<rt>ぷん</rt></ruby>ぐらいの<ruby>残業<rt>ざんぎょう</rt></ruby>なら、<ruby>残業<rt>ざんぎょう</rt></ruby><ruby>届<rt>とどけ</rt></ruby>は<span class="g-verb-form"><ruby>出<rt>だ</rt></ruby>さなく</span><span class="grammar-point">てもいいですよ</span>。でも、それ<ruby>以上<rt>いじょう</rt></ruby>になるなら、ちゃんと<ruby>申請<rt>しんせい</rt></ruby>してくださいね。</p>
+                        <p class="vietnamese-text">À, nếu em chỉ làm thêm khoảng 30 phút thì không cần phải nộp đơn xin làm thêm giờ đâu. Nhưng nếu lâu hơn thế thì hãy đăng ký đầy đủ nhé.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうなんですね！<ruby>詳<rt>くわ</rt></ruby>しく<ruby>教<rt>おし</rt></ruby>えてくださって、ありがとうございます。</p>
+                        <p class="vietnamese-text">Ra là vậy ạ! Cảm ơn anh đã chỉ dẫn chi tiết.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">どういたしまして。じゃ、お<ruby>先<rt>さき</rt></ruby>に<ruby>失礼<rt>しつれい</rt></ruby>します。あまり<ruby>無理<rt>むり</rt></ruby>しないでくださいね。</p>
+                        <p class="vietnamese-text">Không có gì đâu. Vậy anh xin phép về trước nhé. Em đừng làm việc quá sức nhé.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 2: TỪ VỰNG MỚI (新しい言葉) -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>Từ Vựng Mới (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>残業<rt>ざんぎょう</rt></ruby>する</h4>
+                        <button class="vocab-play-btn" data-speak-text="ざんぎょうする">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh động từ</p>
+                        <p><span class="label">Nghĩa:</span> Làm thêm giờ</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>今日<rt>きょう</rt></ruby>は<ruby>残業<rt>ざんぎょう</rt></ruby>しなければなりません。</p>
+                            <button class="vocab-play-btn" data-speak-text="きょうはざんぎょうしなければなりません">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Hôm nay tôi phải làm thêm giờ.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>資料<rt>しりょう</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="しりょう">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Tài liệu</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>会議<rt>かいぎ</rt></ruby>の<ruby>資料<rt>しりょう</rt></ruby>をコピーしてください。</p>
+                            <button class="vocab-play-btn" data-speak-text="かいぎのしりょうをコピーしてください">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Hãy photo tài liệu cuộc họp giúp tôi.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>退社<rt>たいしゃ</rt></ruby>する</h4>
+                        <button class="vocab-play-btn" data-speak-text="たいしゃする">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh động từ</p>
+                        <p><span class="label">Nghĩa:</span> Rời công ty, tan làm</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>毎日<rt>まいにち</rt></ruby>7<ruby>時<rt>じ</rt></ruby>に<ruby>退社<rt>たいしゃ</rt></ruby>します。</p>
+                            <button class="vocab-play-btn" data-speak-text="まいにちしちじにたいしゃします">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Mỗi ngày tôi tan làm lúc 7 giờ.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>申請<rt>しんせい</rt></ruby>する</h4>
+                        <button class="vocab-play-btn" data-speak-text="しんせいする">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh động từ</p>
+                        <p><span class="label">Nghĩa:</span> Đăng ký, xin (sự cho phép)</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">ビザの<ruby>更新<rt>こうしん</rt></ruby>を<ruby>申請<rt>しんせい</rt></ruby>しました。</p>
+                            <button class="vocab-play-btn" data-speak-text="ビザのこうしんをしんせいしました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi đã nộp đơn xin gia hạn visa.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 3: PHÂN TÍCH NGỮ PHÁP (文法の解説) -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+            <h2>Phần 3: Phân Tích Ngữ Pháp (文法の解説)</h2>
+            
+            <div class="grammar-card">
+                <h3>1. Xin phép: (... có được không?) (<span class="g-verb-form">V-て</span> + <span class="grammar-point">もいいですか</span>)</h3>
+                <div class="grammar-explanation">
+                    <p>Đây là mẫu câu cơ bản và lịch sự để xin phép người khác cho mình làm một việc gì đó.</p>
+                    <p><strong>Công thức:</strong> <span class="g-verb-form">Động từ thể て</span> + <span class="grammar-point">もいいですか</span>。</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp">このエアコンを<span class="g-verb-form">つけて</span><span class="grammar-point">もいいですか</span>。</p>
+                    <p class="example-vn">Tôi bật cái máy lạnh này có được không?</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>夜<rt>よる</rt></ruby><ruby>遅<rt>おそ</rt></ruby>くまで<ruby>残業<rt>ざんぎょう</rt></ruby><span class="g-verb-form">して</span><span class="grammar-point">もいいですか</span>？</p>
+                    <p class="example-vn">Em làm thêm giờ đến khuya có được không ạ?</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. Nghĩa vụ: (Phải làm...) (<span class="g-verb-form">V-ない</span> → <span class="g-verb-form">V-な</span> + <span class="grammar-point">ければなりません</span>)</h3>
+                <div class="grammar-explanation">
+                    <p>Mẫu câu này diễn tả một hành động bắt buộc phải làm, một nghĩa vụ không thể không thực hiện.</p>
+                    <p><strong>Công thức:</strong> <span class="g-verb-form">Động từ thể ない (bỏ い)</span> + <span class="grammar-point">ければなりません</span>。</p>
+                    <p>Ví dụ: <span class="grammar-before">行かない</span> → <span class="g-verb-form">行かな</span><span class="grammar-point">ければなりません</span>。</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>薬<rt>くすり</rt></ruby>を<span class="g-verb-form"><ruby>飲<rt>の</ruby></rt>ま</span><span class="grammar-point">なければなりません</span>。</p>
+                    <p class="example-vn">Tôi phải uống thuốc.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>夜<rt>よる</rt></ruby>10<ruby>時<rt>じ</rt></ruby>までには<ruby>必<rt>かなら</rt></ruby>ず<ruby>退社<rt>たいしゃ</rt></ruby><span class="g-verb-form">しな</span><span class="grammar-point">ければなりません</span>。</p>
+                    <p class="example-vn">Bắt buộc phải rời công ty trước 10 giờ đêm.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>3. Cấm đoán: (Không được làm...) (<span class="g-verb-form">V-て</span> + <span class="grammar-point">はいけません</span>)</h3>
+                <div class="grammar-explanation">
+                    <p>Dùng để diễn tả một sự cấm đoán mạnh mẽ, ra lệnh hoặc thông báo một quy tắc không được vi phạm.</p>
+                    <p><strong>Công thức:</strong> <span class="g-verb-form">Động từ thể て</span> + <span class="grammar-point">はいけません</span>。</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp">ここでタバコを<span class="g-verb-form"><ruby>吸<rt>す</rt></ruby>って</span><span class="grammar-point">はいけません</span>。</p>
+                    <p class="example-vn">Không được hút thuốc ở đây.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>内部<rt>ないぶ</rt></ruby><ruby>資料<rt>しりょう</rt></ruby>は<ruby>絶対<rt>ぜったい</rt></ruby>に<ruby>持<rt>も</rt></ruby>って<span class="g-verb-form"><ruby>帰<rt>かえ</rt></ruby>って</span><span class="grammar-point">はいけません</span>よ。</p>
+                    <p class="example-vn">Tuyệt đối không được mang tài liệu nội bộ của công ty về nhà nhé.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>4. Không cần thiết: (Không cần làm...) (<span class="g-verb-form">V-ない</span> → <span class="g-verb-form">V-なく</span> + <span class="grammar-point">てもいいです</span>)</h3>
+                <div class="grammar-explanation">
+                    <p>Mẫu câu này diễn tả một hành động nào đó không cần thiết phải làm, trái ngược với "phải làm".</p>
+                    <p><strong>Công thức:</strong> <span class="g-verb-form">Động từ thể ない (bỏ い)</span> + <span class="grammar-point">くてもいいです</span>。</p>
+                    <p>Ví dụ: <span class="grammar-before">行かない</span> → <span class="g-verb-form">行かな</span><span class="grammar-point">くてもいいです</span>。</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>明日<rt>あした</rt></ruby>は<ruby>早<rt>はや</rt></ruby>く<span class="g-verb-form">起きな</span><span class="grammar-point">くてもいいです</span>。</p>
+                    <p class="example-vn">Ngày mai không cần phải dậy sớm.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>残業<rt>ざんぎょう</rt></ruby><ruby>届<rt>とどけ</rt></ruby>は<ruby>出<rt>だ</rt></ruby><span class="g-verb-form">さなく</span><span class="grammar-point">てもいいですよ</span>。</p>
+                    <p class="example-vn">Không cần phải nộp đơn xin làm thêm giờ đâu.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <!-- =============================================================== -->
+    <!-- PHẦN 4: LUYỆN TẬP NGỮ PHÁP (練習) -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Phần 4: Luyện Tập Ngữ Pháp (練習)</h2>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <p class="question-text">1. Bạn muốn chụp ảnh trong bảo tàng. Bạn sẽ nói gì?</p>
+                <div class="options-container">
+                    <button class="option-btn">ここで<ruby>写真<rt>しゃしん</rt></ruby>を<span class="g-verb-form"><ruby>撮<rt>と</rt></ruby>らな</span><span class="grammar-point">ければなりません</span>。</button>
+                    <button class="option-btn" data-correct="true">ここで<ruby>写真<rt>しゃしん</rt></ruby>を<span class="g-verb-form"><ruby>撮<rt>と</rt></ruby>って</span><span class="grammar-point">もいいですか</span>。</button>
+                    <button class="option-btn">ここで<ruby>写真<rt>しゃしん</rt></ruby>を<span class="g-verb-form">  <ruby>撮<rt>と</rt></ruby> って</span><span class="grammar-point">はいけません</span>。</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Để xin phép làm gì đó, ta dùng mẫu <span class="g-verb-form">V-て</span> + <span class="grammar-point">もいいですか</span>.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">2. Điền vào chỗ trống: パスポートを<ruby>見<rt>み</rt></ruby>せ＿＿＿＿＿。</p>
+                <div class="options-container">
+                    <button class="option-btn"><span class="g-verb-form">なく</span><span class="grammar-point">てもいいです</span></button>
+                    <button class="option-btn" data-correct="true"><span class="g-verb-form">な</span><span class="grammar-point">ければなりません</span></button>
+                    <button class="option-btn"><span class="g-verb-form">て</span><span class="grammar-point">もいいですか</span></button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> "Phải cho xem hộ chiếu" là một nghĩa vụ, dùng <span class="g-verb-form">V-な</span> + <span class="grammar-point">ければなりません</span>. (見せる → 見せな → 見せなければなりません).
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">3. Bác sĩ nói với bệnh nhân: "Anh không được uống rượu."</p>
+                <div class="options-container">
+                    <button class="option-btn">お<ruby>酒<rt>さけ</rt></ruby>を<span class="g-verb-form"><ruby>飲<rt>の</rt></ruby>んでも</span><span class="grammar-point">いいです</span>。</button>
+                    <button class="option-btn">お<ruby>酒<rt>さけ</rt></ruby>を<span class="g-verb-form"><ruby>飲<rt>の</rt></ruby>まな</span><span class="grammar-point">くてもいいです</span>。</button>
+                    <button class="option-btn" data-correct="true">お<ruby>酒<rt>さけ</rt></ruby>を<span class="g-verb-form"><ruby>飲<rt>の</rt></ruby>んでは</span><span class="grammar-point">いけません</span>。</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Để cấm đoán, ta dùng <span class="g-verb-form">V-て</span> + <span class="grammar-point">はいけません</span>. (飲む → 飲んで → 飲んではいけません).
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">4. Hoàn thành câu: "Vì hôm nay là chủ nhật nên..."</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true"><ruby>会社<rt>かいしゃ</rt></ruby>へ<span class="g-verb-form"><ruby>行<rt>い</rt></ruby>かな</span><span class="grammar-point">くてもいいです</span>。</button>
+                    <button class="option-btn"><ruby>会社<rt>かいしゃ</rt></ruby>へ<span class="g-verb-form"><ruby>行<rt>い</rt></ruby>かな</span><span class="grammar-point">ければなりません</span>。</button>
+                    <button class="option-btn"><ruby>会社<rt>かいしゃ</rt></ruby>へ<span class="g-verb-form"><ruby>行<rt>い</rt></ruby>って</span><span class="grammar-point">はいけません</span>。</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Chủ nhật thì "không cần" đi làm, diễn tả sự không cần thiết dùng <span class="g-verb-form">V-なく</span> + <span class="grammar-point">てもいいです</span>.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) -->
+    <!-- =============================================================== -->
+    <div class="reading-comprehension-section">
+        <div class="reading-comprehension-container">
+            <h2>Phần 5: Đọc Hiểu Ứng Dụng (ôn tập Bài 6)</h2>
+            <div class="reading-wrapper">
+                <div class="reading-card">
+                    <h3><ruby>時間外労働<rt>じかんがいろうどう</rt></ruby>（<ruby>残業<rt>ざんぎょう</rt></ruby>）のルール</h3>
+                    <div class="context-description">
+                        <p>Đây là một email từ phòng Hành chính Tổng hợp gửi đến toàn thể nhân viên về quy định làm thêm giờ.</p>
+                    </div>
+                    <div class="readable-passage-component">
+                        <h4><ruby>文章<rt>ぶんしょう</rt></ruby></h4>
+                        <div class="text-to-be-read" id="readingPassageText">
+                            <p><strong><ruby>件名<rt>けんめい</rt></ruby>：<ruby>時間外労働<rt>じかんがいろうどう</rt></ruby>（<ruby>残業<rt>ざんぎょう</rt></ruby>）に<ruby>関<rt>かん</rt></ruby>するルールについて</strong></p>
+                            <p>ABCデザイン<ruby>社員<rt>しゃいん</rt></ruby>の<ruby>皆様<rt>みなさま</rt></ruby>へ</p>
+                            <p><ruby>社員<rt>しゃいん</rt></ruby>の<ruby>健康<rt>けんこう</rt></ruby>とワークライフバランスのため、<ruby>当社<rt>とうしゃ</rt></ruby>は<ruby>基本的<rt>きほんてき</rt></ruby>に<ruby>残業<rt>ざんぎょう</rt></ruby>を<ruby>推奨<rt>すいしょう</rt></ruby>しません。しかし、プロジェクトの<ruby>締切<rt>しめきり</rt></ruby><ruby>前<rt>まえ</rt></ruby>など、<ruby>必要<rt>ひつよう</rt></ruby>な<ruby>場合<rt>ばあい</rt></ruby>は<ruby>残業<rt>ざんぎょう</rt></ruby>を<span class="g-verb-form">して</span><span class="grammar-point">もいいです</span>。その<ruby>際<rt>さい</rt></ruby>、<ruby>以下<rt>いか</rt></ruby>のルールを<ruby>必<rt>かなら</rt></ruby>ず<ruby>守<rt>まも</rt></ruby>ってください。</p>
+                            <p>まず、<ruby>残業<rt>ざんぎょう</rt></ruby>をする<ruby>前<rt>まえ</rt></ruby>に、<ruby>必<rt>かなら</rt></ruby>ず<ruby>上司<rt>じょうし</rt></ruby>の<ruby>許可<rt>きょか</rt></ruby>を<ruby>得<rt>え</rt></ruby><span class="g-verb-form">な</span><span class="grammar-point">ければなりません</span>。<ruby>無断<rt>むだん</rt></ruby>で<ruby>残業<rt>ざんぎょう</rt></ruby>を<span class="g-verb-form">して</span><span class="grammar-point">はいけません</span>。</p>
+                            <p><ruby>第二<rt>だいに</rt></ruby>に、<ruby>安全<rt>あんぜん</rt></ruby>とセキュリティのため、<ruby>夜<rt>よる</rt></ruby>10<ruby>時<rt>じ</rt></ruby><ruby>以降<rt>いこう</rt></ruby>はオフィスに<ruby>残<rt>のこ</rt></ruby><span class="g-verb-form">って</span><span class="grammar-point">はいけません</span>。<ruby>最後<rt>さいご</rt></ruby>に<ruby>退社<rt>たいしゃ</rt></ruby>する<ruby>人<rt>ひと</rt></ruby>は、<ruby>必<rt>かなら</rt></ruby>ずエアコンと<ruby>電気<rt>でんき</rt></ruby>を<ruby>消<rt>け</rt></ruby>し、オフィスのドアに<ruby>鍵<rt>かぎ</rt></ruby>をかけ<span class="g-verb-form">な</span><span class="grammar-point">ければなりません</span>。</p>
+                            <p><ruby>第三<rt>だいさん</rt></ruby>に、<ruby>会社<rt>かいしゃ</rt></ruby>のパソコンや<ruby>重要<rt>じゅうよう</rt></ruby>な<ruby>資料<rt>しりょう</rt></ruby>を<ruby>社外<rt>しゃがい</rt></ruby>に<ruby>持<rt>も</rt></ruby>ち<ruby>出<rt>だ</rt></ruby><span class="g-verb-form">して</span><span class="grammar-point">はいけません</span>。<ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>情報<rt>じょうほう</rt></ruby>は<ruby>大切<rt>たいせつ</rt></ruby>な<ruby>財産<rt>ざいさん</rt></ruby>です。</p>
+                            <p>なお、30<ruby>分<rt>ぷん</rt></ruby><ruby>未満<rt>みまん</rt></ruby>の<ruby>残業<rt>ざんぎょう</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、<ruby>残業届<rt>ざんぎょうとどけ</rt></ruby>の<ruby>提出<rt>ていしゅつ</rt></ruby>は<span class="g-verb-form">しなく</span><span class="grammar-point">てもいいです</span>。しかし、それ<ruby>以上<rt>いじょう</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>は、<ruby>規則<rt>きそく</rt></ruby>に<ruby>従<rt>したが</rt></ruby>って、きちんと<ruby>申請<rt>しんせい</rt></ruby>してください。</p>
+                            <p><ruby>皆様<rt>みなさま</rt></ruby>のご<ruby>協力<rt>きょうりょく</rt></ruby>をよろしくお<ruby>願<rt>ねが</rt></ruby>いいたします。</p>
+                            <p><ruby>総務部<rt>そうむぶ</rt></ruby></p>
+                        </div>
+                        <div class="passage-audio-controls">
+                            <button class="control-btn play-pause" data-target="readingPassageText">▶ Bắt đầu</button>
+                            <button class="control-btn stop" data-target="readingPassageText">■ Dừng hẳn</button>
+                            <div class="speed-controls">
+                                <span>Tốc độ:</span>
+                                <button class="speed-btn" data-speed="0.8">0.8x</button>
+                                <button class="speed-btn active" data-speed="1.0">1x</button>
+                                <button class="speed-btn" data-speed="1.2">1.2x</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <details class="translation-wrapper">
+                        <summary>📖 Xem bản dịch và từ vựng</summary>
+                        <div class="translation-content">
+                            <h4>Bản dịch</h4>
+                            <p><strong>Tiêu đề: Về các quy tắc liên quan đến làm việc ngoài giờ (làm thêm)</strong></p>
+                            <p>Gửi toàn thể nhân viên công ty ABC Design,</p>
+                            <p>Vì sức khỏe và sự cân bằng công việc-cuộc sống của nhân viên, công ty chúng ta về cơ bản không khuyến khích việc làm thêm giờ. Tuy nhiên, trong những trường hợp cần thiết như trước deadline của dự án, mọi người được phép làm thêm. Khi đó, xin hãy tuân thủ nghiêm ngặt các quy tắc dưới đây.</p>
+                            <p>Đầu tiên, trước khi làm thêm, nhân viên bắt buộc phải nhận được sự cho phép của cấp trên. Không được tự ý làm thêm mà không có sự cho phép.</p>
+                            <p>Thứ hai, vì lý do an toàn và an ninh, không được ở lại văn phòng sau 10 giờ đêm. Người rời khỏi công ty cuối cùng phải tắt điều hòa, đèn điện và khóa cửa văn phòng.</p>
+                            <p>Thứ ba, không được mang máy tính hay tài liệu quan trọng của công ty ra bên ngoài. Thông tin của công ty là tài sản quý giá.</p>
+                            <p>Ngoài ra, trong trường hợp làm thêm dưới 30 phút, nhân viên không cần phải nộp đơn xin làm thêm. Tuy nhiên, nếu làm thêm lâu hơn, xin hãy đăng ký đầy đủ theo quy định.</p>
+                            <p>Cảm ơn sự hợp tác của toàn thể nhân viên.</p>
+                            <p>Phòng Hành chính Tổng hợp</p>
+                            
+                            <h4>Từ vựng mới trong bài đọc</h4>
+                             <ul class="reading-vocab-list">
+                                <li><strong><ruby>時間外労働<rt>じかんがいろうどう</rt></ruby>:</strong> làm việc ngoài giờ</li>
+                                <li><strong><ruby>健康<rt>けんこう</rt></ruby>:</strong> sức khỏe</li>
+                                <li><strong><ruby>推奨<rt>すいしょう</rt></ruby>する:</strong> khuyến khích, đề xuất</li>
+                                <li><strong><ruby>際<rt>さい</rt></ruby>:</strong> khi, trong trường hợp</li>
+                                <li><strong><ruby>守<rt>まも</rt></ruby>る:</strong> tuân thủ, bảo vệ</li>
+                                <li><strong><ruby>上司<rt>じょうし</rt></ruby>:</strong> cấp trên</li>
+                                <li><strong><ruby>許可<rt>きょか</rt></ruby>を<ruby>得<rt>え</rt></ruby>る:</strong> nhận được sự cho phép</li>
+                                <li><strong><ruby>無断<rt>むだん</rt></ruby>で:</strong> tự ý, không xin phép</li>
+                                <li><strong><ruby>以降<rt>いこう</rt></ruby>:</strong> sau (mốc thời gian)</li>
+                                <li><strong><ruby>社外<rt>しゃがい</rt></ruby>:</strong> bên ngoài công ty</li>
+                                <li><strong><ruby>財産<rt>ざいさん</rt></ruby>:</strong> tài sản</li>
+                                <li><strong><ruby>未満<rt>みまん</rt></ruby>:</strong> dưới, chưa đủ</li>
+                                <li><strong><ruby>規則<rt>きそく</rt></ruby>に<ruby>従<rt>したが</rt></ruby>う:</strong> tuân theo quy tắc</li>
+                                <li><strong><ruby>総務部<rt>そうむぶ</rt></ruby>:</strong> Phòng Hành chính Tổng hợp</li>
+                            </ul>
+                        </div>
+                    </details>
+                    
+                    <hr>
+                    
+                    <h4>Câu hỏi đọc hiểu</h4>
+                     <div class="reading-quiz-container quiz-container">
+                        <div class="quiz-card">
+                            <p class="question-text">1. Về việc làm thêm, trước hết phải làm gì?</p>
+                            <div class="options-container">
+                                <button class="option-btn">オフィスの<ruby>鍵<rt>かぎ</rt></ruby>を<ruby>閉<rt>し</rt></ruby>めなければなりません。</button>
+                                <button class="option-btn" data-correct="true"><ruby>上司<rt>じょうし</rt></ruby>の<ruby>許可<rt>きょか</rt></ruby>を<ruby>得<rt>え</rt></ruby>なければなりません。</button>
+                                <button class="option-btn"><ruby>残業届<rt>ざんぎょうとどけ</rt></ruby>を<ruby>提出<rt>ていしゅつ</rt></ruby>しなければなりません。</button>
+                                <button class="option-btn"><ruby>会社<rt>かいしゃ</rt></ruby>のパソコンを<ruby>持<rt>も</rt></ruby>って<ruby>帰<rt>かえ</rt></ruby>らなければなりません。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> Trong bài có câu: 「<ruby>残業<rt>ざんぎょう</rt></ruby>をする<ruby>前<rt>まえ</rt></ruby>に、<ruby>必<rt>かなら</rt></ruby>ず<ruby>上司<rt>じょうし</rt></ruby>の<ruby>許可<rt>きょか</rt></ruby>を<ruby>得<rt>え</rt></ruby>なければなりません。」
+                            </div>
+                        </div>
+                         <div class="quiz-card">
+                            <p class="question-text">2. Theo quy tắc của công ty, việc không được làm là gì?</p>
+                            <div class="options-container">
+                                <button class="option-btn" data-correct="true"><ruby>夜<rt>よる</rt></ruby>10<ruby>時<rt>じ</rt></ruby><ruby>以降<rt>いこう</rt></ruby>にオフィスに<ruby>残<rt>のこ</rt></ruby>ること。</button>
+                                <button class="option-btn"><ruby>上司<rt>じょうし</rt></ruby>に<ruby>質問<rt>しつもん</rt></ruby>すること。</button>
+                                <button class="option-btn">30<ruby>分<rt>ぷん</rt></ruby>だけ<ruby>残業<rt>ざんぎょう</rt></ruby>すること。</button>
+                                <button class="option-btn"><ruby>最後<rt>さいご</rt></ruby>に<ruby>電気<rt>でんき</rt></ruby>を<ruby>消<rt>け</rt></ruby>すこと。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> Trong bài có câu: 「<ruby>夜<rt>よる</rt></ruby>10<ruby>時<rt>じ</rt></ruby><ruby>以降<rt>いこう</rt></ruby>はオフィスに<ruby>残<rt>のこ</rt></ruby>ってはいけません。」
+                            </div>
+                        </div>
+                        <div class="quiz-card">
+                            <p class="question-text">3. Khi nào thì không cần nộp đơn xin làm thêm giờ?</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>上司<rt>じょうし</rt></ruby>がいない<ruby>時<rt>とき</rt></ruby>。</button>
+                                <button class="option-btn" data-correct="true"><ruby>残業<rt>ざんぎょう</rt></ruby>が30<ruby>分<rt>ぷん</rt></ruby><ruby>未満<rt>みまん</rt></ruby>の<ruby>時<rt>とき</rt></ruby>。</button>
+                                <button class="option-btn">プロジェクトの<ruby>締切<rt>しめきり</rt></ruby><ruby>前<rt>まえ</rt></ruby>の<ruby>時<rt>とき</rt></ruby>。</button>
+                                <button class="option-btn"><ruby>毎日<rt>まいにち</rt></ruby><ruby>残業<rt>ざんぎょう</rt></ruby>する<ruby>時<rt>とき</rt></ruby>。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                               💡 <strong>Giải thích:</strong> Trong bài có câu: 「30<ruby>分<rt>ぷん</rt></ruby><ruby>未満<rt>みまん</rt></ruby>の<ruby>残業<rt>ざんぎょう</rt></ruby>の<ruby>場合<rt>ばあい</rt></ruby>、<ruby>残業届<rt>ざんぎょうとどけ</rt></ruby>の<ruby>提出<rt>ていしゅつ</rt></ruby>はしなくてもいいです。」
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-talk1029.js"></script>
+
+</body>
+</html>
