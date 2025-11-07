@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLPT Preparation - N4 Syllabus</title>
+    <style>
+        /* --- General Styles --- */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f7f9; /* A softer, more professional background */
+            color: #333;
+        }
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: #008080;
+            color: #F0E68C;
+            padding: 20px 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .main-header h1 { margin: 0 0 15px 0; font-size: 1.8rem; text-align: center; }
+        .level-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        .level-nav a { color: #F0E68C; text-decoration: none; padding: 10px 20px; border: 1px solid #b2dfdb; border-radius: 20px; font-weight: 600; transition: all 0.2s ease; }
+        .level-nav a:hover { background-color: #4db6ac; border-color: #4db6ac; }
+        .level-nav a.active { background-color: #ffffff; color: #008080; border-color: #ffffff; }
+        .lang-switcher { text-align: center; }
+        .lang-switcher a { color: #F0E68C; text-decoration: none; padding: 8px 18px; background-color: rgba(255,255,255,0.2); border-radius: 15px; font-weight: 500; transition: background-color 0.2s; }
+        .lang-switcher a:hover { background-color: rgba(255,255,255,0.4); }
+
+        /* --- Main Content --- */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .hero-image { width: 100%; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 30px; }
+        .hero-image img { width: 100%; display: block; }
+
+        /* --- Accordion Styles --- */
+        .lesson-section {
+            margin-bottom: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            background-color: #ffffff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border: 1px solid #e2e8f0;
+        }
+       
+        .lesson-section summary {
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 20px 25px;
+            background-color: #008080;
+            color: #F0E68C;
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .lesson-section summary:hover {
+            background-color: #006666;
+        }
+        .lesson-section[open] > summary {
+            background-color: #008080;
+            color: white;
+            border-bottom-color: #008080;
+        }
+        .lesson-section .table-container {
+            padding: 0;
+        }
+
+        /* --- NEW Lesson Table Styles --- */
+        .lesson-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .lesson-table th { 
+            background-color: #edf2f7; 
+            color: #4a5568; 
+            padding: 15px 18px; 
+            text-align: left; 
+            font-size: 1rem; 
+            border-bottom: 2px solid #cbd5e0;
+        }
+        .lesson-table tbody tr { 
+            transition: background-color 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease; 
+        }
+        .lesson-table tbody tr.lesson-active { 
+            cursor: pointer; 
+        }
+        .lesson-table tbody tr.lesson-active:hover { 
+            background-color: #fff9c4 !important;
+            transform: scale(1.015);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .lesson-table tbody tr:nth-child(odd) { 
+            background-color: #ffffff;
+        }
+        .lesson-table tbody tr:nth-child(even) { 
+            background-color: #e0f7fa;
+        }
+        .lesson-table td { 
+            padding: 20px 18px; 
+            border-bottom: 1px solid #edf2f7; 
+            vertical-align: middle;
+        }
+        .lesson-table td:first-child { 
+            font-weight: 700; 
+            color: #2c5282;
+            width: 120px;
+        }
+        .lesson-table .lesson-title {
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .lesson-locked {
+            opacity: 0.6;
+            cursor: not-allowed;
+            background-color: #f7fafc !important;
+        }
+        .lesson-locked:hover {
+             transform: none !important;
+             box-shadow: none !important;
+             background-color: #f7fafc !important; 
+        }
+        .lesson-locked .lesson-title {
+            color: #a0aec0; 
+        }
+
+        /* --- Mobile Optimization --- */
+        @media (max-width: 768px) {
+            .main-header { padding: 15px; }
+            .main-header h1 { font-size: 1.4rem; }
+            .level-nav a { padding: 8px 15px; font-size: 0.9rem; }
+            .main-content { padding: 10px; }
+            .lesson-section summary { padding: 18px; font-size: 1.1rem; }
+            .lesson-table th, .lesson-table td { padding: 15px 12px; font-size: 0.95rem; }
+            .lesson-table td:first-child { width: 80px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>JLPT Grammar / Listening / Speaking Practice</h1>
+        <nav class="level-nav">
+            <a href="#">N5</a>
+            <a href="#" class="active">N4</a>
+            <a href="#">N3</a>
+            <a href="#">N2</a>
+            <a href="#">N1</a>
+        </nav>
+        <div class="lang-switcher">
+            <a href="#">Tiếng Việt</a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="hero-image">
+            <img src="https://i.imgur.com/r6H68qp.jpeg" alt="Learning Japanese through shadowing">
+        </div>
+
+        <!-- SECTION 1: Practising grammatical forms -->
+        <details class="lesson-section">
+            <summary>Part 1: Practising Grammatical Forms (形の練習)</summary>
+            <div class="table-container">
+                <table class="lesson-table">
+                    <tbody>
+                        <tr class="lesson-locked"><td>1</td><td class="lesson-title">Verb Groups (動詞のグループ)</td></tr>
+                        <tr class="lesson-locked"><td>2</td><td class="lesson-title">Te-form & Ta-form (て形・た形)</td></tr>
+                        <tr class="lesson-locked"><td>3</td><td class="lesson-title">Polite form and Plain form (ていねい形とふつう形)</td></tr>
+                        <tr class="lesson-locked"><td>4</td><td class="lesson-title">The Potential Form (可能の形)</td></tr>
+                        <tr class="lesson-locked"><td>5</td><td class="lesson-title">「～ば」 & 「～なら」 Forms (「～ば」・「～なら」の形)</td></tr>
+                        <tr class="lesson-locked"><td>6</td><td class="lesson-title">Volitional Form (う・よう形)</td></tr>
+                        <tr class="lesson-locked"><td>7</td><td class="lesson-title">The Passive Form (受身の形)</td></tr>
+                        <tr class="lesson-locked"><td>8</td><td class="lesson-title">The Causative Form (使役の形)</td></tr>
+                        <tr class="lesson-locked"><td>9</td><td class="lesson-title">The Causative Passive Form (使役受身の形)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+        
+        <!-- SECTION 2: Grammar forms by semantic function -->
+        <details class="lesson-section" open>
+            <summary>Part 2: Grammar Forms by Semantic Function (意味機能別の文法形式)</summary>
+            <div class="table-container">
+                <table class="lesson-table">
+                    <tbody>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk1n';"><td>Lesson 1</td><td class="lesson-title">～より／～ほど、～のほう、～と～とどちら</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk2n';"><td>Lesson 2</td><td class="lesson-title">～ながら、～ところです、～まで～</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk3n';"><td>Lesson 3</td><td class="lesson-title">～ませんか、～ましょう／～ましょうか</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk4n';"><td>Lesson 4</td><td class="lesson-title">Potential Form (～(ら)れます), ～ことができます</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk5n';"><td>Lesson 5</td><td class="lesson-title">～たことがある (Experience), ～ことがある (Sometimes)</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk6n';"><td>Lesson 6</td><td class="lesson-title">～てもいい, ～てはいけない, ～なければならない</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk7n';"><td>Lesson 7</td><td class="lesson-title">～がほしい, ～たい, ～といいです</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk8n';"><td>Lesson 8</td><td class="lesson-title">～そうです, ～がっています, ～まま</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk9';"><td>Lesson 9</td><td class="lesson-title">～から／～からです, ～ので, ～て／～で</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk10';"><td>Lesson 10</td><td class="lesson-title">～に, ～ために, ～ように</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 11</td><td class="lesson-title">～(も)～し, ～たり～たりします</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 12</td><td class="lesson-title">～かもしれません, ～はずです, ～ようです／～みたいです</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 13</td><td class="lesson-title">～なさい, ～ほうがいいです, ～ないと</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 14</td><td class="lesson-title">～たら, ～ば, ～と</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 15</td><td class="lesson-title">～たら, ～なら</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 16</td><td class="lesson-title">～ても, ～のに</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 17</td><td class="lesson-title">～と, ～かどうか</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 18</td><td class="lesson-title">～(よ)うと思います, ～つもりです</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 19</td><td class="lesson-title">～と言っていました, ～そうです, ～らしいです</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 20</td><td class="lesson-title">～くします／～にします, ～くなります／～になります, ～ようになります</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 21</td><td class="lesson-title">～にします／～ことにします, ～になります／～ことになります</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 22</td><td class="lesson-title">～てみます, ～ておきます, ～てしまいます</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 23</td><td class="lesson-title">あげます／～てあげます, くれます／～てくれます, もらいます／～てもらいます</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 24</td><td class="lesson-title">～(ら)れます (Passive Form)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 25</td><td class="lesson-title">～(さ)せます (Causative Form)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+        
+        <!-- SECTION 3: Ensuring correct use of grammar forms -->
+        <details class="lesson-section">
+            <summary>Part 3: Ensuring Correct Use of Grammar Forms (文法形式の整理)</summary>
+            <div class="table-container">
+                 <table class="lesson-table">
+                    <tbody>
+                        <tr class="lesson-locked"><td>Lesson 1</td><td class="lesson-title">で・に (Particles)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 2</td><td class="lesson-title">を・と (Particles)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 3</td><td class="lesson-title">も・しか (Particles)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 4</td><td class="lesson-title">だけ・でも (Particles)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 5</td><td class="lesson-title">は・が (Particles)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 6</td><td class="lesson-title">の・こと (Nominalization)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 7</td><td class="lesson-title">～て・・・, ～ないで・・・</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 8</td><td class="lesson-title">Transitive & Intransitive Verbs (他動詞・自動詞)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 9</td><td class="lesson-title">～ています・～てあります</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 10</td><td class="lesson-title">～てきます・～ていきます</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 11</td><td class="lesson-title">こ・そ・あ (Demonstratives)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 12</td><td class="lesson-title">Conjunctive Terms (接続の言葉)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 13</td><td class="lesson-title">Adverbs (副詞)</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 14</td><td class="lesson-title">～すぎます・～にくいです・～やすいです</td></tr>
+                        <tr class="lesson-locked"><td>Lesson 15</td><td class="lesson-title">Parts of Speech (品詞)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+    </main>
+
+</body>
+</html>
