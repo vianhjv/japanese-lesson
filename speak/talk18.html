@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bài 18: Cuộc Họp Khẩn | Học tiếng Nhật cùng An</title>
+    
+    <link rel="stylesheet" href="styles-talk1029v2.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h2>Bài 18: Cuộc Họp Khẩn</h2>
+        <p>Học cách diễn tả ý định với 「～(よ)うと思います」 và 「～つもりです」.</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 1: HỘI THOẠI (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <img src="lesson18.jpg" alt="Cả nhóm đang họp khẩn cấp trong văn phòng" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogue-source" style="display: none;">
+        <!-- Toàn bộ hội thoại diễn ra trong 1 cảnh -->
+        <div class="scene" data-scene-name="Họp khẩn" data-background-image="lesson18.jpg">
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンさん、<ruby>電話<rt>でんわ</rt></ruby>ありがとうございました。おかげで、お<ruby>客様<rt>きゃくさま</rt></ruby>の<ruby>本当<rt>ほんとう</rt></ruby>の<ruby>要望<rt>ようぼう</rt></ruby>がわかりました。</p>
+                        <p class="vietnamese-text">Cảm ơn An về cuộc điện thoại. Nhờ em mà chúng ta đã hiểu được yêu cầu thật sự của khách hàng.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">「インパクトが<ruby>欲<rt>ほ</rt></ruby>しい」ねぇ…。ただ<ruby>色<rt>いろ</rt></ruby>を<ruby>変<rt>か</rt></ruby>えるだけじゃ、だめってことね。</p>
+                        <p class="vietnamese-text">"Muốn có ấn tượng mạnh" à... Có nghĩa là chỉ thay đổi màu sắc thôi thì không được rồi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい。そこで、これからどうするか、みんなでアイデアを<ruby>出<rt>だ</rt></ruby>しましょう。</p>
+                        <p class="vietnamese-text">Vâng. Vì vậy, chúng ta hãy cùng nhau đưa ra ý tưởng xem nên làm gì từ bây giờ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうね…じゃあ<ruby>私<rt>わたし</rt></ruby>、まず<ruby>最近<rt>さいきん</rt></ruby>のトレンドカラーをいくつか<span class="g-verb-form"><ruby>集<rt>あつ</rt></ruby>めてみよう</span><span class="grammar-point">と<ruby>思<rt>おも</rt></ruby>います</span>。<ruby>参考<rt>さんこう</rt></ruby>になるかもしれないわ。</p>
+                        <p class="vietnamese-text">Ừ nhỉ... Vậy thì, trước hết, tôi nghĩ tôi sẽ thử thu thập một vài màu sắc đang là xu hướng gần đây. Biết đâu sẽ tham khảo được gì đó.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">いいですね。<ruby>お願<rt>ねが</rt></ruby>いします。アンさんはどうですか。</p>
+                        <p class="vietnamese-text">Hay đó. Nhờ chị nhé. Còn An thì sao?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">あの…<ruby>私<rt>わたし</rt></ruby>、<ruby>色<rt>いろ</rt></ruby>だけじゃなくて、レイアウトも<ruby>大胆<rt>だいたん</rt></ruby>に<ruby>変<rt>か</rt></ruby>える<ruby>新<rt>あたら</rt></ruby>しいデザイン<ruby>案<rt>あん</rt></ruby>を<span class="g-verb-form"><ruby>提案<rt>ていあん</rt></ruby>してみる</span><span class="grammar-point">つもりです</span>。</p>
+                        <p class="vietnamese-text">Dạ... Em dự định sẽ thử đề xuất một phương án thiết kế mới, thay đổi một cách táo bạo cả layout chứ không chỉ màu sắc ạ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">レイアウトも？それは<ruby>大<rt>おお</rt></ruby>きな<ruby>変更<rt>へんこう</rt></ruby>になるわね。</p>
+                        <p class="vietnamese-text">Cả layout ư? Vậy thì sẽ là một thay đổi lớn đó.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい。でも、インパクトのためには、それが<ruby>必要<rt>ひつよう</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>いました。</p>
+                        <p class="vietnamese-text">Vâng. Nhưng em nghĩ rằng để tạo được ấn tượng mạnh thì điều đó là cần thiết.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">なるほど。<ruby>自分<rt>じぶん</rt></ruby>の<ruby>意見<rt>いけん</rt></ruby>をしっかり<ruby>持<rt>も</rt></ruby>っているんですね。すばらしいです。</p>
+                        <p class="vietnamese-text">Ra là vậy. Em đã có ý kiến của riêng mình một cách chắc chắn rồi nhỉ. Tuyệt vời lắm.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい！この<ruby>新<rt>あたら</rt></ruby>しい<ruby>案<rt>あん</rt></ruby>で、お<ruby>客様<rt>きゃくさま</rt></ruby>に<ruby>納得<rt>なっとく</rt></ruby>していただけるまで、<ruby>私<rt>わたし</rt></ruby>は<span class="g-verb-form">あきらめる</span><span class="grammar-point">つもりはありません</span>！</p>
+                        <p class="vietnamese-text">Vâng! Với phương án mới này, cho đến khi có được sự chấp thuận của khách hàng, em hoàn toàn không có ý định bỏ cuộc ạ!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>分<rt>わ</rt></ruby>かりました。<ruby>頼<rt>たの</rt></ruby>もしいです。では、その<ruby>方向<rt>ほうこう</rt></ruby>で<ruby>進<rt>すす</rt></ruby>めましょう。</p>
+                        <p class="vietnamese-text">Anh hiểu rồi. Rất đáng tin cậy. Vậy thì, chúng ta hãy tiến hành theo phương hướng đó nhé.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 2: TỪ VỰNG MỚI (新しい言葉) -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>Từ Vựng Mới (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">アイデアを<ruby>出<rt>だ</rt></ruby>す</h4>
+                        <button class="vocab-play-btn" data-speak-text="アイデアをだす">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Cụm động từ</p>
+                        <p><span class="label">Nghĩa:</span> Đưa ra ý tưởng</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>会議<rt>かいぎ</rt></ruby>でいいアイデアを<ruby>出<rt>だ</rt></ruby>しました。</p>
+                            <button class="vocab-play-btn" data-speak-text="かいぎでいいアイデアをだしました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi đã đưa ra một ý tưởng hay trong cuộc họp.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">トレンドカラー</h4>
+                        <button class="vocab-play-btn" data-speak-text="トレンドカラー">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Màu sắc theo xu hướng</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>今年<rt>ことし</rt></ruby>のトレンドカラーは<ruby>青<rt>あお</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" data-speak-text="ことしのトレンドカラーはあおです">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Màu sắc xu hướng của năm nay là màu xanh dương.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>参考<rt>さんこう</rt></ruby>になる</h4>
+                        <button class="vocab-play-btn" data-speak-text="さんこうになる">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Cụm động từ</p>
+                        <p><span class="label">Nghĩa:</span> Có thể tham khảo</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">あなたの<ruby>意見<rt>いけん</rt></ruby>はとても<ruby>参考<rt>さんこう</rt></ruby>になりました。</p>
+                            <button class="vocab-play-btn" data-speak-text="あなたのいけんはとてもさんこうになりました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Ý kiến của bạn đã giúp tôi tham khảo được rất nhiều.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">レイアウト</h4>
+                        <button class="vocab-play-btn" data-speak-text="レイアウト">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Bố cục, layout</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">このウェブサイトのレイアウトはきれいですね。</p>
+                            <button class="vocab-play-btn" data-speak-text="このウェブサイトのレイアウトはきれいですね">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Bố cục của trang web này đẹp thật.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>大胆<rt>だいたん</rt></ruby>に</h4>
+                        <button class="vocab-play-btn" data-speak-text="だいたんに">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Trạng từ</p>
+                        <p><span class="label">Nghĩa:</span> Một cách táo bạo</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">デザインを<ruby>大胆<rt>だいたん</rt></ruby>に<ruby>変更<rt>へんこう</rt></ruby>しました。</p>
+                            <button class="vocab-play-btn" data-speak-text="デザインをだいたんにへんこうしました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi đã thay đổi thiết kế một cách táo bạo.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>方向<rt>ほうこう</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="ほうこう">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Phương hướng</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">これからの<ruby>方向<rt>ほうこう</rt></ruby>を<ruby>決<rt>き</rt></ruby>めましょう。</p>
+                            <button class="vocab-play-btn" data-speak-text="これからのほうこうをきめましょう">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Chúng ta hãy quyết định phương hướng từ bây giờ.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>進<rt>すす</rt></ruby>める</h4>
+                        <button class="vocab-play-btn" data-speak-text="すすめる">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Động từ-ru</p>
+                        <p><span class="label">Nghĩa:</span> Tiến hành, xúc tiến</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">このプロジェクトを<ruby>計画<rt>けいかく</rt></ruby>どおりに<ruby>進<rt>すす</rt></ruby>めてください。</p>
+                            <button class="vocab-play-btn" data-speak-text="このプロジェクトをけいかくどおりにすすめてください">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Xin hãy tiến hành dự án này theo đúng kế hoạch.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+<!-- =============================================================== -->
+    <!-- PHẦN 3: PHÂN TÍCH NGỮ PHÁP (文法の解説) -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+            <h2>Phần 3: Phân Tích Ngữ Pháp (文法の解説)</h2>
+            
+            <div class="grammar-card">
+                <h3>1. Ngữ pháp ～(よ)うと思います (Tôi nghĩ tôi sẽ...)</h3>
+                <div class="grammar-explanation">
+                    <p>Dùng để diễn tả một <strong>ý định</strong> của người nói. Thường là một ý định, một quyết định <strong>nảy ra tại thời điểm nói</strong>, hoặc chưa được suy nghĩ kỹ càng từ trước.</p>
+                </div>
+
+                <div class="grammar-formula">
+                    <p><strong>Cấu trúc:</strong> Động từ thể ý chí (う/よう形) + <span class="grammar-point">と思います / 思っています</span></p>
+                    <ul>
+                        <li><strong>思います:</strong> Dùng cho quyết định vừa mới có.</li>
+                        <li><strong>思っています:</strong> Dùng khi ý định đó đã có từ một thời gian trước.</li>
+                    </ul>
+                </div>
+                
+                <div class="example-block">
+                    <p class="example-jp">あ、おいしそうですね。<ruby>私<rt>わたし</rt></ruby>もそれを<span class="g-verb-form"><ruby>食<rt>た</rt></ruby>べよう</span><span class="grammar-point">と<ruby>思<rt>おも</rt></ruby>います</span>。</p>
+                    <p class="example-vn">(Quyết định tại chỗ) A, trông ngon quá. Tôi nghĩ tôi cũng sẽ ăn món đó.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>来年<rt>らいねん</rt></ruby>、<ruby>国<rt>くに</rt></ruby>へ<span class="g-verb-form"><ruby>帰<rt>かえ</rt></ruby>ろう</span><span class="grammar-point">と<ruby>思<rt>おも</rt></ruby>っています</span>。</p>
+                    <p class="example-vn">(Ý định từ trước) Tôi đang nghĩ là năm sau sẽ về nước.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. Ngữ pháp ～つもりです (Tôi dự định / quyết định sẽ...)</h3>
+                <div class="grammar-explanation">
+                     <p>Cũng dùng để diễn tả ý định, nhưng mang sắc thái <strong>mạnh mẽ, chắc chắn, và đã được quyết định từ trước khi nói</strong>. Nó thể hiện một kế hoạch rõ ràng hơn là `(よ)うと思います`.</p>
+                </div>
+
+                <div class="grammar-formula">
+                     <p><strong>Cấu trúc:</strong></p>
+                     <ul>
+                        <li>Động từ thể từ điển (Vる) + <span class="grammar-point">つもりです</span> (dự định làm)</li>
+                        <li>Động từ thể ない (Vない) + <span class="grammar-point">つもりです</span> (dự định không làm)</li>
+                     </ul>
+                </div>
+                
+                <div class="example-block">
+                    <p class="example-jp"><ruby>大学<rt>だいがく</rt></ruby>を<ruby>卒業<rt>そつぎょう</rt></ruby>したら、<ruby>日本<rt>にほん</rt></ruby>で<span class="g-verb-form"><ruby>働<rt>はたら</rt></ruby>く</span><span class="grammar-point">つもりです</span>。</p>
+                    <p class="example-vn">(Kế hoạch chắc chắn) Sau khi tốt nghiệp đại học, tôi dự định sẽ làm việc ở Nhật.</p>
+                </div>
+                 <div class="example-block">
+                    <p class="example-jp">このことは、だれにも<span class="g-verb-form"><ruby>話<rt>はな</rt></ruby>さない</span><span class="grammar-point">つもりです</span>。</p>
+                    <p class="example-vn">Tôi dự định sẽ không nói chuyện này với bất kỳ ai.</p>
+                </div>
+                <div class="grammar-explanation" style="border-left-color: #c0392b;">
+                    <p><strong>Lưu ý:</strong> Dạng phủ định <span class="g-verb-form">Vる</span> + <span class="grammar-point">つもりはありません</span> là cách nói mạnh mẽ nhất, thể hiện ý chí dứt khoát "hoàn toàn không có ý định" làm việc gì đó.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 4: LUYỆN TẬP NGỮ PHÁP (練習) -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Phần 4: Luyện Tập Ngữ Pháp (練習)</h2>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <p class="question-text">1. (Trong cuộc họp, Suzuki nảy ra ý tưởng) 「なるほど…じゃあ、<ruby>参考<rt>さんこう</rt></ruby>のために、まず<ruby>最近<rt>さいきん</rt></ruby>のトレンドカラーを<ruby>調<rt>しら</rt></ruby>べてみ( ______ )。」</p>
+                <div class="options-container">
+                    <button class="option-btn">るつもりです</button>
+                    <button class="option-btn" data-correct="true">ようと<ruby>思<rt>おも</rt></ruby>います</button>
+                    <button class="option-btn">ようとします</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Suzuki đưa ra quyết định ngay tại thời điểm nói, vì vậy <span class="grammar-point">～(よ)うと思います</span> là phù hợp nhất để diễn tả một ý định tức thời.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">2. (An trình bày kế hoạch đã suy nghĩ từ trước) 「<ruby>私<rt>わたし</rt></ruby>、<ruby>色<rt>いろ</rt></ruby>だけじゃなくて、レイアウトも<ruby>変<rt>か</rt></ruby>える<ruby>新<rt>あたら</rt></ruby>しい<ruby>案<rt>あん</rt></ruby>を<ruby>提案<rt>ていあん</rt></ruby>してみる( ______ )。」</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true">つもりです</button>
+                    <button class="option-btn">ようと<ruby>思<rt>おも</rt></ruby>います</button>
+                    <button class="option-btn">つもりはありません</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> An đang trình bày một kế hoạch chắc chắn, đã được cô ấy ấp ủ. <span class="grammar-point">～つもりです</span> thể hiện một ý định mạnh mẽ và đã được quyết định từ trước.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">3. (An thể hiện quyết tâm mạnh mẽ) 「お<ruby>客様<rt>きゃくさま</rt></ruby>に<ruby>納得<rt>なっとく</rt></ruby>していただけるまで、<ruby>私<rt>わたし</rt></ruby>はあきらめる( ______ )！」</p>
+                <div class="options-container">
+                    <button class="option-btn"><ruby>無<rt>な</rt></ruby>いつもりです</button>
+                    <button class="option-btn" data-correct="true">つもりはありません</button>
+                    <button class="option-btn">ようと<ruby>思<rt>おも</rt></ruby>いません</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> <span class="grammar-point">～つもりはありません</span> là dạng phủ định mạnh nhất, nhấn mạnh rằng "hoàn toàn không có ý định" bỏ cuộc. Nó thể hiện ý chí dứt khoát của An.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- =============================================================== -->
+    <!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) -->
+    <!-- =============================================================== -->
+    <div class="reading-comprehension-section">
+        <div class="reading-comprehension-container">
+            <h2>Phần 5: Đọc Hiểu Ứng Dụng (読解練習)</h2>
+            <div class="reading-wrapper">
+                <div class="reading-card">
+                    <h3><ruby>議事録<rt>ぎじろく</rt></ruby> (Biên Bản Họp)</h3>
+                    
+                    <div class="readable-passage-component">
+                        <h4><ruby>文章<rt>ぶんしょう</rt></ruby></h4>
+                        <div class="text-to-be-read" id="readingPassageText">
+                            <p><strong><ruby>件名<rt>けんめい</rt></ruby>：【<ruby>議事録<rt>ぎじろく</rt></ruby>】<ruby>新規<rt>しんき</rt></ruby>デザイン<ruby>案<rt>あん</rt></ruby>に<ruby>関<rt>かん</rt></ruby>する<ruby>緊急<rt>きんきゅう</rt></ruby>ミーティング</strong></p>
+                            <p><strong><ruby>日時<rt>にちじ</rt></ruby>：</strong> 2025<ruby>年<rt>ねん</rt></ruby>11<ruby>月<rt>がつ</rt></ruby>10<ruby>日<rt>にち</rt></ruby>（<ruby>月<rt>げつ</rt></ruby>） 11:00 - 11:30<br>
+                            <strong><ruby>場所<rt>ばしょ</rt></ruby>：</strong> <ruby>第<rt>だい</rt></ruby>２<ruby>会議室<rt>かいぎしつ</rt></ruby><br>
+                            <strong><ruby>参加者<rt>さんかしゃ</rt></ruby>：</strong> <ruby>田中<rt>たなか</rt></ruby>、<ruby>鈴木<rt>すずき</rt></ruby>、アン</p>
+                            <p><strong>１．<ruby>議題<rt>ぎだい</rt></ruby>：</strong> クライアントからの<ruby>新規<rt>しんき</rt></ruby>デザイン<ruby>要望<rt>ようぼう</rt></ruby>への<ruby>対応<rt>たいおう</rt></ruby></p>
+                            <p><strong>２．<ruby>決定事項<rt>けっていじこう</rt></ruby>：</strong><br>
+                            <ruby>本日<rt>ほんじつ</rt></ruby>、アンさんが<ruby>電話<rt>でんわ</rt></ruby>で<ruby>確認<rt>かくにん</rt></ruby>した<ruby>結果<rt>けっか</rt></ruby>、クライアントは「よりインパクトのあるデザイン」を<ruby>求<rt>もと</rt></ruby>めていることが<ruby>分<rt>わ</rt></ruby>かった。これに<ruby>対<rt>たい</rt></ruby>し、<ruby>以下<rt>いか</rt></ruby>の<ruby>二<rt>ふた</rt></ruby>つの<ruby>方向<rt>ほうこう</rt></ruby>で<ruby>進<rt>すす</rt></ruby>めることを<ruby>決定<rt>けってい</rt></ruby>した。</p>
+                            <ul>
+                                <li><strong><ruby>方向性<rt>ほうこうせい</rt></ruby>A：カラートレンドの<ruby>調査<rt>ちょうさ</rt></ruby></strong><br>
+                                <ruby>鈴木<rt>すずき</rt></ruby>さんは、まず<ruby>参考<rt>さんこう</rt></ruby><ruby>資料<rt>しりょう</rt></ruby>として、<ruby>最近<rt>さいきん</rt></ruby>のデザイントレンドを<span class="g-verb-form"><ruby>調<rt>しら</rt></ruby>べよう</span><span class="grammar-point">と<ruby>思<rt>おも</rt></ruby>う</span>と<ruby>言<rt>い</rt></ruby>っていた。<ruby>特<rt>とく</rt></ruby>に<ruby>若者向<rt>わかものむ</rt></ruby>けの<ruby>配色<rt>はいしょく</rt></ruby>パターンをいくつか<span class="g-verb-form"><ruby>準備<rt>じゅんび</rt></ruby>する</span><span class="grammar-point">つもりだ</span>。</li>
+                                <li><strong><ruby>方向性<rt>ほうこうせい</rt></ruby>B：<ruby>新規<rt>しんき</rt></ruby>レイアウトの<ruby>提案<rt>ていあん</rt></ruby></strong><br>
+                                アンさんから、<ruby>色<rt>いろ</rt></ruby>だけでなくレイアウト<ruby>自体<rt>じたい</rt></ruby>を<ruby>大胆<rt>だいたん</rt></ruby>に<ruby>変更<rt>へんこう</rt></ruby>するアイデアが<ruby>出<rt>だ</rt></ruby>された。<ruby>本人<rt>ほんにん</rt></ruby>は、この<ruby>新<rt>あたら</rt></ruby>しい<ruby>案<rt>あん</rt></ruby>で<span class="g-verb-form"><ruby>挑戦<rt>ちょうせん</rt></ruby>してみる</span><span class="grammar-point">つもりだ</span>。リスクはあるが、<ruby>大<rt>おお</rt></ruby>きなインパクトが<ruby>期待<rt>きたい</rt></ruby>できる。</li>
+                            </ul>
+                             <p><strong>３．<ruby>今後<rt>こんご</rt></ruby>のタスク：</strong><br>
+                            <ul>
+                                <li><ruby>鈴木<rt>すずき</rt></ruby>：<ruby>水曜日<rt>すいようび</rt></ruby>までにトレンドカラーのレポートを<ruby>提出<rt>ていしゅつ</rt></ruby>。</li>
+                                <li>アン：<ruby>水曜日<rt>すいようび</rt></ruby>までに<ruby>新規<rt>しんき</rt></ruby>レイアウトのスケッチを<ruby>提出<rt>ていしゅつ</rt></ruby>。</li>
+                            </ul>
+                            <p><ruby>以上<rt>いじょう</rt></ruby></p>
+                        </div>
+                        <div class="passage-audio-controls">
+                            <button class="control-btn play-pause" data-target="readingPassageText">▶ Bắt đầu</button>
+                            <button class="control-btn stop" data-target="readingPassageText">■ Dừng hẳn</button>
+                            <div class="speed-controls">
+                                <span>Tốc độ:</span>
+                                <button class="speed-btn" data-speed="0.8">0.8x</button>
+                                <button class="speed-btn active" data-speed="1.0">1x</button>
+                                <button class="speed-btn" data-speed="1.2">1.2x</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <details class="translation-wrapper">
+                        <summary>📖 Xem bản dịch và từ vựng</summary>
+                        <div class="translation-content">
+                            <h4>Bản dịch</h4>
+                            <p><strong>Tiêu đề: [Biên bản] Cuộc họp khẩn về phương án thiết kế mới</strong></p>
+                            <p><strong>Thời gian:</strong> 11:00 - 11:30, thứ Hai, ngày 10 tháng 11 năm 2025<br>
+                            <strong>Địa điểm:</strong> Phòng họp số 2<br>
+                            <strong>Người tham gia:</strong> Tanaka, Suzuki, An</p>
+                            <p><strong>1. Chủ đề:</strong> Phương án đối ứng yêu cầu thiết kế mới từ khách hàng</p>
+                            <p><strong>2. Các mục đã quyết định:</strong><br>
+                            Từ kết quả xác nhận qua điện thoại của An hôm nay, chúng ta đã hiểu rằng khách hàng đang yêu cầu một "thiết kế có sức ảnh hưởng mạnh hơn". Để đối ứng với điều này, đã quyết định sẽ tiến hành theo hai phương hướng dưới đây.</p>
+                            <ul>
+                                <li><strong>Phương hướng A: Nghiên cứu xu hướng màu sắc</strong><br>
+                                Chị Suzuki đã nói rằng trước hết chị ấy nghĩ chị ấy sẽ thử tìm hiểu các xu hướng thiết kế gần đây để làm tài liệu tham khảo. Chị dự định sẽ chuẩn bị một vài mẫu phối màu đặc biệt dành cho giới trẻ.</li>
+                                <li><strong>Phương hướng B: Đề xuất layout mới</strong><br>
+                                Từ An, một ý tưởng thay đổi táo bạo chính bản thân layout chứ không chỉ màu sắc đã được đưa ra. Chính cô ấy có ý định sẽ thử thách với phương án mới này. Tuy có rủi ro nhưng có thể kỳ vọng vào một sự đột phá lớn.</li>
+                            </ul>
+                            <p><strong>3. Nhiệm vụ sắp tới:</strong><br>
+                            <ul>
+                                <li>Suzuki: Nộp báo cáo về màu sắc xu hướng trước thứ Tư.</li>
+                                <li>An: Nộp bản phác thảo layout mới trước thứ Tư.</li>
+                            </ul>
+                            <p>Hết</p>
+                            
+                            <h4>Từ vựng mới trong bài đọc</h4>
+                             <ul class="reading-vocab-list">
+                                <li><strong><ruby>議事録<rt>ぎじろく</rt></ruby>:</strong> biên bản cuộc họp</li>
+                                <li><strong><ruby>緊急<rt>きんきゅう</rt></ruby>:</strong> khẩn cấp</li>
+                                <li><strong><ruby>議題<rt>ぎだい</rt></ruby>:</strong> chủ đề, chương trình nghị sự</li>
+                                <li><strong><ruby>対応<rt>たいおう</rt></ruby>:</strong> sự đối ứng, giải quyết</li>
+                                <li><strong><ruby>方向性<rt>ほうこうせい</rt></ruby>:</strong> tính định hướng, phương hướng</li>
+                                <li><strong><ruby>配色<rt>はいしょく</rt></ruby>:</strong> sự phối màu</li>
+                                <li><strong>リスク:</strong> rủi ro (risk)</li>
+                                <li><strong><ruby>期待<rt>きたい</rt></ruby>できる:</strong> có thể kỳ vọng, mong đợi</li>
+                                <li><strong>スケッチ:</strong> bản phác thảo (sketch)</li>
+                            </ul>
+                        </div>
+                    </details>
+                    
+                    <hr>
+                    
+                    <h4>Câu hỏi đọc hiểu</h4>
+                     <div class="reading-quiz-container quiz-container">
+                        <div class="quiz-card">
+                            <p class="question-text">1. この<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>目的<rt>もくてき</rt></ruby>は<ruby>何<rt>なん</rt></ruby>ですか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>新<rt>あたら</rt></ruby>しいクライアントを<ruby>探<rt>さが</rt></ruby>すこと。</button>
+                                <button class="option-btn"><ruby>旅行<rt>りょこう</rt></ruby>の<ruby>計画<rt>けいかく</rt></ruby>を<ruby>立<rt>た</rt></ruby>てること。</button>
+                                <button class="option-btn" data-correct="true">クライアントの<ruby>新<rt>あたら</rt></ruby>しい<ruby>要望<rt>ようぼう</rt></ruby>にどう<ruby>対応<rt>たいおう</rt></ruby>するか<ruby>決<rt>き</rt></ruby>めること。</button>
+                                <button class="option-btn">アンさんの<ruby>電話<rt>でんわ</rt></ruby>のスキルを<ruby>評価<rt>ひょうか</rt></ruby>すること。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> Phần <strong><ruby>議題<rt>ぎだい</rt></ruby></strong> (Chủ đề) ghi rõ: 「クライアントからの<ruby>新規<rt>しんき</rt></ruby>デザイン<ruby>要望<rt>ようぼう</rt></ruby>への<ruby>対応<rt>たいおう</rt></ruby>」 (Phương án đối ứng yêu cầu thiết kế mới từ khách hàng).
+                            </div>
+                        </div>
+                         <div class="quiz-card">
+                            <p class="question-text">2. <ruby>鈴木<rt>すずき</rt></ruby>さんは、まず<ruby>何<rt>なに</rt></ruby>をしようと<ruby>思<rt>おも</rt></ruby>っていますか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>新<rt>あたら</rt></ruby>しいレイアウトのスケッチを<ruby>描<rt>か</rt></ruby>く。</button>
+                                <button class="option-btn">クライアントに<ruby>再度<rt>さいど</rt></ruby><ruby>電話<rt>でんわ</rt></ruby>する。</button>
+                                <button class="option-btn" data-correct="true"><ruby>最近<rt>さいきん</rt></ruby>のデザインのトレンドを<ruby>調<rt>しら</rt></ruby>べる。</button>
+                                <button class="option-btn">アンさんの<ruby>仕事<rt>しごと</rt></ruby>を<ruby>手伝<rt>てつだ</rt></ruby>う。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> Trong bài có câu: 「<ruby>鈴木<rt>すずき</rt></ruby>さんは、まず<ruby>参考<rt>さんこう</rt></ruby><ruby>資料<rt>しりょう</rt></ruby>として、<ruby>最近<rt>さいきん</rt></ruby>のデザイントレンドを<span class="g-verb-form"><ruby>調<rt>しら</rt></ruby>べよう</span><span class="grammar-point">と<ruby>思<rt>おも</rt></ruby>う</span>と<ruby>言<rt>い</rt></ruby>っていた。」
+                            </div>
+                        </div>
+                        <div class="quiz-card">
+                            <p class="question-text">3. アンさんは、これから<ruby>何<rt>なに</rt></ruby>をするつもりですか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>色<rt>いろ</rt></ruby>だけを<ruby>変<rt>か</rt></ruby>えたデザイン<ruby>案<rt>あん</rt></ruby>を<ruby>作<rt>つく</rt></ruby>る。</button>
+                                <button class="option-btn" data-correct="true">レイアウトを<ruby>大胆<rt>だいたん</rt></ruby>に<ruby>変<rt>か</rt></ruby>えた<ruby>新<rt>あたら</rt></ruby>しいデザイン<ruby>案<rt>あん</rt></ruby>を<ruby>作<rt>つく</rt></ruby>る。</button>
+                                <button class="option-btn"><ruby>水曜日<rt>すいようび</rt></ruby>までにレポートを<ruby>提出<rt>ていしゅつ</rt></ruby>する。</button>
+                                <button class="option-btn"><ruby>何<rt>なに</rt></ruby>もしないで、<ruby>鈴木<rt>すずき</rt></ruby>さんを<ruby>待<rt>ま</rt></ruby>つ。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                               💡 <strong>Giải thích:</strong> Biên bản ghi rõ phương án của An là 「レイアウト<ruby>自体<rt>じたい</rt></ruby>を<ruby>大胆<rt>だいたん</rt></ruby>に<ruby>変更<rt>へんこう</rt></ruby>するアイデア」 và cô ấy 「この<ruby>新<rt>あたら</rt></ruby>しい<ruby>案<rt>あん</rt></ruby>で<span class="g-verb-form"><ruby>挑戦<rt>ちょうせん</rt></ruby>してみる</span><span class="grammar-point">つもりだ</span>。」. Nhiệm vụ của cô là nộp bản phác thảo (スケッチ), không phải báo cáo (レポート).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <!-- CÁC PHẦN TIẾP THEO SẼ ĐƯỢC THÊM VÀO SAU -->
+
+    <script src="script-talk1029.js"></script>
+</body>
+</html>
+

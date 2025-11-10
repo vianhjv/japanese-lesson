@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bài 12: Trên Tàu Shinkansen | Học tiếng Nhật cùng An</title>
+    
+    <link rel="stylesheet" href="styles-talk1029v2.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h2>Bài 12: Trên Tàu Shinkansen</h2>
+        <p>Học cách phỏng đoán với ～かもしれません, ～はずです, và ～ようです / ～みたいです.</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 1: HỘI THOẠI (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <img src="lesson12.jpg" alt="Khung cảnh nhìn từ cửa sổ tàu Shinkansen" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogue-source" style="display: none;">
+        <!-- Toàn bộ hội thoại diễn ra trong 1 cảnh -->
+        <div class="scene" data-scene-name="Trên tàu Shinkansen" data-background-image="lesson12.jpg">
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">わあ、すごい！<ruby>窓<rt>まど</rt></ruby>の<ruby>外<rt>そと</rt></ruby>の<ruby>景色<rt>けしき</rt></ruby>がとても<ruby>速<rt>はや</rt></ruby>く<ruby>動<rt>うご</rt></ruby>いています！</p>
+                        <p class="vietnamese-text">Woa, tuyệt quá! Phong cảnh bên ngoài cửa sổ đang lướt qua rất nhanh ạ!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はは、これが<ruby>新幹線<rt>しんかんせん</rt></ruby>のスピードですよ。</p>
+                        <p class="vietnamese-text">Haha, đó là tốc độ của tàu Shinkansen đấy.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>本当<rt>ほんとう</rt></ruby>に<span class="g-verb-form"><ruby>夢<rt>ゆめ</rt></ruby>の</span><span class="grammar-point">ようですね</span>。<ruby>日本<rt>にほん</rt></ruby>に<ruby>来<rt>き</rt></ruby>てよかったと、また<ruby>思<rt>おも</rt></ruby>いました。</p>
+                        <p class="vietnamese-text">Thật giống như một giấc mơ vậy. Em lại một lần nữa nghĩ rằng thật tốt khi đã đến Nhật.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>天気<rt>てんき</rt></ruby>はいいけど、<ruby>少<rt>すこ</rt></ruby>し<ruby>雲<rt>くも</rt></ruby>が<ruby>出<rt>で</rt></ruby>てきたわね。</p>
+                        <p class="vietnamese-text">(Nhìn ra ngoài cửa sổ) Thời tiết đẹp thật, nhưng bắt đầu có mây xuất hiện rồi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>明日<rt>あした</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<span class="g-verb-form"><ruby>曇<rt>くも</rt></ruby>る</span><span class="grammar-point">かもしれませんね</span>。<ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>見<rt>み</rt></ruby>えるかなあ。</p>
+                        <p class="vietnamese-text">Sáng mai có lẽ trời sẽ hơi nhiều mây đó. Không biết có nhìn thấy núi Phú Sĩ không đây.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですよ。<ruby>僕<rt>ぼく</rt></ruby>が<ruby>予約<rt>よやく</rt></ruby>した<ruby>旅館<rt>りょかん</rt></ruby>は、<ruby>部屋<rt>へや</rt></ruby>から<ruby>富士山<rt>ふじさん</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby>きれいに<ruby>見<rt>み</rt></ruby>える<ruby>場所<rt>ばしょ</rt></ruby>ですから。<span class="g-verb-form"><ruby>素敵<rt>すてき</rt></ruby>な<ruby>旅館<rt>りょかん</rt></ruby>の</span><span class="grammar-point">はずですよ</span>。</p>
+                        <p class="vietnamese-text">Không sao đâu. Ryokan mà tôi đặt là nơi có thể ngắm núi Phú Sĩ đẹp nhất từ phòng đó. Chắc chắn phải là một ryokan tuyệt vời.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>本当<rt>ほんとう</rt></ruby>ですか！すごい！</p>
+                        <p class="vietnamese-text">Thật ạ! Tuyệt vời!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">さすが<ruby>田中君<rt>たなかくん</rt></ruby>ね、<ruby>頼<rt>たよ</rt></ruby>りになるわ。</p>
+                        <p class="vietnamese-text">Đúng là anh Tanaka có khác, thật đáng tin cậy.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そろそろお<ruby>昼<rt>ひる</rt></ruby>ですね。<ruby>駅<rt>えき</rt></ruby>で<ruby>買<rt>か</rt></ruby>った<ruby>駅弁<rt>えきべん</rt></ruby>、<ruby>食<rt>た</rt></ruby>べましょうか。</p>
+                        <p class="vietnamese-text">Cũng sắp đến giờ ăn trưa rồi. Chúng ta ăn cơm hộp (ekiben) đã mua ở ga nhé?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">いいわね！アンさん、すごく<ruby>楽<rt>たの</rt></ruby>しみに<span class="g-verb-form">している</span><span class="grammar-point">みたいだね</span>。<ruby>目<rt>め</rt></ruby>がキラキラしてるわよ。</p>
+                        <p class="vietnamese-text">Hay đó! An này, trông em có vẻ đang rất mong chờ nhỉ. Mắt em long lanh cả lên kìa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい！<ruby>日本<rt>にほん</rt></ruby>の<ruby>駅弁<rt>えきべん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べるのは<ruby>初<rt>はじ</rt></ruby>めてなんです！</p>
+                        <p class="vietnamese-text">Vâng! Đây là lần đầu tiên em được ăn cơm hộp ekiben của Nhật ạ!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 2: TỪ VỰNG MỚI (新しい言葉) -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>Từ Vựng Mới (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>新幹線<rt>しんかんせん</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="しんかんせん">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Tàu siêu tốc Shinkansen</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>新幹線<rt>しんかんせん</rt></ruby>で<ruby>大阪<rt>おおさか</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。</p>
+                            <button class="vocab-play-btn" data-speak-text="しんかんせんでおおさかへいきます">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi sẽ đi Osaka bằng tàu Shinkansen.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>夢<rt>ゆめ</rt></ruby>のようです</h4>
+                        <button class="vocab-play-btn" data-speak-text="ゆめのようです">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Cụm từ</p>
+                        <p><span class="label">Nghĩa:</span> Giống như một giấc mơ</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">JLPT N1に<ruby>合格<rt>ごうかく</rt></ruby>できるなんて、<ruby>夢<rt>ゆめ</rt></ruby>のようです。</p>
+                            <button class="vocab-play-btn" data-speak-text="ジェイエルピーティーエヌいちにごうかくできるなんて、ゆめのようです">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Việc có thể đỗ JLPT N1 thật giống như một giấc mơ.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>雲<rt>くも</rt></ruby>が<ruby>出<rt>で</rt></ruby>る</h4>
+                        <button class="vocab-play-btn" data-speak-text="くもがでる">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Cụm động từ</p>
+                        <p><span class="label">Nghĩa:</span> Mây xuất hiện</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>午後<rt>ごご</rt></ruby>から<ruby>雲<rt>くも</rt></ruby>が<ruby>出<rt>で</rt></ruby>てきました。</p>
+                            <button class="vocab-play-btn" data-speak-text="ごごからくもがでてきました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Từ buổi chiều mây đã bắt đầu kéo đến.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>曇<rt>くも</rt></ruby>る</h4>
+                        <button class="vocab-play-btn" data-speak-text="くもる">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Động từ-u</p>
+                        <p><span class="label">Nghĩa:</span> (Trời) nhiều mây, u ám</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>天気予報<rt>てんきよほう</rt></ruby>によると、<ruby>明日<rt>あした</rt></ruby>は<ruby>曇<rt>くも</rt></ruby>るそうです。</p>
+                            <button class="vocab-play-btn" data-speak-text="てんきよほうによると、あしたはくもるそうです">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Theo dự báo thời tiết, nghe nói ngày mai trời sẽ nhiều mây.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>頼<rt>たよ</rt></ruby>りになる</h4>
+                        <button class="vocab-play-btn" data-speak-text="たよりになる">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Cụm động từ</p>
+                        <p><span class="label">Nghĩa:</span> Đáng tin cậy</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>山田<rt>やまだ</rt></ruby>さんは<ruby>仕事<rt>しごと</rt></ruby>ができて、<ruby>頼<rt>たよ</rt></ruby>りになります。</p>
+                            <button class="vocab-play-btn" data-speak-text="やまださんはしごとができて、たよりになります">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Anh Yamada làm việc rất giỏi, thật đáng tin cậy.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>駅弁<rt>えきべん</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="えきべん">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Cơm hộp bán ở nhà ga</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>新幹線<rt>しんかんせん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>駅弁<rt>えきべん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べました。</p>
+                            <button class="vocab-play-btn" data-speak-text="しんかんせんのなかでえきべんをたべました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi đã ăn cơm hộp ekiben trên tàu Shinkansen.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">キラキラしている</h4>
+                        <button class="vocab-play-btn" data-speak-text="キラキラしている">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Cụm động từ</p>
+                        <p><span class="label">Nghĩa:</span> Lấp lánh, long lanh</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>夜空<rt>よぞら</rt></ruby>に<ruby>星<rt>ほし</rt></ruby>がキラキラしています。</p>
+                            <button class="vocab-play-btn" data-speak-text="よぞらにほしがキラキラしています">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Những ngôi sao đang lấp lánh trên bầu trời đêm.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 3: PHÂN TÍCH NGỮ PHÁP (文法の解説) -->
+    <!-- =============================================================== -->
+
+<!-- =============================================================== -->
+    <!-- PHẦN 3: PHÂN TÍCH NGỮ PHÁP (PHIÊN BẢN NÂNG CẤP TRỰC QUAN) -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+            <h2>Phần 3: Phân Tích Ngữ Pháp (文法の解説)</h2>
+            
+            <div class="grammar-card">
+                <h3>1. Ngữ pháp ～かもしれません (Có lẽ là...)</h3>
+                <div class="grammar-explanation">
+                    <p>Dùng để diễn tả một khả năng hoặc một sự phỏng đoán với mức độ chắc chắn thấp (khoảng 50%). Người nói không chắc chắn, chỉ đưa ra một khả năng có thể xảy ra. Thường được dịch là "có lẽ", "có thể".</p>
+                </div>
+                
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Loại từ</th>
+                            <th>Cấu trúc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Động từ (V)</td>
+                            <td><span class="g-verb-form">V (thể ngắn)</span> + <span class="grammar-point">かもしれません</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tính từ-i (Aい)</td>
+                            <td><span class="g-verb-form">Aい</span> + <span class="grammar-point">かもしれません</span></td>
+                        </tr>
+                         <tr>
+                            <td>Tính từ-na (Aな)</td>
+                            <td><span class="g-verb-form">Aな (bỏ だ)</span> + <span class="grammar-point">かもしれません</span></td>
+                        </tr>
+                        <tr>
+                            <td>Danh từ (N)</td>
+                            <td><span class="g-verb-form">N (bỏ だ)</span> + <span class="grammar-point">かもしれません</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <div class="example-block">
+                    <p class="example-jp"><span class="g-subject"><ruby>明日<rt>あした</rt></ruby>は</span> <ruby>雨<rt>あめ</rt></ruby>が <span class="g-verb-form"><ruby>降<rt>ふ</rt></ruby>る</span><span class="grammar-point">かもしれません</span>。</p>
+                    <p class="example-vn">Có lẽ ngày mai trời sẽ mưa.</p>
+                </div>
+                 <div class="example-block">
+                    <p class="example-jp"><span class="g-subject"><ruby>田中<rt>たなか</rt></ruby>さんは</span> <ruby>今日<rt>きょう</rt></ruby> <span class="g-verb-form"><ruby>休<rt>やす</rt></ruby>み</span><span class="grammar-point">かもしれません</span>。</p>
+                    <p class="example-vn">Có lẽ hôm nay anh Tanaka nghỉ.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. Ngữ pháp ～はずです (Chắc chắn là...)</h3>
+                <div class="grammar-explanation">
+                     <p>Dùng để diễn tả một sự phỏng đoán với mức độ chắc chắn cao (khoảng 90%), dựa trên một lý do logic hoặc một bằng chứng khách quan nào đó. Người nói tin rằng điều đó gần như chắc chắn sẽ xảy ra hoặc là sự thật.</p>
+                </div>
+                
+                 <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Loại từ</th>
+                            <th>Cấu trúc</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Động từ (V)</td>
+                            <td><span class="g-verb-form">V (thể ngắn)</span> + <span class="grammar-point">はずです</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tính từ-i (Aい)</td>
+                            <td><span class="g-verb-form">Aい</span> + <span class="grammar-point">はずです</span></td>
+                        </tr>
+                         <tr>
+                            <td>Tính từ-na (Aな)</td>
+                            <td><span class="g-verb-form">Aな + な</span> + <span class="grammar-point">はずです</span></td>
+                        </tr>
+                        <tr>
+                            <td>Danh từ (N)</td>
+                            <td><span class="g-verb-form">N + の</span> + <span class="grammar-point">はずです</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="example-block">
+                    <p class="example-jp"><span class="g-subject"><ruby>彼<rt>かれ</rt></ruby>は</span> ３<ruby>年間日本<rt>ねんにほん</rt></ruby>に<ruby>住<rt>す</rt></ruby>んでいたから、<span class="g-subject"><ruby>日本語<rt>にほんご</rt></ruby>が</span> <span class="g-verb-form"><ruby>上手<rt>じょうず</rt></ruby>な</span><span class="grammar-point">はずです</span>。</p>
+                    <p class="example-vn">Vì anh ấy đã sống ở Nhật 3 năm, nên chắc chắn tiếng Nhật phải giỏi.</p>
+                </div>
+                 <div class="example-block">
+                    <p class="example-jp"><span class="g-subject"><ruby>今日<rt>きょう</rt></ruby>は</span> <ruby>日曜日<rt>にちようび</rt></ruby>だから、<span class="g-subject"><ruby>銀行<rt>ぎんこう</rt></ruby>は</span> <span class="g-verb-form"><ruby>休<rt>やす</rt></ruby>みの</span><span class="grammar-point">はずです</span>。</p>
+                    <p class="example-vn">Vì hôm nay là Chủ nhật nên ngân hàng chắc chắn là nghỉ.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>3. Ngữ pháp ～ようです / ～みたいです (Hình như là... / Trông có vẻ...)</h3>
+                <div class="grammar-explanation">
+                     <p>Dùng để diễn tả một sự phỏng đoán dựa trên cảm nhận chủ quan của người nói thông qua các giác quan (nhìn, nghe, ngửi, cảm thấy...). <strong>ようです</strong> mang tính trang trọng hơn, trong khi <strong>みたいです</strong> mang tính văn nói và thân mật hơn.</p>
+                </div>
+                
+                 <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Loại từ</th>
+                            <th>～ようです</th>
+                            <th>～みたいです</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Động từ (V) / T-i (Aい)</td>
+                            <td><span class="g-verb-form">Thể ngắn</span> + <span class="grammar-point">ようです</span></td>
+                            <td><span class="g-verb-form">Thể ngắn</span> + <span class="grammar-point">みたいです</span></td>
+                        </tr>
+                         <tr>
+                            <td>Tính từ-na (Aな)</td>
+                            <td><span class="g-verb-form">Aな + な</span> + <span class="grammar-point">ようです</span></td>
+                            <td><span class="g-verb-form">Aな</span> + <span class="grammar-point">みたいです</span></td>
+                        </tr>
+                        <tr>
+                            <td>Danh từ (N)</td>
+                            <td><span class="g-verb-form">N + の</span> + <span class="grammar-point">ようです</span></td>
+                            <td><span class="g-verb-form">N</span> + <span class="grammar-point">みたいです</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>隣<rt>となり</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>からピアノの<ruby>音<rt>おと</rt></ruby>がします。<span class="g-subject"><ruby>誰<rt>だれ</rt></ruby>か</span> <span class="g-verb-form">いる</span><span class="grammar-point">ようです</span>。</p>
+                    <p class="example-vn">Có tiếng đàn piano từ phòng bên cạnh. Hình như có ai đó ở trong.</p>
+                </div>
+                 <div class="example-block">
+                    <p class="example-jp">この<ruby>料理<rt>りょうり</rt></ruby>、いい<ruby>匂<rt>にお</rt></ruby>い。<span class="g-verb-form">おいしい</span><span class="grammar-point">みたいです</span>。</p>
+                    <p class="example-vn">Món này thơm quá. Trông có vẻ ngon.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 4: LUYỆN TẬP NGỮ PHÁP (PHIÊN BẢN NÂNG CẤP TRỰC QUAN) -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Phần 4: Luyện Tập Ngữ Pháp (練習)</h2>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <p class="question-text">1. <ruby>道<rt>みち</rt></ruby>がとても<ruby>混<rt>こ</rt></ruby>んでいますね。これでは、<ruby>約束<rt>やくそく</rt></ruby>の<ruby>時間<rt>じかん</rt></ruby>に<ruby>少<rt>すこ</rt></ruby>し<ruby>遅<rt>おく</rt></ruby>れる (　　)。</p>
+                <div class="options-container">
+                    <button class="option-btn">はずです</button>
+                    <button class="option-btn" data-correct="true">かもしれません</button>
+                    <button class="option-btn">ようです</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> "Tắc đường" là một tình huống không chắc chắn, có thể thay đổi. <span class="grammar-point">かもしれません</span> (có lẽ) là phù hợp nhất để diễn tả khả năng có thể bị muộn.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">2. <ruby>鈴木<rt>すずき</rt></ruby>さんはアメリカに１０<ruby>年<rt>ねん</rt></ruby><ruby>住<rt>す</rt></ruby>んでいましたから、<ruby>英語<rt>えいご</rt></ruby>が<span class="g-verb-form">ぺらぺらな</span> (　　)。</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true">はずです</button>
+                    <button class="option-btn">かもしれません</button>
+                    <button class="option-btn">みたいです</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Việc "đã sống ở Mỹ 10 năm" là một bằng chứng rất logic để đưa ra kết luận gần như chắc chắn rằng "tiếng Anh của cô ấy phải lưu loát". Do đó, <span class="grammar-point">はずです</span> là đáp án đúng.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">3. <ruby>外<rt>そと</rt></ruby>でたくさんの<ruby>人<rt>ひと</rt></ruby>が<ruby>騒<rt>さわ</rt></ruby>いでいますね。<ruby>何<rt>なに</rt></ruby>か<ruby>事故<rt>じこ</rt></ruby>が<span class="g-verb-form">あった</span> (　　)。</p>
+                <div class="options-container">
+                    <button class="option-btn">はずです</button>
+                    <button class="option-btn">かもしれません</button>
+                    <button class="option-btn" data-correct="true">ようです</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Người nói nghe thấy "tiếng ồn ào" (thông tin từ giác quan) và từ đó phỏng đoán "hình như có tai nạn". <span class="grammar-point">ようです</span> là lựa chọn phù hợp nhất cho phỏng đoán dựa trên cảm nhận.
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- =============================================================== -->
+    <!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) -->
+    <!-- =============================================================== -->
+    <div class="reading-comprehension-section">
+        <div class="reading-comprehension-container">
+            <h2>Phần 5: Đọc Hiểu Ứng Dụng (読解練習)</h2>
+            <div class="reading-wrapper">
+                <div class="reading-card">
+                    <h3><ruby>日記<rt>にっき</rt></ruby>：<ruby>新幹線<rt>しんかんせん</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>で (Nhật Ký Trên Tàu)</h3>
+                    
+                    <div class="readable-passage-component">
+                        <h4><ruby>文章<rt>ぶんしょう</rt></ruby></h4>
+                        <div class="text-to-be-read" id="readingPassageText">
+                            <p><ruby>今日<rt>きょう</rt></ruby>は、ずっと<ruby>夢<rt>ゆめ</rt></ruby>に<ruby>見<rt>み</rt></ruby>ていた<ruby>新幹線<rt>しんかんせん</rt></ruby>に<ruby>初<rt>はじ</rt></ruby>めて<ruby>乗<rt>の</rt></ruby>った。<ruby>窓<rt>まど</rt></ruby>から<ruby>見<rt>み</rt></ruby>える<ruby>景色<rt>けしき</rt></ruby>は、まるで<span class="g-verb-form"><ruby>映画<rt>えいが</rt></ruby>のワンシーンの</span><span class="grammar-point">ようだった</span>。<ruby>家<rt>いえ</rt></ruby>やビルがどんどん<ruby>小<rt>ちい</rt></ruby>さくなっていく。<ruby>本当<rt>ほんとう</rt></ruby>に<ruby>速<rt>はや</rt></ruby>い。</p>
+                            <p><ruby>隣<rt>となり</rt></ruby>の<ruby>席<rt>せき</rt></ruby>の<ruby>鈴木<rt>すずき</rt></ruby>さんは、<ruby>空<rt>そら</rt></ruby>を<ruby>見<rt>み</rt></ruby>て「<ruby>雲<rt>くも</rt></ruby>が<ruby>多<rt>おお</rt></ruby>いから、<ruby>明日<rt>あした</rt></ruby>は<span class="g-subject"><ruby>雨<rt>あめ</rt></ruby>が</span><span class="g-verb-form"><ruby>降<rt>ふ</rt></ruby>る</span><span class="grammar-point">かもしれないわね</span>」と<ruby>少<rt>すこ</rt></ruby>し<ruby>心配<rt>しんぱい</rt></ruby>していた。でも、<ruby>田中<rt>たなか</rt></ruby><ruby>先輩<rt>せんぱい</rt></ruby>は「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>、<ruby>僕<rt>ぼく</rt></ruby>が<ruby>調<rt>しら</rt></ruby>べた<ruby>天気予報<rt>てんきよほう</rt></ruby>では<span class="g-verb-form"><ruby>晴<rt>は</rt></ruby>れの</span><span class="grammar-point">はずです</span>」と<ruby>力強<rt>ちからづよ</rt></ruby>く<ruby>言<rt>い</rt></ruby>った。それを<ruby>聞<rt>き</rt></ruby>いて、<ruby>私<rt>わたし</rt></ruby>も<ruby>安心<rt>あんしん</rt></ruby>した。</p>
+                            <p>しばらくすると、<ruby>遠<rt>とお</rt></ruby>くに<ruby>大<rt>おお</rt></ruby>きくて<ruby>白<rt>しろ</rt></ruby>い<ruby>山<rt>やま</rt></ruby>が<ruby>見<rt>み</rt></ruby>えた。<ruby>富士山<rt>ふじさん</rt></ruby>だ！<ruby>写真<rt>しゃしん</rt></ruby>でしか<ruby>見<rt>み</rt></ruby>たことがなかったけれど、<ruby>本物<rt>ほんもの</rt></ruby>は<ruby>想像<rt>そうぞう</rt></ruby>よりずっときれいだった。たくさんの<ruby>人<rt>ひと</rt></ruby>がカメラで<ruby>写真<rt>しゃしん</rt></ruby>を<ruby>撮<rt>と</rt></ruby>っていた。</p>
+                            <p>お<ruby>昼<rt>ひる</rt></ruby>には、<ruby>駅<rt>えき</rt></ruby>で<ruby>買<rt>か</rt></ruby>った<ruby>駅弁<rt>えきべん</rt></ruby>を<ruby>食<rt>た</rt></ruby>べた。<ruby>小<rt>ちい</rt></ruby>さな<ruby>箱<rt>はこ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に、いろいろな<ruby>種類<rt>しゅるい</rt></ruby>のおかずがきれいに<ruby>並<rt>なら</rt></ruby>んでいた。<ruby>見<rt>み</rt></ruby>た<ruby>目<rt>め</rt></ruby>も<ruby>味<rt>あじ</rt></ruby>も、まるで<span class="g-verb-form"><ruby>芸術品<rt>げいじゅつひん</rt></ruby>の</span><span class="grammar-point">みたいだった</span>。この<ruby>旅<rt>たび</rt></ruby>は、きっと<ruby>忘<rt>わす</rt></ruby>れられない<ruby>思<rt>おも</rt></ruby>い<ruby>出<rt>で</rt></ruby>に<span class="g-verb-form">なる</span><span class="grammar-point">はずだ</span>。</p>
+                        </div>
+                        <div class="passage-audio-controls">
+                            <button class="control-btn play-pause" data-target="readingPassageText">▶ Bắt đầu</button>
+                            <button class="control-btn stop" data-target="readingPassageText">■ Dừng hẳn</button>
+                            <div class="speed-controls">
+                                <span>Tốc độ:</span>
+                                <button class="speed-btn" data-speed="0.8">0.8x</button>
+                                <button class="speed-btn active" data-speed="1.0">1x</button>
+                                <button class="speed-btn" data-speed="1.2">1.2x</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <details class="translation-wrapper">
+                        <summary>📖 Xem bản dịch và từ vựng</summary>
+                        <div class="translation-content">
+                            <h4>Bản dịch</h4>
+                            <p>Hôm nay, lần đầu tiên tôi được đi trên chuyến tàu Shinkansen mà tôi hằng mơ ước. Khung cảnh nhìn từ cửa sổ giống hệt như một cảnh trong phim. Nhà cửa và các tòa nhà cứどんどん nhỏ dần đi. Thật sự nhanh quá.</p>
+                            <p>Chị Suzuki ngồi ghế bên cạnh nhìn lên trời và nói có chút lo lắng: "Mây nhiều quá, có lẽ ngày mai trời sẽ mưa đó". Nhưng anh Tanaka đã nói một cách rất đanh thép: "Không sao đâu, theo dự báo thời tiết anh đã tra thì chắc chắn trời sẽ nắng". Nghe vậy, tôi cũng thấy yên tâm.</p>
+                            <p>Một lúc sau, tôi nhìn thấy một ngọn núi lớn và trắng xóa ở đằng xa. Núi Phú Sĩ! Dù tôi mới chỉ nhìn thấy qua ảnh, nhưng vật thật còn đẹp hơn trong tưởng tượng rất nhiều. Rất nhiều người đã dùng máy ảnh để chụp hình.</p>
+                            <p>Vào buổi trưa, chúng tôi ăn cơm hộp ekiben đã mua ở ga. Trong một chiếc hộp nhỏ, rất nhiều loại thức ăn kèm khác nhau được sắp xếp một cách đẹp mắt. Cả hình thức lẫn hương vị đều giống như một tác phẩm nghệ thuật vậy. Chuyến đi này, chắc chắn sẽ trở thành một kỷ niệm không thể nào quên.</p>
+                            
+                            <h4>Từ vựng mới trong bài đọc</h4>
+                             <ul class="reading-vocab-list">
+                                <li><strong>ワンシーン:</strong> một cảnh (phim)</li>
+                                <li><strong>どんどん:</strong> dần dần, ngày càng</li>
+                                <li><strong>本物 (ほんもの):</strong> vật thật, đồ thật</li>
+                                <li><strong>想像 (そうぞう):</strong> sự tưởng tượng</li>
+                                <li><strong>おかず:</strong> thức ăn kèm (với cơm)</li>
+                                <li><strong>並ぶ (ならぶ):</strong> được xếp hàng, được bày biện</li>
+                                <li><strong>見た目 (みため):</strong> vẻ bề ngoài, hình thức</li>
+                                <li><strong>味 (あじ):</strong> hương vị</li>
+                                <li><strong>芸術品 (げいじゅつひん):</strong> tác phẩm nghệ thuật</li>
+                                <li><strong>旅 (たび):</strong> chuyến đi, hành trình</li>
+                            </ul>
+                        </div>
+                    </details>
+                    
+                    <hr>
+                    
+                    <h4>Câu hỏi đọc hiểu</h4>
+                     <div class="reading-quiz-container quiz-container">
+                        <div class="quiz-card">
+                            <p class="question-text">1. <ruby>鈴木<rt>すずき</rt></ruby>さんは<ruby>天気<rt>てんき</rt></ruby>について、どう<ruby>思<rt>おも</rt></ruby>っていますか。</p>
+                            <div class="options-container">
+                                <button class="option-btn" data-correct="true"><ruby>明日<rt>あした</rt></ruby>、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るかもしれないと<ruby>思<rt>おも</rt></ruby>っています。</button>
+                                <button class="option-btn"><ruby>明日<rt>あした</rt></ruby>、<ruby>絶対<rt>ぜったい</rt></ruby>に<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るはずだと<ruby>思<rt>おも</rt></ruby>っています。</button>
+                                <button class="option-btn"><ruby>明日<rt>あした</rt></ruby>、<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>るようです。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> Trong bài có câu: 「<ruby>雲<rt>くも</rt></ruby>が<ruby>多<rt>おお</rt></ruby>いから、<ruby>明日<rt>あした</rt></ruby>は<ruby>雨<rt>あめ</rt></ruby>が<span class="g-verb-form"><ruby>降<rt>ふ</rt></ruby>る</span><span class="grammar-point">かもしれないわね</span>」. Đây là một sự phỏng đoán không chắc chắn.
+                            </div>
+                        </div>
+                         <div class="quiz-card">
+                            <p class="question-text">2. <ruby>田中<rt>たなか</rt></ruby><ruby>先輩<rt>せんぱい</rt></ruby>はなぜ<ruby>天気<rt>てんき</rt></ruby>が<ruby>晴<rt>は</rt></ruby>れると<ruby>強<rt>つよ</rt></ruby>く<ruby>信<rt>しん</rt></ruby>じていますか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>彼<rt>かれ</rt></ruby>はいつも<ruby>運<rt>うん</rt></ruby>がいいからです。</button>
+                                <button class="option-btn" data-correct="true"><ruby>彼<rt>かれ</rt></ruby>が<ruby>自分<rt>じぶん</rt></ruby>で<ruby>調<rt>しら</rt></ruby>べた<ruby>天気予報<rt>てんきよほう</rt></ruby>に<ruby>基<rt>もと</rt></ruby>づいているからです。</button>
+                                <button class="option-btn"><ruby>鈴木<rt>すずき</rt></ruby>さんが<ruby>心配<rt>しんぱい</rt></ruby>しているからです。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> Tanaka nói: 「<ruby>僕<rt>ぼく</rt></ruby>が<ruby>調<rt>しら</rt></ruby>べた<ruby>天気予報<rt>てんきよほう</rt></ruby>では<span class="g-verb-form"><ruby>晴<rt>は</rt></ruby>れの</span><span class="grammar-point">はずです</span>」. Sự tự tin của anh ấy đến từ một bằng chứng khách quan (dự báo thời tiết).
+                            </div>
+                        </div>
+                        <div class="quiz-card">
+                            <p class="question-text">3. <ruby>筆者<rt>ひっしゃ</rt></ruby>が<ruby>駅弁<rt>えきべん</rt></ruby>について「<ruby>芸術品<rt>げいじゅつひん</rt></ruby>のみたいだった」と<ruby>言<rt>い</rt></ruby>ったのはなぜですか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>値段<rt>ねだん</rt></ruby>がとても<ruby>高<rt>たか</rt></ruby>かったからです。</button>
+                                <button class="option-btn"><ruby>箱<rt>はこ</rt></ruby>が<ruby>有名画家<rt>ゆうめいがか</rt></ruby>によってデザインされたからです。</button>
+                                <button class="option-btn" data-correct="true"><ruby>見<rt>み</rt></ruby>た<ruby>目<rt>め</rt></ruby>がれいで、<ruby>味<rt>あじ</rt></ruby>もよかったからです。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                               💡 <strong>Giải thích:</strong> Người viết đã miêu tả: 「...おかずがきれいに<ruby>並<rt>なら</rt></ruby>んでいた。<ruby>見<rt>み</rt></ruby>た<ruby>目<rt>め</rt></ruby>も<ruby>味<rt>あじ</rt></ruby>も、まるで<span class="g-verb-form"><ruby>芸術品<rt>げいじゅつひん</rt></ruby>の</span><span class="grammar-point">みたいだった</span>。」
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- PHẦN 5 SẼ ĐƯỢC THÊM VÀO SAU -->
+
+    <script src="script-talk1029.js"></script>
+</body>
+</html>

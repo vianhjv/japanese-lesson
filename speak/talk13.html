@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bài 13: Những Quy Tắc ở Ryokan | Học tiếng Nhật cùng An</title>
+    
+    <link rel="stylesheet" href="styles-talk1029v2.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h2>Bài 13: Những Quy Tắc ở Ryokan</h2>
+        <p>Học cách đưa ra lời khuyên, mệnh lệnh nhẹ và diễn tả nghĩa vụ.</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 1: HỘI THOẠI (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <img src="lesson13.jpg" alt="Căn phòng kiểu Nhật truyền thống với chiếu Tatami" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogue-source" style="display: none;">
+        <!-- Toàn bộ hội thoại diễn ra trong 1 cảnh -->
+        <div class="scene" data-scene-name="Tại Ryokan" data-background-image = "lesson13.jpg">
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">わあ、すごい！<ruby>部屋<rt>へや</rt></ruby>が<ruby>広<rt>ひろ</rt></ruby>くて、<ruby>畳<rt>たたみ</rt></ruby>のいい<ruby>匂<rt>にお</rt></ruby>いがします！</p>
+                        <p class="vietnamese-text">Woa, tuyệt quá! Căn phòng vừa rộng, vừa có mùi hương dễ chịu của chiếu Tatami!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">あれが<ruby>浴衣<rt>ゆかた</rt></ruby>よ。<ruby>旅館<rt>りょかん</rt></ruby>の<ruby>中<rt>なか</rt></ruby>ではそれを<ruby>着<rt>き</rt></ruby>ていいの。</p>
+                        <p class="vietnamese-text">Kia là Yukata đó. Ở trong Ryokan thì mình có thể mặc nó.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>食事<rt>しょくじ</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に<ruby>温泉<rt>おんせん</rt></ruby>に<ruby>行<rt>い</rt></ruby>きましょう。だから、<ruby>今<rt>いま</rt></ruby>のうちに<ruby>浴衣<rt>ゆかた</rt></ruby>に<span class="g-verb-form"><ruby>着替<rt>きが</rt></ruby>えた</span><span class="grammar-point">ほうがいいですよ</span>。</p>
+                        <p class="vietnamese-text">Chúng ta hãy đi onsen trước bữa tối nhé. Vì vậy, em nên thay Yukata ngay bây giờ đi.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい！<ruby>温泉<rt>おんせん</rt></ruby>、<ruby>初<rt>はじ</rt></ruby>めてなので、ルールが<ruby>分<rt>わ</rt></ruby>からなくて…</p>
+                        <p class="vietnamese-text">Vâng ạ! Vì đây là lần đầu em đi onsen nên không biết có quy tắc gì không ạ...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですよ。<ruby>大切<rt>たいせつ</rt></ruby>なのは、<ruby>湯船<rt>ゆぶね</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に、<ruby>体<rt>からだ</rt></ruby>をきれいにすることです。</p>
+                        <p class="vietnamese-text">Không sao đâu. Điều quan trọng là phải làm sạch cơ thể trước khi vào bồn tắm.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうそう。シャワーでしっかり<ruby>髪<rt>かみ</rt></ruby>と<ruby>体<rt>からだ</rt></ruby>を<span class="g-verb-form"><ruby>洗<rt>あら</rt></ruby>った</span><span class="grammar-point">ほうがいいわね</span>。</p>
+                        <p class="vietnamese-text">Đúng rồi. Cậu nên gội đầu và tắm rửa sạch sẽ bằng vòi hoa sen nhé.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">あそこの<ruby>注意書<rt>ちゅういがき</rt></ruby>にも、「<ruby>体<rt>からだ</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってからお<ruby>風呂<rt>ふろ</rt></ruby>に<span class="g-verb-form"><ruby>入<rt>はい</rt></ruby>り</span><span class="grammar-point">なさい</span>」と<ruby>書<rt>か</rt></ruby>いてありますね。</p>
+                        <p class="vietnamese-text">Trên tờ giấy lưu ý đằng kia cũng có viết: "Hãy tắm rửa sạch sẽ rồi hãy vào bồn".</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">それから、お<ruby>酒<rt>さけ</rt></ruby>を<span class="g-verb-form"><ruby>飲<rt>の</rt></ruby>まない</span><span class="grammar-point">ほうがいいですよ</span>。<ruby>温泉<rt>おんせん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>は<ruby>特<rt>とく</rt></ruby>にね。</p>
+                        <p class="vietnamese-text">Thêm nữa là, em không nên uống rượu đâu. Đặc biệt là trước khi vào onsen nhé.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">さあ、<ruby>話<rt>はな</rt></ruby>してないで<ruby>準備<rt>じゅんび</rt></ruby>しましょ！<ruby>夕食<rt>ゆうしょく</rt></ruby>の<ruby>時間<rt>じかん</rt></ruby>に<ruby>遅<rt>おく</rt></ruby>れちゃうから、<span class="g-verb-form"><ruby>早<rt>はや</rt></ruby>くしない</span><span class="grammar-point">と</span>。</p>
+                        <p class="vietnamese-text">Nào, đừng nói chuyện nữa mà chuẩn bị thôi! Sẽ trễ giờ ăn tối đó, phải nhanh lên.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい！あっ、<ruby>明日<rt>あした</rt></ruby><ruby>帰<rt>かえ</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に、<ruby>家族<rt>かぞく</rt></ruby>へのお<ruby>土産<rt>みやげ</rt></ruby>も<span class="g-verb-form"><ruby>買<rt>か</rt></ruby>わない</span><span class="grammar-point">と</span>。</p>
+                        <p class="vietnamese-text">Vâng! À, trước khi về vào ngày mai, em phải mua cả quà lưu niệm cho gia đình nữa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>よ、<ruby>駅<rt>えき</rt></ruby>にたくさん<ruby>売<rt>う</rt></ruby>ってるから。さ、<ruby>行<rt>い</rt></ruby>きましょう！</p>
+                        <p class="vietnamese-text">Không sao đâu, ở ga bán nhiều lắm. Nào, đi thôi!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 2: TỪ VỰNG MỚI (新しい言葉) -->
+    <!-- =============================================================== -->
+  <!-- =============================================================== -->
+    <!-- PHẦN 2: TỪ VỰNG MỚI (新しい言葉) - PHIÊN BẢN SỬA LỖI ĐẦY ĐỦ -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>Từ Vựng Mới (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>畳<rt>たたみ</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="たたみ">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Chiếu Tatami</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>日本<rt>にほん</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>には<ruby>畳<rt>たたみ</rt></ruby>があります。</p>
+                            <button class="vocab-play-btn" data-speak-text="にほんのへやにはたたみがあります">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Trong phòng kiểu Nhật có chiếu Tatami.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>匂<rt>にお</rt></ruby>い</h4>
+                        <button class="vocab-play-btn" data-speak-text="におい">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Mùi, mùi hương</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">コーヒーのいい<ruby>匂<rt>にお</rt></ruby>いがします。</p>
+                            <button class="vocab-play-btn" data-speak-text="コーヒーのいいにおいがします">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Có mùi hương dễ chịu của cà phê.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>浴衣<rt>ゆかた</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="ゆかた">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Yukata</p>
+                    </div>
+                     <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>夏祭<rt>なつまつ</rt></ruby>りで<ruby>浴衣<rt>ゆかた</rt></ruby>を<ruby>着<rt>き</rt></ruby>ました。</p>
+                            <button class="vocab-play-btn" data-speak-text="なつまつりでゆかたをきました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi đã mặc Yukata trong lễ hội mùa hè.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>着替<rt>きが</rt></ruby>える</h4>
+                        <button class="vocab-play-btn" data-speak-text="きがえる">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Động từ-ru</p>
+                        <p><span class="label">Nghĩa:</span> Thay quần áo</p>
+                    </div>
+                     <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">うちへ<ruby>帰<rt>かえ</rt></ruby>ってから、すぐに<ruby>服<rt>ふく</rt></ruby>に<ruby>着替<rt>きが</rt></ruby>えます。</p>
+                            <button class="vocab-play-btn" data-speak-text="うちへかえってから、すぐにふくに着替えます">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Sau khi về nhà, tôi thay quần áo ngay lập tức.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>湯船<rt>ゆぶね</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="ゆぶね">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Bồn tắm (lớn)</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>体<rt>からだ</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>ってから、<ruby>湯船<rt>ゆぶね</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ってください。</p>
+                            <button class="vocab-play-btn" data-speak-text="からだをあらってから、ゆぶねにはいってください">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Hãy vào bồn tắm sau khi đã tắm rửa sạch sẽ.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>注意書<rt>ちゅういがき</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="ちゅういがき">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Bảng lưu ý, ghi chú</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>注意書<rt>ちゅういがき</rt></ruby>をよく<ruby>読<rt>よ</rt></ruby>んでください。</p>
+                            <button class="vocab-play-btn" data-speak-text="ちゅういがきをよくよんでください">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Xin hãy đọc kỹ bảng lưu ý.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>お土産<rt>みやげ</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="おみやげ">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Quà lưu niệm</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>友達<rt>ともだち</rt></ruby>にお<ruby>土産<rt>みやげ</rt></ruby>を<ruby>買<rt>か</rt></ruby>いました。</p>
+                            <button class="vocab-play-btn" data-speak-text="ともだちにおみやげをかいました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi đã mua quà lưu niệm cho bạn bè.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 3: PHÂN TÍCH NGỮ PHÁP (文法の解説) -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+            <h2>Phần 3: Phân Tích Ngữ Pháp (文法の解説)</h2>
+            
+            <div class="grammar-card">
+                <h3>1. Ngữ pháp ～なさい (Hãy làm...)</h3>
+                <div class="grammar-explanation">
+                    <p>Là một dạng câu mệnh lệnh nhưng mềm hơn so với thể mệnh lệnh (V-ろ). Thường được dùng khi người có vị thế cao hơn nói với người dưới (cha mẹ nói với con cái, giáo viên nói với học sinh). Tuyệt đối không dùng với người lớn tuổi hoặc cấp trên.</p>
+                </div>
+                <table class="grammar-table">
+                    <thead><tr><th>Cấu trúc</th></tr></thead>
+                    <tbody><tr><td><span class="g-verb-form">Động từ thể ます (bỏ ます)</span> + <span class="grammar-point">なさい</span></td></tr></tbody>
+                </table>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>早<rt>はや</rt></ruby>く<span class="g-verb-form"><ruby>寝<rt>ね</rt></ruby></span><span class="grammar-point">なさい</span>。</p>
+                    <p class="example-vn">Hãy ngủ sớm đi.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp">もっと<span class="g-verb-form"><ruby>勉強<rt>べんきょう</rt></ruby>し</span><span class="grammar-point">なさい</span>。</p>
+                    <p class="example-vn">Hãy học nhiều hơn nữa.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. Ngữ pháp ～ほうがいいです (Nên / Không nên...)</h3>
+                <div class="grammar-explanation">
+                     <p>Dùng để đưa ra lời khuyên hoặc đề xuất cho người khác. Đây là cách nói rất phổ biến trong giao tiếp hàng ngày. Lưu ý quan trọng: dạng khẳng định dùng V-quá khứ, còn dạng phủ định dùng V-hiện tại.</p>
+                </div>
+                <table class="grammar-table">
+                    <thead><tr><th>Dạng</th><th>Cấu trúc</th></tr></thead>
+                    <tbody>
+                        <tr><td>Khẳng định (Nên)</td><td><span class="g-verb-form">Động từ thể た (Vた)</span> + <span class="grammar-point">ほうがいいです</span></td></tr>
+                        <tr><td>Phủ định (Không nên)</td><td><span class="g-verb-form">Động từ thể ない (Vない)</span> + <span class="grammar-point">ほうがいいです</span></td></tr>
+                    </tbody>
+                </table>
+                <div class="example-block">
+                    <p class="example-jp"><span class="g-subject"><ruby>野菜<rt>やさい</rt></ruby>を</span> たくさん <span class="g-verb-form"><ruby>食<rt>た</rt></ruby>べた</span><span class="grammar-point">ほうがいいですよ</span>。</p>
+                    <p class="example-vn">Bạn nên ăn nhiều rau vào.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>夜<rt>よる</rt></ruby><ruby>遅<rt>おそ</rt></ruby>くコーヒーを <span class="g-verb-form"><ruby>飲<rt>の</rt></ruby>まない</span><span class="grammar-point">ほうがいいですよ</span>。</p>
+                    <p class="example-vn">Bạn không nên uống cà phê muộn vào buổi tối.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>3. Ngữ pháp ～ないと (Phải...)</h3>
+                <div class="grammar-explanation">
+                    <p>Là cách nói ngắn gọn, thân mật của 「～ないといけません」. Dùng để diễn tả một việc bắt buộc phải làm, một nghĩa vụ. Thường được dùng trong văn nói.</p>
+                </div>
+                <table class="grammar-table">
+                     <thead><tr><th>Cấu trúc</th></tr></thead>
+                    <tbody><tr><td><span class="g-verb-form">Động từ thể ない</span> + <span class="grammar-point">と</span></td></tr></tbody>
+                </table>
+                <div class="example-block">
+                    <p class="example-jp">もう<ruby>時間<rt>じかん</rt></ruby>がないから、<span class="g-verb-form"><ruby>早<rt>はや</rt></ruby>く<ruby>行<rt>い</rt></ruby>かない</span><span class="grammar-point">と</span>。</p>
+                    <p class="example-vn">Không còn thời gian nữa, phải đi nhanh thôi.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>明日<rt>あした</rt></ruby>はテストだから、<span class="g-verb-form"><ruby>今晩<rt>こんばん</rt></ruby><ruby>勉強<rt>べんきょう</rt></ruby>しない</span><span class="grammar-point">と</span>。</p>
+                    <p class="example-vn">Mai có bài kiểm tra nên tối nay phải học bài.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 4: LUYỆN TẬP NGỮ PHÁP (練習) -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Phần 4: Luyện Tập Ngữ Pháp (練習)</h2>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <p class="question-text">1. <ruby>風邪<rt>かぜ</rt></ruby>をひきました。<ruby>医者<rt>いしゃ</rt></ruby>に「今日はお<ruby>風呂<rt>ふろ</rt></ruby>に (　　) 」と<ruby>言<rt>い</rt></ruby>われました。</p>
+                <div class="options-container">
+                    <button class="option-btn"><span class="g-verb-form"><ruby>入<rt>はい</rt></ruby>った</span><span class="grammar-point">ほうがいい</span></button>
+                    <button class="option-btn" data-correct="true"><span class="g-verb-form"><ruby>入<rt>はい</rt></ruby>らない</span><span class="grammar-point">ほうがいい</span></button>
+                    <button class="option-btn"><span class="g-verb-form"><ruby>入<rt>はい</rt></ruby>り</span><span class="grammar-point">なさい</span></button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Khi bị cảm, bác sĩ thường khuyên "không nên tắm". Dạng phủ định của lời khuyên là <span class="g-verb-form">V-ない</span> + <span class="grammar-point">ほうがいい</span>.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">2. Mẹ nói với con:「ゲームばかりしていないで、ちゃんと<ruby>宿題<rt>しゅくだい</rt></ruby>を (　　)！」</p>
+                <div class="options-container">
+                    <button class="option-btn"><span class="g-verb-form">した</span><span class="grammar-point">ほうがいい</span></button>
+                    <button class="option-btn"><span class="g-verb-form">しない</span><span class="grammar-point">と</span></button>
+                    <button class="option-btn" data-correct="true"><span class="g-verb-form">し</span><span class="grammar-point">なさい</span></button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Đây là tình huống người trên (mẹ) nói với người dưới (con), nên dạng mệnh lệnh nhẹ <span class="grammar-point">～なさい</span> là phù hợp nhất.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">3. <ruby>明日<rt>あした</rt></ruby>の<ruby>飛行機<rt>ひこうき</rt></ruby>は<ruby>朝<rt>あさ</rt></ruby>６<ruby>時<rt>じ</rt></ruby>です。とても<ruby>早<rt>はや</rt></ruby>いから、もう (　　)。</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true"><span class="g-verb-form"><ruby>寝<rt>ね</rt></ruby>ない</span><span class="grammar-point">と</span></button>
+                    <button class="option-btn"><span class="g-verb-form"><ruby>寝<rt>ね</rt></ruby>た</span><span class="grammar-point">ほうがいい</span></button>
+                    <button class="option-btn"><span class="g-verb-form"><ruby>寝<rt>ね</rt></ruby></span><span class="grammar-point">なさい</span></button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Vì chuyến bay rất sớm nên việc "phải đi ngủ thôi" là một nghĩa vụ, một việc cần làm cho bản thân. Cách nói ngắn gọn trong văn nói là <span class="grammar-point">～ないと</span>.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) -->
+    <!-- =============================================================== -->
+<!-- =============================================================== -->
+<!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) -->
+<!-- =============================================================== -->
+<div class="reading-comprehension-section">
+    <div class="reading-comprehension-container">
+        <h2>Phần 5: Đọc Hiểu Ứng Dụng (読解練習)</h2>
+        <div class="reading-wrapper">
+            <div class="reading-card">
+                <h3><ruby>初<rt>はじ</rt></ruby>めての<ruby>温泉体験<rt>おんせんたいけん</rt></ruby> (Trải Nghiệm Onsen Lần Đầu Tiên)</h3>
+                
+                <div class="readable-passage-component">
+                    <h4><ruby>文章<rt>ぶんしょう</rt></ruby></h4>
+                    <div class="text-to-be-read" id="readingPassageText">
+                        <p><ruby>箱根<rt>はこね</rt></ruby>で<ruby>泊<rt>と</rt></ruby>まった<ruby>旅館<rt>りょかん</rt></ruby>は、<ruby>本当<rt>ほんとう</rt></ruby>に<ruby>素晴<rt>すば</rt></ruby>らしかった。<ruby>私<rt>わたし</rt></ruby>は<ruby>初<rt>はじ</rt></ruby>めて<ruby>浴衣<rt>ゆかた</rt></ruby>を<ruby>着<rt>き</rt></ruby>た。<ruby>少<rt>すこ</rt></ruby>し<ruby>動<rt>うご</rt></ruby>きにくかったけれど、<ruby>日本<rt>にほん</rt></ruby>の<ruby>文化<rt>ぶんか</rt></ruby>を<ruby>体験<rt>たいけん</rt></ruby>できて<ruby>嬉<rt>うれ</rt></ruby>しかった。</p>
+                        <p><ruby>夕食<rt>ゆうしょく</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に、みんなで<ruby>温泉<rt>おんせん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>った。<ruby>温泉<rt>おんせん</rt></ruby>にはいくつかルールがあった。<ruby>田中<rt>たなか</rt></ruby><ruby>先輩<rt>せんぱい</rt></ruby>が「<ruby>入<rt>はい</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に<span class="g-subject"><ruby>体<rt>からだ</rt></ruby>を</span><span class="g-verb-form"><ruby>洗<rt>あら</rt></ruby>った</span><span class="grammar-point">ほうがいいよ</span>」と<ruby>教<rt>おし</rt></ruby>えてくれた。また、<ruby>壁<rt>かべ</rt></ruby>には「タオルをお<ruby>湯<rt>ゆ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に<ruby>入<rt>い</rt></ruby>れないでください」という<ruby>注意書<rt>ちゅういがき</rt></ruby>もあった。<ruby>長<rt>なが</rt></ruby>い<ruby>髪<rt>かみ</rt></ruby>の<ruby>人<rt>ひと</rt></ruby>は、<span class="g-subject"><ruby>髪<rt>かみ</rt></ruby>を</span><span class="g-verb-form"><ruby>結<rt>むす</rt></ruby>んだ</span><span class="grammar-point">ほうがいいそうだ</span>。<ruby>最初<rt>さいしょ</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>恥<rt>は</rt></ruby>ずかしかったが、<ruby>温<rt>あたた</rt></ruby>かいお<ruby>湯<rt>ゆ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ると、<ruby>一週間<rt>いっしゅうかん</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby>の<ruby>疲<rt>つか</rt></ruby>れが<ruby>全部<rt>ぜんぶ</rt></ruby>なくなったような<ruby>気<rt>き</rt></ruby>がした。</p>
+                        <p><ruby>温泉<rt>おんせん</rt></ruby>から<ruby>出<rt>で</rt></ruby>た<ruby>後<rt>あと</rt></ruby>、<ruby>少<rt>すこ</rt></ruby>し<ruby>休<rt>やす</rt></ruby>んでから<ruby>夕食<rt>ゆうしょく</rt></ruby>の<ruby>会場<rt>かいじょう</rt></ruby>へ<ruby>行<rt>い</rt></ruby>った。<ruby>女将<rt>おかみ</rt></ruby>さんが「さあ、こちらへどうぞ。<ruby>料理<rt>りょうり</rt></ruby>が<ruby>冷<rt>さ</rt></ruby>めないうちに、<span class="g-verb-form"><ruby>早<rt>はや</rt></ruby>く<ruby>食<rt>た</rt></ruby>べ</span><span class="grammar-point">なさい</span>」と<ruby>優<rt>やさ</rt></ruby>しく<ruby>言<rt>い</rt></ruby>った。テーブルの<ruby>上<rt>うえ</rt></ruby>には、たくさんのきれいな<ruby>料理<rt>りょうり</rt></ruby>が<ruby>並<rt>なら</rt></ruby>んでいた。</p>
+                        <p><ruby>明日<rt>あした</rt></ruby>はもう<ruby>東京<rt>とうきょう</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>らなければならない。あっという<ruby>間<rt>ま</rt></ruby>だ。<ruby>帰<rt>かえ</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に<span class="g-subject">お<ruby>土産<rt>みやげ</rt></ruby>を</span><span class="g-verb-form"><ruby>買<rt>か</rt></ruby>わない</span><span class="grammar-point">と</span>。</p>
+                    </div>
+                    <div class="passage-audio-controls">
+                        <button class="control-btn play-pause" data-target="readingPassageText">▶ Bắt đầu</button>
+                        <button class="control-btn stop" data-target="readingPassageText">■ Dừng hẳn</button>
+                        <div class="speed-controls">
+                            <span>Tốc độ:</span>
+                            <button class="speed-btn" data-speed="0.8">0.8x</button>
+                            <button class="speed-btn active" data-speed="1.0">1x</button>
+                            <button class="speed-btn" data-speed="1.2">1.2x</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <details class="translation-wrapper">
+                    <summary>📖 Xem bản dịch và từ vựng</summary>
+                    <div class="translation-content">
+                        <h4>Bản dịch</h4>
+                        <p>Ryokan mà chúng tôi đã ở tại Hakone thật sự rất tuyệt vời. Lần đầu tiên tôi được mặc Yukata. Dù hơi khó cử động một chút, nhưng tôi rất vui vì đã được trải nghiệm văn hóa Nhật Bản.</p>
+                        <p>Trước bữa tối, mọi người đã cùng nhau đi onsen. Ở onsen có một vài quy tắc. Anh Tanaka đã chỉ cho tôi rằng "Nên tắm rửa sạch sẽ trước khi vào bồn nhé". Ngoài ra, trên tường cũng có một bảng lưu ý ghi "Xin đừng nhúng khăn vào nước nóng". Nghe nói những người tóc dài thì nên buộc tóc lên. Ban đầu tôi có hơi ngại ngùng, nhưng khi bước vào làn nước ấm, tôi có cảm giác như mọi mệt mỏi của một tuần làm việc đều tan biến hết.</p>
+                        <p>Sau khi ra khỏi onsen, chúng tôi nghỉ ngơi một chút rồi đến phòng ăn tối. Bà chủ nhà trọ đã dịu dàng nói: "Nào, mời quý vị lối này. Đồ ăn kẻo nguội, mọi người hãy ăn nhanh lên nhé". Trên bàn, rất nhiều món ăn đẹp mắt đã được bày sẵn.</p>
+                        <p>Ngày mai đã phải trở về Tokyo rồi. Thật là thoáng chốc. Trước khi về, mình phải mua quà lưu niệm mới được.</p>
+                        
+                        <h4>Từ vựng mới trong bài đọc</h4>
+                         <ul class="reading-vocab-list">
+                            <li><strong>泊まる (とまる):</strong> trọ lại</li>
+                            <li><strong>体験する (たいけんする):</strong> trải nghiệm</li>
+                            <li><strong>壁 (かべ):</strong> bức tường</li>
+                            <li><strong>お湯 (おゆ):</strong> nước nóng</li>
+                            <li><strong>結ぶ (むすぶ):</strong> buộc, cột</li>
+                            <li><strong>恥ずかしい (はずかしい):</strong> xấu hổ, ngại ngùng</li>
+                            <li><strong>疲れがなくなる (つかれがなくなる):</strong> sự mệt mỏi tan biến</li>
+                            <li><strong>会場 (かいじょう):</strong> hội trường, địa điểm tổ chức</li>
+                            <li><strong>女将 (おかみ):</strong> bà chủ (nhà trọ, quán ăn kiểu Nhật)</li>
+                            <li><strong>冷める (さめる):</strong> bị nguội</li>
+                            <li><strong>あっという間 (あっというま):</strong> trong nháy mắt, thoáng chốc</li>
+                        </ul>
+                    </div>
+                </details>
+                
+                <hr>
+                
+                <h4>Câu hỏi đọc hiểu</h4>
+                 <div class="reading-quiz-container quiz-container">
+                    <div class="quiz-card">
+                        <p class="question-text">1. <ruby>温泉<rt>おんせん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>るとき、<ruby>何<rt>なに</rt></ruby>をしないほうがいいですか。</p>
+                        <div class="options-container">
+                            <button class="option-btn"><ruby>入<rt>はい</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に<ruby>体<rt>からだ</rt></ruby>を<ruby>洗<rt>あら</rt></ruby>うこと。</button>
+                            <button class="option-btn"><ruby>髪<rt>かみ</rt></ruby>が<ruby>長<rt>なが</rt></ruby>い<ruby>人<rt>ひと</rt></ruby>が<ruby>髪<rt>かみ</rt></ruby>を<ruby>結<rt>むす</rt></ruby>ぶこと。</button>
+                            <button class="option-btn" data-correct="true">タオルをお<ruby>湯<rt>ゆ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に<ruby>入<rt>い</rt></ruby>れること。</button>
+                            <button class="option-btn"><ruby>温<rt>あたた</rt></ruby>かいお<ruby>湯<rt>ゆ</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ること。</button>
+                        </div>
+                        <div class="explanation-box" style="display: none;">
+                            💡 <strong>Giải thích:</strong> Trong bài có câu: 「<ruby>壁<rt>かべ</rt></ruby>には「タオルをお<ruby>湯<rt>ゆ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>に<ruby>入<rt>い</rt></ruby>れないでください」という<ruby>注意書<rt>ちゅういがき</rt></ruby>もあった。」 (Trên tường cũng có một bảng lưu ý ghi "Xin đừng nhúng khăn vào nước nóng").
+                        </div>
+                    </div>
+                     <div class="quiz-card">
+                        <p class="question-text">2. <ruby>女将<rt>おかみ</rt></ruby>さんは、どうして「<span class="g-verb-form"><ruby>早<rt>はや</rt></ruby>く<ruby>食<rt>た</rt></ruby>べ</span><span class="grammar-point">なさい</span>」と<ruby>言<rt>い</rt></ruby>いましたか。</p>
+                        <div class="options-container">
+                            <button class="option-btn"><ruby>次<rt>つぎ</rt></ruby>の<ruby>客<rt>きゃく</rt></ruby>が<ruby>待<rt>ま</rt></ruby>っているからです。</button>
+                            <button class="option-btn" data-correct="true"><ruby>料理<rt>りょうり</rt></ruby>が<ruby>冷<rt>さ</rt></ruby>めてしまうからです。</button>
+                            <button class="option-btn"><ruby>旅館<rt>りょかん</rt></ruby>のルールだからです。</button>
+                            <button class="option-btn">みんながお<ruby>腹<rt>なか</rt></ruby>が<ruby>空<rt>す</rt></ruby>いていると<ruby>思<rt>おも</rt></ruby>ったからです。</button>
+                        </div>
+                        <div class="explanation-box" style="display: none;">
+                            💡 <strong>Giải thích:</strong> Bà chủ nói: 「<ruby>料理<rt>りょうり</rt></ruby>が<ruby>冷<rt>さ</rt></ruby>めないうちに、<span class="g-verb-form"><ruby>早<rt>はや</rt></ruby>く<ruby>食<rt>た</rt></ruby>べ</span><span class="grammar-point">なさい</span>」 (Đồ ăn kẻo nguội, mọi người hãy ăn nhanh lên nhé). Lý do là vì "đồ ăn sẽ bị nguội".
+                        </div>
+                    </div>
+                    <div class="quiz-card">
+                        <p class="question-text">3. <ruby>筆者<rt>ひっしゃ</rt></ruby>が<ruby>明日<rt>あした</rt></ruby><ruby>帰<rt>かえ</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>に、しなければならないことは<ruby>何<rt>なに</rt></ruby>ですか。</p>
+                        <div class="options-container">
+                            <button class="option-btn">もう<ruby>一度<rt>いちど</rt></ruby><ruby>温泉<rt>おんせん</rt></ruby>に<ruby>入<rt>はい</rt></ruby>ること。</button>
+                            <button class="option-btn"><ruby>女将<rt>おかみ</rt></ruby>さんにお<ruby>礼<rt>れい</rt></ruby>を<ruby>言<rt>い</rt></ruby>うこと。</button>
+                            <button class="option-btn" data-correct="true"><ruby>家族<rt>かぞく</rt></ruby>にお<ruby>土産<rt>みやげ</rt></ruby>を<ruby>買<rt>か</rt></ruby>うこと。</button>
+                            <button class="option-btn"><ruby>旅館<rt>りょかん</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>を<ruby>掃除<rt>そうじ</rt></ruby>すること。</button>
+                        </div>
+                        <div class="explanation-box" style="display: none;">
+                           💡 <strong>Giải thích:</strong> Câu cuối cùng của bài viết là lời tự nhủ của tác giả: 「<ruby>帰<rt>かえ</rt></ruby>る<ruby>前<rt>まえ</rt></ruby>にお<ruby>土産<rt>みやげ</rt></ruby>を<span class="g-verb-form"><ruby>買<rt>か</rt></ruby>わない</span><span class="grammar-point">と</span>。」 (Trước khi về, mình phải mua quà lưu niệm mới được).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- =============================================================== -->
+    <!-- PHẦN KẾT THÚC FILE -->
+    <!-- =============================================================== -->
+    <!-- CÁC PHẦN TIẾP THEO SẼ ĐƯỢC THÊM VÀO SAU -->
+
+    <script src="script-talk1029.js"></script>
+<!-- thêm cấu trúc cho file css   script-talk1029v2.js-->
+
+
+
+
+</body>
+</html>
