@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- LESSON TITLE -->
+    <title>Lesson 1: Comparison Patterns | Learn Japanese with An</title>
+    
+    <!-- Common CSS and JS links, do not change -->
+    <link rel="stylesheet" href="styles-talk1029.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <!-- LESSON NAME AND DESCRIPTION -->
+        <h2>Lesson 1: Dialogue - Comparison Patterns</h2>
+        <p>Practice how to compare items and express preferences.</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 1: DIALOGUE (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <img src="../photo/lesson1-1.jpg" alt="An and Tanaka talking during a break" class="scene-background-image">
+        
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Prev</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIALOGUE CONTENT -->
+    <div class="dialogue-source" style="display: none;">
+        
+        <!-- === SCENE 1: During the lunch break === -->
+        <div class="scene" data-scene-name="Lunch Break" data-background-image="../photo/lesson1-1.jpg">
+            
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンさん、<ruby>新<rt>あたら</rt></ruby>しい<ruby>仕事<rt>しごと</rt></ruby>はどう？<ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby><span class="grammar-point">より</span><ruby>大変<rt>たいへん</rt></ruby>？</p>
+                        <p class="english-text">An-san, how's the new job? Is it tougher than your previous job?</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、<ruby>少<rt>すこ</rt></ruby>し<ruby>大変<rt>たいへん</rt></ruby>ですが、やりがいがあります。それに、<ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby><span class="grammar-point">より</span>ずっと<ruby>楽<rt>たの</rt></ruby>しいです。</p>
+                        <p class="english-text">Yes, it's a little tough, but it's rewarding. Plus, it's much more enjoyable than my previous job.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうか、よかった。じゃあ、<span class="g-subj-a"><ruby>仕事<rt>しごと</rt></ruby></span><span class="grammar-point">と</span><span class="g-obj-b">プライベート</span><span class="grammar-point">と</span>、<span class="grammar-point">どちらが</span><ruby>大切<rt>たいせつ</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>う？</p>
+                        <p class="english-text">I see, that's good. Well then, between work and your private life, which do you think is more important?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">うーん、<ruby>難<rt>むずか</rt></ruby>しい<ruby>質問<rt>しつもん</rt></ruby>ですね。どちらも<ruby>大切<rt>たいせつ</rt></ruby>ですが、<ruby>私<rt>わたし</rt></ruby>はプライベート<span class="grammar-point">のほうが</span><ruby>少<rt>すこ</rt></ruby>しだけ<ruby>大切<rt>たいせつ</rt></ruby>かな。</p>
+                        <p class="english-text">Hmm, that's a difficult question. Both are important, but I guess my private life is just a little more important.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- === SCENE 2: Sports preferences === -->
+        <div class="scene" data-scene-name="Sports Talk" data-background-image="../photo/lesson1-2.jpg">
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>僕<rt>ぼく</rt></ruby>もそう<ruby>思<rt>おも</rt></ruby>う。アンさんはスポーツが<ruby>好<rt>す</rt></ruby>きだよね。<span class="g-subj-a">サッカー</span><span class="grammar-point">と</span><span class="g-obj-b"><ruby>野球<rt>やきゅう</rt></ruby></span><span class="grammar-point">と</span>、<span class="grammar-point">どちらが</span><ruby>好<rt>す</rt></ruby>き？</p>
+                        <p class="english-text">I think so too. You like sports, right, An-san? Between soccer and baseball, which do you like more?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>私<rt>わたし</rt></ruby>はサッカー<span class="grammar-point">のほうが</span><ruby>好<rt>す</rt></ruby>きです。<ruby>見<rt>み</rt></ruby>るのも<ruby>楽<rt>たの</rt></ruby>しいですし。</p>
+                        <p class="english-text">I like soccer more. It's fun to watch, too.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうなんだ。<ruby>僕<rt>ぼく</rt></ruby>は<ruby>野球<rt>やきゅう</rt></ruby>が<ruby>好<rt>す</rt></ruby>きで、<span class="grammar-point"><ruby>何<rt>なに</rt></ruby>より</span><ruby>野球観戦<rt>やきゅうかんせん</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby>の<ruby>楽<rt>たの</rt></ruby>しみなんだ。</p>
+                        <p class="english-text">I see. As for me, I like baseball, and more than anything, watching a baseball game is my greatest pleasure.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">へえ、そうなんですね！<ruby>今度<rt>こんど</rt></ruby>、<ruby>一緒<rt>いっしょ</rt></ruby>に<ruby>見<rt>み</rt></ruby>に<ruby>行<rt>い</rt></ruby>きませんか。</p>
+                        <p class="english-text">Oh, really? Would you like to go watch a game together next time?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 2: NEW VOCABULARY (新しい言葉) -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>New Vocabulary (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>大変<rt>たいへん</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="たいへん">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Na-adjective</p>
+                        <p><span class="label">Meaning:</span> Tough, difficult, hard</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">この<ruby>仕事<rt>しごと</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>大変<rt>たいへん</rt></ruby>ですが、<ruby>面白<rt>おもしろ</rt></ruby>いです。</p>
+                            <button class="vocab-play-btn" data-speak-text="この仕事は少し大変ですが、面白いです">🔊</button>
+                        </div>
+                        <p class="en-sentence">This job is a bit tough, but it's interesting.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">やりがいがある</h4>
+                        <button class="vocab-play-btn" data-speak-text="やりがいがある">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Verb Phrase</p>
+                        <p><span class="label">Meaning:</span> To be rewarding, worthwhile</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>給料<rt>きゅうりょう</rt></ruby>は<ruby>高<rt>たか</rt></ruby>くないですが、やりがいがある<ruby>仕事<rt>しごと</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" data-speak-text="給料は高くないですが、やりがいがある仕事です">🔊</button>
+                        </div>
+                        <p class="en-sentence">The salary isn't high, but it's a rewarding job.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">プライベート</h4>
+                        <button class="vocab-play-btn" data-speak-text="プライベート">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Noun</p>
+                        <p><span class="label">Meaning:</span> Private life, personal time</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>仕事<rt>しごと</rt></ruby>とプライベートのバランスが<ruby>大切<rt>たいせつ</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" data-speak-text="仕事とプライベートのバランスが大切です">🔊</button>
+                        </div>
+                        <p class="en-sentence">The balance between work and private life is important.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>大切<rt>たいせつ</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="たいせつ">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Na-adjective</p>
+                        <p><span class="label">Meaning:</span> Important</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>家族<rt>かぞく</rt></ruby>は<ruby>私<rt>わたし</rt></ruby>にとって<ruby>一番<rt>いちばん</rt></ruby><ruby>大切<rt>たいせつ</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" data-speak-text="家族は私にとって一番大切です">🔊</button>
+                        </div>
+                        <p class="en-sentence">Family is the most important thing to me.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 3: GRAMMAR ANALYSIS (文法の解説) -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+            <h2>Part 3: Grammar Analysis (文法の解説)</h2>
+            <div class="grammar-card">
+                <h3>A. Superiority Comparison: A は B より + Adjective</h3>
+                <div class="grammar-explanation">
+                    <p>This is the most basic comparison pattern, used to state that the subject (A) is "more __" than another item (B).</p>
+                    <p><strong>Formula:</strong> <span class="g-subj-a">A</span> は <span class="g-obj-b">B</span> <span class="grammar-point">より</span> + <span class="g-predicate">Adjective / Verb</span></p>
+                </div>
+                <div class="grammar-example-group">
+                    <p class="grammar-jp">① <span class="g-subj-a"><ruby>新<rt>あたら</rt></ruby>しい<ruby>仕事<rt>しごと</rt></ruby></span>は<span class="g-obj-b"><ruby>前<rt>まえ</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby></span><span class="grammar-point">より</span><span class="g-predicate"><ruby>楽<rt>たの</rt></ruby>しいです</span>。 (From dialogue)</p>
+                    <p class="grammar-en">→ The new job is more fun than the previous job.</p>
+                </div>
+            </div>
+            <div class="grammar-card">
+                <h3>B. Inferiority Comparison: A は B ほど + Negative</h3>
+                <div class="grammar-explanation">
+                    <p>This pattern expresses that A is "not as __ as" B. It is the opposite of `～より`.</p>
+                    <p><strong>Formula:</strong> <span class="g-subj-a">A</span> は <span class="g-obj-b">B</span> <span class="grammar-point">ほど</span> + <span class="g-predicate">Adjective / Verb (Negative form)</span></p>
+                    <div class="highlight-box">
+                        💡 <strong>Golden Rule:</strong> Remember this!
+                        <ul>
+                            <li><span class="grammar-point">～より</span>: Always used with an <strong>affirmative</strong> sentence (A is MORE than B).</li>
+                            <li><span class="grammar-point">～ほど</span>: Always used with a <strong>negative</strong> sentence (A is NOT AS MUCH AS B).</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grammar-example-group">
+                    <p class="grammar-jp">① <span class="g-subj-a"><ruby>今年<rt>ことし</rt></ruby>の<ruby>夏<rt>なつ</rt></ruby></span>は<span class="g-obj-b"><ruby>去年<rt>きょねん</rt></ruby></span><span class="grammar-point">ほど</span><span class="g-predicate"><ruby>暑<rt>あつ</rt></ruby>くないですね</span>。</p>
+                    <p class="grammar-en">→ This year's summer is not as hot as last year's, is it?</p>
+                </div>
+            </div>
+            <div class="grammar-card">
+                <h3>C. Asking for a Choice: A と B と どちらが～か？ & Answering: ～のほうが</h3>
+                <div class="grammar-explanation">
+                    <p>This is a set pair for asking and answering about a choice between two items.</p>
+                    <p><strong>Question:</strong> <span class="g-subj-a">A</span> と <span class="g-obj-b">B</span> と <span class="grammar-point">どちらが</span> <span class="g-predicate">～か</span>？</p>
+                    <p><strong>Answer:</strong> <span class="g-subj-a">(Your Choice)</span> <span class="grammar-point">のほうが</span> <span class="g-predicate">～です</span>。</p>
+                </div>
+                <div class="grammar-example-group">
+                    <p class="grammar-jp">① A: <span class="g-subj-a">サッカー</span>と<span class="g-obj-b"><ruby>野球<rt>やきゅう</rt></ruby></span>と、<span class="grammar-point">どちらが</span><span class="g-predicate"><ruby>好<rt>す</rt></ruby>きですか</span>。 (From dialogue)</p>
+                    <p class="grammar-en">→ Between soccer and baseball, which do you like more?</p>
+                    <p class="grammar-jp">　 B: <span class="g-subj-a">サッカー</span><span class="grammar-point">のほうが</span><span class="g-predicate"><ruby>好<rt>す</rt></ruby>きです</span>。 (From dialogue)</p>
+                    <p class="grammar-en">→ I like soccer more.</p>
+                </div>
+            </div>
+            <div class="grammar-card">
+                <h3>D. Ultimate Comparison (Special Usage): 何より</h3>
+                <div class="grammar-explanation">
+                    <p>The phrase <span class="grammar-point">「Question Word + より/も」</span> means "...more than anything / anyone...".</p>
+                </div>
+                <div class="grammar-example-group">
+                    <p class="grammar-jp">① <span class="grammar-point"><ruby>何<rt>なに</rt></ruby>より</span><span class="g-predicate"><ruby>野球観戦<rt>やきゅうかんせん</rt></ruby>が<ruby>一番<rt>いちばん</rt></ruby>の<ruby>楽<rt>たの</rt></ruby>しみなんだ</span>。 (From dialogue)</p>
+                    <p class="grammar-en">→ More than anything, watching baseball is my greatest pleasure.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 4: GRAMMAR PRACTICE (練習) -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Part 4: Grammar Practice (練習)</h2>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <p class="question-text">1. <ruby>日本<rt>にほん</rt></ruby>では１<ruby>月<rt>がつ</rt></ruby>と２<ruby>月<rt>がつ</rt></ruby>と、(　　) が<ruby>寒<rt>さむ</rt></ruby>いですか。</p>
+                <div class="options-container">
+                    <button class="option-btn">どちらも</button>
+                    <button class="option-btn" data-correct="true">どちら</button>
+                    <button class="option-btn">どんな</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> The question pattern for choosing between two items <span class="g-subj-a">A</span> and <span class="g-obj-b">B</span> is <span class="grammar-point">「A と B と、どちらが～か」</span>.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">2. <ruby>今年<rt>ことし</rt></ruby>の<ruby>試験<rt>しけん</rt></ruby>は<ruby>去年<rt>きょねん</rt></ruby> (　　) <ruby>難<rt>むずか</rt></ruby>しくなかったです。</p>
+                <div class="options-container">
+                    <button class="option-btn">より</button>
+                    <button class="option-btn">のほう</button>
+                    <button class="option-btn" data-correct="true">ほど</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> The end of the sentence is negative (<span class="g-predicate">～なかったです</span>). In comparisons, we always use <span class="grammar-point">ほど</span> with the negative form to mean "not as... as".
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">3. このドラマ<span style="font-weight: bold;">より</span>、きのうのドラマ (　　) がおもしろかったね。</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true">のほう</button>
+                    <button class="option-btn">ほど</button>
+                    <button class="option-btn">だけ</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> <span class="grammar-point">のほう</span> is used to emphasize the chosen item. The structure <span class="g-obj-b">B</span> <span class="grammar-point">より</span>、 <span class="g-subj-a">A</span> <span class="grammar-point">のほう</span> が～ (Compared to B, A is more...) is very common.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 5: APPLIED READING COMPREHENSION (読解練習) -->
+    <!-- =============================================================== -->
+    <div class="reading-comprehension-section">
+        <div class="reading-comprehension-container">
+            <h2>Part 5: Applied Reading Comprehension (読解練習)</h2>
+            <div class="reading-wrapper">
+                <div class="reading-card">
+                    <h3>Choosing a Café</h3>
+                    <p class="context-description"><strong>Context:</strong> An and Suzuki-senpai are deciding which café to go to after lunch. Suzuki explains the differences between two popular local spots.</p>
+
+                    <div class="readable-passage-component">
+                        <h4><ruby>文章<rt>ぶんしょう</rt></ruby> (Passage)</h4>
+                        <div class="text-to-be-read" id="readingPassageText">
+                            <p><ruby>今日<rt>きょう</rt></ruby>、<ruby>鈴木<rt>すずき</rt></ruby><ruby>先輩<rt>せんぱい</rt></ruby>と<ruby>一緒<rt>いっしょ</rt></ruby>にランチへ<ruby>行<rt>い</rt></ruby>きました。<ruby>食後<rt>しょくご</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>たちはゆっくり<ruby>話<rt>はな</rt></ruby>せるカフェに<ruby>行<rt>い</rt></ruby>くことにしました。<ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>近<rt>ちか</rt></ruby>くには「さくらカフェ」と「ひまわりコーヒー」という<ruby>有名<rt>ゆうめい</rt></ruby>な<ruby>二<rt>ふた</rt></ruby>つの<ruby>店<rt>みせ</rt></ruby>があります。</p>
+                            <p><ruby>鈴木<rt>すずき</rt></ruby>さんは「アンさん、<span class="g-subj-a">さくらカフェ</span><span class="grammar-point">と</span><span class="g-obj-b">ひまわりコーヒー</span><span class="grammar-point">と</span>、<span class="grammar-point">どちらが</span>いいですか」と<ruby>聞<rt>き</rt></ruby>きました。</p>
+                            <p><ruby>鈴木<rt>すずき</rt></ruby>さんによると、「ひまわりコーヒー」は<ruby>最近<rt>さいきん</rt></ruby>できた<ruby>新<rt>あたら</rt></ruby>しいお<ruby>店<rt>みせ</rt></ruby>です。コーヒーは「さくらカフェ」<span class="grammar-point">より</span><ruby>安<rt>やす</rt></ruby>いですが、いつも<ruby>若<rt>わか</rt></ruby>い<ruby>人<rt>ひと</rt></ruby>でいっぱいです。</p>
+                            <p><ruby>一方<rt>いっぽう</rt></ruby>、「さくらカフェ」は<ruby>昔<rt>むかし</rt></ruby>からある<ruby>喫茶店<rt>きっさてん</rt></ruby>です。<ruby>手作<rt>てづく</rt></ruby>りのケーキが<ruby>有名<rt>ゆうめい</rt></ruby>で、「ひまわりコーヒー」<span class="grammar-point">より</span>「さくらカフェ」<span class="grammar-point">のほうが</span>ケーキの<ruby>種類<rt>しゅるい</rt></ruby>もずっと<ruby>多<rt>おお</rt></ruby>いそうです。「でも、<ruby>値段<rt>ねだん</rt></ruby>は『ひまわりコーヒー』<span class="grammar-point">ほど</span><ruby>安<rt>やす</rt></ruby>くはありませんよ」と<ruby>鈴木<rt>すずき</rt></ruby>さんは<ruby>言<rt>い</rt></ruby>いました。</p>
+                            <p><ruby>私<rt>わたし</rt></ruby>は、<ruby>静<rt>しず</rt></ruby>かな<ruby>場所<rt>ばしょ</rt></ruby>で<ruby>甘<rt>あま</rt></ruby>いものが<ruby>食<rt>た</rt></ruby>べたかったです。それで、「<ruby>今日<rt>きょう</rt></ruby>は<ruby>安<rt>やす</rt></ruby>いこと<span class="grammar-point">より</span>、<ruby>静<rt>しず</rt></ruby>かな<span class="grammar-point">ほうが</span>いいです。だから、さくらカフェに<ruby>行<rt>い</rt></ruby>きたいです」と<ruby>答<rt>こた</rt></ruby>えました。</p>
+                        </div>
+                        <div class="passage-audio-controls">
+                            <button class="control-btn play-pause" data-target="readingPassageText">▶ Start</button>
+                            <button class="control-btn stop" data-target="readingPassageText">■ Stop</button>
+                            <div class="speed-controls">
+                                <span>Speed:</span>
+                                <button class="speed-btn" data-speed="0.8">0.8x</button>
+                                <button class="speed-btn active" data-speed="1.0">1x</button>
+                                <button class="speed-btn" data-speed="1.2">1.2x</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <details class="translation-wrapper">
+                        <summary>📖 View Translation & Vocabulary</summary>
+                        <div class="translation-content">
+                            <h4>Translation</h4>
+                            <p>Today, I went to lunch with Suzuki-senpai. After the meal, we decided to go to a café where we could talk leisurely. Near our company, there are two famous shops called "Sakura Cafe" and "Himawari Coffee".</p>
+                            <p>Suzuki-san asked, "An-san, between Sakura Cafe and Himawari Coffee, which one would you prefer?"</p>
+                            <p>According to Suzuki-san, "Himawari Coffee" is a new shop that opened recently. Its coffee is cheaper than Sakura Cafe's, but it's always full of young people.</p>
+                            <p>On the other hand, "Sakura Cafe" is an old-style coffee house (kissaten). It's famous for its handmade cakes, and I hear it has many more types of cake than Himawari Coffee. "But," Suzuki-san said, "the price is not as cheap as Himawari Coffee."</p>
+                            <p>I wanted to eat something sweet in a quiet place. So, I replied, "Today, being quiet is better than being cheap. Therefore, I want to go to Sakura Cafe."</p>
+
+                            <h4>New Vocabulary</h4>
+                            <ul class="reading-vocab-list">
+                                <li><strong>食後 (しょくご):</strong> after a meal</li>
+                                <li><strong>雰囲気 (ふんいき):</strong> atmosphere</li>
+                                <li><strong>喫茶店 (きっさてん):</strong> traditional coffee shop</li>
+                                <li><strong>手作り (てづくり):</strong> handmade</li>
+                                <li><strong>種類 (しゅるい):</strong> type, kind</li>
+                                <li><strong>値段 (ねだん):</strong> price</li>
+                                <li><strong>選択 (せんたく):</strong> choice, selection</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <hr>
+                    <h4>Comprehension Questions</h4>
+                     <div class="reading-quiz-container quiz-container">
+                        <div class="quiz-card">
+                            <p class="question-text">1. Which statement is true about the two cafés?</p>
+                            <div class="options-container">
+                                <button class="option-btn">Himawari Coffee is quieter than Sakura Cafe.</button>
+                                <button class="option-btn">Sakura Cafe's coffee is cheaper than Himawari Coffee's.</button>
+                                <button class="option-btn" data-correct="true">Himawari Coffee does not have as many types of cake as Sakura Cafe.</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Explanation:</strong> The passage says 「『ひまわりコーヒー』より『さくらカフェ』のほうがケーキの種類もずっと多いそうです。」 (I hear Sakura Cafe has far more types of cake than Himawari Coffee), which confirms the correct answer.
+                            </div>
+                        </div>
+                         <div class="quiz-card">
+                            <p class="question-text">2. Why did An choose "Sakura Cafe"?</p>
+                            <div class="options-container">
+                                <button class="option-btn">Because she likes a modern atmosphere.</button>
+                                <button class="option-btn" data-correct="true">Because she wanted to relax in a quiet place.</button>
+                                <button class="option-btn">Because Suzuki-senpai likes that shop the most.</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Explanation:</strong> An thought, 「静かな場所で甘いものが食べたかったです」 (I wanted to eat something sweet in a quiet place). This was her reason for choosing the café.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-talk1029.js"></script>
+</body>
+</html>

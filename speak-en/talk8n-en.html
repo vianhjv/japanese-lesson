@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 8: Observation & Speculation | Learn Japanese with An</title>
+    <link rel="stylesheet" href="styles-talk1029.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h2>Lesson 8: Observation & Speculation</h2>
+        <p>Learn to report hearsay, make guesses (~そうです), and describe lasting states (~まま).</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 1: DIALOGUE (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <img src="../photo/lesson8-1.jpg" alt="An and Tanaka talking in the office in the morning" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Prev</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogue-source" style="display: none;">
+        <div class="scene" data-scene-name="Morning at the Office" data-background-image="../photo/lesson8-1.jpg">
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>田中先輩<rt>たなかせんぱい</rt></ruby>、おはようございます。</p>
+                        <p class="english-text">Good morning, Tanaka-senpai.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">あ、アンさん、おはよう。あれ、なんだか<ruby>顔色<rt>かおいろ</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いね。<span class="g-verb-form"><ruby>眠<rt>ねむ</rt></ruby></span><span class="grammar-point">そうですね</span>。</p>
+                        <p class="english-text">Oh, good morning, An-san. Hmm, you look a bit pale. You look sleepy.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、<ruby>昨夜<rt>ゆうべ</rt></ruby><ruby>少<rt>すこ</rt></ruby>し…。それより、<ruby>山田部長<rt>やまだぶちょう</rt></ruby>はもういらっしゃいますか。<ruby>朝早<rt>あさはや</rt></ruby>くから<ruby>部屋<rt>へや</rt></ruby>の<ruby>電気<rt>でんき</rt></ruby>がついていました。</p>
+                        <p class="english-text">Yes, last night was a bit... Anyway, is Manager Yamada here already? His office light has been on since early this morning.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ああ、<ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>昨日<rt>きのう</rt></ruby>、<ruby>遅<rt>おそ</rt></ruby>くまで<ruby>残業<rt>ざんぎょう</rt></ruby>していたみたいだよ。<ruby>聞<rt>き</rt></ruby>いた<ruby>話<rt>はなし</rt></ruby>だけど、<ruby>最近<rt>さいきん</rt></ruby>プライベートでも<ruby>色々<rt>いろいろ</rt></ruby>あって<span class="g-verb-form"><ruby>大変<rt>たいへん</rt></ruby>だ</span><span class="grammar-point">そうです</span>。</p>
+                        <p class="english-text">Ah, it seems the manager was working overtime until late yesterday. It's just hearsay, but I heard that he's been going through a lot in his personal life recently, too.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうなんですか…。<ruby>心配<rt>しんぱい</rt></ruby>ですね。</p>
+                        <p class="english-text">Is that so... I'm worried about him.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">うん。<ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>さん、<ruby>昨日<rt>きのう</rt></ruby>から<ruby>出張<rt>しゅっちょう</rt></ruby>でね。<ruby>息子<rt>むすこ</rt></ruby>さんが<ruby>一人<rt>ひとり</rt></ruby>で<ruby>留守番<rt>るすばん</rt></ruby>しているんだ。</p>
+                        <p class="english-text">Yeah. The manager's wife has been on a business trip since yesterday. Their son is staying home alone.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>昨日<rt>きのう</rt></ruby>、<ruby>電話<rt>でんわ</rt></ruby>で<ruby>話<rt>はな</rt></ruby>しているのを<ruby>聞<rt>き</rt></ruby>いたけど、<ruby>息子<rt>むすこ</rt></ruby>さんはすごくお<ruby>父<rt>とう</rt></ruby>さんに<span class="g-verb-form"><ruby>会<rt>あ</rt></ruby>いた</span><span class="grammar-point">がっていました</span>よ。</p>
+                        <p class="english-text">I overheard him on the phone yesterday, and his son was showing that he really wanted to see his dad.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">かわいそうに…。<ruby>部長<rt>ぶちょう</rt></ruby>も<ruby>大変<rt>たいへん</rt></ruby>ですね。</p>
+                        <p class="english-text">Oh, the poor thing... The manager must be having a tough time too.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">だから、<ruby>僕<rt>ぼく</rt></ruby>たちがしっかり<ruby>仕事<rt>しごと</rt></ruby>をして、<ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>負担<rt>ふたん</rt></ruby>を<ruby>軽<rt>かる</rt></ruby>くしないとね。</p>
+                        <p class="english-text">Exactly. That's why we need to do our jobs properly and lighten his burden.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい！あっ！<ruby>私<rt>わたし</rt></ruby>、<ruby>昨日<rt>きのう</rt></ruby>の<ruby>夜<rt>よる</rt></ruby>、<ruby>自分<rt>じぶん</rt></ruby>の<ruby>席<rt>せき</rt></ruby>のパソコン、<ruby>電源<rt>でんげん</rt></ruby>を<span class="g-verb-form">つけっぱなし</span>の<span class="grammar-point">まま</span><ruby>帰<rt>かえ</rt></ruby>ってしまったかもしれません！</p>
+                        <p class="english-text">Yes! Oh! I think I might have gone home last night leaving my computer on at my desk!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">え、<ruby>本当<rt>ほんとう</rt></ruby>？すぐ<ruby>確認<rt>かくにん</rt></ruby>しに<ruby>行<rt>い</rt></ruby>こう！</p>
+                        <p class="english-text">What, really? Let's go check right now!</p>
+                    </div>
+                </div>
+            </div>
+             <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">すみません！</p>
+                        <p class="english-text">I'm so sorry!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 2: NEW VOCABULARY (新しい言葉) -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>New Vocabulary (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>顔色<rt>かおいろ</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>い</h4>
+                        <button class="vocab-play-btn" data-speak-text="かおいろがわるい">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Expression</p>
+                        <p><span class="label">Meaning:</span> To look pale; to look unwell</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">どうしたんですか。<ruby>顔色<rt>かおいろ</rt></ruby>が<ruby>悪<rt>わる</rt></ruby>いですよ。</p>
+                            <button class="vocab-play-btn" data-speak-text="どうしたんですか。かおいろがわるいですよ。">🔊</button>
+                        </div>
+                        <p class="en-sentence">What's wrong? You look pale.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>眠<rt>ねむ</rt></ruby>そう</h4>
+                        <button class="vocab-play-btn" data-speak-text="ねむそう">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Na-adjective</p>
+                        <p><span class="label">Meaning:</span> To look sleepy</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">彼はあくびをしています。<ruby>眠<rt>ねむ</rt></ruby>そうですね。</p>
+                            <button class="vocab-play-btn" data-speak-text="かれはあくびをしています。ねむそうですね。">🔊</button>
+                        </div>
+                        <p class="en-sentence">He's yawning. He looks sleepy, doesn't he?</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>出張<rt>しゅっちょう</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="しゅっちょう">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Noun, Suru-verb</p>
+                        <p><span class="label">Meaning:</span> Business trip</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>来週<rt>らいしゅう</rt></ruby>、<ruby>大阪<rt>おおさか</rt></ruby>へ<ruby>出張<rt>しゅっちょう</rt></ruby>します。</p>
+                            <button class="vocab-play-btn" data-speak-text="らいしゅう、おおさかへしゅっちょうします">🔊</button>
+                        </div>
+                        <p class="en-sentence">I will go on a business trip to Osaka next week.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">つけっぱなし</h4>
+                        <button class="vocab-play-btn" data-speak-text="つけっぱなし">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Noun (from verb stem)</p>
+                        <p><span class="label">Meaning:</span> The state of being left on</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">エアコンをつけっぱなしで<ruby>寝<rt>ね</rt></ruby>てしまいました。</p>
+                            <button class="vocab-play-btn" data-speak-text="エアコンをつけっぱなしでねてしまいました">🔊</button>
+                        </div>
+                        <p class="en-sentence">I fell asleep with the air conditioner left on.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 3: GRAMMAR ANALYSIS (文法の解説) -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+            <h2>Part 3: Grammar Analysis (文法の解説)</h2>
+            
+            <div class="grammar-card">
+                <h3>1. The Two Types of 「～そうです」: Appearance vs. Hearsay</h3>
+                <div class="grammar-explanation">
+                    <p>This is one of the most confusing grammar points in Japanese because both forms are read the same way. However, their meanings and conjugation rules are completely different. The key is to know the source of your information: did you "see" it yourself, or did you "hear" it from someone else?</p>
+                </div>
+
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Criterion</th>
+                            <th>Type 1: APPEARANCE (Looks like...)</th>
+                            <th>Type 2: HEARSAY (I heard that...)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Meaning</strong></td>
+                            <td>Expresses a guess or judgment based on what you <strong>see</strong> with your own eyes.</td>
+                            <td>Relays information that you <strong>heard</strong> from another source (the news, another person, etc.).</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Conjugation</strong></td>
+                            <td>
+                                <ul>
+                                    <li>V-<s>ます</s> + <span class="grammar-point">そうです</span></li>
+                                    <li>A-<s>い</s> + <span class="grammar-point">そうです</span></li>
+                                    <li>A-な + <span class="grammar-point">そうです</span></li>
+                                </ul>
+                            </td>
+                            <td>
+                               <ul>
+                                    <li>V (Plain) + <span class="grammar-point">そうです</span></li>
+                                    <li>A-い + <span class="grammar-point">そうです</span></li>
+                                    <li>A-な だ + <span class="grammar-point">そうです</span></li>
+                                    <li>N だ + <span class="grammar-point">そうです</span></li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><strong>Example</strong></td>
+                            <td>
+                                <p class="example-jp"><ruby>雨<rt>あめ</rt></ruby>が<span class="g-verb-form"><ruby>降<rt>ふ</rt></ruby>り</span><span class="grammar-point">そうです</span>。</p>
+                                <p class="example-en">(Seeing dark clouds) It looks like it's going to rain.</p>
+                            </td>
+                            <td>
+                                <p class="example-jp"><ruby>天気予報<rt>てんきよほう</rt></ruby>によると、<ruby>今日<rt>きょう</rt></ruby>は<span class="g-verb-form"><ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>る</span><span class="grammar-point">そうです</span>。</p>
+                                <p class="example-en">(Hearing the forecast) I heard that it will rain today.</p>
+                            </td>
+                        </tr>
+                         <tr>
+                            <td><strong>From the Dialogue</strong></td>
+                            <td>
+                                <p class="example-jp"><span class="g-verb-form"><ruby>眠<rt>ねむ</rt></ruby></span><span class="grammar-point">そうですね</span>。</p>
+                                <p class="example-en">(Seeing An's face) You look sleepy.</p>
+                            </td>
+                            <td>
+                               <p class="example-jp"><ruby>大変<rt>たいへん</rt></ruby><span class="g-verb-form">だ</span><span class="grammar-point">そうです</span>。</p>
+                               <p class="example-en">(Hearing from others) I heard he is having a tough time.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. Expressing a Third Person's Desire: ～がっています</h3>
+                <div class="grammar-explanation">
+                    <p>When you want to talk about the desires or feelings of a third person (he, she, they) based on your objective observation, you don't use `～たい`. Instead, you use `～がっています`. This pattern implies that you are describing the signs of desire that the person is showing externally.</p>
+                    <p><strong>Formula:</strong></p>
+                    <ul>
+                        <li><span class="g-verb-form">V-<s>たい</s></span> → <span class="g-verb-form">V-た</span> + <span class="grammar-point">がっています</span></li>
+                        <li>(e.g., 会いたい → 会いたがっています)</li>
+                    </ul>
+                </div>
+                
+                <div class="example-block">
+                    <p class="example-jp"><ruby>息子<rt>むすこ</rt></ruby>さんはすごくお<ruby>父<rt>とう</rt></ruby>さんに<span class="g-verb-form"><ruby>会<rt>あ</rt></ruby>いた</span><span class="grammar-point">がっていました</span>よ。</p>
+                    <p class="example-en">His son was showing that he really wanted to see his dad.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>3. To Leave Something in a Certain State: ～まま</h3>
+                <div class="grammar-explanation">
+                    <p>This pattern is used to describe another action that occurs while a certain state remains unchanged. It is often used to talk about something you forgot to do, or sometimes an intentional action.</p>
+                     <p><strong>Formula:</strong></p>
+                     <ul>
+                        <li><span class="g-verb-form">Verb (Ta-form)</span> + <span class="grammar-point">まま</span></li>
+                        <li><span class="g-verb-form">Noun + の</span> + <span class="grammar-point">まま</span></li>
+                    </ul>
+                </div>
+                
+                <div class="example-block">
+                    <p class="example-jp"><ruby>電源<rt>でんげん</rt></ruby>を<span class="g-verb-form">つけっぱなし</span>の<span class="grammar-point">まま</span><ruby>帰<rt>かえ</rt></ruby>ってしまったかもしれません！</p>
+                    <p class="example-en">I might have gone home while leaving the power on!</p>
+                </div>
+                 <div class="example-block">
+                    <p class="example-jp"><ruby>昨日<rt>きのう</rt></ruby>は<ruby>疲<rt>つか</rt></ruby>れていたので、テレビを<span class="g-verb-form">つけた</span><span class="grammar-point">まま</span><ruby>寝<rt>ね</rt></ruby>てしまいました。</p>
+                    <p class="example-en">I was tired yesterday, so I fell asleep with the TV left on.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 4: GRAMMAR PRACTICE (練習) -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Part 4: Grammar Practice (練習)</h2>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <p class="question-text">1. (Seeing a beautiful cake) 「おいしい＿＿＿＿。」</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true">おいし<span class="grammar-point">そうですね</span></button>
+                    <button class="option-btn">おいしい<span class="grammar-point">そうです</span></button>
+                    <button class="option-btn">おいしい<span class="grammar-point">です</span></button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> Because this is a guess based on what you "see," you must use the appearance pattern: Adjective (drop い) + <span class="grammar-point">そうです</span>.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">2. Choose the correct sentence for: "I heard that Tanaka-san got married last year."</p>
+                <div class="options-container">
+                    <button class="option-btn"><ruby>田中<rt>たなか</rt></ruby>さんは<ruby>去年<rt>きょねん</rt></ruby><ruby>結婚<rt>けっこん</rt></ruby>し<span class="grammar-point">そうです</span>。</button>
+                    <button class="option-btn"><ruby>田中<rt>たなか</rt></ruby>さんは<ruby>去年<rt>きょねん</rt></ruby><ruby>結婚<rt>けっこん</rt></ruby>した<span class="grammar-point">がっています</span>。</button>
+                    <button class="option-btn" data-correct="true"><ruby>田中<rt>たなか</rt></ruby>さんは<ruby>去年<rt>きょねん</rt></ruby><ruby>結婚<rt>けっこん</rt></ruby>した<span class="grammar-point">そうです</span>。</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> Because this is "hearsay" information, you must use the reporting pattern: Plain Form (V-た) + <span class="grammar-point">そうです</span>.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">3. "I went outside leaving the window open."</p>
+                <div class="options-container">
+                    <button class="option-btn"><ruby>窓<rt>まど</rt></ruby>を<span class="g-verb-form"><ruby>開<rt>あ</rt></ruby>ける</span><span class="grammar-point">そうです</span></button>
+                    <button class="option-btn" data-correct="true"><ruby>窓<rt>まど</rt></ruby>を<span class="g-verb-form"><ruby>開<rt>あ</rt></ruby>けた</span><span class="grammar-point">まま</span>、<ruby>出<rt>で</rt></ruby>かけました</button>
+                    <button class="option-btn"><ruby>窓<rt>まど</rt></ruby>を<span class="g-verb-form"><ruby>開<rt>あ</rt></ruby>けた</span><span class="grammar-point">がっていました</span></button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> To describe the action "went out" happening while the state "window was open" continued, use V-た + <span class="grammar-point">まま</span>.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 5: APPLIED READING COMPREHENSION (読解練習) -->
+    <!-- =============================================================== -->
+    <div class="reading-comprehension-section">
+        <div class="reading-comprehension-container">
+            <h2>Part 5: Applied Reading Comprehension (読解練習)</h2>
+            <div class="reading-wrapper">
+                <div class="reading-card">
+                    <h3><ruby>上司<rt>じょうし</rt></ruby>の<ruby>違<rt>ちが</rt></ruby>う<ruby>一面<rt>いちめん</rt></ruby> (A Different Side of My Boss)</h3>
+                    <div class="readable-passage-component">
+                        <h4><ruby>文章<rt>ぶんしょう</rt></ruby> (Passage)</h4>
+                        <div class="text-to-be-read" id="readingPassageText">
+                            <p><ruby>私<rt>わたし</rt></ruby>の<ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>山田部長<rt>やまだぶちょう</rt></ruby>は、いつも<ruby>厳<rt>きび</rt></ruby>しくて、<ruby>仕事<rt>しごと</rt></ruby>に<ruby>集中<rt>しゅうちゅう</rt></ruby>している<ruby>人<rt>ひと</rt></ruby>です。<ruby>会議<rt>かいぎ</rt></ruby>では、いつも<span class="g-verb-form"><ruby>難<rt>むずか</rt></ruby>し</span><span class="grammar-point">そうな</span><ruby>顔<rt>かお</rt></ruby>をしています。<ruby>私<rt>わたし</rt></ruby>は、<ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>怖<rt>こわ</rt></ruby>い<ruby>人<rt>ひと</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>っていました。</p>
+                            <p>しかし、<ruby>昨日<rt>きのう</rt></ruby>の<ruby>朝<rt>あさ</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>は<ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>違<rt>ちが</rt></ruby>う<ruby>一面<rt>いちめん</rt></ruby>を<ruby>見<rt>み</rt></ruby>ました。<ruby>朝早<rt>あさはや</rt></ruby>く<ruby>会社<rt>かいしゃ</rt></ruby>に<ruby>着<rt>つ</rt></ruby>くと、<ruby>部長<rt>ぶちょう</rt></ruby>はデスクで<ruby>電話<rt>でんわ</rt></ruby>をしていました。<ruby>相手<rt>あいて</rt></ruby>は<ruby>息子<rt>むすこ</rt></ruby>さんだったようです。とても<ruby>優<rt>やさ</rt></ruby>しい<ruby>声<rt>こえ</rt></ruby>で、「<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だよ、パパはすぐ<ruby>帰<rt>かえ</rt></ruby>るからね」と<ruby>話<rt>はな</rt></ruby>しているのが<ruby>聞<rt>き</rt></ruby>こえました。<ruby>電話<rt>でんわ</rt></ruby>を<ruby>切<rt>き</rt></ruby>った<ruby>後<rt>あと</rt></ruby>、<ruby>部長<rt>ぶちょう</rt></ruby>はとても<span class="g-verb-form"><ruby>寂<rt>さび</rt></ruby>し</span><span class="grammar-point">そうな</span><ruby>顔<rt>かお</rt></ruby>をしていました。</p>
+                            <p><ruby>後<rt>あと</rt></ruby>で<ruby>田中先輩<rt>たなかせんぱい</rt></ruby>に<ruby>聞<rt>き</rt></ruby>いたのですが、<ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>さんは<ruby>今<rt>いま</rt></ruby><span class="g-verb-form"><ruby>出張中<rt>しゅっちょうちゅう</rt></ruby>だ</span><span class="grammar-point">そうです</span>。<ruby>息子<rt>むすこ</rt></ruby>さんはまだ<ruby>小学生<rt>しょうがくせい</rt></ruby>で、<ruby>一人<rt>ひとり</rt></ruby>で<ruby>留守番<rt>るすばん</rt></ruby>するのを<span class="g-verb-form"><ruby>嫌<rt>いや</rt></ruby></span><span class="grammar-point">がっているそうです</span>。<ruby>部長<rt>ぶちょう</rt></ruby>は、<ruby>仕事<rt>しごと</rt></ruby>を<ruby>早<rt>はや</rt></ruby>く<ruby>終<rt>お</rt></ruby>わらせて、<ruby>息子<rt>むすこ</rt></ruby>さんのために<ruby>帰<rt>かえ</rt></ruby>りたかったようです。</p>
+                            <p>その<ruby>日<rt>ひ</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>は<ruby>間違<rt>まちが</rt></ruby>えて、<ruby>書類<rt>しょるい</rt></ruby>を<ruby>机<rt>つくえ</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>に<span class="g-verb-form"><ruby>出<rt>だ</rt></ruby>した</span><span class="grammar-point">まま</span><ruby>帰<rt>かえ</rt></ruby>ってしまいました。<ruby>次<rt>つぎ</rt></ruby>の<ruby>日<rt>ひ</rt></ruby>、<ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>私<rt>わたし</rt></ruby>を<ruby>叱<rt>しか</rt></ruby>りませんでした。「<ruby>気<rt>き</rt></ruby>をつけなさい」と<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>っただけでした。<ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>優<rt>やさ</rt></ruby>しさが<ruby>分<rt>わ</rt></ruby>かって、<ruby>私<rt>わたし</rt></ruby>はもっとこの<ruby>会社<rt>かいしゃ</rt></ruby>で<ruby>頑張<rt>がんば</rt></ruby>ろうと<ruby>思<rt>おも</rt></ruby>いました。</p>
+                        </div>
+                        <div class="passage-audio-controls">
+                            <button class="control-btn play-pause" data-target="readingPassageText">▶ Start</button>
+                            <button class="control-btn stop" data-target="readingPassageText">■ Stop</button>
+                            <div class="speed-controls">
+                                <span>Speed:</span>
+                                <button class="speed-btn" data-speed="0.8">0.8x</button>
+                                <button class="speed-btn active" data-speed="1.0">1x</button>
+                                <button class="speed-btn" data-speed="1.2">1.2x</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <details class="translation-wrapper">
+                        <summary>📖 View Translation & Vocabulary</summary>
+                        <div class="translation-content">
+                            <h4>Translation</h4>
+                            <p>Manager Yamada at my company is a person who is always strict and focused on his work. In meetings, he always has a difficult-looking expression. I used to think the manager was a bit of a scary person.</p>
+                            <p>However, yesterday morning, I saw a different side of him. When I arrived at the company early, the manager was on the phone at his desk. The person on the other end seemed to be his son. I could hear him speaking in a very gentle voice, saying, "It's okay, Dad will be home soon." After hanging up, the manager had a very lonely-looking expression on his face.</p>
+                            <p>I later heard from Tanaka-senpai that the manager's wife is currently on a business trip. His son is still in elementary school and apparently dislikes being home alone. It seems the manager wanted to finish his work quickly to go home for his son.</p>
+                            <p>That day, I made a mistake and went home leaving documents out on my desk. The next day, the manager didn't scold me. He just said quietly, "Be careful next time." Understanding his kindness, I felt that I wanted to try even harder at this company.</p>
+                            
+                            <h4>New Vocabulary in the Passage</h4>
+                             <ul class="reading-vocab-list">
+                                <li><strong>厳しい (きびしい):</strong> strict</li>
+                                <li><strong>集中する (しゅうちゅうする):</strong> to concentrate; to focus</li>
+                                <li><strong>一面 (いちめん):</strong> one side; another aspect</li>
+                                <li><strong>相手 (あいて):</strong> the other party; partner</li>
+                                <li><strong>寂しそう (さびしそう):</strong> to look lonely</li>
+                                <li><strong>出張中 (しゅっちょうちゅう):</strong> on a business trip</li>
+                                <li><strong>小学生 (しょうがくせい):</strong> elementary school student</li>
+                                <li><strong>嫌がる (いやがる):</strong> to show dislike; to be unwilling</li>
+                                <li><strong>書類 (しょるい):</strong> document(s)</li>
+                                <li><strong>叱る (しかる):</strong> to scold</li>
+                             </ul>
+                        </div>
+                    </details>
+                    
+                    <hr>
+                    
+                    <h4>Comprehension Questions</h4>
+                     <div class="reading-quiz-container quiz-container">
+                        <div class="quiz-card">
+                            <p class="question-text">1. <ruby>最初<rt>さいしょ</rt></ruby>、アンさんは<ruby>山田部長<rt>やまだぶちょう</rt></ruby>をどんな<ruby>人<rt>ひと</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>っていましたか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>優<rt>やさ</rt></ruby>しくて、<ruby>面白<rt>おもしろ</rt></ruby>い<ruby>人<rt>ひと</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>っていました。</button>
+                                <button class="option-btn">いつも<span class="g-verb-form"><ruby>寂<rt>さび</rt></ruby>し</span><span class="grammar-point">そうな</span><ruby>人<rt>ひと</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>っていました。</button>
+                                <button class="option-btn" data-correct="true"><ruby>少<rt>すこ</rt></ruby>し<ruby>怖<rt>こわ</rt></ruby>くて、<ruby>厳<rt>きび</rt></ruby>しい<ruby>人<rt>ひと</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>っていました。</button>
+                                <button class="option-btn"><ruby>仕事<rt>しごと</rt></ruby>にあまり<ruby>集中<rt>しゅうちゅう</rt></ruby>しない<ruby>人<rt>ひと</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>っていました。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Explanation:</strong> The text says: 「<ruby>私<rt>わたし</rt></ruby>は、<ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>少<rt>すこ</rt></ruby>し<ruby>怖<rt>こわ</rt></ruby>い<ruby>人<rt>ひと</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>っていました。」 (I used to think the manager was a bit of a scary person.)
+                            </div>
+                        </div>
+                         <div class="quiz-card">
+                            <p class="question-text">2. <ruby>田中先輩<rt>たなかせんぱい</rt></ruby>から<ruby>聞<rt>き</rt></ruby>いた<ruby>話<rt>はなし</rt></ruby>で、<ruby>正<rt>ただ</rt></ruby>しくないものはどれですか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>奥<rt>おく</rt></ruby>さんは<span class="g-verb-form"><ruby>出張中<rt>しゅっちょうちゅう</rt></ruby>だ</span><span class="grammar-point">そうです</span>。</button>
+                                <button class="option-btn"><ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>息子<rt>むすこ</rt></ruby>さんは<ruby>一人<rt>ひとり</rt></ruby>で<ruby>留守番<rt>るすばん</rt></ruby>をしている<span class="grammar-point">そうです</span>。</button>
+                                <button class="option-btn" data-correct="true"><ruby>部長<rt>ぶちょう</rt></ruby>の<ruby>息子<rt>むすこ</rt></ruby>さんは<ruby>一人<rt>ひとり</rt></ruby>でいることを<ruby>喜<rt>よろこ</rt></ruby>んでいる<span class="grammar-point">そうです</span>。</button>
+                                <button class="option-btn"><ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>早<rt>はや</rt></ruby>く<ruby>家<rt>いえ</rt></ruby>に<ruby>帰<rt>かえ</rt></ruby>りたかったようです。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Explanation:</strong> The text says: 「...<ruby>留守番<rt>るすばん</rt></ruby>をするのを<span class="g-verb-form"><ruby>嫌<rt>いや</rt></ruby></span><span class="grammar-point">がっているそうです</span>。」 (I heard he shows signs of disliking it). Therefore, the statement that he is "happy" (喜んでいる) is incorrect.
+                            </div>
+                        </div>
+                       <div class="quiz-card">
+                            <p class="question-text">3. アンさんが<ruby>書類<rt>しょるい</rt></ruby>を<ruby>机<rt>つくえ</rt></ruby>の<ruby>上<rt>うえ</rt></ruby>に<span class="g-verb-form"><ruby>出<rt>だ</rt></ruby>した</span><span class="grammar-point">まま</span><ruby>帰<rt>かえ</rt></ruby>った<ruby>時<rt>とき</rt></ruby>、<ruby>部長<rt>ぶちょう</rt></ruby>はどうしましたか。</p>
+                            <div class="options-container">
+                                 <button class="option-btn">とても<ruby>厳<rt>きび</rt></ruby>しく<ruby>叱<rt>しか</rt></ruby>りました。</button>
+                                 <button class="option-btn"><ruby>田中先輩<rt>たなかせんぱい</rt></ruby>に<ruby>叱<rt>しか</rt></ruby>るように<ruby>言<rt>い</rt></ruby>いました。</button>
+                                 <button class="option-btn"><ruby>何<rt>なに</rt></ruby>も<ruby>言<rt>い</rt></ruby>いませんでした。</button>
+                                 <button class="option-btn" data-correct="true"><ruby>静<rt>しず</rt></ruby>かに<ruby>注意<rt>ちゅうい</rt></ruby>しただけでした。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                               💡 <strong>Explanation:</strong> The passage says: 「<ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>私<rt>わたし</rt></ruby>を<ruby>叱<rt>しか</rt></ruby>りませんでした。『<ruby>気<rt>き</rt></ruby>をつけなさい』と<ruby>静<rt>しず</rt></ruby>かに<ruby>言<rt>い</rt></ruby>っただけでした。」 (The manager didn't scold me. He just said quietly, "Be careful.")
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script-talk1029.js"></script>
+</body>
+</html>

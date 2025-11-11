@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Lesson 4: Potential Form | Learn Japanese with An</title>
+    
+    <link rel="stylesheet" href="styles-talk1029.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h2>Lesson 4: Potential Form & Verbs of Perception</h2>
+        <p>Learn to express ability ("can/cannot") with the Potential Form (可能形) and the perception verbs 見えます/聞こえます.</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 1: DIALOGUE (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <img src="https://i.imgur.com/8z2eY3a.jpeg" alt="An, Tanaka, Suzuki, and Department Head Yamada in a meeting room" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Prev</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogue-source" style="display: none;">
+        <div class="scene" data-scene-name="In the meeting room" data-background-image="https://i.imgur.com/8z2eY3a.jpeg">
+            
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker yamada" data-character="yamada">Yamada-buchou</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>皆<rt>みな</rt></ruby>さん、おはようございます。<ruby>早速<rt>さっそく</rt></ruby>ですが、<ruby>新<rt>あたら</rt></ruby>しい<ruby>案件<rt>あんけん</rt></ruby>について<ruby>話<rt>はな</rt></ruby>します。</p>
+                        <p class="english-text">Good morning, everyone. Let's get straight to it; we'll be discussing the new project.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">All</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">おはようございます！</p>
+                        <p class="english-text">Good morning!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker yamada" data-character="yamada">Yamada-buchou</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">これはクライアントからいただいた<ruby>資料<rt>しりょう</rt></ruby>です。まず、<ruby>内容<rt>ないよう</rt></ruby>をよく<ruby>理解<rt>りかい</rt></ruby>してください。</p>
+                        <p class="english-text">These are the documents from the client. First, please read them to fully understand the content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker yamada" data-character="yamada">Yamada-buchou</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンさん、この<ruby>資料<rt>しりょう</rt></ruby>の<ruby>漢字<rt>かんじ</rt></ruby>は<span class="grammar-point"><ruby>読<rt>よ</rt></ruby>めますか</span>？</p>
+                        <p class="english-text">An-san, can you read the kanji in these documents?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、ひらがなと<ruby>簡単<rt>かんたん</rt></ruby>な<ruby>漢字<rt>かんじ</rt></ruby>は<span class="grammar-point"><ruby>読<rt>よ</rt></ruby>めます</span>が、<ruby>専門用語<rt>せんもんようご</rt></ruby>が<ruby>多<rt>おお</rt></ruby>いので、まだ<ruby>全部<rt>ぜんぶ</rt></ruby>は<span class="grammar-point"><ruby>読<rt>よ</rt></ruby>めません</span>。</p>
+                        <p class="english-text">Yes, I can read hiragana and simple kanji, but there is a lot of technical jargon, so I can't read everything yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker yamada" data-character="yamada">Yamada-buchou</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうか。<ruby>分<rt>わ</rt></ruby>からないところは、<ruby>田中<rt>たなか</rt></ruby>さんにサポートしてもらってください。</p>
+                        <p class="english-text">I see. For the parts you don't understand, please get support from Tanaka-san.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、<ruby>承知<rt>しょうち</rt></ruby>しました。アンさん、<ruby>大丈夫<rt>だいじょうぶ</rt></ruby>ですよ。</p>
+                        <p class="english-text">Yes, understood. Don't worry, An-san.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">あ、<ruby>今日<rt>きょう</rt></ruby>は<ruby>天気<rt>てんき</rt></ruby>がいいですね。<ruby>富士山<rt>ふじさん</rt></ruby>の<ruby>頂上<rt>ちょうじょう</rt></ruby>が<ruby>少<rt>すこ</rt></ruby>し<span class="grammar-point"><ruby>見<rt>み</rt></ruby>えますね</span>。</p>
+                        <p class="english-text">Oh, the weather is nice today. You can see the peak of Mt. Fuji a little.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">わあ、<ruby>本当<rt>ほんとう</rt></ruby>ですね！すごい！</p>
+                        <p class="english-text">Wow, you're right! Amazing!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>静<rt>しず</rt></ruby>かにしていると、<ruby>遠<rt>とお</rt></ruby>くから<ruby>新幹線<rt>しんかんせん</rt></ruby>の<ruby>音<rt>おと</rt></ruby>も<span class="grammar-point"><ruby>聞<rt>き</rt></ruby>こえます</span>よ。</p>
+                        <p class="english-text">If you're quiet, you can even hear the sound of the Shinkansen from far away.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker yamada" data-character="yamada">Yamada-buchou</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">さて、<ruby>景色<rt>けしき</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>はそのくらいに。<ruby>鈴木<rt>すずき</rt></ruby>さん、この<ruby>案件<rt>あんけん</rt></ruby>のデザインコンセプトについて、どう<ruby>思<rt>おも</rt></ruby>いますか？</p>
+                        <p class="english-text">Alright, that's enough talk about the scenery. Suzuki-san, what are your thoughts on the design concept for this project?</p>
+                    </div>
+                </div>
+            </div>
+
+             <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、<ruby>私<rt>わたし</rt></ruby>は…</p>
+                        <p class="english-text">Yes, in my opinion...</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 2: NEW VOCABULARY (新しい言葉) -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>New Vocabulary (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>早速<rt>さっそく</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="さっそく">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Adverb</p>
+                        <p><span class="label">Meaning:</span> Immediately, right away</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>会議<rt>かいぎ</rt></ruby>を<ruby>早速<rt>さっそく</rt></ruby><ruby>始<rt>はじ</rt></ruby>めましょう。</p>
+                            <button class="vocab-play-btn" data-speak-text="かいぎをさっそくはじめましょう">🔊</button>
+                        </div>
+                        <p class="en-sentence">Let's start the meeting right away.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>案件<rt>あんけん</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="あんけん">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Noun</p>
+                        <p><span class="label">Meaning:</span> Project, matter, case</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>新<rt>あたら</rt></ruby>しい<ruby>案件<rt>あんけん</rt></ruby>の<ruby>担当<rt>たんとう</rt></ruby>になりました。</p>
+                            <button class="vocab-play-btn" data-speak-text="あたらしいあんけんのたんとうになりました">🔊</button>
+                        </div>
+                        <p class="en-sentence">I've been put in charge of a new project.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>資料<rt>しりょう</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="しりょう">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Noun</p>
+                        <p><span class="label">Meaning:</span> Document, material</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>会議<rt>かいぎ</rt></ruby>の<ruby>前<rt>まえ</rt></ruby>に、<ruby>資料<rt>しりょう</rt></ruby>を<ruby>読<rt>よ</rt></ruby>んでください。</p>
+                            <button class="vocab-play-btn" data-speak-text="かいぎのまえに、しりょうをよんでください">🔊</button>
+                        </div>
+                        <p class="en-sentence">Please read the documents before the meeting.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>専門用語<rt>せんもんようご</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="せんもんようご">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Noun</p>
+                        <p><span class="label">Meaning:</span> Technical term, jargon</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">ITの<ruby>専門用語<rt>せんもんようご</rt></ruby>は<ruby>難<rt>むずか</rt></ruby>しいです。</p>
+                            <button class="vocab-play-btn" data-speak-text="ITのせんもんようごはむずかしいです">🔊</button>
+                        </div>
+                        <p class="en-sentence">IT technical terms are difficult.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>承知<rt>しょうち</rt></ruby>しました</h4>
+                        <button class="vocab-play-btn" data-speak-text="しょうちしました">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Phrase</p>
+                        <p><span class="label">Meaning:</span> Understood (humble, polite form)</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">はい、<ruby>承知<rt>しょうち</rt></ruby>しました。すぐに<ruby>や<rt>や</rt></ruby>ります。</p>
+                            <button class="vocab-play-btn" data-speak-text="はい、しょうちしました。すぐにやります">🔊</button>
+                        </div>
+                        <p class="en-sentence">Yes, understood. I will do it right away.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>頂上<rt>ちょうじょう</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="ちょうじょう">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Part of Speech:</span> Noun</p>
+                        <p><span class="label">Meaning:</span> Summit, peak (of a mountain)</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>山<rt>やま</rt></ruby>の<ruby>頂上<rt>ちょうじょう</rt></ruby>からの<ruby>景色<rt>けしき</rt></ruby>は<ruby>最高<rt>さいこう</rt></ruby>でした。</p>
+                            <button class="vocab-play-btn" data-speak-text="やまのちょうじょうからのけしきはさいこうでした">🔊</button>
+                        </div>
+                        <p class="en-sentence">The view from the mountain's summit was the best.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 3: GRAMMAR ANALYSIS (文法の解説) -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+            <h2>Part 3: Grammar Analysis (文法の解説)</h2>
+            
+            <div class="grammar-card">
+                <h3>1. Potential Form (可能形): Expressing Ability "Can..."</h3>
+                <div class="grammar-explanation">
+                    <p>The potential form is used to express that someone has the ability or capability to do something. There are two main ways to form it: by changing the verb ending, or by using the structure "Vること が できます".</p>
+                    <p><strong>Important:</strong> When using the potential form, the particle 「を」 often changes to 「が」.</p>
+                </div>
+                
+                <h4>How to Conjugate Verbs to the Potential Form</h4>
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Verb Group</th>
+                            <th>Rule</th>
+                            <th>Example (Dictionary Form → Potential Form)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Group I</td>
+                            <td>Change the final <strong>「u」</strong> sound to <strong>「eru」</strong>.</td>
+                            <td><ruby>書<rt>か</rt></ruby>く → <ruby>書<rt>か</rt></ruby>ける (to be able to write)</td>
+                        </tr>
+                        <tr>
+                            <td>Group II</td>
+                            <td>Change final 「る」 to <strong>「られる」</strong>.</td>
+                            <td><ruby>食<rt>た</rt></ruby>べる → <ruby>食<rt>た</rt></ruby>べられる (to be able to eat)</td>
+                        </tr>
+                        <tr>
+                            <td>Group III (Irregular)</td>
+                            <td>Memorize these two.</td>
+                            <td>
+                                <p><ruby>来<rt>く</rt></ruby>る → <ruby>来<rt>こ</rt></ruby>られる (to be able to come)</p>
+                                <p>する → できる (to be able to do)</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="example-block">
+                    <p class="example-jp">アンさん、この<ruby>漢字<rt>かんじ</rt></ruby>が<span class="grammar-point"><ruby>読<rt>よ</rt></ruby>めますか</span>？</p>
+                    <p class="example-en">An-san, can you read this kanji?</p>
+                </div>
+                <div class="example-block">
+                     <p class="example-jp"><ruby>私<rt>わたし</rt></ruby>は<ruby>寿司<rt>すし</rt></ruby>が<span class="grammar-point"><ruby>食<rt>た</rt></ruby>べられます</span>。</p>
+                    <p class="example-en">I can eat sushi.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. Natural Perception: 見えます and 聞こえます</h3>
+                <div class="grammar-explanation">
+                    <p>These two special verbs describe things that you can see or hear naturally, without making a conscious effort. The image or sound simply enters your perception.</p>
+                    <p><strong>Key Distinction:</strong></p>
+                    <ul>
+                        <li><span class="grammar-point">見えます</span> (is visible) ≠ <span class="grammar-point">見られます</span> (can watch, with intent).</li>
+                        <li><span class="grammar-point">聞こえます</span> (is audible) ≠ <span class="grammar-point">聞けます</span> (can listen to, with intent).</li>
+                    </ul>
+                </div>
+
+                <div class="example-block">
+                    <p class="example-jp">ここから<ruby>富士山<rt>ふじさん</rt></ruby>が<span class="grammar-point"><ruby>見<rt>み</rt></ruby>えますね</span>。</p>
+                    <p class="example-en">You can see Mt. Fuji from here. (The mountain is naturally in your line of sight.)</p>
+                </div>
+                 <div class="example-block">
+                    <p class="example-jp"><ruby>ラジオの<ruby>音<rt>おと</rt></ruby>が<span class="grammar-point"><ruby>聞<rt>き</rt></ruby>こえます</span>。</p>
+                    <p class="example-en">I can hear the radio. (The sound is audible without me trying to listen.)</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp">インターネットで<ruby>世界中<rt>せかいじゅう</rt></ruby>のニュースが<span class="grammar-point"><ruby>見<rt>み</rt></ruby>られます</span>。</p>
+                    <p class="example-en">You can watch news from around the world on the internet. (This is an active choice.)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 4: GRAMMAR PRACTICE (練習) -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Part 4: Grammar Practice (練習)</h2>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <p class="question-text">1. Choose the correct way to say: "I cannot eat spicy food."</p>
+                <div class="options-container">
+                    <button class="option-btn"><ruby>辛<rt>から</rt></ruby>いものは<ruby>食<rt>た</rt></ruby>べません。</button>
+                    <button class="option-btn" data-correct="true"><ruby>辛<rt>から</rt></ruby>いものは<ruby>食<rt>た</rt></ruby>べられません。</button>
+                    <button class="option-btn"><ruby>辛<rt>から</rt></ruby>いものは<ruby>食<rt>た</rt></ruby>べさせません。</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> To express a lack of ability, use the negative potential form. 「食べます」(Group II) → <span class="grammar-point">食べられます</span> → <span class="grammar-point">食べられません</span>.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">2. "The room is so quiet, I can clearly ___ the department head's voice."</p>
+                <div class="options-container">
+                    <button class="option-btn"><ruby>聞<rt>き</rt></ruby>けます</button>
+                    <button class="option-btn"><ruby>見<rt>み</rt></ruby>えます</button>
+                    <button class="option-btn" data-correct="true"><ruby>聞<rt>き</rt></ruby>こえます</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> Because the sound comes to you naturally without effort, use the perception verb <span class="grammar-point">聞こえます</span>.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">3. Choose the correct particle: 「アンさんはピアノ ___ 弾けます。」</p>
+                <div class="options-container">
+                    <button class="option-btn">を</button>
+                    <button class="option-btn" data-correct="true">が</button>
+                    <button class="option-btn">に</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> With potential form verbs, the particle <span class="grammar-point">が</span> is typically used instead of 「を」 to mark the object of the ability.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">4. "Can you drive a car?"</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true"><ruby>運転<rt>うんてん</rt></ruby>できますか。</button>
+                    <button class="option-btn"><ruby>運転<rt>うんてん</rt></ruby>しますか。</button>
+                    <button class="option-btn"><ruby>運転<rt>うんてん</rt></ruby>させますか。</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Explanation:</strong> The Group III verb 「します」 becomes <span class="grammar-point">できます</span> in the potential form. Therefore, 「運転します」 becomes 「運転<span class="grammar-point">できます</span>」.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PART 5: APPLIED READING COMPREHENSION (読解練習) -->
+    <!-- =============================================================== -->
+    <div class="reading-comprehension-section">
+        <div class="reading-comprehension-container">
+            <h2>Part 5: Applied Reading Comprehension (読解練習)</h2>
+            <div class="reading-wrapper">
+                <div class="reading-card">
+                    <h3>Email to the Teacher</h3>
+                    
+                    <div class="readable-passage-component">
+                        <h4>Passage (文章)</h4>
+                        <div class="text-to-be-read" id="readingPassageText">
+                            <p><strong><ruby>件名<rt>けんめい</rt></ruby>：<ruby>先週<rt>せんしゅう</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>について</strong></p>
+                            <p><ruby>佐藤<rt>さとう</rt></ruby><ruby>先生<rt>せんせい</rt></ruby></p>
+                            <p>こんにちは、アンです。お<ruby>元気<rt>げんき</rt></ruby>ですか。</p>
+                            <p><ruby>今日<rt>きょう</rt></ruby>は、<ruby>先週<rt>せんしゅう</rt></ruby>の<ruby>仕事<rt>しごと</rt></ruby>の<ruby>会議<rt>かいぎ</rt></ruby>について<ruby>相談<rt>そうだん</rt></ruby>したいことがあって、メールしました。<ruby>先週<rt>せんしゅう</rt></ruby>、<ruby>初<rt>はじ</rt></ruby>めて<ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>重要<rt>じゅうよう</rt></ruby>な<ruby>会議<rt>かいぎ</rt></ruby>に<ruby>参加<rt>さんか</rt></ruby>しました。<ruby>会議室<rt>かいぎしつ</rt></ruby>は<ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>最上階<rt>さいじょうかい</rt></ruby>にあって、<ruby>窓<rt>まど</rt></ruby>から<ruby>東京<rt>とうきょう</rt></ruby>の<ruby>景色<rt>けしき</rt></ruby>がとてもきれいに<span class="grammar-point"><ruby>見<rt>み</rt></ruby>えました</span>。<ruby>遠<rt>とお</rt></ruby>くの<ruby>電車<rt>でんしゃ</rt></ruby>の<ruby>音<rt>おと</rt></ruby>も<span class="grammar-point"><ruby>聞<rt>き</rt></ruby>こえる</span>くらい、<ruby>静<rt>しず</rt></ruby>かな<ruby>場所<rt>ばしょ</rt></ruby>でした。</p>
+                            <p><ruby>会議<rt>かいぎ</rt></ruby>が<ruby>始<rt>はじ</rt></ruby>まると、<ruby>部長<rt>ぶちょう</rt></ruby>や<ruby>先輩<rt>せんぱい</rt></ruby>たちの<ruby>話<rt>はな</rt></ruby>すスピードがとても<ruby>速<rt>はや</rt></ruby>くて、<ruby>全部<rt>ぜんぶ</rt></ruby>を<span class="grammar-point"><ruby>聞<rt>き</rt></ruby>き<ruby>取<rt>と</rt></ruby>ることができませんでした</span>。また、<ruby>配<rt>くば</rt></ruby>られた<ruby>資料<rt>しりょう</rt></ruby>の<ruby>専門用語<rt>せんもんようご</rt></ruby>が<ruby>難<rt>むずか</rt></ruby>しくて、<ruby>一人<rt>ひとり</rt></ruby>では<ruby>意味<rt>いみ</rt></ruby>を<span class="grammar-point"><ruby>理解<rt>りかい</rt></ruby>することができませんでした</span>。</p>
+                            <p>「まだ<ruby>日本語<rt>にほんご</rt></ruby>が<ruby>上手<rt>じょうず</rt></ruby>じゃないから、みんなの<ruby>役<rt>やく</rt></ruby>に<span class="grammar-point"><ruby>立<rt>た</rt></ruby>てない</span>かもしれない」と、<ruby>少<rt>すこ</rt></ruby>し<ruby>落<rt>お</rt></ruby>ち<ruby>込<rt>こ</rt></ruby>みました。</p>
+                            <p><ruby>幸<rt>さいわ</rt></ruby>い、<ruby>田中<rt>たなか</rt></ruby><ruby>先輩<rt>せんぱい</rt></ruby>が<ruby>会議<rt>かいぎ</rt></ruby>の<ruby>後<rt>あと</rt></ruby>で「いつでも<ruby>質問<rt>しつもん</rt></ruby>していいよ」と<ruby>言<rt>い</rt></ruby>ってくれました。<ruby>私<rt>わたし</rt></ruby>はまだ<ruby>上手<rt>じょうず</rt></ruby>に<ruby>日本語<rt>にほんご</rt></ruby>を<span class="grammar-point"><ruby>話<rt>はな</rt></ruby>せません</span>が、これからもっと<ruby>勉強<rt>べんきょう</rt></ruby>して、<ruby>自分<rt>じぶん</rt></ruby>の<ruby>意見<rt>いけん</rt></ruby>をちゃんと<span class="grammar-point"><ruby>言<rt>い</rt></ruby>えるようになりたい</span>です。</p>
+                            <p><ruby>次<rt>つぎ</rt></ruby>の<ruby>授業<rt>じゅぎょう</rt></ruby>で、ビジネスで<ruby>使<rt>つか</rt></ruby>う<ruby>言葉<rt>ことば</rt></ruby>について、<ruby>少<rt>すこ</rt></ruby>し<span class="grammar-point"><ruby>教<rt>おし</rt></ruby>えていただくことはできますか</span>。</p>
+                            <p>よろしくお<ruby>願<rt>ねが</rt></ruby>いいたします。</p>
+                            <p>アン</p>
+                        </div>
+                        <div class="passage-audio-controls">
+                            <button class="control-btn play-pause" data-target="readingPassageText">▶ Start</button>
+                            <button class="control-btn stop" data-target="readingPassageText">■ Stop</button>
+                            <div class="speed-controls">
+                                <span>Speed:</span>
+                                <button class="speed-btn" data-speed="0.8">0.8x</button>
+                                <button class="speed-btn active" data-speed="1.0">1x</button>
+                                <button class="speed-btn" data-speed="1.2">1.2x</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <details class="translation-wrapper">
+                        <summary>📖 View Translation & Vocabulary</summary>
+                        <div class="translation-content">
+                            <h4>Translation</h4>
+                            <p><strong>Subject: About last week's meeting</strong></p>
+                            <p>Dear Sato-sensei,</p>
+                            <p>Hello, this is An. I hope you are well.</p>
+                            <p>I am writing today because there is something I would like to consult with you about regarding last week's work meeting. Last week, I participated in an important company meeting for the first time. The meeting room was on the top floor of the company, and from the window, the view of Tokyo was beautifully visible. It was such a quiet place that I could even hear the sound of distant trains.</p>
+                            <p>When the meeting started, the speaking speed of the department head and my seniors was very fast, and I couldn't catch everything they said. Additionally, the technical terms in the distributed documents were difficult, and I couldn't understand the meaning on my own.</p>
+                            <p>I felt a little down, thinking, "Because my Japanese isn't good yet, maybe I can't be of any use to everyone."</p>
+                            <p>Fortunately, after the meeting, Tanaka-senpai told me, "You can ask me questions anytime." I still can't speak Japanese fluently, but from now on I want to study more so that I can clearly state my own opinions.</p>
+                            <p>In our next class, would it be possible for you to teach me a little about words used in business?</p>
+                            <p>Thank you for your consideration.</p>
+                            <p>An</p>
+                            
+                            <h4>New Vocabulary in the Passage</h4>
+                             <ul class="reading-vocab-list">
+                                <li><strong>相談 (そうだん):</strong> consultation, discussion</li>
+                                <li><strong>重要 (じゅうよう):</strong> important</li>
+                                <li><strong>最上階 (さいじょうかい):</strong> top floor</li>
+                                <li><strong>聞き取る (ききとる):</strong> to catch, to understand by listening</li>
+                                <li><strong>配る (くばる):</strong> to distribute</li>
+                                <li><strong>役に立つ (やくにたつ):</strong> to be useful, to be helpful</li>
+                                <li><strong>落ち込む (おちこむ):</strong> to feel down, to get depressed</li>
+                                <li><strong>幸い (さいわい):</strong> luckily, fortunately</li>
+                                <li><strong>意見 (いけん):</strong> opinion</li>
+                                <li><strong>授業 (じゅぎょう):</strong> class, lesson</li>
+                            </ul>
+                        </div>
+                    </details>
+                    
+                    <hr>
+                    
+                    <h4>Comprehension Questions</h4>
+                     <div class="reading-quiz-container quiz-container">
+                        <div class="quiz-card">
+                            <p class="question-text">1. What could An see and hear from the meeting room?</p>
+                            <div class="options-container">
+                                <button class="option-btn">She could see Mt. Fuji and the manager's voice.</button>
+                                <button class="option-btn" data-correct="true">She could see the Tokyo skyline and hear the sound of trains.</button>
+                                <button class="option-btn">She could see Tanaka-senpai and the documents.</button>
+                                <button class="option-btn">She couldn't see or hear anything.</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Explanation:</strong> The text says, 「<ruby>窓<rt>まど</rt></ruby>から<ruby>東京<rt>とうきょう</rt></ruby>の<ruby>景色<rt>けしき</rt></ruby>がとてもきれいに<span class="grammar-point"><ruby>見<rt>み</rt></ruby>えました</span>。<ruby>遠<rt>とお</rt></ruby>くの<ruby>電車<rt>でんしゃ</rt></ruby>の<ruby>音<rt>おと</rt></ruby>も<span class="grammar-point"><ruby>聞<rt>き</rt></ruby>こえる</span>...」 (the view of Tokyo was beautifully visible from the window... you could hear the sound of distant trains).
+                            </div>
+                        </div>
+                         <div class="quiz-card">
+                            <p class="question-text">2. Why did An have trouble in the meeting? Choose two reasons.</p>
+                            <div class="options-container">
+                                <button class="option-btn" data-correct="true">The speaking speed was fast, and she couldn't understand everything.</button>
+                                <button class="option-btn">The meeting room was very cold.</button>
+                                <button class="option-btn" data-correct="true">The technical terms in the documents were difficult, and she couldn't understand them.</button>
+                                <button class="option-btn">She had to state her own opinion.</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Explanation:</strong> An wrote, 「<span class="grammar-point">聞き取ることができませんでした</span>」(couldn't understand by listening) because of the speed, and 「<span class="grammar-point">理解することができませんでした</span>」(couldn't understand) because of the difficult technical terms.
+                            </div>
+                        </div>
+                        <div class="quiz-card">
+                            <p class="question-text">3. What is the main thing An wants to ask her teacher in this email?</p>
+                            <div class="options-container">
+                                <button class="option-btn">To write a thank-you letter to Tanaka-senpai.</button>
+                                <button class="option-btn" data-correct="true">To teach her words that are used in a business context.</button>
+                                <button class="option-btn">To give her permission to be absent from the company.</button>
+                                <button class="option-btn">To explain the content of the meeting.</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                               💡 <strong>Explanation:</strong> At the end of the email, An makes a direct request: 「ビジネスで<ruby>使<rt>つか</rt></ruby>う<ruby>言葉<rt>ことば</rt></ruby>について、<ruby>少<rt>すこ</rt></ruby>し<span class="grammar-point"><ruby>教<rt>おし</rt></ruby>えていただくことはできますか</span>。」 (Would it be possible for you to teach me a little about words used in business?).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-talk1029.js"></script>
+</body>
+</html>
