@@ -5,10 +5,14 @@
     <title>Luyện thi JLPT - Mục lục N4</title>
     <style>
         /* --- General Styles --- */
+   
+
+
+        /* --- General Styles --- */
         body {
             margin: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #f4f7f9; /* A softer, more professional background */
+            background-color: #f4f7f9;
             color: #333;
         }
 
@@ -28,11 +32,12 @@
         .lang-switcher a { color: #F0E68C; text-decoration: none; padding: 8px 18px; background-color: rgba(255,255,255,0.2); border-radius: 15px; font-weight: 500; transition: background-color 0.2s; }
         .lang-switcher a:hover { background-color: rgba(255,255,255,0.4); }
 
-        /* --- Main Content --- */
+        /* --- Main Content (ĐÃ SỬA LỖI) --- */
         .main-content {
             max-width: 900px;
             margin: 0 auto;
-            padding: 20px;
+            /* SỬA Ở ĐÂY: Bỏ padding ở trên, giữ lại các cạnh khác */
+            padding: 0 20px 20px 20px; 
         }
         .hero-image { width: 100%; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 30px; }
         .hero-image img { width: 100%; display: block; }
@@ -47,18 +52,17 @@
             border: 1px solid #e2e8f0;
         }
        
-.lesson-section summary {
-    font-size: 1.3rem;
-    font-weight: 700;
-    padding: 20px 25px;
-    background-color: #008080; /* THAY ĐỔI: Nền xanh ngọc đậm */
-    color: #F0E68C;              /* THAY ĐỔI: Chữ màu trắng để nổi bật FFD700;  */
-    cursor: pointer;
-    outline: none;
-    transition: background-color 0.2s;
-    border-bottom: 1px solid #e2e8f0; /* Giữ lại viền dưới khi đóng */
-}
-
+        .lesson-section summary {
+            font-size: 1.3rem;
+            font-weight: 700;
+            padding: 20px 25px;
+            background-color: #008080; 
+            color: #F0E68C;              
+            cursor: pointer;
+            outline: none;
+            transition: background-color 0.2s;
+            border-bottom: 1px solid #e2e8f0; 
+        }
 
         .lesson-section summary:hover {
             background-color: #006666;
@@ -72,7 +76,7 @@
             padding: 0;
         }
 
-        /* --- NEW Lesson Table Styles (Based on your image) --- */
+        /* --- NEW Lesson Table Styles --- */
         .lesson-table {
             width: 100%;
             border-collapse: collapse;
@@ -92,15 +96,15 @@
             cursor: pointer; 
         }
         .lesson-table tbody tr.lesson-active:hover { 
-            background-color: #fff9c4 !important; /* Yellow hover color like image */
+            background-color: #fff9c4 !important;
             transform: scale(1.015);
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
         .lesson-table tbody tr:nth-child(odd) { 
-            background-color: #ffffff; /* White row */
+            background-color: #ffffff; 
         }
         .lesson-table tbody tr:nth-child(even) { 
-            background-color: #e0f7fa; /* Pastel cyan row like image */
+            background-color: #e0f7fa; 
         }
         .lesson-table td { 
             padding: 20px 18px; 
@@ -109,7 +113,7 @@
         }
         .lesson-table td:first-child { 
             font-weight: 700; 
-            color: #2c5282; /* Dark blue for lesson number */
+            color: #2c5282; 
             width: 120px;
         }
         .lesson-table .lesson-title {
@@ -121,7 +125,7 @@
         .lesson-locked {
             opacity: 0.6;
             cursor: not-allowed;
-            background-color: #f7fafc !important; /* A neutral disabled color */
+            background-color: #f7fafc !important; 
         }
         .lesson-locked:hover {
              transform: none !important;
@@ -132,16 +136,28 @@
             color: #a0aec0; 
         }
 
+        /* Style for the lesson meaning */
+        .lesson-table .lesson-meaning {
+            display: block; 
+            margin-top: 6px; 
+            font-size: 0.9em; 
+            color: #1a5276;   
+            font-weight: 400; 
+        }
+
         /* --- Mobile Optimization --- */
         @media (max-width: 768px) {
             .main-header { padding: 15px; }
             .main-header h1 { font-size: 1.4rem; }
             .level-nav a { padding: 8px 15px; font-size: 0.9rem; }
-            .main-content { padding: 10px; }
+            .main-content { padding: 0 10px 10px 10px; } /* Adjusted for mobile */
             .lesson-section summary { padding: 18px; font-size: 1.1rem; }
             .lesson-table th, .lesson-table td { padding: 15px 12px; font-size: 0.95rem; }
             .lesson-table td:first-child { width: 80px; }
         }
+ 
+
+
     </style>
 </head>
 <body>
@@ -161,27 +177,32 @@
     </header>
 
     <main class="main-content">
+
+     <!-- IMAGE IS NOW A CLICKABLE LINK -->
         <div class="hero-image">
-            <img src="../photo/shadowing-banner.jpg" alt="Học tiếng Nhật shadowing">
+            <a href="https://speak-japanese.netlify.app/" target="_blank" rel="noopener noreferrer">
+                <img src="../photo/shadowing-banner.jpg" alt="Japanese shadowing study, click to practice shadowing">
+            </a>
         </div>
+
+
+
 
         <!-- SECTION 1: Practising grammatical forms -->
         <details class="lesson-section">
             <summary>Phần 1: Luyện Tập Các Dạng Ngữ Pháp (形の練習)</summary>
             <div class="table-container">
                 <table class="lesson-table">
-   
-
                     <tbody>
-                        <tr class="lesson-locked"><td>1</td><td class="lesson-title">動詞のグループ (Nhóm động từ)</td></tr>
-                        <tr class="lesson-locked"><td>2</td><td class="lesson-title">て形・た形 (Thể て・Thể た)</td></tr>
-                        <tr class="lesson-locked"><td>3</td><td class="lesson-title">ていねい形とふつう形 (Thể lịch sự & Thể thông thường)</td></tr>
-                        <tr class="lesson-locked"><td>4</td><td class="lesson-title">可能の形 (Thể khả năng)</td></tr>
-                        <tr class="lesson-locked"><td>5</td><td class="lesson-title">「～ば」・「～なら」の形 (Dạng của ~ba, ~nara)</td></tr>
-                        <tr class="lesson-locked"><td>6</td><td class="lesson-title">う・よう形 (Thể ý chí)</td></tr>
-                        <tr class="lesson-locked"><td>7</td><td class="lesson-title">受身の形 (Thể bị động)</td></tr>
-                        <tr class="lesson-locked"><td>8</td><td class="lesson-title">使役の形 (Thể sai khiến)</td></tr>
-                        <tr class="lesson-locked"><td>9</td><td class="lesson-title">使役受身の形 (Thể bị động sai khiến)</td></tr>
+                        <tr class="lesson-locked"><td>1</td><td class="lesson-title">動詞のグループ<span class="lesson-meaning">(Nhóm động từ)</span></td></tr>
+                        <tr class="lesson-locked"><td>2</td><td class="lesson-title">て形・た形<span class="lesson-meaning">(Thể て・Thể た)</span></td></tr>
+                        <tr class="lesson-locked"><td>3</td><td class="lesson-title">ていねい形とふつう形<span class="lesson-meaning">(Thể lịch sự & Thể thông thường)</span></td></tr>
+                        <tr class="lesson-locked"><td>4</td><td class="lesson-title">可能の形<span class="lesson-meaning">(Thể khả năng)</span></td></tr>
+                        <tr class="lesson-locked"><td>5</td><td class="lesson-title">「～ば」・「～なら」の形<span class="lesson-meaning">(Dạng của ~ba, ~nara)</span></td></tr>
+                        <tr class="lesson-locked"><td>6</td><td class="lesson-title">う・よう形<span class="lesson-meaning">(Thể ý chí)</span></td></tr>
+                        <tr class="lesson-locked"><td>7</td><td class="lesson-title">受身の形<span class="lesson-meaning">(Thể bị động)</span></td></tr>
+                        <tr class="lesson-locked"><td>8</td><td class="lesson-title">使役の形<span class="lesson-meaning">(Thể sai khiến)</span></td></tr>
+                        <tr class="lesson-locked"><td>9</td><td class="lesson-title">使役受身の形<span class="lesson-meaning">(Thể bị động sai khiến)</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -192,34 +213,32 @@
             <summary>Phần 2: Ngữ Pháp Theo Chức Năng (意味機能別の文法形式)</summary>
             <div class="table-container">
                 <table class="lesson-table">
-               
                     <tbody>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk1n';"><td>Bài 1</td><td class="lesson-title">～より／～ほど、～のほう、～と～とどちら</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk2n';"><td>Bài 2</td><td class="lesson-title">～ながら、～ところです、～まで～</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk3n';"><td>Bài 3</td><td class="lesson-title">～ませんか、～ましょう／～ましょうか</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk4n';"><td>Bài 4</td><td class="lesson-title">Thể khả năng (～(ら)れます), ～ことができます</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk5n';"><td>Bài 5</td><td class="lesson-title">～たことがある (Kinh nghiệm), ～ことがある (Thỉnh thoảng)</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk6n';"><td>Bài 6</td><td class="lesson-title">～てもいい, ～てはいけない, ～なければならない</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk7n';"><td>Bài 7</td><td class="lesson-title">～がほしい, ～たい, ～といいです</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk8n';"><td>Bài 8</td><td class="lesson-title">～そうです, ～がっています, ～まま</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk9n';"><td>Bài 9</td><td class="lesson-title">～から／～からです, ～ので, ～て／～で</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk10n';"><td>Bài 10</td><td class="lesson-title">～に, ～ために, ～ように</td></tr>
-                        
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk11';"><td>Bài 11</td><td class="lesson-title">～(も)～し, ～たり～たりします</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk12';"><td>Bài 12</td><td class="lesson-title">～かもしれません, ～はずです, ～ようです／～みたいです</td></tr>
-                       <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk13';"><td>Bài 13</td><td class="lesson-title">～なさい, ～ほうがいいです, ～ないと</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk14';"><td>Bài 14</td><td class="lesson-title">～たら, ～ば, ～と</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk15';"><td>Bài 15</td><td class="lesson-title">～たら, ～なら</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk16';"><td>Bài 16</td><td class="lesson-title">～ても, ～のに</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk17';"><td>Bài 17</td><td class="lesson-title">～と, ～かどうか</td></tr>
-                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk18';"><tr class="lesson-locked"><td>Bài 18</td><td class="lesson-title">～(よ)うと思います, ～つもりです</td></tr>
-                        <tr class="lesson-locked"><td>Bài 19</td><td class="lesson-title">～と言っていました, ～そうです, ～らしいです</td></tr>
-                        <tr class="lesson-locked"><td>Bài 20</td><td class="lesson-title">～くします／～にします, ～くなります／～になります, ～ようになります</td></tr>
-                        <tr class="lesson-locked"><td>Bài 21</td><td class="lesson-title">～にします／～ことにします, ～になります／～ことになります</td></tr>
-                        <tr class="locked"><td>Bài 22</td><td class="lesson-title">～てみます, ～ておきます, ～てしまいます</td></tr>
-                        <tr class="lesson-locked"><td>Bài 23</td><td class="lesson-title">あげます／～てあげます, くれます／～てくれます, もらいます／～てもらいます</td></tr>
-                        <tr class="lesson-locked"><td>Bài 24</td><td class="lesson-title">～(ら)れます (Thể bị động)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 25</td><td class="lesson-title">～(さ)せます (Thể sai khiến)</td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk1n';"><td>Bài 1</td><td class="lesson-title">～より／～ほど、～のほう、～と～とどちら<span class="lesson-meaning">(So sánh hơn / kém)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk2n';"><td>Bài 2</td><td class="lesson-title">～ながら、～ところです、～まで～<span class="lesson-meaning">(Vừa làm A vừa làm B, đúng lúc, cho đến khi)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk3n';"><td>Bài 3</td><td class="lesson-title">～ませんか、～ましょう／～ましょうか<span class="lesson-meaning">(Rủ rê, mời mọc)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk4n';"><td>Bài 4</td><td class="lesson-title">Thể khả năng (～(ら)れます), ～ことができます<span class="lesson-meaning">(Diễn tả khả năng, năng lực)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk5n';"><td>Bài 5</td><td class="lesson-title">～たことがある (Kinh nghiệm), ～ことがある (Thỉnh thoảng)<span class="lesson-meaning">(Trải nghiệm trong quá khứ)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk6n';"><td>Bài 6</td><td class="lesson-title">～てもいい, ～てはいけない, ～なければならない<span class="lesson-meaning">(Cho phép, cấm đoán, nghĩa vụ)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk7n';"><td>Bài 7</td><td class="lesson-title">～がほしい, ～たい, ～といいです<span class="lesson-meaning">(Diễn tả mong muốn)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk8n';"><td>Bài 8</td><td class="lesson-title">～そうです, ～がっています, ～まま<span class="lesson-meaning">(Phỏng đoán, tường thuật, trạng thái)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk9n';"><td>Bài 9</td><td class="lesson-title">～から／～からです, ～ので, ～て／～で<span class="lesson-meaning">(Nguyên nhân, lý do)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk10n';"><td>Bài 10</td><td class="lesson-title">～に, ～ために, ～ように<span class="lesson-meaning">(Mục đích)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk11';"><td>Bài 11</td><td class="lesson-title">～(も)～し, ～たり～たりします<span class="lesson-meaning">(Liệt kê lý do, hành động)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk12';"><td>Bài 12</td><td class="lesson-title">～かもしれません, ～はずです, ～ようです／～みたいです<span class="lesson-meaning">(Suy đoán, phỏng đoán)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk13';"><td>Bài 13</td><td class="lesson-title">～なさい, ～ほうがいいです, ～ないと<span class="lesson-meaning">(Mệnh lệnh, khuyên bảo, phải làm)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk14';"><td>Bài 14</td><td class="lesson-title">～たら, ～ば, ～と<span class="lesson-meaning">(Câu điều kiện, giả định)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk15';"><td>Bài 15</td><td class="lesson-title">～たら, ～なら<span class="lesson-meaning">(Câu điều kiện, giả định - Nâng cao)</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk16';"><td>Bài 16</td><td class="lesson-title">～ても, ～のに<span class="lesson-meaning">(Nhượng bộ "Mặc dù...")</span></td></tr>
+                        <tr class="lesson-active" onclick="window.location.href='https://practicejapanese.netlify.app/speak/talk17';"><td>Bài 17</td><td class="lesson-title">～と, ～かどうか<span class="lesson-meaning">(Trích dẫn gián tiếp)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 18</td><td class="lesson-title">～(よ)うと思います, ～つもりです<span class="lesson-meaning">(Dự định, quyết định)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 19</td><td class="lesson-title">～と言っていました, ～そうです, ～らしいです<span class="lesson-meaning">(Tường thuật, tin đồn)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 20</td><td class="lesson-title">～くします／～にします, ～くなります／～になります, ～ようになります<span class="lesson-meaning">(Biến đổi trạng thái)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 21</td><td class="lesson-title">～にします／～ことにします, ～になります／～ことになります<span class="lesson-meaning">(Quyết định / Được quyết định)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 22</td><td class="lesson-title">～てみます, ～ておきます, ～てしまいます<span class="lesson-meaning">(Thử làm, làm sẵn, làm xong/hối tiếc)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 23</td><td class="lesson-title">あげます／～てあげます, くれます／～てくれます, もらいます／～てもらいます<span class="lesson-meaning">(Cho, nhận hành động)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 24</td><td class="lesson-title">～(ら)れます (Thể bị động)<span class="lesson-meaning">(Hành động bị tác động)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 25</td><td class="lesson-title">～(さ)せます (Thể sai khiến)<span class="lesson-meaning">(Bắt/cho phép ai làm gì)</span></td></tr>
                     </tbody>
                 </table>
             </div>
@@ -230,29 +249,26 @@
             <summary>Phần 3: Sắp Xếp & Phân Biệt Ngữ Pháp (文法形式の整理)</summary>
             <div class="table-container">
                  <table class="lesson-table">
-                  <!--  <thead><tr><th>Bài</th><th class="lesson-title">Nội dung</th></tr></thead>  -->
                     <tbody>
-                        <tr class="lesson-locked"><td>Bài 1</td><td class="lesson-title">で・に (Trợ từ)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 2</td><td class="lesson-title">を・と (Trợ từ)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 3</td><td class="lesson-title">も・しか (Trợ từ)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 4</td><td class="lesson-title">だけ・でも (Trợ từ)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 5</td><td class="lesson-title">は・が (Trợ từ)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 6</td><td class="lesson-title">の・こと (Danh từ hóa)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 7</td><td class="lesson-title">～て・・・, ～ないで・・・</td></tr>
-                        <tr class="lesson-locked"><td>Bài 8</td><td class="lesson-title">他動詞・自動詞 (Tha động từ & Tự động từ)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 9</td><td class="lesson-title">～ています・～てあります</td></tr>
-                        <tr class="lesson-locked"><td>Bài 10</td><td class="lesson-title">～てきます・～ていきます</td></tr>
-                        <tr class="lesson-locked"><td>Bài 11</td><td class="lesson-title">こ・そ・あ (Chỉ thị từ)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 12</td><td class="lesson-title">接続の言葉 (Từ nối)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 13</td><td class="lesson-title">副詞 (Phó từ)</td></tr>
-                        <tr class="lesson-locked"><td>Bài 14</td><td class="lesson-title">～すぎます・～にくいです・～やすいです</td></tr>
-                        <tr class="lesson-locked"><td>Bài 15</td><td class="lesson-title">品詞 (Các loại từ)</td></tr>
+                        <tr class="lesson-locked"><td>Bài 1</td><td class="lesson-title">で・に<span class="lesson-meaning">(Trợ từ chỉ địa điểm, phương tiện)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 2</td><td class="lesson-title">を・と<span class="lesson-meaning">(Trợ từ chỉ đối tượng, cùng với)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 3</td><td class="lesson-title">も・しか<span class="lesson-meaning">(Trợ từ "cũng", "chỉ")</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 4</td><td class="lesson-title">だけ・でも<span class="lesson-meaning">(Trợ từ "chỉ", "ngay cả")</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 5</td><td class="lesson-title">は・が<span class="lesson-meaning">(Trợ từ chủ đề, chủ ngữ)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 6</td><td class="lesson-title">の・こと<span class="lesson-meaning">(Danh từ hóa)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 7</td><td class="lesson-title">～て・・・, ～ないで・・・<span class="lesson-meaning">(Làm V mà không làm...)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 8</td><td class="lesson-title">他動詞・自動詞<span class="lesson-meaning">(Tha động từ & Tự động từ)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 9</td><td class="lesson-title">～ています・～てあります<span class="lesson-meaning">(Trạng thái đang diễn ra / kết quả)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 10</td><td class="lesson-title">～てきます・～ていきます<span class="lesson-meaning">(Hướng của hành động)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 11</td><td class="lesson-title">こ・そ・あ<span class="lesson-meaning">(Chỉ thị từ)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 12</td><td class="lesson-title">接続の言葉<span class="lesson-meaning">(Từ nối)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 13</td><td class="lesson-title">副詞<span class="lesson-meaning">(Phó từ)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 14</td><td class="lesson-title">～すぎます・～にくいです・～やすいです<span class="lesson-meaning">(Quá, khó làm, dễ làm)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 15</td><td class="lesson-title">品詞<span class="lesson-meaning">(Các loại từ)</span></td></tr>
                     </tbody>
                 </table>
             </div>
         </details>
-
     </main>
-
 </body>
 </html>
