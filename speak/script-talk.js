@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // === PHẦN 0: BỘ QUẢN LÝ GIỌNG ĐỌC (Không thay đổi) ===
     const voiceManager = {
         characterMap: {}, defaultVoice: null, voicesLoaded: false,
-        preferences: { 'an': 'nanami', 'suzuki': 'haruka', 'yamada': 'ichiro', 'tanaka': 'keita' },
+        preferences: { 'an': 'nanami', 'suzuki': 'ayumi', 'yamada': 'kenji', 'tanaka': 'keita' },
         init: function() {
             const load = () => this.loadVoices(); load();
             if (speechSynthesis.onvoiceschanged !== undefined) { speechSynthesis.onvoiceschanged = load; }
