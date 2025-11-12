@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
         characterMap: {},
         defaultVoice: null,
         voicesLoaded: false,
-        preferences: { 'an': 'nanami', 'suzuki': 'ayumiayumi', 'yamada': 'kenji', 'tanaka': 'keita' },
+        preferences: { 'an': 'nanami', 'suzuki': 'ayumi', 'yamada': 'kenji', 'tanaka': 'keita' },
 
         // Hàm khởi tạo, sẽ được gọi khi trang tải xong
         init: function() {
