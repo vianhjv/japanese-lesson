@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bài 20: Sự Thay Đổi và Trưởng Thành | Học tiếng Nhật cùng An</title>
+    
+    <link rel="stylesheet" href="styles-talk1029.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h2>Bài 20: Sự Thay Đổi và Trưởng Thành</h2>
+        <p>Học cách diễn tả sự thay đổi có chủ đích (～にします) và thay đổi tự nhiên (～なります).</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 1: HỘI THOẠI (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <img src="../photo/lesson20-1.jpg" alt="An và Tanaka đang thảo luận về thiết kế mới" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogue-source" style="display: none;">
+        <!-- Toàn bộ hội thoại diễn ra trong 1 cảnh -->
+        <div class="scene" data-scene-name="Thảo luận" data-background-image="../photo/lesson20-1.jpg">
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンさん、お<ruby>疲<rt>つか</rt></ruby>れ<ruby>様<rt>さま</rt></ruby>です。スケッチの<ruby>進捗<rt>しんちょく</rt></ruby>はどうですか。</p>
+                        <p class="vietnamese-text">Chào An. Tiến độ bản phác thảo thế nào rồi em?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">あ、<ruby>田中先輩<rt>たなかせんぱい</rt></ruby>！はい、いま メインのロゴの<ruby>部分<rt>ぶぶん</rt></ruby>を<ruby>調整<rt>ちょうせい</rt></ruby>しているところです。</p>
+                        <p class="vietnamese-text">A, anh Tanaka! Vâng, em đang điều chỉnh phần logo chính ạ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">なるほど。…このロゴ、もう少しサイズを<span class="g-verb-form"><ruby>大<rt>おお</rt></ruby>きく</span><span class="grammar-point">します</span>か。</p>
+                        <p class="vietnamese-text">Ra là vậy. ...Cái logo này, em có định làm cho nó to hơn một chút không?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、そうすると、デザインの<ruby>印象<rt>いんしょう</rt></ruby>が<span class="g-verb-form"><ruby>強<rt>つよ</rt></ruby>く</span><span class="grammar-point">なります</span>から。</p>
+                        <p class="vietnamese-text">Vâng ạ, vì nếu làm vậy thì ấn tượng của thiết kế sẽ trở nên mạnh mẽ hơn ạ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>確<rt>たし</rt></ruby>かにお<ruby>客様<rt>きゃくさま</rt></ruby>が<ruby>言<rt>い</rt></ruby>っていた「インパクト」が<ruby>出<rt>で</rt></ruby>ますね。…あれ？このソフト、3Dデザイン<ruby>用<rt>よう</rt></ruby>じゃありませんか。</p>
+                        <p class="vietnamese-text">Chắc chắn là sẽ tạo ra được "sự ấn tượng" mà khách hàng đã nói. ...Khoan đã? Phần mềm này chẳng phải là dùng cho thiết kế 3D sao?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい。このデザインには<ruby>必要<rt>ひつよう</rt></ruby>だと<ruby>思<rt>おも</rt></ruby>って、<ruby>昨日<rt>きのう</rt></ruby>から<ruby>勉強<rt>べんきょう</rt></ruby>を<ruby>始<rt>はじ</rt></ruby>めました。</p>
+                        <p class="vietnamese-text">Vâng. Em nghĩ là nó cần thiết cho bản thiết kế này nên đã bắt đầu tự học từ hôm qua.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ええっ、すごいですね！<ruby>難<rt>むずか</rt></ruby>しかったでしょう？</p>
+                        <p class="vietnamese-text">Hả, tuyệt vời vậy! Khó lắm đúng không?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>最初<rt>さいしょ</rt></ruby>は<ruby>全然<rt>ぜんぜん</rt></ruby><ruby>分<rt>わ</rt></ruby>かりませんでしたが、マニュアルを<ruby>読<rt>よ</rt></ruby>んだりして、やっと<ruby>基本的<rt>きほんてき</rt></ruby>な<ruby>機能<rt>きのう</rt></ruby>は<span class="g-verb-form"><ruby>使<rt>つか</rt></ruby>えるように</span><span class="grammar-point">なりました</span>。</p>
+                        <p class="vietnamese-text">Lúc đầu em hoàn toàn không hiểu gì cả, nhưng sau khi đọc sách hướng dẫn và mày mò, cuối cùng thì em cũng đã trở nên có thể sử dụng được các chức năng cơ bản ạ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうでしたか。アンさんの<ruby>努力<rt>どりょく</rt></ruby>で、デザインがどんどん<span class="g-verb-form"><ruby>良<rt>よ</rt></ruby>く</span><span class="grammar-point">なります</span>ね。<ruby>期待<rt>きたい</rt></ruby>していますよ。</p>
+                        <p class="vietnamese-text">Vậy à. Nhờ sự nỗ lực của em mà bản thiết kế đang dần trở nên tốt hơn nhỉ. Anh rất kỳ vọng đó.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい！ありがとうございます！<ruby>部屋<rt>へや</rt></ruby>を<span class="g-verb-form">きれいに</span><span class="grammar-point">する</span>ように、このデザインももっと<ruby>良<rt>よ</rt></ruby>くしてみせます！</p>
+                        <p class="vietnamese-text">Vâng, em cảm ơn anh ạ! Giống như việc dọn phòng cho sạch sẽ, em sẽ cố gắng làm cho bản thiết kế này trở nên tốt hơn nữa!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 2: TỪ VỰNG MỚI (新しい言葉) -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>Từ Vựng Mới (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>進捗<rt>しんちょく</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="しんちょく">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Tiến độ, sự tiến triển</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">プロジェクトの<ruby>進捗<rt>しんちょく</rt></ruby>を<ruby>報告<rt>ほうこく</rt></ruby>します。</p>
+                            <button class="vocab-play-btn" data-speak-text="プロジェクトのしんちょくをほうこくします">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi sẽ báo cáo tiến độ của dự án.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>調整<rt>ちょうせい</rt></ruby>する</h4>
+                        <button class="vocab-play-btn" data-speak-text="ちょうせいする">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Động từ suru</p>
+                        <p><span class="label">Nghĩa:</span> Điều chỉnh</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">スケジュールを<ruby>調整<rt>ちょうせい</rt></ruby>してください。</p>
+                            <button class="vocab-play-btn" data-speak-text="スケジュールをちょうせいしてください">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Xin hãy điều chỉnh lịch trình.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>印象<rt>いんしょう</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="いんしょう">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Ấn tượng</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>彼<rt>かれ</rt></ruby>の<ruby>第一印象<rt>だいいちいんしょう</rt></ruby>はとても<ruby>良<rt>よ</rt></ruby>かったです。</p>
+                            <button class="vocab-play-btn" data-speak-text="かれのだいいちいんしょうはとてもよかったです">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Ấn tượng đầu tiên về anh ấy rất tốt.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">ソフト</h4>
+                        <button class="vocab-play-btn" data-speak-text="ソフト">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Phần mềm (software)</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">このソフトは<ruby>使<rt>つか</rt></ruby>いやすいです。</p>
+                            <button class="vocab-play-btn" data-speak-text="このソフトはつかいやすいです">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Phần mềm này rất dễ sử dụng.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">マニュアル</h4>
+                        <button class="vocab-play-btn" data-speak-text="マニュアル">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Sách hướng dẫn</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">マニュアルをよく<ruby>読<rt>よ</rt></ruby>んでください。</p>
+                            <button class="vocab-play-btn" data-speak-text="マニュアルをよくよんでください">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Hãy đọc kỹ sách hướng dẫn.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>基本的<rt>きほんてき</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="きほんてき">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Tính từ-na</p>
+                        <p><span class="label">Nghĩa:</span> Mang tính cơ bản</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>基本的<rt>きほんてき</rt></ruby>な<ruby>文法<rt>ぶんぽう</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>します。</p>
+                            <button class="vocab-play-btn" data-speak-text="きほんてきなぶんぽうをべんきょうします">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi học ngữ pháp cơ bản.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>機能<rt>きのう</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="きのう">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Chức năng, tính năng</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">このカメラには<ruby>便利<rt>べんり</rt></ruby>な<ruby>機能<rt>きのう</rt></ruby>があります。</p>
+                            <button class="vocab-play-btn" data-speak-text="このカメラにはべんりなきのうがあります">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Máy ảnh này có chức năng tiện lợi.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>努力<rt>どりょく</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="どりょく">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Sự nỗ lực</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>彼<rt>かれ</rt></ruby>の<ruby>努力<rt>どりょく</rt></ruby>が<ruby>成功<rt>せいこう</rt></ruby>につながりました。</p>
+                            <button class="vocab-play-btn" data-speak-text="かれのどりょくがせいこうにつながりました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Sự nỗ lực của anh ấy đã dẫn đến thành công.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>期待<rt>きたい</rt></ruby>する</h4>
+                        <button class="vocab-play-btn" data-speak-text="きたいする">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Động từ suru</p>
+                        <p><span class="label">Nghĩa:</span> Kỳ vọng, mong đợi</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>私<rt>わたし</rt></ruby>はあなたの<ruby>活躍<rt>かつやく</rt></ruby>を<ruby>期待<rt>きたい</rt></ruby>しています。</p>
+                            <button class="vocab-play-btn" data-speak-text="わたしはあなたのかつやくをきたいしています">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi đang kỳ vọng vào sự thành công của bạn.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+<!-- =============================================================== -->
+    <!-- PHẦN 3: PHÂN TÍCH NGỮ PHÁP (文法の解説) -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+            <h2>Phần 3: Phân Tích Ngữ Pháp (文法の解説)</h2>
+            
+            <div class="grammar-card">
+                <h3>1. ～くします / ～にします (Làm cho... / Khiến cho...)</h3>
+                <div class="grammar-explanation">
+                    <p>Dùng khi một người nào đó <strong>cố ý, có chủ đích (意志的に)</strong> làm thay đổi trạng thái của một sự vật, sự việc.</p>
+                </div>
+                
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Loại từ</th>
+                            <th>Công thức</th>
+                            <th>Ví dụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tính từ -i</td>
+                            <td>(Bỏ い) + くします</td>
+                            <td><ruby>大<rt>おお</rt></ruby>きい → <span class="g-verb-form"><ruby>大<rt>おお</rt></ruby>きく</span><span class="grammar-point">します</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tính từ -na</td>
+                            <td>(Giữ nguyên) + にします</td>
+                            <td>きれい → <span class="g-verb-form">きれいに</span><span class="grammar-point">します</span></td>
+                        </tr>
+                        <tr>
+                            <td>Danh từ</td>
+                            <td>+ にします</td>
+                            <td><ruby>半分<rt>はんぶん</rt></ruby> → <span class="g-verb-form"><ruby>半分<rt>はんぶん</rt></ruby>に</span><span class="grammar-point">します</span> (làm cho còn một nửa)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                 <div class="example-block">
+                    <p class="example-jp">このロゴ、もう少しサイズを<span class="g-verb-form"><ruby>大<rt>おお</rt></ruby>きく</span><span class="grammar-point">します</span>か。</p>
+                    <p class="example-vn">Cái logo này, em có định làm cho nó to hơn một chút không?</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>部屋<rt>へや</rt></ruby>を<span class="g-verb-form">きれいに</span><span class="grammar-point">します</span>。</p>
+                    <p class="example-vn">Tôi dọn phòng cho sạch sẽ.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. ～くなります / ～になります / ～ようになります (Trở nên / Trở thành)</h3>
+                <div class="grammar-explanation">
+                    <p>Diễn tả một sự <strong>thay đổi (変化)</strong> về trạng thái của sự vật, sự việc một cách tự nhiên, không có sự tác động chủ ý trực tiếp tại thời điểm nói.</p>
+                </div>
+
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Loại từ</th>
+                            <th>Công thức</th>
+                            <th>Ví dụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Tính từ -i</td>
+                            <td>(Bỏ い) + くなります</td>
+                            <td><ruby>強<rt>つよ</rt></ruby>い → <span class="g-verb-form"><ruby>強<rt>つよ</rt></ruby>く</span><span class="grammar-point">なります</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tính từ -na</td>
+                            <td>(Giữ nguyên) + になります</td>
+                            <td>きれい → <span class="g-verb-form">きれいに</span><span class="grammar-point">なります</span></td>
+                        </tr>
+                        <tr>
+                            <td>Danh từ</td>
+                            <td>+ になります</td>
+                            <td><ruby>医者<rt>いしゃ</rt></ruby> → <span class="g-verb-form"><ruby>医者<rt>いしゃ</rt></ruby>に</span><span class="grammar-point">なります</span> (trở thành bác sĩ)</td>
+                        </tr>
+                         <tr>
+                            <td>Động từ</td>
+                            <td>(Thể từ điển / ない) + ようになります</td>
+                            <td><span class="g-verb-form"><ruby>話<rt>はな</rt></ruby>せるように</span><span class="grammar-point">なります</span> (trở nên có thể nói được)</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="example-block">
+                    <p class="example-jp">デザインの<ruby>印象<rt>いんしょう</rt></ruby>が<span class="g-verb-form"><ruby>強<rt>つよ</rt></ruby>く</span><span class="grammar-point">なります</span>。</p>
+                    <p class="example-vn">Ấn tượng của thiết kế sẽ trở nên mạnh mẽ hơn.</p>
+                </div>
+                 <div class="example-block">
+                    <p class="example-jp"><ruby>基本的<rt>きほんてき</rt></ruby>な<ruby>機能<rt>きのう</rt></ruby>は<span class="g-verb-form"><ruby>使<rt>つか</rt></ruby>えるように</span><span class="grammar-point">なりました</span>。</p>
+                    <p class="example-vn">Em đã trở nên có thể sử dụng được các chức năng cơ bản.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 4: LUYỆN TẬP NGỮ PHÁP (練習) -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Phần 4: Luyện Tập Ngữ Pháp (練習)</h2>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <p class="question-text">1. この<ruby>部屋<rt>へや</rt></ruby>は<ruby>暗<rt>くら</rt></ruby>いですね。<ruby>電気<rt>でんき</rt></ruby>をつけて、もっと＿＿＿＿。</p>
+                <div class="options-container">
+                    <button class="option-btn"><ruby>明<rt>あか</rt></ruby>るくなります</button>
+                    <button class="option-btn" data-correct="true"><ruby>明<rt>あか</rt></ruby>るくします</button>
+                    <button class="option-btn"><ruby>明<rt>あか</rt></ruby>るいでしょう</button>
+                    <button class="option-btn"><ruby>明<rt>あか</rt></ruby>るくなりたいです</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Người nói đang thực hiện một hành động (電気をつけて - bật điện) với chủ ý làm thay đổi trạng thái của căn phòng. Do đó, mẫu câu diễn tả sự thay đổi có chủ đích <span class="grammar-point">～くします</span> là chính xác.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">2. <ruby>毎日<rt>まいにち</rt></ruby><ruby>練習<rt>れんしゅう</rt></ruby>したので、<ruby>前<rt>まえ</rt></ruby>よりピアノが＿＿＿＿。</p>
+                <div class="options-container">
+                    <button class="option-btn"><ruby>弾<rt>ひ</rt></ruby>くようにしました</button>
+                    <button class="option-btn" data-correct="true"><ruby>弾<rt>ひ</rt></ruby>けるようになりました</button>
+                    <button class="option-btn"><ruby>弾<rt>ひ</rt></ruby>かせました</button>
+                    <button class="option-btn"><ruby>弾<rt>ひ</rt></ruby>いてみます</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Câu này diễn tả một sự thay đổi về khả năng (trước đây không chơi giỏi, bây giờ đã có thể chơi được). Mẫu ngữ pháp <span class="grammar-point">～できるようになります</span> được dùng để thể hiện sự thay đổi về khả năng này.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">3. <ruby>年<rt>とし</rt></ruby>をとって、<ruby>父<rt>ちち</rt></ruby>はあまりお<ruby>酒<rt>さけ</rt></ruby>を＿＿＿＿。</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true"><ruby>飲<rt>の</rt></ruby>まなくなりました</button>
+                    <button class="option-btn"><ruby>飲<rt>の</rt></ruby>まないようにします</button>
+                    <button class="option-btn"><ruby>飲<rt>の</rt></ruby>めませんでした</button>
+                    <button class="option-btn"><ruby>飲<rt>の</rt></ruby>ませませんでした</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Câu này diễn tả một sự thay đổi về thói quen theo thời gian (do có tuổi). Mẫu câu <span class="grammar-point">Vなくなりました</span> được dùng để diễn tả việc một người đã ngừng làm một việc mà họ từng làm trước đây.
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- =============================================================== -->
+    <!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) -->
+    <!-- =============================================================== -->
+    <div class="reading-comprehension-section">
+        <div class="reading-comprehension-container">
+            <h2>Phần 5: Đọc Hiểu Ứng Dụng (読解練習)</h2>
+            <div class="reading-wrapper">
+                <div class="reading-card">
+                    <h3><ruby>成長<rt>せいちょう</rt></ruby>の<ruby>日記<rt>にっき</rt></ruby> (Nhật Ký Trưởng Thành)</h3>
+                    
+                    <div class="readable-passage-component">
+                        <h4><ruby>文章<rt>ぶんしょう</rt></ruby></h4>
+                        <div class="text-to-be-read" id="readingPassageText">
+                            <p><ruby>今週<rt>こんしゅう</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>は<ruby>仕事<rt>しごと</rt></ruby>で<ruby>新<rt>あたら</rt></ruby>しい<ruby>挑戦<rt>ちょうせん</rt></ruby>をしています。クライアントの<ruby>要望<rt>ようぼう</rt></ruby>で、デザインをもっと<ruby>印象的<rt>いんしょうてき</rt></ruby>にしなければなりません。<ruby>色<rt>いろ<rt></ruby>々<ruby>考<rt>かんが</rt></ruby>えた<ruby>結果<rt>けっか</rt></ruby>、3Dデザインの<ruby>技術<rt>ぎじゅつ</rt></ruby>を<ruby>使<rt>つか</rt></ruby>うことにしました。</p>
+                            <p>もちろん、<ruby>私<rt>わたし</rt></ruby>は3Dソフトを<ruby>使<rt>つか</rt></ruby>ったことがありませんでした。<ruby>最初<rt>さいしょ</rt></ruby>は<ruby>画面<rt>がめん</rt></ruby>を<ruby>見<rt>み</rt></ruby>ても、<ruby>何<rt>なに</rt></ruby>も<ruby>分<rt>わ</rt></ruby>かりませんでした。でも、いいデザインを<ruby>作<rt>つく</rt></ruby>りたいという<ruby>気持<rt>きも</rt></ruby>ちが<ruby>強<rt>つよ</rt></ruby>かったです。<ruby>諦<rt>あきら</rt></ruby>めずに、インターネットで<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>を<ruby>調<rt>しら</rt></ruby>べたり、<ruby>夜遅<rt>よるおそ</rt></ruby>くまで<ruby>練習<rt>れんしゅう</rt></ruby>したりしました。</p>
+                            <p>すると、<ruby>少<rt>すこ</rt></ruby>しずつですが、<ruby>複雑<rt>ふくざつ</rt></ruby>な<ruby>操作<rt>そうさ</rt></ruby>も<span class="g-verb-form">できる</span><span class="grammar-point">ようになりました</span>。<ruby>前<rt>まえ</rt></ruby>は<ruby>難<rt>むずか</rt></ruby>しいだけだった<ruby>仕事<rt>しごと</rt></ruby>が、だんだん<span class="g-verb-form"><ruby>楽<rt>たの</rt></ruby>しく</span><span class="grammar-point">なりました</span>。<ruby>自分<rt>じぶん</rt></ruby>のアイデアが<span class="g-verb-form"><ruby>形<rt>かたち</rt></ruby>に</span><span class="grammar-point">なる</span>のを<ruby>見<rt>み</rt></ruby>るのは、<ruby>本当<rt>ほんとう</rt></ruby>に<ruby>嬉<rt>うれ</rt></ruby>しいです。この<ruby>経験<rt>けいけん</rt></ruby>で、<ruby>私<rt>わたし</rt></ruby>はまた<ruby>少<rt>すこ</rt></ruby>し<span class="g-verb-form"><ruby>強<rt>つよ</rt></ruby>く</span><span class="grammar-point">なれた</span>と<ruby>思<rt>おも</rt></ruby>います。</p>
+                        </div>
+                        <div class="passage-audio-controls">
+                            <button class="control-btn play-pause" data-target="readingPassageText">▶ Bắt đầu</button>
+                            <button class="control-btn stop" data-target="readingPassageText">■ Dừng hẳn</button>
+                            <div class="speed-controls">
+                                <span>Tốc độ:</span>
+                                <button class="speed-btn" data-speed="0.8">0.8x</button>
+                                <button class="speed-btn active" data-speed="1.0">1x</button>
+                                <button class="speed-btn" data-speed="1.2">1.2x</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <details class="translation-wrapper">
+                        <summary>📖 Xem bản dịch và từ vựng</summary>
+                        <div class="translation-content">
+                            <h4>Bản dịch</h4>
+                            <p><strong>Nhật Ký Trưởng Thành</strong></p>
+                            <p>Tuần này, tôi đang có một thử thách mới trong công việc. Theo yêu cầu của khách hàng, tôi phải làm cho bản thiết kế trở nên ấn tượng hơn. Sau khi suy nghĩ rất nhiều, tôi đã quyết định sử dụng kỹ thuật thiết kế 3D.</p>
+                            <p>Dĩ nhiên, tôi chưa từng sử dụng phần mềm 3D. Lúc đầu, dù nhìn vào màn hình tôi cũng không hiểu gì cả. Nhưng, cảm xúc muốn tạo ra một thiết kế tốt rất mạnh mẽ. Không bỏ cuộc, tôi đã tra cứu cách sử dụng trên mạng, và luyện tập đến tận khuya.</p>
+                            <p>Và rồi, tuy chỉ một chút một, nhưng tôi đã dần trở nên có thể thực hiện được cả những thao tác phức tạp. Công việc mà trước đây chỉ toàn là khó khăn, đã dần dần trở nên vui vẻ. Việc nhìn thấy ý tưởng của mình thành hình thực sự rất vui. Tôi nghĩ rằng, nhờ kinh nghiệm này, tôi đã có thể trở nên mạnh mẽ hơn một chút nữa.</p>
+                            
+                            <h4>Từ vựng mới trong bài đọc</h4>
+                             <ul class="reading-vocab-list">
+                                <li><strong><ruby>挑戦<rt>ちょうせん</rt></ruby>:</strong> thử thách</li>
+                                <li><strong><ruby>技術<rt>ぎじゅつ</rt></ruby>:</strong> kỹ thuật</li>
+                                <li><strong><ruby>諦<rt>あきら</rt></ruby>める:</strong> từ bỏ</li>
+                                <li><strong><ruby>操作<rt>そうさ</rt></ruby>:</strong> thao tác</li>
+                                <li><strong><ruby>形<rt>かたち</rt></ruby>になる:</strong> thành hình, thành hiện thực</li>
+                            </ul>
+                        </div>
+                    </details>
+                    
+                    <hr>
+                    
+                    <h4>Câu hỏi đọc hiểu</h4>
+                     <div class="reading-quiz-container quiz-container">
+                        <div class="quiz-card">
+                            <p class="question-text">1. <ruby>筆者<rt>ひっしゃ</rt></ruby>はどうして3Dソフトを<ruby>勉強<rt>べんきょう</rt></ruby>し<ruby>始<rt>はじ</rt></ruby>めましたか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>田中先輩<rt>たなかせんぱい</rt></ruby>に<ruby>命令<rt>めいれい</rt></ruby>されたからです。</button>
+                                <button class="option-btn" data-correct="true">デザインをもっと<ruby>印象的<rt>いんしょうてき</rt></ruby>にしたかったからです。</button>
+                                <button class="option-btn"><ruby>時間<rt>じかん</rt></ruby>がたくさんあったからです。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> Trong bài có câu: 「クライアントの<ruby>要望<rt>ようぼう</rt></ruby>で、デザインをもっと<ruby>印象的<rt>いんしょうてき</rt></ruby>にしなければなりません。」 (Theo yêu cầu của khách hàng, tôi phải làm cho bản thiết kế trở nên ấn tượng hơn.)
+                            </div>
+                        </div>
+                         <div class="quiz-card">
+                            <p class="question-text">2. <ruby>練習<rt>れんしゅう</rt></ruby>した<ruby>後<rt>あと</rt></ruby>、<ruby>筆者<rt>ひっしゃ</rt></ruby>にはどんな<ruby>変化<rt>へんか</rt></ruby>がありましたか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>仕事<rt>しごと</rt></ruby>がもっと<ruby>難<rt>むずか</rt></ruby>しくなりました。</button>
+                                <button class="option-btn" data-correct="true"><ruby>複雑<rt>ふくざつ</rt></ruby>な<ruby>操作<rt>そうさ</rt></ruby>もできるようになりました。</button>
+                                <button class="option-btn"><ruby>新<rt>あたら</rt></ruby>しいソフトを<ruby>買<rt>か</rt></ruby>うことにしました。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> Tác giả viết: 「すると、<ruby>少<rt>すこ</rt></ruby>しずつですが、<ruby>複雑<rt>ふくざつ</rt></ruby>な<ruby>操作<rt>そうさ</rt></ruby>もできるようになりました。」 (Và rồi, tuy chỉ một chút một, nhưng tôi đã dần trở nên có thể thực hiện được cả những thao tác phức tạp.)
+                            </div>
+                        </div>
+                        <div class="quiz-card">
+                            <p class="question-text">3. この<ruby>文章<rt>ぶんしょう</rt></ruby>の<ruby>内容<rt>ないよう</rt></ruby>と<ruby>合<rt>あ</rt></ruby>っているものはどれですか。</p>
+                            <div class="options-container">
+                                <button class="option-btn"><ruby>筆者<rt>ひっしゃ</rt></ruby>は<ruby>最初<rt>さいしょ</rt></ruby>から3Dソフトの<ruby>使<rt>つか</rt></ruby>い<ruby>方<rt>かた</rt></ruby>が<ruby>上手<rt>じょうず</rt></ruby>でした。</button>
+                                <button class="option-btn"><ruby>筆者<rt>ひっしゃ</rt></ruby>は<ruby>新<rt>あたら</rt></ruby>しい<ruby>挑戦<rt>ちょうせん</rt></ruby>を<ruby>諦<rt>あきら</rt></ruby>めてしまいました。</button>
+                                <button class="option-btn" data-correct="true"><ruby>筆者<rt>ひっしゃ</rt></ruby>は<ruby>努力<rt>どりょく</rt></ruby>することで、<ruby>新<rt>あたら</rt></ruby>しいスキルを<ruby>身<rt>み</rt></ruby>につけ、<ruby>成長<rt>せいちょう</rt></ruby>を<ruby>感<rt>かん</rt></ruby>じています。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                               💡 <strong>Giải thích:</strong> Toàn bộ bài văn thể hiện quá trình nỗ lực (`諦めずに...練習したりしました`), học được kỹ năng mới (`できるようになりました`), và cảm thấy trưởng thành (`強くなれたと思います`).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- CÁC PHẦN TIẾP THEO SẼ ĐƯỢC THÊM VÀO SAU -->
+
+    <script src="script-talk1029.js"></script>
+</body>
+</html>
