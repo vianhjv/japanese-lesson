@@ -17,7 +17,7 @@ body {
 }
 .scene-container { 
     max-width: 800px; 
-    margin: 4px auto; 
+    margin: 2px auto; 
     position: relative; 
 }
 .scene-background-image {
@@ -33,7 +33,7 @@ body {
     margin-top: -110px; 
     margin-left: 20px; 
     margin-right: 20px;
-    padding: 25px; 
+    padding: 10px; 
     background: rgba(200, 180, 140, 0.55);
     border-radius: 15px; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
@@ -102,7 +102,7 @@ rt {
     user-select: none; 
 }
 .vietnamese-text {
-    font-size: 1rem; 
+    font-size: 1.1rem; 
     color: #555; 
     margin-top: 0;
     border-left: 3px solid #228B22; 
@@ -1052,11 +1052,11 @@ body {
 }
 .page-header, .page-footer { 
     text-align: center; 
-    padding: 4px; 
+    padding: 2px; 
 }
 .scene-container { 
     max-width: 800px; 
-    margin: 8px auto; 
+    margin: 2px auto; 
     position: relative; 
 }
 .scene-background-image {
@@ -1069,10 +1069,10 @@ body {
 }
 .dialogue-overlay {
     position: relative; 
-    margin-top: -80px; 
+    margin-top: -100px; 
     margin-left: 20px; 
     margin-right: 20px;
-    padding: 25px; 
+    padding: 10px; 
     background: rgba(200, 180, 140, 0.55);
     border-radius: 15px; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
