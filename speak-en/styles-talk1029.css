@@ -13,11 +13,11 @@ body {
 }
 .page-header, .page-footer { 
     text-align: center; 
-    padding: 20px; 
+    padding: 10px; 
 }
 .scene-container { 
-    max-width: 900px; 
-    margin: 20px auto; 
+    max-width: 800px; 
+    margin: 8px auto; 
     position: relative; 
 }
 .scene-background-image {
@@ -87,7 +87,7 @@ body {
     flex-grow: 1; 
 }
 .japanese-text {
-    font-size: clamp(1.2rem, 4vw, 1.6rem); 
+    font-size: clamp(1.4rem, 4.5vw, 1.8rem); 
     line-height: 1.8;
     margin: 0 0 8px 0; 
     color: #2c3e50; 
@@ -1052,11 +1052,11 @@ body {
 }
 .page-header, .page-footer { 
     text-align: center; 
-    padding: 20px; 
+    padding: 10px; 
 }
 .scene-container { 
-    max-width: 900px; 
-    margin: 20px auto; 
+    max-width: 800px; 
+    margin: 8px auto; 
     position: relative; 
 }
 .scene-background-image {
@@ -1126,7 +1126,7 @@ body {
     flex-grow: 1; 
 }
 .japanese-text {
-    font-size: clamp(1.2rem, 4vw, 1.6rem); 
+    font-size: clamp(1.4rem, 4.5vw, 1.8rem); 
     line-height: 1.8;
     margin: 0 0 8px 0; 
     color: #2c3e50; 
@@ -1141,11 +1141,11 @@ rt {
     user-select: none; 
 }
 .vietnamese-text {
-    font-size: 1rem; 
+    font-size: 1.1rem; 
     color: #555; 
     margin-top: 0;
     border-left: 3px solid #228B22; 
-    padding-left: 10px; 
+    padding-left: 8px; 
 }
 
 
@@ -2083,39 +2083,18 @@ rt {
 }
 
 
-/* ============================================= */
-/* == STYLE CHO VÍ DỤ DẠNG HỘI THOẠI A/B == */
-/* ============================================= */
 
-.dialogue-example {
-    padding-top: 10px;
+/* -- Dán đoạn mã này vào file CSS của bạn -- */
+
+/* Chủ ngữ / Chủ đề của câu (MÀU MỚI) */
+.g-subject {
+    color: #27ae60; /* Xanh lá cây */
+    font-weight: 600;
+    background-color: #e9f7ef; /* Nền xanh lá cây rất nhạt */
+    padding: 2px 6px;
+    border-radius: 4px;
 }
 
-/* Mỗi lượt thoại (A hoặc B) */
-.dialogue-turn {
-    display: flex; /* Dùng Flexbox để xếp hàng ngang */
-    align-items: flex-start; /* Căn lề trên cùng */
-    margin-bottom: 15px; /* Tạo khoảng cách giữa các lượt thoại */
-}
-
-/* Nhãn A:, B: */
-.speaker-label {
-    font-weight: bold;
-    color: #34495e;
-    min-width: 25px; /* Đảm bảo A: và B: thẳng hàng */
-    padding-top: 5px; /* Căn chỉnh với dòng tiếng Nhật */
-}
-
-/* Phần nội dung thoại bên phải */
-.dialogue-text-content {
-    flex-grow: 1; /* Tự động lấp đầy không gian còn lại */
-}
-
-/* Ghi đè một chút margin của thẻ p bên trong để gọn hơn */
-.dialogue-text-content .example-jp,
-.dialogue-text-content .example-vn {
-    margin-top: 0;
-    margin-bottom: 8px;
-}
+/* -- Sửa lại các class cũ một chút cho giống với hình ảnh -- */
 
 
