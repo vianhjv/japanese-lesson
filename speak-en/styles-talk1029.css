@@ -89,7 +89,7 @@ body {
 .japanese-text {
     font-size: clamp(1.4rem, 4.5vw, 1.8rem); 
     line-height: 1.8;
-    margin: 0 0 8px 0; 
+    margin: 0 0 6px 0; 
     color: #2c3e50; 
     font-weight: 500;
 }
@@ -340,7 +340,7 @@ rt {
 <!--
 .grammar-section {
     background-color: #f0f4f8; /* Màu nền tổng thể hơi khác một chút để phân biệt */
-    padding: 40px 20px;
+    padding: 20px 10px;
 }
 
 .grammar-container {
@@ -352,7 +352,7 @@ rt {
     text-align: center;
     font-size: 2rem;
     color: #2c3e50;
-    margin-bottom: 35px;
+    margin-bottom: 20px;
     border-bottom: 4px solid #3498db; /* Đường gạch chân xanh dương */
     display: inline-block;
     padding-bottom: 10px;
@@ -362,8 +362,8 @@ rt {
 .grammar-card {
     background-color: #ffffff;
     border-radius: 15px; /* Bo tròn nhiều hơn chút cho hiện đại */
-    padding: 25px;
-    margin-bottom: 25px;
+    padding: 15px;
+    margin-bottom: 15px;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* Bóng đổ mềm mại hơn */
     border: 1px solid #eef2f7;
     transition: all 0.3s ease;
@@ -371,7 +371,7 @@ rt {
 
 .grammar-card:hover {
     transform: translateY(-5px); /* Hiệu ứng nhấc lên khi di chuột */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
     border-color: #3498db; /* Viền chuyển xanh khi hover */
 }
 
@@ -382,7 +382,7 @@ rt {
     margin-top: 0;
     padding-bottom: 12px;
     border-bottom: 2px dashed #cbd5e0; /* Đường gạch nét đứt nhẹ nhàng */
-    margin-bottom: 20px;
+    margin-bottom: 15px;
 }
 
 /* Phần nội dung giải thích */
@@ -395,7 +395,7 @@ rt {
 
 /* --- CẶP CÂU VÍ DỤ (STYLE MỚI QUAN TRỌNG) --- */
 .grammar-example-pair {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     padding-left: 15px; /* Thụt lề nhẹ cho cả khối ví dụ */
 }
 
@@ -438,7 +438,7 @@ rt {
     background-color: #e8f4fc; /* Nền xanh dương rất nhạt */
     border: 2px solid #bde0fe;
     border-radius: 10px;
-    padding: 15px 20px;
+    padding: 15px 1515px;
     margin: 20px 0;
     font-family: monospace, sans-serif; /* Font hơi khác chút để giống "code" */
     font-size: 1.1rem;
@@ -467,7 +467,7 @@ rt {
 
 .grammar-section {
     background-color: #f8f9fa;
-    padding: 40px 20px;
+    padding: 20px 10px;
 }
 
 .grammar-container {
@@ -485,9 +485,9 @@ rt {
 /* --- THẺ NGỮ PHÁP CHÍNH --- */
 .grammar-card {
     background-color: #ffffff;
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
     border: 1px solid #f0f0f0;
     /* Thêm transition để hiệu ứng hover mượt mà */
@@ -515,7 +515,7 @@ rt {
     font-size: 1.1rem;
     line-height: 1.8;
     color: #34495e;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     background-color: #eefbfb; /* Màu nền xanh ngọc nhạt */
     padding: 12px 18px;      /* Giảm padding cho gọn hơn */
     border-radius: 5px;       /* Giảm bo tròn */
@@ -532,8 +532,8 @@ rt {
 
 /* --- KHỐI VÍ DỤ MỚI --- */
 .example-block {
-    margin-bottom: 20px;
-    padding: 15px 20px;
+    margin-bottom: 15px;
+    padding: 10px 15px;
     background-color: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 12px;
@@ -1056,7 +1056,7 @@ body {
 }
 .scene-container { 
     max-width: 800px; 
-    margin: 20px auto; 
+    margin: 2px auto; 
     position: relative; 
 }
 .scene-background-image {
@@ -1070,9 +1070,9 @@ body {
 .dialogue-overlay {
     position: relative; 
     margin-top: -110px; 
-    margin-left: 20px; 
-    margin-right: 20px;
-    padding: 10px; 
+    margin-left: 15px; 
+    margin-right: 15px;
+    padding: 8px; 
     background: rgba(200, 180, 140, 0.55);
     border-radius: 15px; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
@@ -1141,7 +1141,7 @@ rt {
     user-select: none; 
 }
 .vietnamese-text {
-    font-size: 1.11rem; 
+    font-size: 1.1rem; 
     color: #555; 
     margin-top: 0;
     border-left: 3px solid #228B22; 
