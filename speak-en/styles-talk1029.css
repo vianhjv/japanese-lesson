@@ -2097,4 +2097,26 @@ rt {
 
 /* -- Sửa lại các class cũ một chút cho giống với hình ảnh -- */
 
+/* --- BỔ SUNG ĐỂ KÉO HỘP THOẠI LÊN CAO HƠN --- */
+
+/* 1. Giảm khoảng cách giữa dòng giới thiệu và ảnh */
+.page-header {
+    padding-bottom: 5px; /* Giảm khoảng đệm dưới của tiêu đề */
+}
+.scene-container {
+    margin-top: 0; /* Bỏ hoàn toàn khoảng cách trên của khu vực ảnh */
+}
+
+/* 2. Kéo hộp thoại lên cao hơn nữa trên màn hình lớn */
+.dialogue-overlay {
+    margin-top: -120px; /* Tăng giá trị âm từ -80px lên -120px */
+}
+
+/* 3. Kéo hộp thoại lên cao hơn một chút trên mobile cho cân đối */
+@media (max-width: 600px) {
+    .dialogue-overlay {
+        margin-top: -60px; /* Tăng giá trị âm từ -40px lên -60px */
+    }
+}
+
 
