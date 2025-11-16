@@ -1,2100 +1,623 @@
-/* --- CSS cho các bài học Kaiwa tiếng Nhật (PHIÊN BẢN HOÀN CHỈNH) --- */
 
-/* ... (toàn bộ các style cũ của bạn từ đầu file đến phần đọc hiểu) ... */
-/* ... Tôi sẽ bỏ qua phần này cho ngắn gọn, bạn chỉ cần dán toàn bộ file là được ... */
+/* --- SCRIPT CHO CÁC BÀI HỌC KAIWA TIẾNG NHẬT (PHIÊN BẢN SỬA LỖI TOÀN DIỆN) --- */
 
-/* Dưới đây là phần được sửa đổi quan trọng */
+document.addEventListener('DOMContentLoaded', () => {
 
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6; 
-    margin: 0; 
-    background-color: #f3eadc; 
-}
-.page-header, .page-footer { 
-    text-align: center; 
-    padding: 10px; 
-}
-.scene-container { 
-    max-width: 800px; 
-    margin: 8px auto; 
-    position: relative; 
-}
-.scene-background-image {
-    display: block; 
-    width: 100%; 
-    height: auto; 
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: opacity 0.4s ease;
-}
-.dialogue-overlay {
-    position: relative; 
-    margin-top: -80px; 
-    margin-left: 20px; 
-    margin-right: 20px;
-    padding: 25px; 
-    background: rgba(200, 180, 140, 0.55);
-    border-radius: 15px; 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-@media (max-width: 600px) {
-    .dialogue-overlay { 
-        margin-top: -40px; 
-        padding: 15px; 
-        margin-left: 10px; 
-        margin-right: 10px; 
-    }
-}
-.dialogue-display-window { 
-    color: #333; 
-    min-height: 120px; 
-    transition: opacity 0.15s ease; 
-}
-.speaker-container { 
-    display: flex; 
-    align-items: center; 
-    margin-bottom: 10px; 
-}
-.speaker { 
-    font-weight: 800; 
-    font-size: 1.1rem; 
-}
-.speaker.yamada { color: #34495e; }
-.speaker.suzuki { color: #e67e22; }
-.speaker.an { color: #e84393; }
-.dialogue-content-wrapper { 
-    display: flex; 
-    align-items: flex-start; 
-    gap: 15px; 
-}
-.dialogue-play-btn { 
-    background-color: #228B22; 
-    border: none; 
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%;
-    font-size: 1.2rem; 
-    cursor: pointer; 
-    color: white; 
-    transition: all 0.2s;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    flex-shrink: 0;
-}
-.dialogue-texts { 
-    flex-grow: 1; 
-}
-.japanese-text {
-    font-size: clamp(1.4rem, 4.5vw, 1.8rem); 
-    line-height: 1.8;
-    margin: 0 0 8px 0; 
-    color: #2c3e50; 
-    font-weight: 500;
-}
-ruby { 
-    ruby-align: center; 
-}
-rt { 
-    font-size: 0.6em; 
-    color: #7f8c8d; 
-    user-select: none; 
-}
-.vietnamese-text {
-    font-size: 1rem; 
-    color: #555; 
-    margin-top: 0;
-    border-left: 3px solid #228B22; 
-    padding-left: 10px; 
-}
+    // === PHẦN 0: BỘ QUẢN LÝ GIỌNG ĐỌC (ỔN ĐỊNH HƠN) ===
+    const voiceManager = {
+        japaneseVoices: [],
+        characterMap: {},
+        defaultVoice: null,
+        voicesLoaded: false,
+        preferences: { 'an': 'nanami', 'suzuki': 'haruka', 'yamada': 'ichiro', 'tanaka': 'keita' },
 
-/* --- CSS RIÊNG CHO HIGHLIGHT TRONG HỘI THOẠI --- */
-.dialogue-highlight { 
-    background-color: #fffa90; /* Màu vàng nhạt */
-    border-radius: 4px; 
-    padding: 0 3px; /* Thêm đệm ngang để chữ không bị dính sát */
-    font-weight: 600; /* Làm chữ đậm hơn một chút */
-}
+        // Hàm khởi tạo, sẽ được gọi khi trang tải xong
+        init: function() {
+            // API getVoices() cần một chút thời gian để tải.
+            // Sự kiện 'onvoiceschanged' sẽ được kích hoạt khi danh sách giọng đọc sẵn sàng.
+            if (speechSynthesis.onvoiceschanged !== undefined) {
+                speechSynthesis.onvoiceschanged = () => this.loadVoices();
+            }
+            // Gọi loadVoices() ngay lập tức phòng trường hợp sự kiện không được kích hoạt
+            this.loadVoices(); 
+        },
 
+        loadVoices: function() {
+            if (this.voicesLoaded) return;
+            
+            this.japaneseVoices = speechSynthesis.getVoices().filter(v => v.lang.startsWith('ja'));
+            
+            if (this.japaneseVoices.length === 0) {
+                console.warn("Không tìm thấy giọng đọc tiếng Nhật nào trên trình duyệt này. Chức năng đọc sẽ không hoạt động.");
+                // Hiển thị thông báo cho người dùng
+                const displayWindow = document.querySelector('.dialogue-display-window');
+                if (displayWindow) {
+                    displayWindow.innerHTML = `<p style="color: red; text-align: center;">Lỗi: Không tìm thấy giọng đọc tiếng Nhật trên trình duyệt của bạn. Vui lòng thử trên trình duyệt khác như Chrome hoặc Edge trên máy tính.</p>`;
+                }
+                return;
+            }
+            
+            console.log("Các giọng đọc tiếng Nhật đã tìm thấy:", this.japaneseVoices);
+            this.defaultVoice = this.japaneseVoices[0];
 
-}
-.grammar-teinei, .grammar-futsuu {
-    font-weight: bold; 
-    border-bottom: 2px dotted; 
-    padding: 0 2px; 
-    border-radius: 3px;
-}
-.grammar-teinei { 
-    color: #2980b9; 
-    border-color: #2980b9; 
-    background-color: rgba(52, 152, 219, 0.05); 
-}
-.grammar-futsuu { 
-    color: #c0392b; 
-    border-color: #c0392b; 
-    background-color: rgba(231, 76, 60, 0.05); 
-}
-.controls-wrapper { 
-    margin-top: 20px; 
-    padding-top: 10px; 
-    border-top: 1px solid rgba(0,0,0,0.05); 
-}
-.scene-nav { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 10px; 
-    margin-bottom: 15px; 
-}
-.scene-btn {
-    background-color: #f0f0f0; 
-    border: 1px solid #ccc; 
-    color: #555;
-    padding: 5px 15px; 
-    border-radius: 15px; 
-    cursor: pointer; 
-    transition: all 0.2s ease;
-}
-.scene-btn.active { 
-    background-color: #34495e; 
-    color: white; 
-    border-color: #34495e; 
-    font-weight: bold; 
-}
-.dialogue-nav { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 20px; 
-}
-#counter { 
-    color: #777; 
-    font-weight: 500; 
-    min-width: 50px; 
-    text-align: center; 
-}
-.nav-btn {
-    background-color: white; 
-    border: 1px solid #ccc; 
-    color: #333;
-    padding: 8px 20px; 
-    border-radius: 20px; 
-    cursor: pointer; 
-    transition: all 0.2s ease;
-}
-.nav-btn:disabled { 
-    opacity: 0.5; 
-    cursor: default; 
-}
+            // Logic tìm và gán giọng đọc cho nhân vật (giữ nguyên)
+            const found = {};
+            this.japaneseVoices.forEach(v => {
+                const name = v.name.toLowerCase();
+                for (const [key, kw] of Object.entries(this.preferences)) { if (name.includes(kw)) found[kw] = v; }
+            });
+            const female = this.japaneseVoices.filter(v => /nanami|haruka|ayumi/i.test(v.name));
+            const male = this.japaneseVoices.filter(v => /ichiro|keita|kenji/i.test(v.name));
+            const assign = (char, gender, idx) => found[this.preferences[char]] || (gender.length > 0 ? gender[idx % gender.length] : this.defaultVoice);
+            this.characterMap = {
+                'an': assign('an', female, 0), 'suzuki': assign('suzuki', female, 1),
+                'yamada': assign('yamada', male, 0), 'tanaka': assign('tanaka', male, 1)
+            };
+            
+            this.voicesLoaded = true;
+            // Kích hoạt lại việc gán sự kiện click cho nút play sau khi đã có giọng đọc
+            if (typeof activateSpeechForCurrentLine === 'function') activateSpeechForCurrentLine();
+        },
 
-
-/* --- CSS CHO PHẦN TỪ VỰNG MỚI --- */
-
-/* --- CSS CHO PHẦN TỪ VỰNG MỚI (ĐÃ CẬP NHẬT) --- */
-
-.vocabulary-section {
-    /* THAY ĐỔI: Đổi nền trắng thành màu pastel xanh ngọc */
-    background-color: #e0f2f1; /* Pastel xanh ngọc */
-    padding: 30px 20px;
-    margin-top: 40px;
-}
-.vocabulary-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-.vocabulary-section h3 {
-    text-align: center;
-    font-size: 1.8rem;
-    color: #34495e;
-    margin-bottom: 25px;
-    border-bottom: 2px solid #e67e22;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-.vocabulary-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-}
-.vocab-card {
-    background: #fdfdfd; /* Hơi ngả trắng để nổi bật trên nền xanh */
-    border: 1px solid #cce8e6;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    /* THÊM MỚI: Thêm hiệu ứng chuyển động mượt mà */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
-}
-
-/* THÊM MỚI: Hiệu ứng khi di chuột vào */
-.vocab-card:hover {
-    background-color: #FFFCBC; /* Màu vàng nhạt khi hover  #fffde7, #fffa90*/
-    transform: translateY(-4px); /* Hơi nhấc thẻ lên một chút */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Tăng bóng đổ để tạo chiều sâu */
-}
-
-.vocab-word-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-
-/* ... các phần còn lại của CSS giữ nguyên ... */
-
-
-
-.vocab-word-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-.vocab-term {
-    margin: 0;
-    font-size: 1.7rem;
-    color: #2c3e50;
-    font-weight: 600;
-}
-.vocab-play-btn {
-    background-color: #e67e22;
-    color: white;
-    border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.vocab-play-btn:hover {
-    background-color: #d35400;
-}
-.vocab-details p {
-    margin: 5px 0;
-    font-size: 1rem;
-    color: #555;
-}
-.vocab-details .label {
-    font-weight: bold;
-    color: #333;
-    margin-right: 8px;
-    display: inline-block;
-    min-width: 80px; /* Căn chỉnh các dòng cho đẹp */
-}
-.vocab-example {
-    margin-top: auto; /* Đẩy phần ví dụ xuống dưới cùng */
-    padding-top: 15px;
-    border-top: 1px dashed #ccc;
-    margin-top: 15px;
-}
-.example-jp {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-}
-.jp-sentence {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #34495e;
-    font-weight: 500;
-    line-height: 1.6;
-}
-.vi-sentence {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #7f8c8d;
-    font-style: italic;
-    padding-left: 10px;
-    border-left: 2px solid #e67e22;
-}
-
-/* Tối ưu cho màn hình nhỏ hơn */
-@media (max-width: 400px) {
-    .vocabulary-list {
-        grid-template-columns: 1fr; /* 1 cột trên mobile */
-    }
-}
-
-/* --- CSS CHO PHẦN NGỮ PHÁP VÀ LUYỆN TẬP --- */
-
-
-/* ========================================= */
-/* CSS MỚI CHO PHẦN NGỮ PHÁP (ĐỒNG BỘ HÓA) */
-/* ========================================= */
-<!--
-.grammar-section {
-    background-color: #f0f4f8; /* Màu nền tổng thể hơi khác một chút để phân biệt */
-    padding: 40px 20px;
-}
-
-.grammar-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.grammar-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 35px;
-    border-bottom: 4px solid #3498db; /* Đường gạch chân xanh dương */
-    display: inline-block;
-    padding-bottom: 10px;
-}
-
-/* --- THẺ NGỮ PHÁP (GIỐNG THẺ TỪ VỰNG) --- */
-.grammar-card {
-    background-color: #ffffff;
-    border-radius: 15px; /* Bo tròn nhiều hơn chút cho hiện đại */
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* Bóng đổ mềm mại hơn */
-    border: 1px solid #eef2f7;
-    transition: all 0.3s ease;
-}
-
-.grammar-card:hover {
-    transform: translateY(-5px); /* Hiệu ứng nhấc lên khi di chuột */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-    border-color: #3498db; /* Viền chuyển xanh khi hover */
-}
-
-/* Tiêu đề nhỏ trong thẻ */
-.grammar-card h3 {
-    font-size: 1.4rem;
-    color: #2980b9; /* Màu xanh chủ đạo */
-    margin-top: 0;
-    padding-bottom: 12px;
-    border-bottom: 2px dashed #cbd5e0; /* Đường gạch nét đứt nhẹ nhàng */
-    margin-bottom: 20px;
-}
-
-/* Phần nội dung giải thích */
-.grammar-explanation {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #444;
-    margin-bottom: 25px;
-}
-
-/* --- CẶP CÂU VÍ DỤ (STYLE MỚI QUAN TRỌNG) --- */
-.grammar-example-pair {
-    margin-bottom: 20px;
-    padding-left: 15px; /* Thụt lề nhẹ cho cả khối ví dụ */
-}
-
-.grammar-jp {
-    /* Font chữ to, rõ, áp dụng fix lỗi furigana */
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #2c3e50;
-    margin-bottom: 8px;
-    line-height: 2.2; /* QUAN TRỌNG: Giữ furigana không bị dính */
-}
-
-/* Căn chỉnh riêng cho furigana trong ngữ pháp */
-.grammar-jp ruby {
-    vertical-align: bottom;
-}
-
-.grammar-vn {
-    /* Style giống hệt phần dịch nghĩa của Dialogue/Vocab */
-    font-size: 1rem;
-    color: #666;
-    font-style: italic;
-    padding-left: 12px;
-    border-left: 4px solid #e67e22; /* Màu cam làm điểm nhấn */
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-/* Điểm nhấn ngữ pháp (màu đỏ) */
-.grammar-point {
-    color: #c0392b;
-    font-weight: 700;
-    background-color: rgba(231, 76, 60, 0.1); /* Nền đỏ rất nhạt để nhấn mạnh hơn */
-    padding: 2px 5px;
-    border-radius: 4px;
-}
-
-/* Công thức ngữ pháp */
-.grammar-formula {
-    background-color: #e8f4fc; /* Nền xanh dương rất nhạt */
-    border: 2px solid #bde0fe;
-    border-radius: 10px;
-    padding: 15px 20px;
-    margin: 20px 0;
-    font-family: monospace, sans-serif; /* Font hơi khác chút để giống "code" */
-    font-size: 1.1rem;
-    color: #2c3e50;
-}
--->
-
-/* --- CSS MỚI CHO PHẦN NGỮ PHÁP (STYLE HỘI THOẠI/TỪ VỰNG) --- */
-.grammar-stem {
-    font-weight: 600;
-    color: #34495e; /* Màu xanh đen cho thân từ */
-}
-.grammar-before {
-    color: #e74c3c; /* Màu đỏ nhạt */
-    text-decoration: line-through; /* Gạch ngang phần bị bỏ đi */
-}
-.grammar-after {
-    font-weight: 700;
-    color: #27ae60; /* Màu xanh lá cây đậm */
-    background-color: #e9f7ef; /* Nền xanh lá cây rất nhạt */
-    border-radius: 4px;
-    padding: 1px 4px;
-}
-
-/* --- CSS MỚI CHO PHẦN NGỮ PHÁP (ĐÃ ĐIỀU CHỈNH MÀU SẮC) --- */
-
-.grammar-section {
-    background-color: #f8f9fa;
-    padding: 40px 20px;
-}
-
-.grammar-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.grammar-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 40px;
-}
-
-/* --- THẺ NGỮ PHÁP CHÍNH --- */
-.grammar-card {
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f0f0f0;
-    /* Thêm transition để hiệu ứng hover mượt mà */
-    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* YÊU CẦU 3: Hiệu ứng hover màu vàng nhạt */
-.grammar-card:hover {
-    background-color: #fffde7; /* Màu vàng nhạt giống phần từ vựng */
-    transform: translateY(-5px); /* Giữ lại hiệu ứng nhấc lên cho đẹp mắt */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.grammar-card h3 {
-    font-size: 1.6rem;
-    color: #2980b9;
-    margin-top: 0;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #eef2f7;
-}
-
-/* YÊU CẦU 1: Điều chỉnh hộp giải thích */
-.grammar-explanation {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #34495e;
-    margin-bottom: 25px;
-    background-color: #eefbfb; /* Màu nền xanh ngọc nhạt */
-    padding: 12px 18px;      /* Giảm padding cho gọn hơn */
-    border-radius: 5px;       /* Giảm bo tròn */
-    border-left: 5px solid #2980b9;
-}
-
-.grammar-point {
-    color: #c0392b;
-    font-weight: 700;
-    background-color: #fff5f5;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-/* --- KHỐI VÍ DỤ MỚI --- */
-.example-block {
-    margin-bottom: 20px;
-    padding: 15px 20px;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-}
-
-/* YÊU CẦU 2: Đổi màu chữ ví dụ */
-.example-jp {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #228B22; /* Xanh lá cây tươi, đậm (ForestGreen) */
-    margin: 0 0 12px 0;
-    line-height: 2.4;
-}
-
-.example-jp ruby {
-    ruby-align: center;
-}
-.example-jp rt {
-    font-size: 0.6em;
-    color: #7f8c8d;
-    font-weight: normal;
-}
-
-.example-vn {
-    font-size: 1rem;
-    color: #666;
-    font-style: italic;
-    margin: 0;
-    padding-left: 15px;
-    border-left: 3px solid #27ae60;
-}
-
-/* --- Responsive cho mobile --- */
-@media (max-width: 768px) {
-    .grammar-card {
-        padding: 20px;
-    }
-    .grammar-explanation {
-        padding: 15px;
-        font-size: 1rem;
-    }
-    .example-jp {
-        font-size: 1.15rem;
-        line-height: 2.2;
-    }
-}
-
-
-
-
-
-
-.practice-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.practice-list li {
-    font-size: 1.1rem;
-    padding: 10px 0;
-    border-bottom: 1px dashed #ced4da;
-}
-
-.practice-list li:last-child {
-    border-bottom: none;
-}
-
-/* Tối ưu hóa cho di động */
-@media (max-width: 768px) {
-    .grammar-section {
-        padding: 30px 15px;
-    }
+        getVoiceFor: function(charName) {
+            // Nếu giọng đọc chưa sẵn sàng, thử tải lại
+            if (!this.voicesLoaded) this.loadVoices();
+            return this.characterMap[charName] || this.defaultVoice;
+        }
+    };
     
-    .grammar-section h2 {
-        font-size: 1.8rem;
-    }
-
-    .grammar-card {
-        padding: 20px;
-    }
-
-    .grammar-card h3 {
-        font-size: 1.3rem;
-    }
-
-    .grammar-card p {
-        font-size: 1rem;
-        line-height: 1.7;
-    }
-
-    .example-jp {
-        font-size: 1.1rem !important;
-    }
-}
+    // Khởi tạo bộ quản lý giọng đọc ngay khi DOM sẵn sàng
+    voiceManager.init();
 
 
-/* --- CSS CHO PHẦN BÀI TẬP TRẮC NGHIỆM TƯƠNG TÁC --- */
-.quiz-section {
-   /* THAY ĐỔI: Đổi nền trắng xám thành màu pastel xanh ngọc */
-    background-color: #e0f2f1; /* Pastel xanh ngọc - GIỐNG HỆT phần từ vựng */
-   /* background-color: #f8f9fa;  Nền chung của cả khu vực */
-    padding: 40px 20px;
-}
+    // === PHẦN 1: BỘ MÁY ĐỌC (ĐÃ SỬA LỖI TRIỆT ĐỂ) ===
 
-.quiz-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #34495e;
-    margin-bottom: 30px;
-}
+// === PHẦN 1: BỘ MÁY ĐỌC (NÂNG CẤP VỚI HIGHLIGHT) ===
+// === PHẦN 1: BỘ MÁY ĐỌC (PHIÊN BẢN SỬA LỖI TẠM DỪNG HOÀN CHỈNH) ===
 
-.quiz-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    /* Tự động tạo các cột co giãn, tối thiểu 320px */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-}
 
-.quiz-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-    border: 1px solid #e9ecef;
 
+
+
+
+
+
+
+
+    // === PHẦN 2: ĐIỀU KHIỂN HỘI THOẠI ĐA CẢNH (CÓ THAY ĐỔI NHỎ) ===
+    const displayWindow = document.querySelector('.dialogue-display-window');
+    const scenes = document.querySelectorAll('.dialogue-source .scene');
+    const sceneNavContainer = document.getElementById('sceneNav');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const counter = document.getElementById('counter');
+    const bgImage = document.querySelector('.scene-background-image');
     
-   
+    let currentSceneIndex = 0;
+    let currentLineIndex = 0;
+    let currentLineHandler = null;
 
+
+
+// =========================================================================
+// == PHẦN 1 & 2: HỆ THỐNG ĐIỀU KHIỂN HỘI THOẠI (PHIÊN BẢN ỔN ĐỊNH) ==
+// =========================================================================
+
+// Biến toàn cục duy nhất để quản lý handler của dòng thoại đang hoạt động
+let activeDialogueHandler = null;
+
+/**
+ * "Bộ não" xử lý việc đọc cho MỘT dòng thoại.
+ * Nó tự quản lý trạng thái và giao diện của chính nó.
+ */
+function createSpeechHandler(targetElement, characterName) {
+    const originalHTML = targetElement.innerHTML;
+    let charMap = [];
+    let plainText = '';
+    let utterance = null;
+    let status = 'stopped'; // Các trạng thái: 'stopped', 'playing', 'paused'
+
+    const btn = displayWindow.querySelector('.dialogue-play-btn');
+
+    // Chuẩn bị văn bản và các thẻ span để highlight
+    function _prepareForSpeech() {
+        plainText = '';
+        charMap = [];
+        targetElement.innerHTML = originalHTML; // Luôn bắt đầu từ HTML sạch
+
+        function wrapCharsInSpans(parentNode) {
+            const nodes = Array.from(parentNode.childNodes);
+            for (const node of nodes) {
+                if (node.nodeType === 3 && node.parentNode.nodeName !== 'RT') {
+                    const text = node.textContent;
+                    const fragment = document.createDocumentFragment();
+                    for (const char of text) {
+                        plainText += char;
+                        const span = document.createElement('span');
+                        span.textContent = char;
+                        fragment.appendChild(span);
+                        charMap.push(span);
+                    }
+                    parentNode.replaceChild(fragment, node);
+                } else if (node.nodeType === 1) {
+                    wrapCharsInSpans(node);
+                }
+            }
+        }
+        wrapCharsInSpans(targetElement);
+    }
+
+    // Dọn dẹp và khôi phục trạng thái ban đầu
+    function _cleanup() {
+        targetElement.innerHTML = originalHTML;
+        status = 'stopped';
+        if (btn) btn.innerHTML = '🔊';
+        utterance = null;
+    }
+
+    // Bắt đầu đọc từ đầu
+    function _play() {
+        speechSynthesis.cancel(); // Dừng mọi thứ khác
+        _prepareForSpeech();
+
+        if (!plainText.trim()) return;
+        const voice = voiceManager.getVoiceFor(characterName);
+        if (!voice) return;
+
+        utterance = new SpeechSynthesisUtterance(plainText);
+        utterance.lang = 'ja-JP';
+        utterance.rate = 1.0;
+        utterance.voice = voice;
+
+        utterance.onboundary = (event) => {
+            charMap.forEach(span => span.classList.remove('dialogue-word-highlight'));
+            if (event.name === 'word') {
+                for (let i = 0; i < event.charLength; i++) {
+                    if (charMap[event.charIndex + i]) {
+                        charMap[event.charIndex + i].classList.add('dialogue-word-highlight');
+                    }
+                }
+            }
+        };
+
+        utterance.onend = _cleanup;
+        utterance.onerror = (event) => {
+            console.error('SpeechSynthesis Error:', event);
+            _cleanup();
+        };
+
+        speechSynthesis.speak(utterance);
+        status = 'playing';
+        if (btn) btn.innerHTML = '⏹️';
+    }
+
+    function _pause() {
+        speechSynthesis.pause();
+        status = 'paused';
+        if (btn) btn.innerHTML = '▶️';
+    }
+
+    function _resume() {
+        speechSynthesis.resume();
+        status = 'playing';
+        if (btn) btn.innerHTML = '⏹️';
+    }
+
+    // Hàm công khai để điều khiển từ bên ngoài
+    return {
+        togglePlayPause: function() {
+            switch (status) {
+                case 'stopped':
+                    _play();
+                    break;
+                case 'playing':
+                    _pause();
+                    break;
+                case 'paused':
+                    _resume();
+                    break;
+            }
+        },
+        // Hàm này được gọi khi chuyển sang câu thoại khác
+        stopAndCleanup: function() {
+            if (status !== 'stopped') {
+                speechSynthesis.cancel(); // Dừng đọc
+                _cleanup(); // Khôi phục HTML
+            }
+        }
+    };
 }
 
-.question-text {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #343a40;
-    margin-bottom: 20px;
-}
+/**
+ * Gán handler mới cho dòng thoại hiện tại
+ */
+window.activateSpeechForCurrentLine = function() {
+    const currentPlayBtn = displayWindow.querySelector('.dialogue-play-btn');
+    const currentTextElem = displayWindow.querySelector('.japanese-text');
+    const currentSpeakerElem = displayWindow.querySelector('.speaker');
 
-.options-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.option-btn {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.1rem;
-    text-align: left;
-    background-color: #fff;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative; /* Dùng cho việc định vị icon đúng/sai */
-}
-
-.option-btn:not(:disabled):hover {
-    background-color: #fffde7; /* MÀU VÀNG NHẠT MONG MUỐN */
-    border-color: #fce183;   /* Một màu viền vàng đậm hơn cho đẹp mắt */
-    transform: translateY(-2px); /* Hơi nhấc nút lên một chút */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Thêm bóng đổ nhẹ */
-}
-
-
-
-/* --- Các trạng thái của nút đáp án --- */
-.option-btn.correct {
-    background-color: #e6f9f0;
-    border-color: #28a745;
-    color: #155724;
-    font-weight: bold;
-}
-
-.option-btn.incorrect {
-    background-color: #fce8e6;
-    border-color: #dc3545;
-    color: #721c24;
-    font-weight: bold;
-}
-
-/* Thêm icon X và chữ "Chưa đúng" cho đáp án sai */
-.option-btn.incorrect::after {
-    content: '✗ Chưa đúng';
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #dc3545;
-    font-weight: bold;
-}
-
-.option-btn:disabled {
-    cursor: not-allowed;
-    opacity: 0.9;
-}
-
-
-/* [THAY ĐỔI] Nền xanh lá cây nhạt, tạo cảm giác tích cực, "đã hiểu" */
-.explanation-box {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: rgba(40, 167, 69, 0.1); /* Xanh lá cây rất nhạt */
-    border-radius: 8px;
-    border-left: 5px solid #28a745; /* Xanh lá cây đậm */
-    color: #155724; /* Màu chữ xanh tối */
-}
-.explanation-box strong {
-    color: #0c5460;
-}
-/* =============================================================== */
-/* === TÙY CHỈNH NÂNG CAO CHO BẢNG NGỮ PHÁP === */
-/* =============================================================== */
-
-/* --- Định dạng chung cho bảng --- */
-.grammar-table {
-    width: 100%;
-    border-collapse: collapse; /* Gộp các đường viền lại */
-    margin-top: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Thêm bóng đổ nhẹ */
-    border-radius: 8px; /* Bo góc cho bảng */
-    overflow: hidden; /* Đảm bảo bo góc hoạt động */
-}
-
-/* --- Định dạng cho tiêu đề bảng (hàng đầu tiên) --- */
-.grammar-table th {
-    background-color: #34495e; /* Màu xanh đen */
-    color: white;
-    font-weight: bold;
-    padding: 15px;
-    text-align: left;
-}
-
-/* --- Định dạng chung cho các ô dữ liệu --- */
-.grammar-table td {
-    padding: 15px;
-    border-bottom: 1px solid #ddd; /* Đường kẻ mờ giữa các hàng */
-}
-
-/* --- YÊU CẦU 1: MÀU SẮC XEN KẼ CHO CÁC HÀNG --- */
-/* Chọn các hàng LẺ (1, 3, 5...) trong phần thân bảng */
-.grammar-table tbody tr:nth-child(odd) {
-    background-color: #e0f7fa; /* MÀU XANH NGỌC PASTEL */
-}
-
-/* Chọn các hàng CHẴN (2, 4, 6...) trong phần thân bảng */
-.grammar-table tbody tr:nth-child(even) {
-    background-color: #f3e5f5; /* MÀU TÍM PASTEL */
-}
-
-/* --- YÊU CẦU 2: HIỆU ỨNG KHI DI CHUỘT QUA --- */
-/* Thêm hiệu ứng chuyển động mượt mà cho màu nền */
-.grammar-table tbody tr {
-    transition: background-color 0.3s ease;
-}
-
-/* Khi con trỏ chuột di chuyển LÊN trên bất kỳ hàng nào */
-.grammar-table tbody tr:hover {
-    background-color: #fffde7; /* MÀU VÀNG NHẠT */
-    cursor: pointer; /* Đổi con trỏ chuột để tạo cảm giác tương tác */
-}
-
-
-/* ============================================= */
-/* == HỆ THỐNG MÀU SẮC CHO PHÂN TÍCH NGỮ PHÁP == */
-/* ============================================= */
-
-/* ============================================= */
-/* == HỆ THỐNG MÀU SẮC CHO PHÂN TÍCH NGỮ PHÁP == */
-/* ============================================= */
-
-/* Nâng cấp điểm ngữ pháp chính (ĐÃ BỎ VIỀN) */
-.grammar-point {
-    color: #c0392b; /* Đỏ đậm */
-    font-weight: bold;
-    background-color: rgba(231, 76, 60, 0.08);
-    padding: 2px 6px;
-    border-radius: 5px;
-}
-
-/* Thành phần A (Chủ thể so sánh) */
-.g-subj-a {
-    color: #2980b9; /* Xanh dương */
-    font-weight: 600;
-}
-
-/* Thành phần B (Đối tượng so sánh) */
-.g-obj-b {
-    color: #27ae60; /* Xanh lá */
-    font-weight: 600;
-}
-
-/* Vị ngữ (Kết quả so sánh: Tính từ/Động từ) */
-.g-predicate {
-    color: #8e44ad; /* Tím */
-    font-weight: 600;
-}
-
-
-/* ============================================= */
-/* == PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) == */
-/* ============================================= */
-.reading-comprehension-section {
-    padding: 30px 20px;
-    background-color: #ffffff; /* Nền trắng để tách biệt */
-}
-
-.reading-comprehension-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.reading-passage-container {
-    display: flex;
-    gap: 25px; /* Khoảng cách giữa 2 cột */
-    margin-bottom: 30px;
-}
-
-.reading-jp, .reading-vi {
-    flex: 1; /* Chia đôi không gian */
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    border: 1px solid #e0e0e0;
-}
-
-.reading-jp h4, .reading-vi h4 {
-    margin-top: 0;
-    color: #34495e;
-    border-bottom: 2px solid #34495e;
-    padding-bottom: 10px;
-}
-
-.reading-vocab-container {
-    margin-bottom: 30px;
-}
-
-.reading-vocab-list {
-    list-style: none;
-    padding: 0;
-    background-color: #fdf6e3;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.reading-vocab-list li {
-    padding: 8px 0;
-    border-bottom: 1px dashed #ccc;
-}
-
-.reading-vocab-list li:last-child {
-    border-bottom: none;
-}
-
-.reading-quiz-container .quiz-card {
-    background-color: #f9f9f9;
-}
-
-/* Tối ưu cho Mobile */
-@media (max-width: 768px) {
-    .reading-passage-container {
-        flex-direction: column; /* Chuyển thành 1 cột */
+    if (currentPlayBtn && currentTextElem && currentSpeakerElem) {
+        const charName = currentSpeakerElem.dataset.character;
+        // Tạo và gán handler mới vào biến toàn cục
+        activeDialogueHandler = createSpeechHandler(currentTextElem, charName);
+        
+        const newBtn = currentPlayBtn.cloneNode(true);
+        currentPlayBtn.parentNode.replaceChild(newBtn, currentPlayBtn);
+        
+        // Nút bấm giờ sẽ gọi hàm toggle của handler đang hoạt động
+        newBtn.addEventListener('click', () => activeDialogueHandler.togglePlayPause());
     }
 }
 
-
-/* =============================================================== */
-/* == PHẦN 5: ĐỌC HIỂU TƯƠNG TÁC (NÂNG CẤP TỪ BÀI 6) == */
-/* =============================================================== */
-/* =============================================================== */
-/* == PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (GIAO DIỆN NÂNG CẤP) == */
-/* =============================================================== */
-/* =============================================================== */
-/* == PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (GIAO DIỆN NÂNG CẤP v2 - MÀU SẮC MỚI) == */
-/* =============================================================== */
-.reading-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
-
-.reading-card {
-    background-color: var(--card-bg, #ffffff);
-    border-radius: 12px;
-    padding: 25px;
-    border: 1px solid var(--border-color, #e0e0e0);
-    box-shadow: var(--soft-shadow, 0 5px 15px rgba(0,0,0,0.05));
-}
-.reading-card h3 {
-    margin-top: 0;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 15px;
-    font-size: 1.3rem;
-}
-
-/* [THAY ĐỔI] Nền xanh dương nhạt, tạo cảm giác welcoming */
-.context-description {
-    background-color: rgba(52, 152, 219, 0.08); /* Xanh dương rất nhạt */
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border-left: 4px solid #3498db;
-}
-
-.readable-passage-component h4 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-}
-
-.text-to-be-read {
-    background-color: #fffde7; /* Màu giấy vàng ấm áp */
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid #fceec8;
-    line-height: 2.3;
-    margin-bottom: 20px;
-    font-size: 1.15rem;
-}
-
-/* [THAY ĐỔI] Nền trắng sạch sẽ, chỉ có viền nhẹ */
-.passage-audio-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    background-color: rgba(52, 152, 219, 0.08);  /* Xanh dương rất nhạt */
-
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid #e9ecef;
-}
-.passage-audio-controls .control-btn {
-    border: none;
-    border-radius: 8px;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-.passage-audio-controls .play-pause { background-color: #28a745; color: white; }
-.passage-audio-controls .play-pause:hover { background-color: #218838; }
-.passage-audio-controls .stop { background-color: #dc3545; color: white; }
-.passage-audio-controls .stop:hover { background-color: #c82333; }
-.speed-controls { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-.speed-btn {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 8px 14px;
-    cursor: pointer;
-}
-.speed-btn.active {
-    background-color: #3498db;
-    color: white;
-    border-color: #3498db;
-    font-weight: bold;
-}
-
-.translation-wrapper { margin-top: 20px; }
-.translation-wrapper summary {
-    cursor: pointer;
-    font-weight: 600;
-    color: #555;
-    user-select: none;
-    display: inline-block;
-    padding: 5px;
-    transition: color 0.2s;
-}
-.translation-wrapper summary:hover { color: #3498db; }
-
-/* [THAY ĐỔI] Nền vàng nhạt đồng bộ với bài đọc */
-.translation-content {
-    margin-top: 10px;
-    padding: 15px;
-    background-color: rgba(52, 152, 219, 0.08); /* Vàng nhạt */
-    border-radius: 8px;
-    border-left: 4px solid #f1c40f; /* Vàng đậm hơn */
-}
-
-.reading-card .quiz-card {
-    border: none;
-    padding: 0;
-    background: none;
-}
-/* --- CSS CHO HIGHLIGHT CÂU TRONG BÀI ĐỌC HIỂU (BẢN SỬA LỖI CUỐI CÙNG) --- */
-.sentence.highlight-sentence {
-    background-color: #a0e7e5 !important; /* MÀU XANH NGỌC VÀ ƯU TIÊN CAO NHẤT */
-    transition: background-color 0.2s ease-in-out;
-    border-radius: 5px;
-}
-
-/* Ghi đè màu của các thẻ span con khi câu cha được highlight */
-.sentence.highlight-sentence span {
-    background-color: transparent !important; /* Làm trong suốt màu nền của thẻ con */
-}
---- START OF FILE styles-talk1026.css ---
-
-/* --- CSS cho các bài học Kaiwa tiếng Nhật (PHIÊN BẢN HOÀN CHỈNH) --- */
-
-/* ... (toàn bộ các style cũ của bạn từ đầu file đến phần đọc hiểu) ... */
-/* ... Tôi sẽ bỏ qua phần này cho ngắn gọn, bạn chỉ cần dán toàn bộ file là được ... */
-
-/* Dưới đây là phần được sửa đổi quan trọng */
-
-body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    line-height: 1.6; 
-    margin: 0; 
-    background-color: #f3eadc; 
-}
-.page-header, .page-footer { 
-    text-align: center; 
-    padding: 10px; 
-}
-.scene-container { 
-    max-width: 800px; 
-    margin: 8px auto; 
-    position: relative; 
-}
-.scene-background-image {
-    display: block; 
-    width: 100%; 
-    height: auto; 
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: opacity 0.4s ease;
-}
-.dialogue-overlay {
-    position: relative; 
-    margin-top: -80px; 
-    margin-left: 20px; 
-    margin-right: 20px;
-    padding: 25px; 
-    background: rgba(200, 180, 140, 0.55);
-    border-radius: 15px; 
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-@media (max-width: 600px) {
-    .dialogue-overlay { 
-        margin-top: -40px; 
-        padding: 15px; 
-        margin-left: 10px; 
-        margin-right: 10px; 
+/**
+ * Hiển thị một dòng thoại cụ thể
+ */
+function showLine(sceneIdx, lineIdx) {
+    // BƯỚC QUAN TRỌNG: Dừng và dọn dẹp handler của câu thoại TRƯỚC ĐÓ
+    if (activeDialogueHandler) {
+        activeDialogueHandler.stopAndCleanup();
+        activeDialogueHandler = null;
     }
-}
-.dialogue-display-window { 
-    color: #333; 
-    min-height: 120px; 
-    transition: opacity 0.15s ease; 
-}
-.speaker-container { 
-    display: flex; 
-    align-items: center; 
-    margin-bottom: 10px; 
-}
-.speaker { 
-    font-weight: 800; 
-    font-size: 1.1rem; 
-}
-.speaker.yamada { color: #34495e; }
-.speaker.suzuki { color: #e67e22; }
-.speaker.an { color: #e84393; }
-.dialogue-content-wrapper { 
-    display: flex; 
-    align-items: flex-start; 
-    gap: 15px; 
-}
-.dialogue-play-btn { 
-    background-color: #228B22; 
-    border: none; 
-    width: 40px; 
-    height: 40px; 
-    border-radius: 50%;
-    font-size: 1.2rem; 
-    cursor: pointer; 
-    color: white; 
-    transition: all 0.2s;
-    display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    flex-shrink: 0;
-}
-.dialogue-texts { 
-    flex-grow: 1; 
-}
-.japanese-text {
-    font-size: clamp(1.4rem, 4.5vw, 1.8rem); 
-    line-height: 1.8;
-    margin: 0 0 8px 0; 
-    color: #2c3e50; 
-    font-weight: 500;
-}
-ruby { 
-    ruby-align: center; 
-}
-rt { 
-    font-size: 0.6em; 
-    color: #7f8c8d; 
-    user-select: none; 
-}
-.vietnamese-text {
-    font-size: 1.1rem; 
-    color: #555; 
-    margin-top: 0;
-    border-left: 3px solid #228B22; 
-    padding-left: 8px; 
-}
 
-
-/* --- SỬA MÀU HIGHLIGHT CHO BÀI ĐỌC HIỂU --- */
-.highlight-word {
-    background-color:  #a0e7e5 !important; /* MÀU XANH NGỌC HIGHLIGHT  #C8E6C9 */
-    border-radius: 4px;
-    color: #2c3e50; /* Đảm bảo màu chữ vẫn đậm, dễ đọc trên nền xanh */
-    transition: background-color 0.1s ease; /* Thêm hiệu ứng chuyển động nhỏ cho mượt mà */
-}
-
-
-
-.grammar-teinei, .grammar-futsuu {
-    font-weight: bold; 
-    border-bottom: 2px dotted; 
-    padding: 0 2px; 
-    border-radius: 3px;
-}
-.grammar-teinei { 
-    color: #2980b9; 
-    border-color: #2980b9; 
-    background-color: rgba(52, 152, 219, 0.05); 
-}
-.grammar-futsuu { 
-    color: #c0392b; 
-    border-color: #c0392b; 
-    background-color: rgba(231, 76, 60, 0.05); 
-}
-.controls-wrapper { 
-    margin-top: 20px; 
-    padding-top: 10px; 
-    border-top: 1px solid rgba(0,0,0,0.05); 
-}
-.scene-nav { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 10px; 
-    margin-bottom: 15px; 
-}
-.scene-btn {
-    background-color: #f0f0f0; 
-    border: 1px solid #ccc; 
-    color: #555;
-    padding: 5px 15px; 
-    border-radius: 15px; 
-    cursor: pointer; 
-    transition: all 0.2s ease;
-}
-.scene-btn.active { 
-    background-color: #34495e; 
-    color: white; 
-    border-color: #34495e; 
-    font-weight: bold; 
-}
-.dialogue-nav { 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    gap: 20px; 
-}
-#counter { 
-    color: #777; 
-    font-weight: 500; 
-    min-width: 50px; 
-    text-align: center; 
-}
-.nav-btn {
-    background-color: white; 
-    border: 1px solid #ccc; 
-    color: #333;
-    padding: 8px 20px; 
-    border-radius: 20px; 
-    cursor: pointer; 
-    transition: all 0.2s ease;
-}
-.nav-btn:disabled { 
-    opacity: 0.5; 
-    cursor: default; 
-}
-
-
-/* --- CSS CHO PHẦN TỪ VỰNG MỚI --- */
-
-/* --- CSS CHO PHẦN TỪ VỰNG MỚI (ĐÃ CẬP NHẬT) --- */
-
-.vocabulary-section {
-    /* THAY ĐỔI: Đổi nền trắng thành màu pastel xanh ngọc */
-    background-color: #e0f2f1; /* Pastel xanh ngọc */
-    padding: 30px 20px;
-    margin-top: 40px;
-}
-.vocabulary-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-.vocabulary-section h3 {
-    text-align: center;
-    font-size: 1.8rem;
-    color: #34495e;
-    margin-bottom: 25px;
-    border-bottom: 2px solid #e67e22;
-    padding-bottom: 10px;
-    display: inline-block;
-}
-.vocabulary-list {
-    list-style: none;
-    padding: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 20px;
-}
-.vocab-card {
-    background: #fdfdfd; /* Hơi ngả trắng để nổi bật trên nền xanh */
-    border: 1px solid #cce8e6;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    display: flex;
-    flex-direction: column;
-    /* THÊM MỚI: Thêm hiệu ứng chuyển động mượt mà */
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
-}
-
-/* THÊM MỚI: Hiệu ứng khi di chuột vào */
-.vocab-card:hover {
-    background-color: #FFFCBC; /* Màu vàng nhạt khi hover  #fffde7, #fffa90*/
-    transform: translateY(-4px); /* Hơi nhấc thẻ lên một chút */
-    box-shadow: 0 8px 25px rgba(0,0,0,0.08); /* Tăng bóng đổ để tạo chiều sâu */
-}
-
-.vocab-word-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-
-/* ... các phần còn lại của CSS giữ nguyên ... */
-
-
-
-.vocab-word-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-}
-.vocab-term {
-    margin: 0;
-    font-size: 1.7rem;
-    color: #2c3e50;
-    font-weight: 600;
-}
-.vocab-play-btn {
-    background-color: #e67e22;
-    color: white;
-    border: none;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.vocab-play-btn:hover {
-    background-color: #d35400;
-}
-.vocab-details p {
-    margin: 5px 0;
-    font-size: 1rem;
-    color: #555;
-}
-.vocab-details .label {
-    font-weight: bold;
-    color: #333;
-    margin-right: 8px;
-    display: inline-block;
-    min-width: 80px; /* Căn chỉnh các dòng cho đẹp */
-}
-.vocab-example {
-    margin-top: auto; /* Đẩy phần ví dụ xuống dưới cùng */
-    padding-top: 15px;
-    border-top: 1px dashed #ccc;
-    margin-top: 15px;
-}
-.example-jp {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 5px;
-}
-.jp-sentence {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #34495e;
-    font-weight: 500;
-    line-height: 1.6;
-}
-.vi-sentence {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #7f8c8d;
-    font-style: italic;
-    padding-left: 10px;
-    border-left: 2px solid #e67e22;
-}
-
-/* Tối ưu cho màn hình nhỏ hơn */
-@media (max-width: 400px) {
-    .vocabulary-list {
-        grid-template-columns: 1fr; /* 1 cột trên mobile */
-    }
-}
-
-/* --- CSS CHO PHẦN NGỮ PHÁP VÀ LUYỆN TẬP --- */
-
-
-/* ========================================= */
-/* CSS MỚI CHO PHẦN NGỮ PHÁP (ĐỒNG BỘ HÓA) */
-/* ========================================= */
-<!--
-.grammar-section {
-    background-color: #f0f4f8; /* Màu nền tổng thể hơi khác một chút để phân biệt */
-    padding: 40px 20px;
-}
-
-.grammar-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.grammar-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 35px;
-    border-bottom: 4px solid #3498db; /* Đường gạch chân xanh dương */
-    display: inline-block;
-    padding-bottom: 10px;
-}
-
-/* --- THẺ NGỮ PHÁP (GIỐNG THẺ TỪ VỰNG) --- */
-.grammar-card {
-    background-color: #ffffff;
-    border-radius: 15px; /* Bo tròn nhiều hơn chút cho hiện đại */
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06); /* Bóng đổ mềm mại hơn */
-    border: 1px solid #eef2f7;
-    transition: all 0.3s ease;
-}
-
-.grammar-card:hover {
-    transform: translateY(-5px); /* Hiệu ứng nhấc lên khi di chuột */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-    border-color: #3498db; /* Viền chuyển xanh khi hover */
-}
-
-/* Tiêu đề nhỏ trong thẻ */
-.grammar-card h3 {
-    font-size: 1.4rem;
-    color: #2980b9; /* Màu xanh chủ đạo */
-    margin-top: 0;
-    padding-bottom: 12px;
-    border-bottom: 2px dashed #cbd5e0; /* Đường gạch nét đứt nhẹ nhàng */
-    margin-bottom: 20px;
-}
-
-/* Phần nội dung giải thích */
-.grammar-explanation {
-    font-size: 1.1rem;
-    line-height: 1.7;
-    color: #444;
-    margin-bottom: 25px;
-}
-
-/* --- CẶP CÂU VÍ DỤ (STYLE MỚI QUAN TRỌNG) --- */
-.grammar-example-pair {
-    margin-bottom: 20px;
-    padding-left: 15px; /* Thụt lề nhẹ cho cả khối ví dụ */
-}
-
-.grammar-jp {
-    /* Font chữ to, rõ, áp dụng fix lỗi furigana */
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #2c3e50;
-    margin-bottom: 8px;
-    line-height: 2.2; /* QUAN TRỌNG: Giữ furigana không bị dính */
-}
-
-/* Căn chỉnh riêng cho furigana trong ngữ pháp */
-.grammar-jp ruby {
-    vertical-align: bottom;
-}
-
-.grammar-vn {
-    /* Style giống hệt phần dịch nghĩa của Dialogue/Vocab */
-    font-size: 1rem;
-    color: #666;
-    font-style: italic;
-    padding-left: 12px;
-    border-left: 4px solid #e67e22; /* Màu cam làm điểm nhấn */
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-/* Điểm nhấn ngữ pháp (màu đỏ) */
-.grammar-point {
-    color: #c0392b;
-    font-weight: 700;
-    background-color: rgba(231, 76, 60, 0.1); /* Nền đỏ rất nhạt để nhấn mạnh hơn */
-    padding: 2px 5px;
-    border-radius: 4px;
-}
-
-/* Công thức ngữ pháp */
-.grammar-formula {
-    background-color: #e8f4fc; /* Nền xanh dương rất nhạt */
-    border: 2px solid #bde0fe;
-    border-radius: 10px;
-    padding: 15px 20px;
-    margin: 20px 0;
-    font-family: monospace, sans-serif; /* Font hơi khác chút để giống "code" */
-    font-size: 1.1rem;
-    color: #2c3e50;
-}
--->
-
-/* --- CSS MỚI CHO PHẦN NGỮ PHÁP (STYLE HỘI THOẠI/TỪ VỰNG) --- */
-
-
-/* --- CSS MỚI CHO PHẦN NGỮ PHÁP (ĐÃ ĐIỀU CHỈNH MÀU SẮC) --- */
-
-.grammar-section {
-    background-color: #f8f9fa;
-    padding: 40px 20px;
-}
-
-.grammar-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.grammar-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #2c3e50;
-    margin-bottom: 40px;
-}
-
-/* --- THẺ NGỮ PHÁP CHÍNH --- */
-.grammar-card {
-    background-color: #ffffff;
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 30px;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
-    border: 1px solid #f0f0f0;
-    /* Thêm transition để hiệu ứng hover mượt mà */
-    transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* YÊU CẦU 3: Hiệu ứng hover màu vàng nhạt */
-.grammar-card:hover {
-    background-color: #fffde7; /* Màu vàng nhạt giống phần từ vựng */
-    transform: translateY(-5px); /* Giữ lại hiệu ứng nhấc lên cho đẹp mắt */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.grammar-card h3 {
-    font-size: 1.6rem;
-    color: #2980b9;
-    margin-top: 0;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #eef2f7;
-}
-
-/* YÊU CẦU 1: Điều chỉnh hộp giải thích */
-.grammar-explanation {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #34495e;
-    margin-bottom: 25px;
-    background-color: #eefbfb; /* Màu nền xanh ngọc nhạt */
-    padding: 12px 18px;      /* Giảm padding cho gọn hơn */
-    border-radius: 5px;       /* Giảm bo tròn */
-    border-left: 5px solid #2980b9;
-}
-
-.grammar-point {
-    color: #c0392b;
-    font-weight: 700;
-    background-color: #fff5f5;
-    padding: 2px 6px;
-    border-radius: 4px;
-}
-
-/* --- KHỐI VÍ DỤ MỚI --- */
-.example-block {
-    margin-bottom: 20px;
-    padding: 15px 20px;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 12px;
-}
-
-/* YÊU CẦU 2: Đổi màu chữ ví dụ */
-.example-jp {
-    font-size: 1.3rem;
-    font-weight: 500;
-    color: #228B22; /* Xanh lá cây tươi, đậm (ForestGreen) */
-    margin: 0 0 12px 0;
-    line-height: 2.4;
-}
-
-.example-jp ruby {
-    ruby-align: center;
-}
-.example-jp rt {
-    font-size: 0.6em;
-    color: #7f8c8d;
-    font-weight: normal;
-}
-
-.example-vn {
-    font-size: 1rem;
-    color: #666;
-    font-style: italic;
-    margin: 0;
-    padding-left: 15px;
-    border-left: 3px solid #27ae60;
-}
-
-/* --- Responsive cho mobile --- */
-@media (max-width: 768px) {
-    .grammar-card {
-        padding: 20px;
-    }
-    .grammar-explanation {
-        padding: 15px;
-        font-size: 1rem;
-    }
-    .example-jp {
-        font-size: 1.15rem;
-        line-height: 2.2;
+    const scene = scenes[sceneIdx];
+    const linesInScene = scene.querySelectorAll('.dialogue-line');
+    if (lineIdx >= 0 && lineIdx < linesInScene.length) {
+        currentLineIndex = lineIdx;
+        
+        displayWindow.style.opacity = 0;
+        setTimeout(() => {
+            // Hiển thị nội dung HTML sạch của câu thoại mới
+            displayWindow.innerHTML = linesInScene[lineIdx].innerHTML;
+            
+            // Kích hoạt handler MỚI cho câu thoại này
+            activateSpeechForCurrentLine(); 
+            
+            counter.textContent = `${lineIdx + 1} / ${linesInScene.length}`;
+            updateNavButtons();
+            displayWindow.style.opacity = 1;
+        }, 150);
     }
 }
 
 
 
 
-
-
-.practice-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.practice-list li {
-    font-size: 1.1rem;
-    padding: 10px 0;
-    border-bottom: 1px dashed #ced4da;
-}
-
-.practice-list li:last-child {
-    border-bottom: none;
-}
-
-/* Tối ưu hóa cho di động */
-@media (max-width: 768px) {
-    .grammar-section {
-        padding: 30px 15px;
-    }
-    
-    .grammar-section h2 {
-        font-size: 1.8rem;
+    function loadScene(sceneIdx) {
+        if (sceneIdx >= 0 && sceneIdx < scenes.length) {
+            currentSceneIndex = sceneIdx;
+            const newBg = scenes[sceneIdx].dataset.backgroundImage;
+            if (bgImage.src !== newBg) {
+                bgImage.style.opacity = 0;
+                setTimeout(() => {
+                    bgImage.src = newBg;
+                    bgImage.alt = `Bối cảnh cảnh ${sceneIdx + 1}`;
+                    bgImage.style.opacity = 1;
+                }, 400);
+            }
+            document.querySelectorAll('.scene-btn').forEach((btn, idx) => {
+                btn.classList.toggle('active', idx === sceneIdx);
+            });
+            showLine(sceneIdx, 0);
+        }
     }
 
-    .grammar-card {
-        padding: 20px;
-    }
 
-    .grammar-card h3 {
-        font-size: 1.3rem;
-    }
 
-    .grammar-card p {
-        font-size: 1rem;
-        line-height: 1.7;
-    }
+// Dán vào file script-talk1029.js để THAY THẾ hàm setupSceneNav cũ
 
-    .example-jp {
-        font-size: 1.1rem !important;
+function setupSceneNav() {
+    // Xóa các nút cũ đi để đảm bảo sạch sẽ (phòng trường hợp có lỗi)
+    sceneNavContainer.innerHTML = '';
+
+    // QUAN TRỌNG: Chỉ hiển thị thanh điều hướng cảnh khi có nhiều hơn 1 cảnh
+    if (scenes.length > 1) {
+        sceneNavContainer.style.display = 'flex'; // Hiện lại thanh nav nếu nó bị ẩn
+        scenes.forEach((scene, index) => {
+            const btn = document.createElement('button');
+            btn.className = 'scene-btn';
+            btn.textContent = scene.dataset.sceneName || `Cảnh ${index + 1}`;
+            btn.addEventListener('click', () => loadScene(index));
+            sceneNavContainer.appendChild(btn);
+        });
+    } else {
+        // Nếu chỉ có 1 cảnh, ẩn hoàn toàn thanh điều hướng đi
+        sceneNavContainer.style.display = 'none';
     }
 }
 
 
-/* --- CSS CHO PHẦN BÀI TẬP TRẮC NGHIỆM TƯƠNG TÁC --- */
-.quiz-section {
-   /* THAY ĐỔI: Đổi nền trắng xám thành màu pastel xanh ngọc */
-    background-color: #e0f2f1; /* Pastel xanh ngọc - GIỐNG HỆT phần từ vựng */
-   /* background-color: #f8f9fa;  Nền chung của cả khu vực */
-    padding: 40px 20px;
-}
-
-.quiz-section h2 {
-    text-align: center;
-    font-size: 2rem;
-    color: #34495e;
-    margin-bottom: 30px;
-}
-
-.quiz-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    /* Tự động tạo các cột co giãn, tối thiểu 320px */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 25px;
-}
-
-.quiz-card {
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 20px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.07);
-    border: 1px solid #e9ecef;
-
-    
-   
-
-}
-
-.question-text {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #343a40;
-    margin-bottom: 20px;
-}
-
-.options-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.option-btn {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.1rem;
-    text-align: left;
-    background-color: #fff;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    position: relative; /* Dùng cho việc định vị icon đúng/sai */
-}
-
-.option-btn:not(:disabled):hover {
-    background-color: #fffde7; /* MÀU VÀNG NHẠT MONG MUỐN */
-    border-color: #fce183;   /* Một màu viền vàng đậm hơn cho đẹp mắt */
-    transform: translateY(-2px); /* Hơi nhấc nút lên một chút */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Thêm bóng đổ nhẹ */
-}
 
 
-
-/* --- Các trạng thái của nút đáp án --- */
-.option-btn.correct {
-    background-color: #e6f9f0;
-    border-color: #28a745;
-    color: #155724;
-    font-weight: bold;
-}
-
-.option-btn.incorrect {
-    background-color: #fce8e6;
-    border-color: #dc3545;
-    color: #721c24;
-    font-weight: bold;
-}
-
-/* Thêm icon X và chữ "Chưa đúng" cho đáp án sai */
-.option-btn.incorrect::after {
-    content: '✗ Chưa đúng';
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #dc3545;
-    font-weight: bold;
-}
-
-.option-btn:disabled {
-    cursor: not-allowed;
-    opacity: 0.9;
-}
-
-
-/* [THAY ĐỔI] Nền xanh lá cây nhạt, tạo cảm giác tích cực, "đã hiểu" */
-.explanation-box {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: rgba(40, 167, 69, 0.1); /* Xanh lá cây rất nhạt */
-    border-radius: 8px;
-    border-left: 5px solid #28a745; /* Xanh lá cây đậm */
-    color: #155724; /* Màu chữ xanh tối */
-}
-.explanation-box strong {
-    color: #0c5460;
-}
-/* =============================================================== */
-/* === TÙY CHỈNH NÂNG CAO CHO BẢNG NGỮ PHÁP === */
-/* =============================================================== */
-
-/* --- Định dạng chung cho bảng --- */
-.grammar-table {
-    width: 100%;
-    border-collapse: collapse; /* Gộp các đường viền lại */
-    margin-top: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Thêm bóng đổ nhẹ */
-    border-radius: 8px; /* Bo góc cho bảng */
-    overflow: hidden; /* Đảm bảo bo góc hoạt động */
-}
-
-/* --- Định dạng cho tiêu đề bảng (hàng đầu tiên) --- */
-.grammar-table th {
-    background-color: #34495e; /* Màu xanh đen */
-    color: white;
-    font-weight: bold;
-    padding: 15px;
-    text-align: left;
-}
-
-/* --- Định dạng chung cho các ô dữ liệu --- */
-.grammar-table td {
-    padding: 15px;
-    border-bottom: 1px solid #ddd; /* Đường kẻ mờ giữa các hàng */
-}
-
-/* --- YÊU CẦU 1: MÀU SẮC XEN KẼ CHO CÁC HÀNG --- */
-/* Chọn các hàng LẺ (1, 3, 5...) trong phần thân bảng */
-.grammar-table tbody tr:nth-child(odd) {
-    background-color: #e0f7fa; /* MÀU XANH NGỌC PASTEL */
-}
-
-/* Chọn các hàng CHẴN (2, 4, 6...) trong phần thân bảng */
-.grammar-table tbody tr:nth-child(even) {
-    background-color: #f3e5f5; /* MÀU TÍM PASTEL */
-}
-
-/* --- YÊU CẦU 2: HIỆU ỨNG KHI DI CHUỘT QUA --- */
-/* Thêm hiệu ứng chuyển động mượt mà cho màu nền */
-.grammar-table tbody tr {
-    transition: background-color 0.3s ease;
-}
-
-/* Khi con trỏ chuột di chuyển LÊN trên bất kỳ hàng nào */
-.grammar-table tbody tr:hover {
-    background-color: #fffde7; /* MÀU VÀNG NHẠT */
-    cursor: pointer; /* Đổi con trỏ chuột để tạo cảm giác tương tác */
-}
-
-
-/* ============================================= */
-/* == HỆ THỐNG MÀU SẮC CHO PHÂN TÍCH NGỮ PHÁP == */
-/* ============================================= */
-
-/* ============================================= */
-/* == HỆ THỐNG MÀU SẮC CHO PHÂN TÍCH NGỮ PHÁP == */
-/* ============================================= */
-
-/* Nâng cấp điểm ngữ pháp chính (ĐÃ BỎ VIỀN) */
-.grammar-point {
-    color: #c0392b; /* Đỏ đậm */
-    font-weight: bold;
-    background-color: rgba(231, 76, 60, 0.08);
-    padding: 2px 6px;
-    border-radius: 5px;
-}
-
-/* Thành phần A (Chủ thể so sánh) */
-.g-subj-a {
-    color: #2980b9; /* Xanh dương */
-    font-weight: 600;
-}
-
-/* Thành phần B (Đối tượng so sánh) */
-.g-obj-b {
-    color: #27ae60; /* Xanh lá */
-    font-weight: 600;
-}
-
-/* Vị ngữ (Kết quả so sánh: Tính từ/Động từ) */
-.g-predicate {
-    color: #8e44ad; /* Tím */
-    font-weight: 600;
-}
-
-
-/* ============================================= */
-/* == PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) == */
-/* ============================================= */
-.reading-comprehension-section {
-    padding: 30px 20px;
-    background-color: #ffffff; /* Nền trắng để tách biệt */
-}
-
-.reading-comprehension-container {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.reading-passage-container {
-    display: flex;
-    gap: 25px; /* Khoảng cách giữa 2 cột */
-    margin-bottom: 30px;
-}
-
-.reading-jp, .reading-vi {
-    flex: 1; /* Chia đôi không gian */
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 10px;
-    border: 1px solid #e0e0e0;
-}
-
-.reading-jp h4, .reading-vi h4 {
-    margin-top: 0;
-    color: #34495e;
-    border-bottom: 2px solid #34495e;
-    padding-bottom: 10px;
-}
-
-.reading-vocab-container {
-    margin-bottom: 30px;
-}
-
-.reading-vocab-list {
-    list-style: none;
-    padding: 0;
-    background-color: #fdf6e3;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.reading-vocab-list li {
-    padding: 8px 0;
-    border-bottom: 1px dashed #ccc;
-}
-
-.reading-vocab-list li:last-child {
-    border-bottom: none;
-}
-
-.reading-quiz-container .quiz-card {
-    background-color: #f9f9f9;
-}
-
-/* Tối ưu cho Mobile */
-@media (max-width: 768px) {
-    .reading-passage-container {
-        flex-direction: column; /* Chuyển thành 1 cột */
+    function updateNavButtons() {
+        const linesInScene = scenes[currentSceneIndex].querySelectorAll('.dialogue-line');
+        prevBtn.disabled = (currentLineIndex === 0);
+        nextBtn.disabled = (currentLineIndex === linesInScene.length - 1);
     }
-}
+
+    nextBtn.addEventListener('click', () => {
+        const linesInScene = scenes[currentSceneIndex].querySelectorAll('.dialogue-line');
+        if (currentLineIndex < linesInScene.length - 1) {
+            showLine(currentSceneIndex, currentLineIndex + 1);
+        }
+    });
+
+    prevBtn.addEventListener('click', () => {
+        if (currentLineIndex > 0) {
+            showLine(currentSceneIndex, currentLineIndex - 1);
+        }
+    });
+
+    // Khởi chạy
+    if (scenes.length > 0) {
+        setupSceneNav();
+        loadScene(0);
+    }
 
 
-/* =============================================================== */
-/* == PHẦN 5: ĐỌC HIỂU TƯƠNG TÁC (NÂNG CẤP TỪ BÀI 6) == */
-/* =============================================================== */
-/* =============================================================== */
-/* == PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (GIAO DIỆN NÂNG CẤP) == */
-/* =============================================================== */
-/* =============================================================== */
-/* == PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (GIAO DIỆN NÂNG CẤP v2 - MÀU SẮC MỚI) == */
-/* =============================================================== */
-.reading-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-}
+    // === PHẦN 3: ĐIỀU KHIỂN ĐỌC CHO PHẦN TỪ VỰNG (CẢI TIẾN) ===
+    function speakVocab(text, lang = 'ja-JP') {
+        speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = lang;
+        utterance.rate = 0.9;
+        utterance.voice = voiceManager.getVoiceFor('default'); // Dùng giọng mặc định
+        speechSynthesis.speak(utterance);
+    }
 
-.reading-card {
-    background-color: var(--card-bg, #ffffff);
-    border-radius: 12px;
-    padding: 25px;
-    border: 1px solid var(--border-color, #e0e0e0);
-    box-shadow: var(--soft-shadow, 0 5px 15px rgba(0,0,0,0.05));
-}
-.reading-card h3 {
-    margin-top: 0;
-    border-bottom: 2px solid #f0f0f0;
-    padding-bottom: 15px;
-    font-size: 1.3rem;
-}
+    document.querySelectorAll('.vocab-play-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const textToSpeak = event.currentTarget.dataset.speakText;
+            if (textToSpeak) {
+                speakVocab(textToSpeak);
+            }
+        });
+    });
 
-/* [THAY ĐỔI] Nền xanh dương nhạt, tạo cảm giác welcoming */
-.context-description {
-    background-color: rgba(52, 152, 219, 0.08); /* Xanh dương rất nhạt */
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
-    border-left: 4px solid #3498db;
-}
+    // === PHẦN 4: LOGIC CỦA PHẦN QUIZ (Không đổi) ===
+    document.querySelectorAll('.quiz-card').forEach(quizCard => {
+        const options = quizCard.querySelectorAll('.option-btn');
+        const explanationBox = quizCard.querySelector('.explanation-box');
 
-.readable-passage-component h4 {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 1.2rem;
-    margin-bottom: 15px;
-}
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                if (quizCard.classList.contains('answered')) return;
+                quizCard.classList.add('answered');
 
-.text-to-be-read {
-    background-color: #fffde7; /* Màu giấy vàng ấm áp */
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px solid #fceec8;
-    line-height: 2.3;
-    margin-bottom: 20px;
-    font-size: 1.15rem;
-}
+                const isCorrect = option.getAttribute('data-correct') === 'true';
+                if (isCorrect) {
+                    option.classList.add('correct');
+                } else {
+                    option.classList.add('incorrect');
+                    const correctOption = quizCard.querySelector('[data-correct="true"]');
+                    if (correctOption) correctOption.classList.add('correct');
+                }
+                options.forEach(btn => btn.disabled = true);
+                if (explanationBox) explanationBox.style.display = 'block';
+            });
+        });
+    });
 
-/* [THAY ĐỔI] Nền trắng sạch sẽ, chỉ có viền nhẹ */
-.passage-audio-controls {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    background-color: rgba(52, 152, 219, 0.08);  /* Xanh dương rất nhạt */
-
-    padding: 15px;
-    border-radius: 12px;
-    border: 1px solid #e9ecef;
-}
-.passage-audio-controls .control-btn {
-    border: none;
-    border-radius: 8px;
-    padding: 12px 20px;
-    font-size: 1rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-.passage-audio-controls .play-pause { background-color: #28a745; color: white; }
-.passage-audio-controls .play-pause:hover { background-color: #218838; }
-.passage-audio-controls .stop { background-color: #dc3545; color: white; }
-.passage-audio-controls .stop:hover { background-color: #c82333; }
-.speed-controls { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-.speed-btn {
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    padding: 8px 14px;
-    cursor: pointer;
-}
-.speed-btn.active {
-    background-color: #3498db;
-    color: white;
-    border-color: #3498db;
-    font-weight: bold;
-}
-
-.translation-wrapper { margin-top: 20px; }
-.translation-wrapper summary {
-    cursor: pointer;
-    font-weight: 600;
-    color: #555;
-    user-select: none;
-    display: inline-block;
-    padding: 5px;
-    transition: color 0.2s;
-}
-.translation-wrapper summary:hover { color: #3498db; }
-
-/* [THAY ĐỔI] Nền vàng nhạt đồng bộ với bài đọc */
-.translation-content {
-    margin-top: 10px;
-    padding: 15px;
-    background-color: rgba(52, 152, 219, 0.08); /* Vàng nhạt */
-    border-radius: 8px;
-    border-left: 4px solid #f1c40f; /* Vàng đậm hơn */
-}
-
-.reading-card .quiz-card {
-    border: none;
-    padding: 0;
-    background: none;
-}
-/* --- CSS CHO HIGHLIGHT CÂU TRONG BÀI ĐỌC HIỂU (BẢN SỬA LỖI CUỐI CÙNG) --- */
-.sentence.highlight-sentence {
-    background-color: #a0e7e5 !important; /* MÀU XANH NGỌC VÀ ƯU TIÊN CAO NHẤT */
-    transition: background-color 0.2s ease-in-out;
-    border-radius: 5px;
-}
-
-/* Ghi đè màu của các thẻ span con khi câu cha được highlight */
-.sentence.highlight-sentence span {
-    background-color: transparent !important; /* Làm trong suốt màu nền của thẻ con */
-}
-
-
-/* --- CSS CHO HIGHLIGHT TỪ ĐANG ĐỌC TRONG HỘI THOẠI --- */
-.dialogue-word-highlight {
-    background-color: #a0e7e5; /* Màu xanh ngọc giống phần đọc hiểu */
-    color: #2c3e50; /* Giữ màu chữ gốc để dễ đọc */
-    transition: background-color 0.1s ease-out; /* Hiệu ứng chuyển màu mượt mà */
-    border-radius: 3px;
-}
-
-/* THÊM ĐOẠN NÀY VÀO FILE styles-talk1029.css */
-
-/* Dành cho phần động từ/tính từ được chia trong cấu trúc ngữ pháp */
-.g-verb-form {
-    color: #2980b9; /* Xanh dương đậm */
-    font-weight: 700;
-    background-color: #eaf5fb; /* Nền xanh dương rất nhạt */
-    padding: 2px 6px;
-    border-radius: 4px;
-}
+// === PHẦN 5: LOGIC CHO PHẦN ĐỌC HIỂU ỨNG DỤNG (BỔ SUNG) ===
+// === PHẦN 5: LOGIC CHO PHẦN ĐỌC HIỂU ỨNG DỤNG (NÂNG CẤP VỚI HIGHLIGHT) ===
 
 
 
-/* -- Dán đoạn mã này vào file CSS của bạn -- */
+// =======================================================================
+    // === PHẦN 5: BỘ MÁY ĐỌC HIỂU (HỌC TỪ TEMPLATE MỚI) ===
+    // =======================================================================
 
-/* Chủ ngữ / Chủ đề của câu (MÀU MỚI) */
-.g-subject {
-    color: #27ae60; /* Xanh lá cây */
-    font-weight: 600;
-    background-color: #e9f7ef; /* Nền xanh lá cây rất nhạt */
-    padding: 2px 6px;
-    border-radius: 4px;
-}
+  
+// =======================================================================
+    // === PHẦN 5: BỘ MÁY ĐỌC HIỂU (PHIÊN BẢN SỬA LỖI - BẢO TOÀN FURIGANA) ===
+    // =======================================================================
 
-/* -- Sửa lại các class cũ một chút cho giống với hình ảnh -- */
+    // BIẾN TOÀN CỤC ĐỂ QUẢN LÝ VIỆC ĐỌC TRÁNH XUNG ĐỘT
+    let currentSpeechHandler = null; 
+
+    /**
+     * "Bộ não" xử lý việc đọc và highlight.
+     * Nó sẽ tự động bọc từng ký tự trong thẻ <span> để tô màu MÀ KHÔNG LÀM MẤT FURIGANA.
+     * @param {HTMLElement} targetElement - Thẻ HTML chứa văn bản cần đọc.
+     * @param {object} options - Các tùy chọn như tốc độ, callback...
+     * @returns {object} - Một đối tượng điều khiển có các phương thức play, stop, setSpeed.
+     */
+    function createSpeechHandlerForPassage(targetElement, options = {}) {
+        const originalHTML = targetElement.innerHTML;
+        let charMap = [];
+        let plainText = '';
+        let utterance = null;
+        let isPlaying = false;
+        let isPaused = false;
+
+        /**
+         * [ĐÃ SỬA LỖI] Hàm này sẽ duyệt qua DOM và bọc các ký tự text
+         * vào thẻ <span> mà không phá vỡ cấu trúc của thẻ <ruby>.
+         */
+        function _prepareForSpeech() {
+            plainText = '';
+            charMap = [];
+
+            function wrapCharsInSpans(parentNode) {
+                // Tạo bản sao của danh sách node con để duyệt, vì chúng ta sẽ thay đổi DOM trực tiếp
+                const nodes = Array.from(parentNode.childNodes);
+
+                for (const node of nodes) {
+                    // Nếu là node TEXT và không nằm trong thẻ <RT> (Furigana)
+                    if (node.nodeType === 3 && node.parentNode.nodeName !== 'RT') {
+                        const text = node.textContent;
+                        const fragment = document.createDocumentFragment();
+
+                        for (const char of text) {
+                            plainText += char; // Thêm ký tự vào chuỗi để đọc
+                            const span = document.createElement('span');
+                            span.textContent = char;
+                            fragment.appendChild(span);
+                            charMap.push(span); // Thêm thẻ span vào map để highlight
+                        }
+                        // Thay thế node text cũ bằng các thẻ span mới
+                        parentNode.replaceChild(fragment, node);
+                    } 
+                    // Nếu là node ELEMENT, tiếp tục duyệt vào trong
+                    else if (node.nodeType === 1) {
+                        wrapCharsInSpans(node);
+                    }
+                }
+            }
+
+            // Bắt đầu quá trình từ thẻ cha
+            wrapCharsInSpans(targetElement);
+        }
+
+        // Dọn dẹp, trả lại HTML gốc sau khi đọc xong
+        function _cleanup() {
+            targetElement.innerHTML = originalHTML;
+            isPlaying = false;
+            isPaused = false;
+        }
+
+        function play() {
+            // Dừng bất kỳ trình đọc nào khác đang chạy
+            if (currentSpeechHandler && currentSpeechHandler !== this) {
+                currentSpeechHandler.stop();
+            }
+            currentSpeechHandler = this;
+
+            if (isPlaying && isPaused) { // Nếu đang tạm dừng -> tiếp tục
+                speechSynthesis.resume();
+                isPaused = false;
+                if (options.onStateChange) options.onStateChange({ isPlaying: true, isPaused: false });
+                return;
+            }
+            
+            if (isPlaying && !isPaused) { // Nếu đang chạy -> tạm dừng
+                speechSynthesis.pause();
+                isPaused = true;
+                if (options.onStateChange) options.onStateChange({ isPlaying: true, isPaused: true });
+                return;
+            }
+            
+            // Bắt đầu đọc từ đầu
+            isPlaying = true;
+            isPaused = false;
+            _prepareForSpeech();
+            
+            utterance = new SpeechSynthesisUtterance(plainText);
+            utterance.lang = 'ja-JP';
+            utterance.rate = options.speed || 1;
+            
+            // TÍCH HỢP: Sử dụng voiceManager có sẵn của bạn
+            utterance.voice = voiceManager.getVoiceFor('default');
+
+            // Sự kiện then chốt để highlight
+            utterance.onboundary = (event) => {
+                if (event.name !== 'word') return;
+                charMap.forEach(span => span.classList.remove('highlight-word')); // Xóa highlight cũ
+                for (let i = 0; i < event.charLength; i++) {
+                    const charIndex = event.charIndex + i;
+                    if (charMap[charIndex]) {
+                        charMap[charIndex].classList.add('highlight-word'); // Highlight từ mới
+                    }
+                }
+            };
+
+            // Khi đọc xong
+            utterance.onend = () => {
+                _cleanup();
+                currentSpeechHandler = null;
+                if (options.onStateChange) options.onStateChange({ isPlaying: false, isPaused: false });
+            };
+            
+            // Khi có lỗi
+            utterance.onerror = (event) => {
+                console.error('Lỗi SpeechSynthesis:', event);
+                _cleanup();
+                currentSpeechHandler = null;
+                if (options.onStateChange) options.onStateChange({ isPlaying: false, isPaused: false });
+            };
+            
+            speechSynthesis.speak(utterance);
+            if (options.onStateChange) options.onStateChange({ isPlaying: true, isPaused: false });
+        }
+
+        function stop() {
+            if (isPlaying) {
+                speechSynthesis.cancel();
+                _cleanup();
+                currentSpeechHandler = null;
+                if (options.onStateChange) options.onStateChange({ isPlaying: false, isPaused: false });
+            }
+        }
+        
+        // Cập nhật tốc độ
+        function setSpeed(newSpeed) {
+            options.speed = newSpeed;
+            // Nếu đang đọc, dừng và đọc lại với tốc độ mới
+            if (isPlaying && !isPaused) {
+                speechSynthesis.cancel();
+                // Chờ một chút để đảm bảo đã hủy rồi mới đọc lại
+                setTimeout(() => play(), 100);
+            }
+        }
+        
+        // Trả về bộ điều khiển
+        return { play, stop, setSpeed, get isPlaying() { return isPlaying; } };
+    }
+
+    /**
+     * "Bộ điều khiển" - Tìm các thành phần đọc hiểu trên trang và gắn sự kiện cho chúng.
+     */
+    function initPassageReading() {
+        const passageComponents = document.querySelectorAll('.readable-passage-component');
+
+        passageComponents.forEach((component) => {
+            const playBtn = component.querySelector('.play-pause');
+            const stopBtn = component.querySelector('.stop');
+            const speedBtns = component.querySelectorAll('.speed-btn');
+            const textElement = component.querySelector('.text-to-be-read');
+
+            if (!playBtn || !stopBtn || !textElement) return;
+
+            // Cấu hình cho bộ não
+            const options = {
+                speed: 1.0,
+                onStateChange: (state) => {
+                    if (state.isPlaying && !state.isPaused) {
+                        playBtn.innerHTML = '⏸️ Tạm dừng';
+                    } else if (state.isPlaying && state.isPaused) {
+                        playBtn.innerHTML = '▶️ Tiếp tục';
+                    } else {
+                        // Trả về trạng thái "Nghe lại" khi đọc xong hoặc dừng hẳn
+                        playBtn.innerHTML = '▶️ Nghe lại';
+                    }
+                }
+            };
+            
+            // Tạo một trình xử lý riêng cho component này
+            const handler = createSpeechHandlerForPassage(textElement, options);
+            
+            playBtn.addEventListener('click', () => handler.play());
+            
+            stopBtn.addEventListener('click', () => {
+                handler.stop();
+                // Reset nút play về trạng thái ban đầu
+                playBtn.innerHTML = '▶️ Bắt đầu';
+            });
+
+            speedBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const newSpeed = parseFloat(btn.dataset.speed);
+                    handler.setSpeed(newSpeed); // Gửi tốc độ mới cho trình xử lý
+                    speedBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+        });
+    }
+
+    // CUỐI CÙNG: Gọi hàm khởi tạo này
+    initPassageReading();
 
 
+
+///////////////////
+});
