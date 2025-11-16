@@ -13,10 +13,10 @@ body {
 }
 .page-header, .page-footer { 
     text-align: center; 
-    padding: 6px; 
+    padding: 8px; 
 }
 .scene-container { 
-    max-width: 600px; 
+    max-width: 800px; 
     margin: 8px auto; 
     position: relative; 
 }
@@ -40,8 +40,8 @@ body {
 }
 @media (max-width: 600px) {
     .dialogue-overlay { 
-        margin-top: -60px; 
-        padding: 6px; 
+        margin-top: -40px; 
+        padding: 15px; 
         margin-left: 10px; 
         margin-right: 10px; 
     }
@@ -102,18 +102,18 @@ rt {
     user-select: none; 
 }
 .vietnamese-text {
-    font-size: 1rem; 
+    font-size: 1.1rem; 
     color: #555; 
     margin-top: 0;
     border-left: 3px solid #228B22; 
-    padding-left: 6px; 
+    padding-left: 10px; 
 }
 
 /* --- CSS RIÊNG CHO HIGHLIGHT TRONG HỘI THOẠI --- */
 .dialogue-highlight { 
     background-color: #fffa90; /* Màu vàng nhạt */
     border-radius: 4px; 
-    padding: 3px; /* Thêm đệm ngang để chữ không bị dính sát */
+    padding: 0 3px; /* Thêm đệm ngang để chữ không bị dính sát */
     font-weight: 600; /* Làm chữ đậm hơn một chút */
 }
 
@@ -1052,11 +1052,11 @@ body {
 }
 .page-header, .page-footer { 
     text-align: center; 
-    padding: 2px; 
+    padding: 20px; 
 }
 .scene-container { 
-    max-width: 800px; 
-    margin: 8px auto; 
+    max-width: 900px; 
+    margin: 20px auto; 
     position: relative; 
 }
 .scene-background-image {
@@ -1069,7 +1069,7 @@ body {
 }
 .dialogue-overlay {
     position: relative; 
-    margin-top: -110px; 
+    margin-top: -80px; 
     margin-left: 20px; 
     margin-right: 20px;
     padding: 25px; 
@@ -1126,7 +1126,7 @@ body {
     flex-grow: 1; 
 }
 .japanese-text {
-    font-size: clamp(1.4rem, 4.5vw, 1.8rem); 
+    font-size: clamp(1.2rem, 4vw, 1.6rem); 
     line-height: 1.8;
     margin: 0 0 8px 0; 
     color: #2c3e50; 
@@ -1141,11 +1141,11 @@ rt {
     user-select: none; 
 }
 .vietnamese-text {
-    font-size: 1.1rem; 
+    font-size: 1rem; 
     color: #555; 
     margin-top: 0;
     border-left: 3px solid #228B22; 
-    padding-left: 8px; 
+    padding-left: 10px; 
 }
 
 
@@ -2083,40 +2083,39 @@ rt {
 }
 
 
+/* ============================================= */
+/* == STYLE CHO VÍ DỤ DẠNG HỘI THOẠI A/B == */
+/* ============================================= */
 
-/* -- Dán đoạn mã này vào file CSS của bạn -- */
-
-/* Chủ ngữ / Chủ đề của câu (MÀU MỚI) */
-.g-subject {
-    color: #27ae60; /* Xanh lá cây */
-    font-weight: 600;
-    background-color: #e9f7ef; /* Nền xanh lá cây rất nhạt */
-    padding: 2px 6px;
-    border-radius: 4px;
+.dialogue-example {
+    padding-top: 10px;
 }
 
-/* -- Sửa lại các class cũ một chút cho giống với hình ảnh -- */
-
-/* --- BỔ SUNG ĐỂ KÉO HỘP THOẠI LÊN CAO HƠN --- */
-
-/* 1. Giảm khoảng cách giữa dòng giới thiệu và ảnh */
-.page-header {
-    padding-bottom: 5px; /* Giảm khoảng đệm dưới của tiêu đề */
-}
-.scene-container {
-    margin-top: 0; /* Bỏ hoàn toàn khoảng cách trên của khu vực ảnh */
+/* Mỗi lượt thoại (A hoặc B) */
+.dialogue-turn {
+    display: flex; /* Dùng Flexbox để xếp hàng ngang */
+    align-items: flex-start; /* Căn lề trên cùng */
+    margin-bottom: 15px; /* Tạo khoảng cách giữa các lượt thoại */
 }
 
-/* 2. Kéo hộp thoại lên cao hơn nữa trên màn hình lớn */
-.dialogue-overlay {
-    margin-top: -120px; /* Tăng giá trị âm từ -80px lên -120px */
+/* Nhãn A:, B: */
+.speaker-label {
+    font-weight: bold;
+    color: #34495e;
+    min-width: 25px; /* Đảm bảo A: và B: thẳng hàng */
+    padding-top: 5px; /* Căn chỉnh với dòng tiếng Nhật */
 }
 
-/* 3. Kéo hộp thoại lên cao hơn một chút trên mobile cho cân đối */
-@media (max-width: 600px) {
-    .dialogue-overlay {
-        margin-top: -60px; /* Tăng giá trị âm từ -40px lên -60px */
-    }
+/* Phần nội dung thoại bên phải */
+.dialogue-text-content {
+    flex-grow: 1; /* Tự động lấp đầy không gian còn lại */
+}
+
+/* Ghi đè một chút margin của thẻ p bên trong để gọn hơn */
+.dialogue-text-content .example-jp,
+.dialogue-text-content .example-vn {
+    margin-top: 0;
+    margin-bottom: 8px;
 }
 
 
