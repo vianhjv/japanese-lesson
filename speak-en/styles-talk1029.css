@@ -41,7 +41,7 @@ body {
 @media (max-width: 600px) {
     .dialogue-overlay { 
         margin-top: -60px; 
-        padding: 15px; 
+        padding: 6px; 
         margin-left: 10px; 
         margin-right: 10px; 
     }
@@ -106,14 +106,14 @@ rt {
     color: #555; 
     margin-top: 0;
     border-left: 3px solid #228B22; 
-    padding-left: 10px; 
+    padding-left: 6px; 
 }
 
 /* --- CSS RIÊNG CHO HIGHLIGHT TRONG HỘI THOẠI --- */
 .dialogue-highlight { 
     background-color: #fffa90; /* Màu vàng nhạt */
     border-radius: 4px; 
-    padding: 0 3px; /* Thêm đệm ngang để chữ không bị dính sát */
+    padding: 3px; /* Thêm đệm ngang để chữ không bị dính sát */
     font-weight: 600; /* Làm chữ đậm hơn một chút */
 }
 
@@ -1052,7 +1052,7 @@ body {
 }
 .page-header, .page-footer { 
     text-align: center; 
-    padding: 10px; 
+    padding: 2px; 
 }
 .scene-container { 
     max-width: 800px; 
@@ -1069,7 +1069,7 @@ body {
 }
 .dialogue-overlay {
     position: relative; 
-    margin-top: -80px; 
+    margin-top: -110px; 
     margin-left: 20px; 
     margin-right: 20px;
     padding: 25px; 
