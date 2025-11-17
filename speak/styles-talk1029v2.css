@@ -13,11 +13,11 @@ body {
 }
 .page-header, .page-footer { 
     text-align: center; 
-    padding: 20px; 
+    padding: 2px; 
 }
 .scene-container { 
     max-width: 900px; 
-    margin: 20px auto; 
+    margin: 2px auto; 
     position: relative; 
 }
 .scene-background-image {
@@ -30,10 +30,10 @@ body {
 }
 .dialogue-overlay {
     position: relative; 
-    margin-top: -80px; 
+    margin-top: -100px; 
     margin-left: 20px; 
     margin-right: 20px;
-    padding: 25px; 
+    padding: 10px; 
     background: rgba(200, 180, 140, 0.55);
     border-radius: 15px; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
@@ -87,7 +87,7 @@ body {
     flex-grow: 1; 
 }
 .japanese-text {
-    font-size: clamp(1.2rem, 4vw, 1.6rem); 
+    font-size: clamp(1.4rem, 4.5vw, 1.8rem); 
     line-height: 1.8;
     margin: 0 0 8px 0; 
     color: #2c3e50; 
@@ -1052,11 +1052,11 @@ body {
 }
 .page-header, .page-footer { 
     text-align: center; 
-    padding: 20px; 
+    padding: 2px; 
 }
 .scene-container { 
     max-width: 900px; 
-    margin: 20px auto; 
+    margin: 2px auto; 
     position: relative; 
 }
 .scene-background-image {
@@ -1069,10 +1069,10 @@ body {
 }
 .dialogue-overlay {
     position: relative; 
-    margin-top: -80px; 
+    margin-top: -100px; 
     margin-left: 20px; 
     margin-right: 20px;
-    padding: 25px; 
+    padding: 10px; 
     background: rgba(200, 180, 140, 0.55);
     border-radius: 15px; 
     box-shadow: 0 5px 20px rgba(0,0,0,0.08);
@@ -1080,7 +1080,7 @@ body {
 @media (max-width: 600px) {
     .dialogue-overlay { 
         margin-top: -40px; 
-        padding: 15px; 
+        padding: 10px; 
         margin-left: 10px; 
         margin-right: 10px; 
     }
@@ -1126,9 +1126,9 @@ body {
     flex-grow: 1; 
 }
 .japanese-text {
-    font-size: clamp(1.2rem, 4vw, 1.6rem); 
+    font-size: clamp(1.4rem, 4.5vw, 1.8rem); 
     line-height: 1.8;
-    margin: 0 0 8px 0; 
+    margin: 0 0 2px 0; 
     color: #2c3e50; 
     font-weight: 500;
 }
@@ -1141,7 +1141,7 @@ rt {
     user-select: none; 
 }
 .vietnamese-text {
-    font-size: 1rem; 
+    font-size: 1.1rem; 
     color: #555; 
     margin-top: 0;
     border-left: 3px solid #228B22; 
