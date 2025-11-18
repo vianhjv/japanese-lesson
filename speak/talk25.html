@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Bài 25: Trọng Trách Mới | Học tiếng Nhật cùng An</title>
+    
+    <link rel="stylesheet" href="styles-talk1029.css">
+</head>
+<body>
+
+    <div class="page-header">
+        <h2>Bài 25: Trọng Trách Mới</h2>
+        <p>Phân biệt Thể Sai Khiến `~(さ)せます` và Thể Bị Động Sai Khiến `~(さ)せられます`.</p>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 1: HỘI THOẠI (会話) -->
+    <!-- =============================================================== -->
+    <div class="scene-container">
+        <img src="https://i.imgur.com/8Qq3l2m.jpeg" alt="An, Tanaka và Suzuki đang nói chuyện trong văn phòng" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dialogue-source" style="display: none;">
+        <!-- Toàn bộ hội thoại diễn ra trong 1 cảnh -->
+        <div class="scene" data-scene-name="Trọng trách mới" data-background-image="https://i.imgur.com/8Qq3l2m.jpeg">
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンさん、<ruby>昨日<rt>きのう</rt></ruby>はお<ruby>疲<rt>つか</rt></ruby>れ<ruby>様<rt>さま</rt></ruby>。<ruby>本当<rt>ほんとう</rt></ruby>にすばらしいプレゼンでしたよ。</p>
+                        <p class="vietnamese-text">An, hôm qua em đã vất vả rồi. Thật sự là một bài thuyết trình tuyệt vời.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ありがとうございます。<ruby>先輩<rt>せんぱい</rt></ruby>たちが<ruby>助<rt>たす</rt></ruby>けてくれたおかげです。</p>
+                        <p class="vietnamese-text">Em cảm ơn anh. Đó là nhờ các anh chị đã giúp đỡ ạ.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">それで、うれしい<ruby>知<rt>し</rt></ruby>らせがあります。<ruby>来週<rt>らいしゅう</rt></ruby>のクライアントとの<ruby>会議<rt>かいぎ</rt></ruby>、<ruby>部長<rt>ぶちょう</rt></ruby>がアンさんに<span class="g-verb-form"><ruby>発表<rt>はっぴょう</rt></ruby></span><span class="grammar-point">させます</span>よ。</p>
+                        <p class="vietnamese-text">Và, anh có một tin vui đây. Buổi họp với khách hàng vào tuần tới, trưởng phòng sẽ để cho em thuyết trình đó.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ええっ！？<ruby>私<rt>わたし</rt></ruby>がですか？そんな、<ruby>大<rt>おお</rt></ruby>きな<ruby>責任<rt>せきにん</rt></ruby>、<ruby>私<rt>わたし</rt></ruby>には…。</p>
+                        <p class="vietnamese-text">Hả!? Em ạ? Một trọng trách lớn như vậy, em không thể...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">(<ruby>来<rt>き</rt></ruby>て) <ruby>何<rt>なに</rt></ruby>の<ruby>話<rt>はなし</rt></ruby>？アンさん、<ruby>顔<rt>かお</rt></ruby>が<ruby>真<rt>ま</rt></ruby>っ<ruby>青<rt>さお</rt></ruby>よ。</p>
+                        <p class="vietnamese-text">(Đi đến) Chuyện gì vậy? An, mặt em xanh mét kìa.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>部長<rt>ぶちょう</rt></ruby>が、<ruby>次<rt>つぎ</rt></ruby>のプレゼンをアンさんに<ruby>指名<rt>しめい</rt></ruby>したんですよ。</p>
+                        <p class="vietnamese-text">Trưởng phòng đã chỉ định An cho buổi thuyết trình sắp tới đó chị.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>鈴木先輩<rt>すずきせんぱい</rt></ruby>…。<ruby>光栄<rt>こうえい</rt></ruby>ですけど、<ruby>私<rt>わたし</rt></ruby>がクライアントの<ruby>前<rt>まえ</rt></ruby>で<span class="g-verb-form"><ruby>発表<rt>はっぴょう</rt></ruby></span><span class="grammar-point">させられる</span>なんて、プレッシャーで…。</p>
+                        <p class="vietnamese-text">Chị Suzuki... Em rất vinh dự, nhưng việc bị yêu cầu thuyết trình trước mặt khách hàng, thật sự rất áp lực...</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker suzuki" data-character="suzuki">Suzuki</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>よ。それは<ruby>部長<rt>ぶちょう</rt></ruby>がアンさんを<ruby>信頼<rt>しんらい</rt></ruby>している<ruby>証拠<rt>しょうこ</rt></ruby>よ。<ruby>自信<rt>じしん</rt></ruby>を<ruby>持<rt>も</rt></ruby>って。</p>
+                        <p class="vietnamese-text">Không sao đâu. Đó là bằng chứng cho thấy trưởng phòng tin tưởng em đó. Hãy tự tin lên.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tanaka</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">そうですよ。<ruby>私<rt>わたし</rt></ruby>たちも<ruby>全力<rt>ぜんりょく</rt></ruby>でサポートしますから。</p>
+                        <p class="vietnamese-text">Đúng vậy đó. Bọn anh cũng sẽ hỗ trợ em hết sức mình.</p>
+                    </div>
+                </div>
+            </div>
+             <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">…はい！<ruby>期待<rt>きたい</rt></ruby>に<ruby>応<rt>こた</rt></ruby>えられるように、<ruby>頑張<rt>がんば</rt></ruby>ります！</p>
+                        <p class="vietnamese-text">...Vâng! Em sẽ cố gắng để có thể đáp lại sự kỳ vọng của mọi người!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 2: TỪ VỰNG MỚI (新しい言葉) -->
+    <!-- =============================================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>Từ Vựng Mới (新しい言葉)</h3>
+            <ul class="vocabulary-list">
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>知<rt>し</rt></ruby>らせ</h4>
+                        <button class="vocab-play-btn" data-speak-text="しらせ">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Tin tức, thông báo</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">いい<ruby>知<rt>し</rt></ruby>らせがあります。</p>
+                            <button class="vocab-play-btn" data-speak-text="いいしらせがあります">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Có tin tốt đây.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>指名<rt>しめい</rt></ruby>する</h4>
+                        <button class="vocab-play-btn" data-speak-text="しめいする">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Động từ suru</p>
+                        <p><span class="label">Nghĩa:</span> Chỉ định, bổ nhiệm</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>田中<rt>たなか</rt></ruby>さんをリーダーに<ruby>指名<rt>しめい</rt></ruby>しました。</p>
+                            <button class="vocab-play-btn" data-speak-text="ぶちょうはたなかさんをリーダーにしめいしました">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Trưởng phòng đã bổ nhiệm anh Tanaka làm trưởng nhóm.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>責任<rt>せきにん</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="せきにん">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Trách nhiệm, trọng trách</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">これは<ruby>私<rt>わたし</rt></ruby>の<ruby>責任<rt>せきにん</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" data-speak-text="これはわたしのせきにんです">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Đây là trách nhiệm của tôi.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>真<rt>ま</rt></ruby>っ<ruby>青<rt>さお</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="まっさお">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Tính từ-na, Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Xanh mét, tái mét</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>心配<rt>しんぱい</rt></ruby>で<ruby>顔<rt>かお</rt></ruby>が<ruby>真<rt>ま</rt></ruby>っ<ruby>青<rt>さお</rt></ruby>になった。</p>
+                            <button class="vocab-play-btn" data-speak-text="しんぱいでかおがまっさおになった">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Vì lo lắng nên mặt tôi đã tái mét.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>光栄<rt>こうえい</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="こうえい">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Tính từ-na, Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Vinh dự, vinh hạnh</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">あなたと<ruby>仕事<rt>しごと</rt></ruby>ができて<ruby>光栄<rt>こうえい</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" data-speak-text="あなたとしごとができてこうえいです">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Được làm việc với bạn là một vinh dự cho tôi.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">プレッシャー</h4>
+                        <button class="vocab-play-btn" data-speak-text="プレッシャー">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Áp lực (Pressure)</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">プレッシャーを<ruby>感<rt>かん</rt></ruby>じています。</p>
+                            <button class="vocab-play-btn" data-speak-text="プレッシャーをかんじています">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi đang cảm thấy áp lực.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>信頼<rt>しんらい</rt></ruby>する</h4>
+                        <button class="vocab-play-btn" data-speak-text="しんらいする">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Động từ suru</p>
+                        <p><span class="label">Nghĩa:</span> Tin tưởng, tín nhiệm</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>私<rt>わたし</rt></ruby>は<ruby>彼<rt>かれ</rt></ruby>を<ruby>信頼<rt>しんらい</rt></ruby>しています。</p>
+                            <button class="vocab-play-btn" data-speak-text="わたしはかれをしんらいしています">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi tin tưởng anh ấy.</p>
+                    </div>
+                </li>
+                 <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>証拠<rt>しょうこ</rt></ruby></h4>
+                        <button class="vocab-play-btn" data-speak-text="しょうこ">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Danh từ</p>
+                        <p><span class="label">Nghĩa:</span> Bằng chứng, chứng cớ</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">これがその<ruby>証拠<rt>しょうこ</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" data-speak-text="これがそのしょうこです">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Đây là bằng chứng cho điều đó.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>全力<rt>ぜんりょく</rt></ruby>で</h4>
+                        <button class="vocab-play-btn" data-speak-text="ぜんりょくで">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Trạng từ</p>
+                        <p><span class="label">Nghĩa:</span> Bằng toàn bộ sức lực</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>全力<rt>ぜんりょく</rt></ruby>で<ruby>走<rt>はし</rt></ruby>ります。</p>
+                            <button class="vocab-play-btn" data-speak-text="ぜんりょくではしります">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi sẽ chạy hết sức mình.</p>
+                    </div>
+                </li>
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>期待<rt>きたい</rt></ruby>に<ruby>応<rt>こた</rt></ruby>える</h4>
+                        <button class="vocab-play-btn" data-speak-text="きたいにこたえる">🔊</button>
+                    </div>
+                    <div class="vocab-details">
+                        <p><span class="label">Loại từ:</span> Cụm động từ</p>
+                        <p><span class="label">Nghĩa:</span> Đáp lại sự kỳ vọng</p>
+                    </div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>両親<rt>りょうしん</rt></ruby>の<ruby>期待<rt>きたい</rt></ruby>に<ruby>応<rt>こた</rt></ruby>えたいです。</p>
+                            <button class="vocab-play-btn" data-speak-text="りょうしんのきたいにこたえたいです">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi muốn đáp lại sự kỳ vọng của cha mẹ.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 3: PHÂN TÍCH NGỮ PHÁP -->
+    <!-- =============================================================== -->
+    <div class="grammar-section">
+        <div class="grammar-container">
+            <h2>Phần 3: Phân Tích Ngữ Pháp (文法の解説)</h2>
+            
+            <div class="grammar-card">
+                <h3>1. Thể Sai Khiến: <span class="g-verb-form">～(さ)せます</span> (Cho phép / Bắt, yêu cầu làm)</h3>
+                <div class="grammar-explanation">
+                    <p>Diễn tả hành động của người nói "cho phép" hoặc "yêu cầu" một người nào đó làm một việc gì. Trong môi trường công sở, nó thường mang nghĩa "giao việc, phân công".</p>
+                    <p><strong>Góc nhìn:</strong> Được nói từ góc nhìn của người ra lệnh/giao việc, hoặc của người thứ ba quan sát một cách khách quan.</p>
+                </div>
+                
+                <div class="example-block">
+                    <p class="example-jp"><ruby>部長<rt>ぶちょう</rt></ruby>がアンさんに<span class="g-verb-form"><ruby>発表<rt>はっぴょう</rt></ruby></span><span class="grammar-point">させます</span>。(Tanaka kể lại một cách khách quan)</p>
+                    <p class="example-vn">Trưởng phòng sẽ để cho/yêu cầu An thuyết trình.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>母<rt>はは</rt></ruby>は<ruby>妹<rt>いもうと</rt></ruby>に<ruby>部屋<rt>へや</rt></ruby>を<span class="g-verb-form">そうじ</span><span class="grammar-point">させました</span>。</p>
+                    <p class="example-vn">Mẹ đã bắt em gái dọn dẹp phòng.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>2. Thể Bị Động Sai Khiến: <span class="g-verb-form">～(さ)せられます</span> (Bị bắt làm)</h3>
+                <div class="grammar-explanation">
+                    <p>Luôn diễn tả cảm xúc của người nói về việc <strong>"bị bắt làm"</strong> một điều gì đó mà mình không muốn, hoặc cảm thấy áp lực, nặng nề.</p>
+                    <p><strong>Góc nhìn:</strong> Luôn được nói từ góc nhìn của <strong>người phải thực hiện hành động</strong>. Nó thể hiện cảm xúc, sự khó chịu hoặc gánh nặng của người nói.</p>
+                </div>
+
+                <div class="example-block">
+                    <p class="example-jp"><ruby>私<rt>わたし</rt></ruby>がクライアントの<ruby>前<rt>まえ</rt></ruby>で<span class="g-verb-form"><ruby>発表<rt>はっぴょう</rt></ruby></span><span class="grammar-point">させられる</span>なんて... (An bày tỏ cảm xúc áp lực)</p>
+                    <p class="example-vn">Việc em bị yêu cầu thuyết trình trước mặt khách hàng...</p>
+                </div>
+                 <div class="example-block">
+                    <p class="example-jp"><ruby>子供<rt>こども</rt></ruby>のとき、<ruby>母<rt>はは</rt></ruby>に<ruby>嫌<rt>きら</rt></ruby>いなものを<span class="g-verb-form"><ruby>食<rt>た</rt></ruby>べ</span><span class="grammar-point">させられました</span>。</p>
+                    <p class="example-vn">Hồi nhỏ, tôi đã bị mẹ bắt ăn những món mình ghét.</p>
+                </div>
+            </div>
+
+            <div class="grammar-card">
+                <h3>⚠️ Điểm Khác Biệt Mấu Chốt: Góc Nhìn & Cảm Xúc</h3>
+                <div class="grammar-explanation">
+                    <p>Cùng một sự việc "Trưởng phòng giao An thuyết trình", nhưng:</p>
+                    <ul>
+                        <li>Người ngoài (Tanaka) kể lại một cách khách quan → Dùng Thể Sai Khiến <span class="grammar-point">～させます</span>.</li>
+                        <li>Người trong cuộc (An) kể lại với cảm xúc áp lực, gánh nặng → Dùng Thể Bị Động Sai Khiến <span class="grammar-point">～させられます</span>.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 4: LUYỆN TẬP NGỮ PHÁP (練習) -->
+    <!-- =============================================================== -->
+    <div class="quiz-section">
+        <h2>Phần 4: Luyện Tập Ngữ Pháp (練習)</h2>
+        <div class="quiz-container">
+            <div class="quiz-card">
+                <p class="question-text">1. <ruby>子供<rt>こども</rt></ruby>の<ruby>時<rt>とき</rt></ruby>、<ruby>嫌<rt>きら</rt></ruby>いな<ruby>野菜<rt>やさい</rt></ruby>を<ruby>母<rt>はは</rt></ruby>に＿＿＿＿、<ruby>泣<rt>な</rt></ruby>いたことがある。<br>(Hồi nhỏ, tôi đã từng khóc vì bị mẹ bắt ăn rau mà mình ghét.)</p>
+                <div class="options-container">
+                    <button class="option-btn">1. <span class="g-verb-form"><ruby>食<rt>た</rt></ruby>べ</span><span class="grammar-point">させて</span></button>
+                    <button class="option-btn" data-correct="true">2. <span class="g-verb-form"><ruby>食<rt>た</rt></ruby>べ</span><span class="grammar-point">させられて</span></button>
+                    <button class="option-btn">3. <ruby>食<rt>た</rt></ruby>べられて</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Người nói đang kể lại một trải nghiệm không mong muốn từ góc nhìn của mình (người bị bắt làm), nên phải dùng Thể Bị Động Sai Khiến.
+                </div>
+            </div>
+            <div class="quiz-card">
+                <p class="question-text">2. <ruby>部長<rt>ぶちょう</rt></ruby>は<ruby>疲<rt>つか</rt></ruby>れている<ruby>私<rt>わたし</rt></ruby>を<ruby>早<rt>はや</rt></ruby>く＿＿＿＿。<br>(Trưởng phòng đã cho phép tôi, người đang mệt, về sớm.)</p>
+                <div class="options-container">
+                    <button class="option-btn" data-correct="true">1. <span class="g-verb-form"><ruby>帰<rt>かえ</rt></ruby>らせて</span><span class="grammar-point">くれました</span></button>
+                    <button class="option-btn">2. <ruby>帰<rt>かえ</rt></ruby>らせられました</button>
+                    <button class="option-btn">3. <ruby>帰<rt>かえ</rt></ruby>られました</button>
+                </div>
+                <div class="explanation-box" style="display: none;">
+                    💡 <strong>Giải thích:</strong> Đây là hành động "cho phép", mang ý nghĩa tích cực. Hành động này hướng về phía người nói (tôi), nên kết hợp Thể Sai Khiến với `<span class="grammar-point">～てくれます</span>` là phù hợp nhất.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- =============================================================== -->
+    <!-- PHẦN 5: ĐỌC HIỂU ỨNG DỤNG (読解練習) -->
+    <!-- =============================================================== -->
+    <div class="reading-comprehension-section">
+        <div class="reading-comprehension-container">
+            <h2>Phần 5: Đọc Hiểu Ứng Dụng (読解練習)</h2>
+            <div class="reading-wrapper">
+                <div class="reading-card">
+                    <h3><ruby>件名<rt>けんめい</rt></ruby>：アドバイスをお<ruby>願<rt>ねが</rt></ruby>いします (Xin thầy cho em lời khuyên)</h3>
+                    <div class="readable-passage-component">
+                        <h4><ruby>文章<rt>ぶんしょう</rt></ruby></h4>
+                        <div class="text-to-be-read" id="readingPassageText">
+                            <p><ruby>佐藤先生<rt>さとうせんせい</rt></ruby></p>
+                            <p>ご<ruby>無沙汰<rt>ぶさた</rt></ruby>しております。ABCデザインのアンです。</p>
+                            <p><ruby>先<rt>さき</rt></ruby>のメールでお<ruby>話<rt>はな</rt></ruby>しした<ruby>新<rt>あたら</rt></ruby>しいデザイン<ruby>案<rt>あん</rt></ruby>ですが、<ruby>先日<rt>せんじつ</rt></ruby>の<ruby>社内<rt>しゃない</rt></ruby>プレゼンで、<ruby>部長<rt>ぶちょう</rt></ruby>に<span class="g-verb-form"><ruby>褒<rt>ほ</rt></ruby>め</span><span class="grammar-point">られました</span>。そして、<ruby>部長<rt>ぶちょう</rt></ruby>は、<ruby>来週<rt>らいしゅう</rt></ruby>クライアントの<ruby>前<rt>まえ</rt></ruby>で<ruby>私<rt>わたし</rt></ruby>にそのプレゼンを<span class="grammar-point">させると</span><ruby>決<rt>き</rt></ruby>めました。</p>
+                            <p><ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>代表<rt>だいひょう</rt></ruby>として<ruby>発表<rt>はっぴょう</rt></ruby>できるのは、とても<ruby>光栄<rt>こうえい</rt></ruby>なことだと<ruby>分<rt>わ</rt></ruby>かっています。でも、<ruby>正直<rt>しょうじき</rt></ruby>に<ruby>言<rt>い</rt></ruby>うと、<ruby>大<rt>おお</rt></ruby>きな<ruby>責任<rt>せきにん</rt></ruby>を<span class="g-verb-form"><ruby>負<rt>お</rt></ruby>わ</span><span class="grammar-point">されて</span>、<ruby>本当<rt>ほんとう</rt></ruby>に<ruby>緊張<rt>きんちょう</rt></ruby>しています。もし<ruby>失敗<rt>しっぱい</rt></ruby>したらどうしようと、<ruby>不安<rt>ふあん</rt></ruby>でいっぱいです。</p>
+                            <p><ruby>先生<rt>せんせい</rt></ruby>なら、こういう<ruby>時<rt>とき</rt></ruby>、どうやって<ruby>自信<rt>じしん</rt></ruby>を<ruby>持<rt>も</rt></ruby>ちますか。もしよろしければ、アドバイスをいただけないでしょうか。</p>
+                            <p><ruby>季節<rt>きせつ</rt></ruby>の<ruby>変<rt>か</rt></ruby>わり<ruby>目<rt>め</rt></ruby>ですので、<ruby>先生<rt>せんせい</rt></ruby>もお<ruby>体<rt>からだ</rt></ruby>にお<ruby>気<rt>き</rt></ruby>をつけください。</p>
+                            <p>アンより</p>
+                        </div>
+                        <div class="passage-audio-controls">
+                            <button class="control-btn play-pause" data-target="readingPassageText">▶ Bắt đầu</button>
+                            <button class="control-btn stop" data-target="readingPassageText">■ Dừng hẳn</button>
+                            <div class="speed-controls">
+                                <span>Tốc độ:</span>
+                                <button class="speed-btn" data-speed="0.8">0.8x</button>
+                                <button class="speed-btn active" data-speed="1.0">1x</button>
+                                <button class="speed-btn" data-speed="1.2">1.2x</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <details class="translation-wrapper">
+                        <summary>📖 Xem bản dịch và từ vựng</summary>
+                        <div class="translation-content">
+                            <h4>Bản dịch</h4>
+                            <p>Thưa cô Sato,</p>
+                            <p>Đã lâu không liên lạc với cô ạ. Em là An của công ty ABC Design.</p>
+                            <p>Về phương án thiết kế mới mà em đã kể trong mail trước, trong buổi thuyết trình nội bộ hôm trước, em đã được trưởng phòng khen ạ. Và rồi, trưởng phòng đã quyết định sẽ để em thực hiện bài thuyết trình đó trước mặt khách hàng vào tuần tới.</p>
+                            <p>Em hiểu rằng có thể thuyết trình với tư cách là đại diện của công ty là một điều rất vinh dự. Nhưng, thú thật là, việc bị giao phó một trọng trách lớn khiến em thật sự rất căng thẳng. Em lo lắng không yên, không biết sẽ ra sao nếu mình thất bại.</p>
+                            <p>Nếu là cô, trong những lúc như thế này, cô sẽ làm thế nào để giữ vững sự tự tin ạ? Nếu được, cô có thể cho em một lời khuyên được không ạ?</p>
+                            <p>Thời tiết đang lúc giao mùa, cô cũng hãy giữ gìn sức khỏe nhé ạ.</p>
+                            <p>Từ An</p>
+                            
+                            <h4>Từ vựng mới trong bài đọc</h4>
+                             <ul class="reading-vocab-list">
+                                <li><strong>ご<ruby>無沙汰<rt>ぶさた</rt></ruby>しております:</strong> Đã lâu không liên lạc (cách nói lịch sự)</li>
+                                <li><strong><ruby>代表<rt>だいひょう</rt></ruby>:</strong> đại diện</li>
+                                <li><strong><ruby>正直<rt>しょうじき</rt></ruby>に<ruby>言<rt>い</rt></ruby>うと:</strong> thú thật mà nói thì</li>
+                                <li><strong><ruby>負<rt>お</rt></ruby>わされる:</strong> bị gánh vác, bị giao phó (dạng bị động của 負わせる)</li>
+                                <li><strong>アドバイス:</strong> lời khuyên (advice)</li>
+                                <li><strong><ruby>変<rt>か</rt></ruby>わり<ruby>目<rt>め</rt></ruby>:</strong> thời điểm chuyển giao, giao mùa</li>
+                            </ul>
+                        </div>
+                    </details>
+                    
+                    <hr>
+                    
+                    <h4>Câu hỏi đọc hiểu</h4>
+                     <div class="reading-quiz-container quiz-container">
+                        <div class="quiz-card">
+                            <p class="question-text">1. アンさんはどうしてこのメールを<ruby>書<rt>か</rt></ruby>きましたか。</p>
+                            <div class="options-container">
+                                <button class="option-btn">1. <ruby>仕事<rt>しごと</rt></ruby>で<ruby>失敗<rt>しっぱい</rt></ruby>したことを<ruby>謝<rt>あやま</rt></ruby>るため。</button>
+                                <button class="option-btn" data-correct="true">2. <ruby>大<rt>おお</rt></ruby>きな<ruby>仕事<rt>しごと</rt></ruby>を<ruby>任<rt>まか</rt></ruby>されたことへの<ruby>喜<rt>よろこ</rt></ruby>びと<ruby>不安<rt>ふあん</rt></ruby>を<ruby>伝<rt>つた</rt></ruby>え、アドバイスをもらうため。</button>
+                                <button class="option-btn">3. <ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>代表<rt>だいひょう</rt></ruby>になったことを<ruby>自慢<rt>じまん</rt></ruby>するため。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> An vừa kể về niềm vinh dự (`光栄なこと`), vừa nói về sự lo lắng (`不安でいっぱいです`), và cuối cùng hỏi xin lời khuyên (`アドバイスをいただけないでしょうか`).
+                            </div>
+                        </div>
+                         <div class="quiz-card">
+                            <p class="question-text">2. メールの中で、アンさんはどんな<ruby>気持<rt>きも</rt></ruby>ちだと<ruby>書<rt>か</rt></ruby>いていますか。</p>
+                            <div class="options-container">
+                                <button class="option-btn">1. <ruby>嬉<rt>うれ</rt></ruby>しいだけで、<ruby>全然<rt>ぜんぜん</rt></ruby><ruby>心配<rt>しんぱい</rt></ruby>していない。</button>
+                                <button class="option-btn" data-correct="true">2. <ruby>光栄<rt>こうえい</rt></ruby>で<ruby>嬉<rt>うれ</rt></ruby>しい<ruby>気持<rt>きも</rt></ruby>ちと、<ruby>失敗<rt>しっぱい</rt></ruby>するかもしれないという<ruby>不安<rt>ふあん</rt></ruby>な<ruby>気持<rt>きも</rt></ruby>ち。</button>
+                                <button class="option-btn">3. <ruby>部長<rt>ぶちょう</rt></ruby>に<ruby>無理<rt>むり</rt></ruby>やり<ruby>仕事<rt>しごと</rt></ruby>をさせられて、<ruby>怒<rt>おこ</rt></ruby>っている<ruby>気持<rt>きも</rt></ruby>ち。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                                💡 <strong>Giải thích:</strong> Đoạn 3 thể hiện rất rõ hai luồng cảm xúc này: 「光栄なことだと分かっています。でも、正直に言うと、...本当に緊張しています。」
+                            </div>
+                        </div>
+                        <div class="quiz-card">
+                            <p class="question-text">3. 「<ruby>責任<rt>せきにん</rt></ruby>を<ruby>負<rt>お</rt></ruby>わされて」という<ruby>言葉<rt>ことば</rt></ruby>から、どんなことが<ruby>一番<rt>いちばん</rt></ruby><ruby>分<rt>わ</rt></ruby>かりますか。</p>
+                            <div class="options-container">
+                                <button class="option-btn">1. アンさんが、この<ruby>仕事<rt>しごと</rt></ruby>をとてもやりたかったこと。</button>
+                                <button class="option-btn" data-correct="true">2. アンさんが、この<ruby>仕事<rt>しごと</rt></ruby>の<ruby>重<rt>おも</rt></ruby>さで、<ruby>大<rt>おお</rt></ruby>きなプレッシャーを<ruby>感<rt>かん</rt></ruby>じていること。</button>
+                                <button class="option-btn">3. アンさんが、<ruby>部長<rt>ぶちょう</rt></ruby>を<ruby>全<rt>まった</rt></ruby>く<ruby>信頼<rt>しんらい</rt></ruby>していないこと。</button>
+                            </div>
+                            <div class="explanation-box" style="display: none;">
+                               💡 <strong>Giải thích:</strong> Cụm từ `<span class="g-verb-form">負わ</span><span class="grammar-point">されて</span>` là dạng bị động, nhấn mạnh cảm giác bị gánh vác một trách nhiệm nặng nề. Nó thể hiện rõ nhất cảm giác áp lực (プレッシャー) của An.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script-talk-homework1114.js"></script>
+</body>
+</html>
