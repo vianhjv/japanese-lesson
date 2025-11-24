@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Nghe Hội Thoại JLPT</title>
+    <link rel="stylesheet" href="styles-video.css">
+    <style>
+        /* --- CSS RIÊNG CHO TRANG PLAYER (MENU) --- */
+        
+        /* Nút mở Menu (Hamburger) */
+        .menu-btn {
+            position: absolute; top: 15px; left: 15px; z-index: 200;
+            background: rgba(0,0,0,0.6); color: white;
+            border: none; padding: 8px 12px; border-radius: 5px;
+            font-size: 20px; cursor: pointer;
+        }
+
+        /* Khung Menu trượt từ trái sang */
+        .sidebar {
+            position: fixed; top: 0; left: 0; height: 100%; width: 280px;
+            background: white; box-shadow: 2px 0 10px rgba(0,0,0,0.2);
+            z-index: 300; transform: translateX(-100%); transition: 0.3s;
+            display: flex; flex-direction: column;
+        }
+        .sidebar.open { transform: translateX(0); }
+
+        .sidebar-header {
+            padding: 20px; background: var(--primary); color: white;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .close-btn { background: none; border: none; color: white; font-size: 24px; cursor: pointer; }
+
+        .lesson-list {
+            flex: 1; overflow-y: auto; padding: 10px;
+        }
+        .lesson-item {
+            padding: 12px 15px; border-bottom: 1px solid #eee; cursor: pointer;
+            transition: 0.2s; border-radius: 5px;
+        }
+        .lesson-item:hover { background-color: #f0f2f5; color: var(--primary); font-weight: bold; }
+        .lesson-item.active { background-color: #e3f2fd; color: var(--primary); font-weight: bold; border-left: 4px solid var(--primary); }
+
+        /* Màn che mờ khi mở menu */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); z-index: 250;
+            display: none;
+        }
+        .overlay.show { display: block; }
+        
+        /* Tiêu đề bài học hiện tại (Nổi trên ảnh) */
+        .current-lesson-title {
+            position: absolute; top: 10px; right: 10px; z-index: 100;
+            background: rgba(0,0,0,0.6); color: white; padding: 5px 15px;
+            border-radius: 20px; font-size: 14px; pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. CÁC THÀNH PHẦN ĐIỀU HƯỚNG -->
+    <button class="menu-btn" onclick="toggleMenu()">☰ Danh sách bài</button>
+    <div class="current-lesson-title" id="displayTitle">Chọn bài học để bắt đầu</div>
+
+    <div class="overlay" onclick="toggleMenu()" id="siteOverlay"></div>
+    
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3 style="margin:0">📚 Chọn Bài Học</h3>
+            <button class="close-btn" onclick="toggleMenu()">×</button>
+        </div>
+        <div class="lesson-list" id="lessonList">
+            <!-- Danh sách bài học sẽ được JS tạo ra ở đây -->
+        </div>
+    </div>
+
+    <!-- 2. KHU VỰC HIỂN THỊ (PLAYER - Giống hệt Maker) -->
+    <div class="media-stage">
+        <img id="bgImg" class="media-content" src="" style="display:none;">
+        <video id="bgVid" class="media-content" src="" style="display:none;" loop playsinline muted></video>
+    </div>
+
+    <div class="script-stage">
+        <div id="scriptContent" class="script-content">
+            <div style="text-align: center; padding-top: 50px; color: #999;">
+                <p>Vui lòng chọn bài học từ menu bên trái<br>để bắt đầu luyện tập.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="playAll('jp')">🇯🇵 Nghe Nhật</button>
+        <button class="btn" onclick="playAll('vn')">🇻🇳 Nghe Việt</button>
+        <button class="btn" id="btnPause" onclick="togglePause()">⏸ Pause</button>
+        <button class="btn" onclick="stopPlayer()">⏹ Stop</button>
+    </div>
+
+    <!-- LOAD CÁC FILE LOGIC -->
+    <script src="data.js"></script>
+    <script src="script-video.js"></script>
+
+    <script>
+        // --- LOGIC RIÊNG CỦA TRANG PLAYER ---
+
+        // 1. Khởi tạo
+        window.onload = async function() {
+            await voiceManager.init();
+            renderLessonList();
+            
+            // Tự động load bài đầu tiên nếu muốn
+            // if(lessonData.length > 0) loadLesson(lessonData[0].id);
+        };
+
+        // 2. Xử lý Menu Sidebar
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('open');
+            document.getElementById('siteOverlay').classList.toggle('show');
+        }
+
+        // 3. Render danh sách bài học
+        function renderLessonList() {
+            const list = document.getElementById('lessonList');
+            list.innerHTML = '';
+            
+            if (typeof lessonData === 'undefined' || lessonData.length === 0) {
+                list.innerHTML = '<div style="padding:15px; color:red;">Chưa có dữ liệu data.js</div>';
+                return;
+            }
+
+            lessonData.forEach((l, index) => {
+                const item = document.createElement('div');
+                item.className = 'lesson-item';
+                item.textContent = l.title;
+                item.onclick = () => {
+                    loadLesson(l.id);
+                    toggleMenu(); // Đóng menu sau khi chọn
+                    
+                    // Highlight item đang chọn
+                    document.querySelectorAll('.lesson-item').forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+                };
+                list.appendChild(item);
+            });
+        }
+
+        // 4. Load bài học & Chuyển đổi sang HTML
+        function loadLesson(id) {
+            const lesson = lessonData.find(l => l.id === id);
+            if(!lesson) return;
+
+            // Cập nhật thông tin cơ bản
+            document.getElementById('displayTitle').innerText = lesson.title;
+            
+            // Xử lý Media
+            const img = document.getElementById('bgImg');
+            const vid = document.getElementById('bgVid');
+            const mediaUrl = lesson.mediaUrl;
+            
+            if(mediaUrl && mediaUrl.match(/\.(mp4|webm)$/i)) {
+                vid.src = mediaUrl; vid.style.display='block'; img.style.display='none'; 
+                // vid.play(); // Lưu ý: Một số trình duyệt chặn autoplay nếu chưa tương tác
+            } else {
+                img.src = mediaUrl || ''; img.style.display='block'; vid.style.display='none';
+            }
+
+            // Xử lý Script HTML (Logic render giống hệt Maker)
+            const container = document.getElementById('scriptContent');
+            container.innerHTML = '';
+            const scriptLines = [];
+            const lines = lesson.script.split('\n').filter(l => l.trim());
+            
+            let lastChar = ''; let isLeft = true;
+            lines.forEach((line, idx) => {
+                const firstColon = line.indexOf(':');
+                if(firstColon === -1) return;
+                const charName = line.substring(0, firstColon).trim();
+                const content = line.substring(firstColon + 1);
+                const parts = content.split('|');
+                
+                if(lastChar && charName !== lastChar) isLeft = !isLeft;
+                lastChar = charName;
+
+                const div = document.createElement('div');
+                div.className = `row ${isLeft ? 'left' : 'right'} t${(idx % 3) + 1}`;
+                div.id = `line-${idx}`;
+                div.innerHTML = `
+                    <div class="avatar">${charName.charAt(0)}</div>
+                    <div class="bubble">
+                        <div class="japanese-text" id="jp-text-${idx}">${parts[0].trim()}</div>
+                        ${parts[1] ? `<span class="vietnamese-text" id="vn-text-${idx}">${parts[1].trim()}</span>` : ''}
+                    </div>
+                `;
+                
+                // Click dòng nào đọc dòng đó
+                div.onclick = () => {
+                     stopPlayer();
+                     // Set trạng thái vào biến global trong script.js
+                     // Chúng ta cần truy cập biến playerState từ script.js. 
+                     // Lưu ý: Biến playerState cần được expose hoặc hàm playAt cần được viết.
+                     // Ở phiên bản đơn giản này, ta set trực tiếp:
+                     if(typeof playerState !== 'undefined') {
+                        playerState.currentIndex = idx;
+                        playerState.isPlaying = true;
+                        speakNext();
+                     }
+                };
+                container.appendChild(div);
+                scriptLines.push({ index: idx, char: charName, jpId: `jp-text-${idx}`, vnId: `vn-text-${idx}`, rowId: `line-${idx}` });
+            });
+
+            // Khởi tạo Player
+            // Lưu ý: lesson.voiceConfig là cấu hình giọng bạn đã lưu từ Maker
+            initPlayer(scriptLines, lesson.voiceConfig);
+        }
+    </script>
+</body>
+</html>

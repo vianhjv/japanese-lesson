@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLPT Video Studio - Sync Fixed</title>
+    <style>
+        /* --- 1. GIAO DIỆN CƠ BẢN --- */
+        :root {
+            --bg-color: #f0f2f5;
+            --chat-bg: #ffffff;
+            --primary: #2196f3;
+            --highlight-color:  #fff59d; /* Màu xanh highlight chuẩn  #a0e7e5*/
+        }
+
+        body {
+            font-family: "Segoe UI", "Hiragino Sans", sans-serif;
+            background-color: var(--bg-color);
+            margin: 0; padding: 0; height: 100vh;
+            display: flex; flex-direction: column; overflow: hidden;
+        }
+
+        /* --- 2. KHU VỰC MEDIA --- */
+        .media-stage {
+            flex: 1.5; 
+            background: #000; position: relative;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; border-bottom: 2px solid #ddd;
+        }
+        .media-content { width: 100%; height: 100%; object-fit: cover; }
+
+        /* --- 3. KHU VỰC KỊCH BẢN --- */
+        .script-stage {
+            flex: 1; background: var(--chat-bg);
+            position: relative; overflow-y: auto;
+            padding: 20px 0; scroll-behavior: smooth;
+        }
+        .script-content { padding: 0 20px; max-width: 900px; margin: 0 auto; }
+
+        .row {
+            display: flex; align-items: flex-start;
+            margin-bottom: 30px; opacity: 0.5; 
+            transform: scale(0.98); transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .row.active {
+            opacity: 1 !important; transform: scale(1.02);
+            filter: drop-shadow(0 8px 15px rgba(0,0,0,0.1));
+        }
+
+        .avatar {
+            width: 55px; height: 55px; border-radius: 50%;
+            color: white; display: flex; align-items: center; justify-content: center;
+            font-weight: bold; font-size: 20px; flex-shrink: 0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2); border: 2px solid #fff;
+            margin-top: 5px;
+        }
+
+        .bubble {
+            max-width: 85%; padding: 15px 25px; border-radius: 20px;
+            position: relative; margin: 0 15px;
+            background: #f8f9fa; border: 1px solid #e9ecef;
+        }
+
+        /* CSS BÀI 24 CHUẨN */
+        ruby { ruby-align: center; }
+        rt { font-size: 0.6em; color: #7f8c8d; user-select: none; font-weight: normal;}
+        
+        .japanese-text {
+            font-weight: 500; color: #2c3e50; line-height: 2.2; margin-bottom: 10px;
+            font-size: 1.6rem;
+        }
+        .vietnamese-text {
+            font-size: 1.1rem; color: #555; 
+            border-left: 4px solid #4caf50; padding-left: 12px;
+            display: block; margin-top: 8px; font-style: italic; line-height: 1.5;
+        }
+        .grammar-point {
+            color: #c0392b; font-weight: 700;
+            background-color: rgba(231, 76, 60, 0.1);
+            padding: 2px 6px; border-radius: 4px;
+        }
+        .g-verb-form {
+            color: #2980b9; font-weight: 700;
+            background-color: #eaf5fb;
+            padding: 2px 6px; border-radius: 4px;
+        }
+        .current-word-highlight {
+            background-color: var(--highlight-color);
+            border-radius: 4px;
+            box-shadow: 0 0 0 2px var(--highlight-color);
+        }
+
+        /* Layout Trái/Phải */
+        .left { flex-direction: row; }
+        .left .bubble { border-top-left-radius: 4px; background: #ffffff; border-color: #d1d1d1;}
+        .right { flex-direction: row-reverse; }
+        .right .bubble { border-top-right-radius: 4px; text-align: left; background: #e3f2fd; border-color: #bbdefb; }
+
+        .t1 .avatar { background: #ff5722; } 
+        .t2 .avatar { background: #3f51b5; }
+        .t3 .avatar { background: #4caf50; }
+
+        /* --- 4. EDITOR & CONTROLS --- */
+        .toggle-btn { 
+            position: absolute; top: 15px; right: 15px; z-index: 100; 
+            padding: 10px 20px; border-radius: 30px; border: none; cursor: pointer; 
+            background: rgba(0,0,0,0.8); color: white; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        #editor {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #f8f9fa; z-index: 2000; transform: translateY(-100%); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            display: flex; flex-direction: column;
+        }
+        #editor.show { transform: translateY(0); }
+        .editor-content { flex: 1; overflow-y: auto; padding: 30px; max-width: 1000px; margin: 0 auto; width: 100%; box-sizing: border-box; }
+        
+        .input-group { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        textarea { width: 100%; height: 200px; font-family: monospace; padding: 15px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+
+        .voice-map-row {
+            display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; align-items: center;
+            padding: 10px; border-bottom: 1px solid #eee;
+        }
+        select { width: 100%; padding: 8px; border-radius: 5px; border: 1px solid #ccc; }
+
+        .controls {
+            background: #fff; padding: 20px; display: flex; justify-content: center; gap: 20px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 100;
+        }
+        .btn { 
+            padding: 12px 30px; border-radius: 30px; border: none; cursor: pointer; 
+            font-weight: bold; font-size: 16px; color: white; transition: 0.2s; display: flex; align-items: center; gap: 8px;
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.2); }
+        /* Gộp chung 3 nút phụ: Nhật, Việt, Stop */
+        .btn-jp, .btn-vn, .btn-stop, .btn-pause  {
+          background: #e0f2f1;       /* Nền Xanh Pastel nhạt (Mint) */
+           color: #546e7a;            /* Chữ màu xám xanh */
+        border: 1px solid #b0bec5; /* Viền xám mờ để tạo khung nhẹ */
+         font-weight: 600;
+}
+
+
+        /* { background: #ff9800; color: #333; width: 160px; justify-content: center; } */
+
+   
+        .btn-scan { background: #ffc107; color: #333; }
+        .btn-save { background: #4caf50; }
+
+    </style>
+</head>
+<body>
+
+    <button class="toggle-btn" onclick="document.getElementById('editor').classList.add('show')">🛠 Cấu hình Studio</button>
+
+    <div id="editor">
+        <div style="padding: 20px; background: white; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="margin: 0;">🎥 Phòng Thu Âm</h2>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-stop" onclick="loadDemo()">Mẫu Bài 24</button>
+                <button class="btn btn-save" onclick="saveAndClose()">💾 Lưu & Đóng</button>
+            </div>
+        </div>
+
+        <div class="editor-content">
+            <div class="input-group">
+                <label>🖼 Link Ảnh/Video nền:</label>
+                <input type="text" id="mediaInput" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;" value="../photo/lesson24.jpg">
+            </div>
+
+            <div class="input-group">
+                <label>📝 Kịch bản (Format: Tên: HTML Tiếng Nhật | Tiếng Việt)</label>
+                <textarea id="txtInput" placeholder="Yamada: <ruby>私<rt>わたし</rt></ruby>... | Tôi là..."></textarea>
+                <div style="margin-top: 10px;">
+                    <button class="btn btn-scan" onclick="scanCharacters()">🔄 1. Quét Nhân Vật & Giọng</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>🎭 Phân Vai & Chọn Giọng:</label>
+                <div style="background: #f9f9f9; padding: 10px; border-radius: 8px; border: 1px solid #ddd;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; font-weight: bold; padding: 10px; border-bottom: 2px solid #ddd;">
+                        <div>Nhân vật</div>
+                        <div>🇯🇵 Giọng Nhật</div>
+                        <div>🇻🇳 Giọng Việt</div>
+                    </div>
+                    <div id="voiceMappingContainer">
+                        <div style="padding: 20px; text-align: center; color: #999;">Chưa có nhân vật nào.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="media-stage">
+        <img id="bgImg" class="media-content" src="" style="display:none;">
+        <video id="bgVid" class="media-content" src="" style="display:none;" loop playsinline muted></video>
+    </div>
+
+    <div class="script-stage">
+        <div id="scriptContent" class="script-content"></div>
+        <div style="height: 150px;"></div>
+    </div>
+
+    <div class="controls">
+        <button class="btn btn-jp" onclick="playAll('jp')"> Japanese</button>
+        <button class="btn btn-vn" onclick="playAll('vn')"> Vietnamese</button>
+        <button class="btn btn-pause" id="btnPause" onclick="togglePause()">⏸ Pause</button>
+        <button class="btn btn-stop" onclick="stopPlayer()">⏹ Stop</button>
+    </div>
+
+<script>
+    // --- 1. QUẢN LÝ GIỌNG ---
+    const voiceManager = {
+        jpVoices: [], vnVoices: [], assignments: {},
+        init: function() {
+            const load = () => {
+                const all = window.speechSynthesis.getVoices();
+                this.jpVoices = all.filter(v => v.lang.includes('ja'));
+                this.vnVoices = all.filter(v => v.lang.includes('vi'));
+            };
+            window.speechSynthesis.onvoiceschanged = load;
+            load();
+        },
+        getVoiceObj: function(uri) {
+            return window.speechSynthesis.getVoices().find(v => v.voiceURI === uri);
+        }
+    };
+    voiceManager.init();
+
+    // --- 2. XỬ LÝ KỊCH BẢN ---
+    let scriptLines = [];
+    
+    function scanCharacters() {
+        const raw = document.getElementById('txtInput').value;
+        const lines = raw.split('\n').filter(l => l.trim());
+        const charSet = new Set();
+        lines.forEach(line => { if(line.includes(':')) charSet.add(line.split(':')[0].trim()); });
+
+        const container = document.getElementById('voiceMappingContainer');
+        container.innerHTML = '';
+        if(charSet.size === 0) return;
+
+        charSet.forEach(char => {
+            const row = document.createElement('div'); row.className = 'voice-map-row';
+            const label = document.createElement('div'); label.textContent = char; label.style.fontWeight = 'bold';
+            
+            const createSel = (voices, type) => {
+                const sel = document.createElement('select');
+                voices.forEach(v => {
+                    const opt = document.createElement('option');
+                    opt.value = v.voiceURI; opt.textContent = v.name;
+                    sel.appendChild(opt);
+                });
+                if(voiceManager.assignments[char] && voiceManager.assignments[char][type]) {
+                    sel.value = voiceManager.assignments[char][type];
+                }
+                sel.onchange = () => {
+                    if(!voiceManager.assignments[char]) voiceManager.assignments[char] = {};
+                    voiceManager.assignments[char][type] = sel.value;
+                };
+                // Set default if empty
+                if(voices.length > 0 && !sel.value) {
+                   sel.value = voices[0].voiceURI;
+                   if(!voiceManager.assignments[char]) voiceManager.assignments[char] = {};
+                   voiceManager.assignments[char][type] = sel.value;
+                }
+                return sel;
+            };
+
+            row.appendChild(label);
+            row.appendChild(createSel(voiceManager.jpVoices, 'jp'));
+            row.appendChild(createSel(voiceManager.vnVoices, 'vn'));
+            container.appendChild(row);
+        });
+    }
+
+    function saveAndClose() {
+        const raw = document.getElementById('txtInput').value;
+        const lines = raw.split('\n').filter(l => l.trim());
+        const container = document.getElementById('scriptContent');
+        container.innerHTML = '';
+        scriptLines = [];
+
+        // Media
+        const mediaUrl = document.getElementById('mediaInput').value;
+        const img = document.getElementById('bgImg');
+        const vid = document.getElementById('bgVid');
+        if(mediaUrl.match(/\.(mp4|webm)$/i)) {
+            vid.src = mediaUrl; vid.style.display='block'; img.style.display='none'; vid.play();
+        } else {
+            img.src = mediaUrl; img.style.display='block'; vid.style.display='none';
+        }
+
+        let lastChar = ''; let isLeft = true;
+        lines.forEach((line, idx) => {
+            const firstColon = line.indexOf(':');
+            if(firstColon === -1) return;
+            const charName = line.substring(0, firstColon).trim();
+            const content = line.substring(firstColon + 1);
+            const parts = content.split('|');
+            
+            if(lastChar && charName !== lastChar) isLeft = !isLeft;
+            lastChar = charName;
+
+            const div = document.createElement('div');
+            div.className = `row ${isLeft ? 'left' : 'right'} t${(idx % 3) + 1}`;
+            div.id = `line-${idx}`;
+            div.innerHTML = `
+                <div class="avatar" title="${charName}">${charName.charAt(0)}</div>
+                <div class="bubble">
+                    <div class="japanese-text" id="jp-text-${idx}">${parts[0].trim()}</div>
+                    ${parts[1] ? `<span class="vietnamese-text" id="vn-text-${idx}">${parts[1].trim()}</span>` : ''}
+                </div>
+            `;
+            // Click to jump
+            div.onclick = () => {
+                stopPlayer(); // Reset trạng thái
+                currentIndex = idx;
+                isPlaying = true;
+                currentLangMode = currentLangMode || 'jp'; // Default jp nếu chưa chọn
+                speakNext();
+            };
+            container.appendChild(div);
+            scriptLines.push({ index: idx, char: charName, jpId: `jp-text-${idx}`, vnId: `vn-text-${idx}`, rowId: `line-${idx}` });
+        });
+        document.getElementById('editor').classList.remove('show');
+    }
+
+    // --- 3. HIGHLIGHT ENGINE (Giữ nguyên vì đã tốt) ---
+    function buildSpeechMap(parentNode) {
+        let speakableText = '';
+        const domMap = [];
+        const HIGHLIGHT_CLASS = 'current-word-highlight';
+        const wrapperSpans = [];
+
+        function traverse(node) {
+            if (node.nodeType === 3) {
+                if(node.parentNode.nodeName !== 'RUBY' && node.parentNode.nodeName !== 'RT') {
+                     const txt = node.textContent;
+                     speakableText += txt;
+                     for(let i=0; i<txt.length; i++) domMap.push(node);
+                }
+            } else if (node.nodeType === 1) {
+                if (node.nodeName === 'RUBY') {
+                    let reading = node.querySelector('rt')?.textContent || node.innerText;
+                    speakableText += reading;
+                    for(let i=0; i<reading.length; i++) domMap.push(node);
+                } else if (node.nodeName !== 'RT' && node.nodeName !== 'RP') {
+                    node.childNodes.forEach(traverse);
+                }
+            }
+        }
+        parentNode.childNodes.forEach(traverse);
+
+        return { 
+            speakableText, 
+            applyHighlight: (start, len) => {
+                wrapperSpans.forEach(s => s.parentNode?.replaceChild(s.firstChild, s)); wrapperSpans.length = 0;
+                parentNode.querySelectorAll('.'+HIGHLIGHT_CLASS).forEach(e => e.classList.remove(HIGHLIGHT_CLASS));
+                const nodes = new Set();
+                for (let i = start; i < start + len; i++) if (domMap[i]) nodes.add(domMap[i]);
+                nodes.forEach(n => {
+                    if(n.nodeType === 1) n.classList.add(HIGHLIGHT_CLASS);
+                    else {
+                        const s = document.createElement('span'); s.className = HIGHLIGHT_CLASS;
+                        n.parentNode?.insertBefore(s, n); s.appendChild(n); wrapperSpans.push(s);
+                    }
+                });
+            },
+            clearHighlights: () => {
+                wrapperSpans.forEach(s => s.parentNode?.replaceChild(s.firstChild, s)); wrapperSpans.length = 0;
+                parentNode.querySelectorAll('.'+HIGHLIGHT_CLASS).forEach(e => e.classList.remove(HIGHLIGHT_CLASS));
+            }
+        };
+    }
+
+    // --- 4. PLAYER VỚI LOGIC SYNC MỚI ---
+    let currentIndex = 0;
+    let isPlaying = false; // Trạng thái "đang trong phiên đọc"
+    let isPaused = false;  // Trạng thái "đang tạm dừng"
+    let currentLangMode = 'jp';
+    let activeSpeechMap = null;
+
+    function playAll(lang) {
+        stopPlayer(); // Reset sạch sẽ
+        currentLangMode = lang;
+        currentIndex = 0;
+        isPlaying = true;
+        isPaused = false;
+        updatePauseBtn();
+        speakNext();
+    }
+
+    function updatePauseBtn() {
+        const btn = document.getElementById('btnPause');
+        if(isPaused) {
+            btn.innerHTML = '▶ Continue';
+            btn.style.background = '#fff9c4'; // Màu xanh khi tiếp tục #4caf50
+        } else {
+            btn.innerHTML = '⏸ Pause';
+            btn.style.background = '#fff9c4'; // Màu cam khi pause #ffeb3b
+        }
+    }
+
+    // FIX: Logic Pause mới - Hủy đọc để tránh lỗi trình duyệt
+    function togglePause() {
+        if(!isPlaying) return; // Chưa chạy thì không làm gì
+
+        if(isPaused) {
+            // Đang Pause -> Bấm để Resume
+            isPaused = false;
+            updatePauseBtn();
+            // Resume bằng cách đọc lại dòng hiện tại từ đầu -> Sync chuẩn 100%
+            speakNext(); 
+        } else {
+            // Đang Play -> Bấm để Pause
+            isPaused = true;
+            updatePauseBtn();
+            window.speechSynthesis.cancel(); // Dừng tiếng ngay lập tức
+            // Lưu ý: cancel() sẽ kích hoạt onend, ta xử lý chặn ở dưới
+        }
+    }
+
+    function stopPlayer() {
+        window.speechSynthesis.cancel();
+        isPlaying = false;
+        isPaused = false;
+        if(activeSpeechMap) activeSpeechMap.clearHighlights();
+        document.querySelectorAll('.row').forEach(r => r.classList.remove('active'));
+        updatePauseBtn();
+    }
+
+    function speakNext() {
+        // Nếu đã dừng hẳn hoặc hết bài thì thôi
+        if(!isPlaying || currentIndex >= scriptLines.length) {
+            isPlaying = false;
+            return;
+        }
+
+        // Nếu đang trạng thái Pause thì không được đọc (chặn đệ quy)
+        if(isPaused) return;
+
+        const lineData = scriptLines[currentIndex];
+        const rowEl = document.getElementById(lineData.rowId);
+        
+        // UI: Highlight dòng
+        document.querySelectorAll('.row').forEach(r => r.classList.remove('active'));
+        rowEl.classList.add('active');
+        rowEl.scrollIntoView({behavior: "smooth", block: "center"});
+
+        // Chuẩn bị text
+        let textToSpeak = "";
+        if (currentLangMode === 'jp') {
+            activeSpeechMap = buildSpeechMap(document.getElementById(lineData.jpId));
+            textToSpeak = activeSpeechMap.speakableText;
+        } else {
+            if(activeSpeechMap) activeSpeechMap.clearHighlights(); // Xóa highlight cũ nếu có
+            const vnEl = document.getElementById(lineData.vnId);
+            textToSpeak = vnEl ? vnEl.textContent : "";
+            if(!textToSpeak) { // Không có tiếng Việt thì bỏ qua
+                currentIndex++;
+                speakNext(); 
+                return;
+            }
+        }
+
+        const utter = new SpeechSynthesisUtterance(textToSpeak);
+        utter.rate = 0.9;
+
+        // Gán giọng
+        const assign = voiceManager.assignments[lineData.char];
+        if(assign) {
+            const vid = currentLangMode === 'jp' ? assign.jp : assign.vn;
+            const vObj = voiceManager.getVoiceObj(vid);
+            if(vObj) utter.voice = vObj;
+            else utter.lang = currentLangMode === 'jp' ? 'ja-JP' : 'vi-VN';
+        }
+
+        // Event: Highlight từng từ (Chỉ JP)
+        if(currentLangMode === 'jp') {
+            utter.onboundary = (event) => {
+                // FIX: Nếu đang pause mà sự kiện vẫn bắn về -> Bỏ qua
+                if(isPaused) return; 
+                if(event.name === 'word' && activeSpeechMap) {
+                    activeSpeechMap.applyHighlight(event.charIndex, event.charLength);
+                }
+            };
+        }
+
+        // Event: Kết thúc câu
+        utter.onend = () => {
+            if(activeSpeechMap) activeSpeechMap.clearHighlights();
+            
+            // FIX QUAN TRỌNG: Nếu người dùng bấm Pause, cancel() được gọi -> onend kích hoạt.
+            // Ta phải chặn không cho nó nhảy sang dòng tiếp theo khi đang Pause.
+            if(isPaused) return; 
+
+            if(isPlaying) {
+                currentIndex++;
+                setTimeout(speakNext, 600); // Nghỉ chút rồi đọc tiếp
+            }
+        };
+
+        utter.onerror = (e) => {
+            // Lỗi do cancel() (khi bấm pause) cũng kích hoạt onerror ở một số trình duyệt
+            if(isPaused) return;
+            console.log("Audio error/cancel", e);
+        };
+
+        window.speechSynthesis.speak(utter);
+    }
+
+    function loadDemo() {
+        // Dữ liệu mẫu
+        document.getElementById('txtInput').value = ` Yamada: では、アンさん、<ruby>準備<rt>じゅんび</rt></ruby>はいいですか。<ruby>新<rt>あたら</rt></ruby>しいデザイン<ruby>案<rt>あん</rt></ruby>について、<ruby>説明<rt>せつめい</rt></ruby>を<ruby>始<rt>はじ</rt></ruby>めてください。| Vậy thì, An, em đã sẵn sàng chưa? Hãy bắt đầu giải thích về phương án thiết kế mới đi.
+
+An: はい！こちらが、<ruby>私<rt>わたし</rt></ruby>が<ruby>提案<rt>ていあん</rt></ruby>する<ruby>新<rt>あたら</rt></ruby>しいデザインです。コンセプトは「<ruby>未来<rt>みらい</rt></ruby>への<ruby>躍動感<rt>やくどうかん</rt></ruby>」でして…。| Vâng! Đây là bản thiết kế mới mà em đề xuất ạ. Ý tưởng chủ đạo là "Cảm giác sống động hướng tới tương lai"...
+
+Narrator: <small>（アンがしばらく説明する）</small> | (An trình bày một lúc)
+
+Yamada: なるほど。しかし、このレイアウトはかなり<ruby>大胆<rt>だいたん</rt></ruby>ですね。クライアントに<ruby>本当<rt>ほんとう</rt></ruby>に<span class="g-verb-form"><ruby>受<rt>う</rt></ruby>け<ruby>入<rt>い</rt></ruby>れ</span><span class="grammar-point">られる</span>と<ruby>思<rt>おも</rt></ruby>いますか。| Ra là vậy. Tuy nhiên, bố cục này khá là táo bạo đấy. Em có nghĩ là nó sẽ thực sự được khách hàng chấp nhận không?
+
+An: はい、<ruby>確<rt>たしか</rt></ruby>に<ruby>挑戦的<rt>ちょうせんてき</rt></ruby>ですが、これこそが「インパクトが<ruby>欲<rt>ほ</rt></ruby>しい」という<ruby>要望<rt>ようぼう</rt></ruby>に<ruby>応<rt>こた</rt></ruby>える<ruby>最善<rt>さいぜん</rt></ruby>の<ruby>方法<rt>ほうほう</rt></ruby>だと<ruby>考<rt>かんが</rt></ruby>えます。| Vâng, đúng là nó có tính thử thách, nhưng em tin rằng đây chính là phương pháp tốt nhất để đáp lại yêu cầu "muốn có sự đột phá" ạ. `;
+        scanCharacters();
+        alert("Đã tải mẫu. Hãy chọn giọng rồi Lưu!");
+    }
+</script>
+</body>
+</html>

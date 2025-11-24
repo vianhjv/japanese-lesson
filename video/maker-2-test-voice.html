@@ -1,0 +1,291 @@
+<!-- FILE: maker.html -->
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JLPT Video Studio (Admin)</title>
+    <link rel="stylesheet" href="styles-video.css">
+    <style>
+        /* CSS riêng cho phần Editor (Admin Only) */
+        .toggle-btn { 
+            position: absolute; top: 15px; right: 15px; z-index: 200; 
+            padding: 10px 20px; border-radius: 30px; border: none; cursor: pointer; 
+            background: rgba(0,0,0,0.8); color: white; font-weight: bold;
+        }
+        #editor {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: #f8f9fa; z-index: 2000; transition: 0.4s;
+            display: flex; flex-direction: column;
+            transform: translateY(0); /* Mặc định hiện editor */
+        }
+        #editor.hidden { transform: translateY(-100%); }
+        .editor-content { flex: 1; overflow-y: auto; padding: 20px; max-width: 1000px; margin: 0 auto; width: 100%; }
+        .input-group { background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+        textarea { width: 100%; height: 150px; font-family: monospace; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .voice-map-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;}
+        select { width: 100%; padding: 8px; }
+        .export-area { background: #333; color: #0f0; padding: 10px; font-family: monospace; border-radius: 5px; word-break: break-all; font-size: 12px; display: none;}
+    </style>
+</head>
+<body>
+
+    <!-- Nút bật/tắt Editor -->
+    <button class="toggle-btn" onclick="document.getElementById('editor').classList.toggle('hidden')">🛠 Toggle Editor</button>
+
+    <!-- GIAO DIỆN EDITOR -->
+    <div id="editor">
+        <div style="padding: 15px; background: white; border-bottom: 1px solid #ddd; display: flex; justify-content: space-between; align-items: center;">
+            <h2 style="margin: 0;">🎥 Studio Config</h2>
+            <div style="display: flex; gap: 10px;">
+                <button class="btn btn-save" onclick="previewLesson()">▶ Preview (Load)</button>
+                <button class="btn btn-scan" onclick="exportConfig()">📤 Export Config</button>
+            </div>
+        </div>
+
+        <div class="editor-content">
+            <!-- 1. CHỌN BÀI HỌC -->
+            <div class="input-group" style="background: #e3f2fd; border: 1px solid #2196f3;">
+                <label>📚 <b>Chọn bài học (Load từ data.js):</b></label>
+                <select id="lessonSelect" onchange="loadLessonData(this.value)" style="margin-top: 5px; font-size: 16px; padding: 10px;">
+                    <option value="">-- Chọn bài để tải dữ liệu --</option>
+                    <!-- Options sẽ được JS điền vào -->
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>🖼 Link Ảnh/Video nền:</label>
+                <input type="text" id="mediaInput" style="width: 100%; padding: 10px; margin-top: 5px;" value="">
+            </div>
+
+            <div class="input-group">
+                <label>📝 Kịch bản:</label>
+                <textarea id="txtInput"></textarea>
+                <div style="margin-top: 10px;">
+                    <button class="btn btn-scan" onclick="scanCharacters()">🔄 Quét Nhân Vật</button>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label>🎭 Cấu hình Giọng (Sẽ lưu vào Export):</label>
+                <div id="voiceMappingContainer" style="margin-top: 10px;"></div>
+            </div>
+            
+            <div class="input-group">
+                <label>💾 Mã JSON (Copy cái này dán đè vào data.js nếu có thay đổi giọng):</label>
+                <div id="exportOutput" class="export-area"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KHU VỰC HIỂN THỊ (PLAYER) -->
+    <div class="media-stage">
+        <img id="bgImg" class="media-content" src="" style="display:none;">
+        <video id="bgVid" class="media-content" src="" style="display:none;" loop playsinline muted></video>
+    </div>
+
+    <div class="script-stage">
+        <div id="scriptContent" class="script-content"></div>
+    </div>
+
+    <div class="controls">
+        <button class="btn" onclick="playAll('jp')">🇯🇵 Japanese</button>
+        <button class="btn" onclick="playAll('vn')">🇻🇳 Vietnamese</button>
+        <button class="btn" id="btnPause" onclick="togglePause()">⏸ Pause</button>
+        <button class="btn" onclick="stopPlayer()">⏹ Stop</button>
+    </div>
+
+    <!-- LOAD CÁC FILE JS -->
+    <script src="data.js"></script>
+    <script src="script-video.js"></script>
+    <script>
+        // --- LOGIC RIÊNG CỦA TRANG MAKER ---
+        // --- CẤU HÌNH ƯU TIÊN GIỌNG (PRESETS) ---
+        // Tại đây bạn định nghĩa giọng mong muốn cho từng nhân vật.
+        // Hệ thống sẽ tìm trong tên giọng có chứa từ khóa này không.
+        const PREFERRED_MAPPING = {
+            "An":       { jp: "Nanami", vn: "HoaiMy" },
+            "Tanaka":   { jp: "Keita",  vn: "NamMinh" },
+            "Suzuki":   { jp: "Ayumi",  vn: "HoaiMy" }, // Suzuki dùng chung giọng Việt với An
+            "Yamada":   { jp: "Ichiro", vn: "NamMinh" }, // Giả sử Yamada dùng giọng Nam Minh
+            "Narrator": { jp: "Sayaka", vn: "HoaiMy" }   // Người dẫn chuyện
+        };
+
+        // --- LOGIC RIÊNG CỦA TRANG MAKER (PHIÊN BẢN TỰ ĐỘNG HÓA) ---
+        
+        let currentLessonId = "";
+
+        // 1. Khởi tạo
+        window.onload = async function() {
+            if (typeof lessonData === 'undefined') {
+                alert("LỖI: Không tìm thấy file data.js!");
+                return;
+            }
+            await voiceManager.init(); // Đợi load giọng từ trình duyệt
+            populateLessonSelect();
+        };
+
+        function populateLessonSelect() {
+            const sel = document.getElementById('lessonSelect');
+            sel.innerHTML = '<option value="">-- Chọn bài để tải dữ liệu --</option>';
+            lessonData.forEach(l => {
+                const opt = document.createElement('option');
+                opt.value = l.id;
+                opt.textContent = l.title;
+                sel.appendChild(opt);
+            });
+        }
+
+        // 2. Load dữ liệu khi chọn bài
+        function loadLessonData(id) {
+            if(!id) return;
+            const lesson = lessonData.find(l => l.id === id);
+            if(!lesson) return;
+
+            currentLessonId = id;
+            if (!lesson.voiceConfig) lesson.voiceConfig = {};
+
+            document.getElementById('mediaInput').value = lesson.mediaUrl;
+            document.getElementById('txtInput').value = lesson.script;
+            
+            scanCharacters(); // Tự động quét và điền giọng
+        }
+
+        // 3. Quét nhân vật & TỰ ĐỘNG GÁN GIỌNG (AUTO-FILL)
+        function scanCharacters() {
+            const raw = document.getElementById('txtInput').value;
+            const currentLesson = lessonData.find(l => l.id === currentLessonId);
+            if (!currentLesson) return;
+
+            const lines = raw.split('\n').filter(l => l.trim());
+            const charSet = new Set();
+            lines.forEach(line => { if(line.includes(':')) charSet.add(line.split(':')[0].trim()); });
+
+            const container = document.getElementById('voiceMappingContainer');
+            container.innerHTML = '';
+
+            charSet.forEach(char => {
+                const row = document.createElement('div'); row.className = 'voice-map-row';
+                const label = document.createElement('div'); label.textContent = char; label.style.fontWeight = 'bold';
+                
+                // Hàm tạo Dropdown chọn giọng
+                const createSel = (voices, type) => {
+                    const sel = document.createElement('select');
+                    
+                    // Option mặc định
+                    const defOpt = document.createElement('option');
+                    defOpt.value = ""; defOpt.textContent = "Mặc định (Default)";
+                    sel.appendChild(defOpt);
+
+                    // Tìm giọng ưu tiên trong danh sách (Dựa trên tên nhân vật)
+                    let preferredVoiceURI = "";
+                    if (PREFERRED_MAPPING[char] && PREFERRED_MAPPING[char][type]) {
+                        const keyword = PREFERRED_MAPPING[char][type].toLowerCase();
+                        // Tìm giọng nào có tên chứa từ khóa (VD: tìm giọng có chữ "Nanami")
+                        const found = voices.find(v => v.name.toLowerCase().includes(keyword));
+                        if (found) preferredVoiceURI = found.voiceURI;
+                    }
+
+                    voices.forEach(v => {
+                        const opt = document.createElement('option');
+                        opt.value = v.voiceURI; opt.textContent = v.name;
+                        sel.appendChild(opt);
+                    });
+                    
+                    // --- LOGIC CHỌN GIỌNG ---
+                    // Ưu tiên 1: Đã lưu trong bài học từ trước
+                    if(currentLesson.voiceConfig[char] && currentLesson.voiceConfig[char][type]) {
+                        sel.value = currentLesson.voiceConfig[char][type];
+                    }
+                    // Ưu tiên 2: Nếu chưa lưu, thì TỰ CHỌN theo cấu hình ưu tiên
+                    else if (preferredVoiceURI) {
+                        sel.value = preferredVoiceURI;
+                        // Lưu luôn vào RAM để đỡ phải chọn lại
+                        if(!currentLesson.voiceConfig[char]) currentLesson.voiceConfig[char] = {};
+                        currentLesson.voiceConfig[char][type] = preferredVoiceURI;
+                    }
+
+                    // Sự kiện khi người dùng thay đổi thủ công
+                    sel.onchange = () => {
+                        if(!currentLesson.voiceConfig[char]) currentLesson.voiceConfig[char] = {};
+                        currentLesson.voiceConfig[char][type] = sel.value;
+                    };
+                    return sel;
+                };
+
+                row.appendChild(label);
+                row.appendChild(createSel(voiceManager.jpVoices, 'jp'));
+                row.appendChild(createSel(voiceManager.vnVoices, 'vn'));
+                container.appendChild(row);
+            });
+        }
+
+        // 4. Preview
+        function previewLesson() {
+            const raw = document.getElementById('txtInput').value;
+            const mediaUrl = document.getElementById('mediaInput').value;
+            
+            const img = document.getElementById('bgImg');
+            const vid = document.getElementById('bgVid');
+            if(mediaUrl && mediaUrl.match(/\.(mp4|webm)$/i)) {
+                vid.src = mediaUrl; vid.style.display='block'; img.style.display='none'; vid.play();
+            } else {
+                img.src = mediaUrl || ''; img.style.display='block'; vid.style.display='none';
+            }
+
+            const container = document.getElementById('scriptContent');
+            container.innerHTML = '';
+            const scriptLines = [];
+            const lines = raw.split('\n').filter(l => l.trim());
+            
+            let lastChar = ''; let isLeft = true;
+            lines.forEach((line, idx) => {
+                const firstColon = line.indexOf(':');
+                if(firstColon === -1) return;
+                const charName = line.substring(0, firstColon).trim();
+                const content = line.substring(firstColon + 1);
+                const parts = content.split('|');
+                if(lastChar && charName !== lastChar) isLeft = !isLeft;
+                lastChar = charName;
+                const div = document.createElement('div');
+                div.className = `row ${isLeft ? 'left' : 'right'} t${(idx % 3) + 1}`;
+                div.id = `line-${idx}`;
+                div.innerHTML = `
+                    <div class="avatar">${charName.charAt(0)}</div>
+                    <div class="bubble">
+                        <div class="japanese-text" id="jp-text-${idx}">${parts[0].trim()}</div>
+                        ${parts[1] ? `<span class="vietnamese-text" id="vn-text-${idx}">${parts[1].trim()}</span>` : ''}
+                    </div>
+                `;
+                div.onclick = () => {
+                     stopPlayer();
+                     playerState.currentIndex = idx;
+                     playerState.isPlaying = true;
+                     speakNext();
+                };
+                container.appendChild(div);
+                scriptLines.push({ index: idx, char: charName, jpId: `jp-text-${idx}`, vnId: `vn-text-${idx}`, rowId: `line-${idx}` });
+            });
+
+            const currentLesson = lessonData.find(l => l.id === currentLessonId);
+            initPlayer(scriptLines, currentLesson ? currentLesson.voiceConfig : {});
+            document.getElementById('editor').classList.add('hidden');
+        }
+
+        // 5. Xuất Config
+        function exportConfig() {
+            const exportBox = document.getElementById('exportOutput');
+            exportBox.style.display = 'block';
+            const jsonStr = JSON.stringify(lessonData, null, 4);
+            exportBox.textContent = "/* Copy toàn bộ và dán đè vào data.js */\nconst lessonData = " + jsonStr + ";";
+            exportBox.scrollIntoView({behavior: "smooth"});
+            alert("Đã xuất cấu hình! Hãy copy và cập nhật file data.js");
+        }
+  
+
+
+
+
+    </script>
+</body>
+</html>
