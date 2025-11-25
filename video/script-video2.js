@@ -1,6 +1,6 @@
 /* --- FILE: script.js --- */
 
-// --- 1. BẢNG PHÂN VAI (Dữ liệu từ Maker của bạn) ---
+// --- 1. BẢNG PHÂN VAI (Logic từ Maker) ---
 const ROLE_MAPPING = {
     "An":       { jp: ["Nanami", "Female"], vn: ["HoaiMy", "Female"] },
     "Tanaka":   { jp: ["Keita", "Male"],    vn: ["NamMinh", "Male"] },
@@ -10,7 +10,7 @@ const ROLE_MAPPING = {
     "Narrator": { jp: ["Sayaka", "Google"], vn: ["HoaiMy", "Google"] }
 };
 
-// --- 2. QUẢN LÝ GIỌNG (Đã thêm logic tự tìm theo Role) ---
+// --- 2. QUẢN LÝ GIỌNG ---
 const voiceManager = {
     jpVoices: [], vnVoices: [], 
     
@@ -27,22 +27,19 @@ const voiceManager = {
             };
             window.speechSynthesis.onvoiceschanged = load;
             load();
-            setTimeout(resolve, 1000); // Fallback
+            setTimeout(resolve, 1000); 
         });
     },
 
-    // Hàm tìm giọng (Kết hợp Config đã lưu và Tự động phân vai)
     getBestVoice: function(charName, preferredURI, langType) {
         const availableVoices = langType === 'jp' ? this.jpVoices : this.vnVoices;
         if (!availableVoices || availableVoices.length === 0) return null;
 
-        // Ưu tiên 1: Config (Admin đã chọn)
         if (preferredURI) {
             const exactMatch = availableVoices.find(v => v.voiceURI === preferredURI);
             if (exactMatch) return exactMatch;
         }
 
-        // Ưu tiên 2: Role Mapping (Tự động)
         if (charName && ROLE_MAPPING[charName]) {
             const keywords = ROLE_MAPPING[charName][langType];
             if (keywords) {
@@ -55,36 +52,30 @@ const voiceManager = {
                 }
             }
         }
-
-        // Ưu tiên 3: Mặc định
         return availableVoices[0]; 
     }
 };
 
-// --- 3. CORE LOGIC: KARAOKE HIGHLIGHT ---
-// (GIỮ NGUYÊN 100% TỪ FILE GỐC CỦA BẠN ĐỂ ĐẢM BẢO KHÔNG LỖI)
+// --- 3. CORE LOGIC: KARAOKE HIGHLIGHT (Giữ nguyên logic gốc) ---
 function buildSpeechMap(parentNode) {
     if(!parentNode) return { speakableText: "", applyHighlight: ()=>{}, clearHighlights: ()=>{} };
 
     let speakableText = '';
-    const domMap = []; // Map từng ký tự trong speakableText về node gốc
+    const domMap = []; 
     const HIGHLIGHT_CLASS = 'current-word-highlight';
     const wrapperSpans = [];
 
     function traverse(node) {
-        if (node.nodeType === 3) { // Text node
-            // Chỉ lấy text nếu không nằm trong RUBY (để tránh lặp Kanji)
+        if (node.nodeType === 3) { 
             if(node.parentNode.nodeName !== 'RUBY' && node.parentNode.nodeName !== 'RT') {
                 const txt = node.textContent;
                 speakableText += txt;
                 for(let i=0; i<txt.length; i++) domMap.push(node);
             }
-        } else if (node.nodeType === 1) { // Element node
+        } else if (node.nodeType === 1) { 
             if (node.nodeName === 'RUBY') {
-                // Lấy phần Furigana (<rt>) để đọc
                 let reading = node.querySelector('rt')?.textContent || node.innerText;
                 speakableText += reading;
-                // Gán cả cụm Ruby này cho các ký tự phiên âm (để highlight cả cụm)
                 for(let i=0; i<reading.length; i++) domMap.push(node);
             } else if (node.nodeName !== 'RT' && node.nodeName !== 'RP') {
                 node.childNodes.forEach(traverse);
@@ -96,12 +87,10 @@ function buildSpeechMap(parentNode) {
     return { 
         speakableText, 
         applyHighlight: (start, len) => {
-            // Xóa highlight cũ
             wrapperSpans.forEach(s => s.parentNode?.replaceChild(s.firstChild, s)); 
             wrapperSpans.length = 0;
             parentNode.querySelectorAll('.'+HIGHLIGHT_CLASS).forEach(e => e.classList.remove(HIGHLIGHT_CLASS));
             
-            // Highlight mới
             const nodes = new Set();
             for (let i = start; i < start + len; i++) {
                 if (domMap[i]) nodes.add(domMap[i]);
@@ -129,7 +118,7 @@ let playerState = {
     isPaused: false,
     langMode: 'jp',
     scriptLines: [],
-    activeSpeechMap: null, // Cái này quản lý highlight
+    activeSpeechMap: null, 
     currentLessonConfig: {} 
 };
 
@@ -139,8 +128,8 @@ function initPlayer(lines, lessonConfig) {
     stopPlayer();
 }
 
-// Xử lý nút bấm (Hỗ trợ cả 2 giao diện)
 function playMode(lang) {
+    // Nếu đang Pause mà bấm lại nút Nghe -> Resume
     if (playerState.isPaused && playerState.isPlaying) {
         playerState.isPaused = false;
         window.speechSynthesis.resume();
@@ -156,23 +145,27 @@ function playMode(lang) {
     speakNext();
 }
 
-// Hàm tương thích ngược cho Maker cũ
+// Tương thích ngược Maker
 function playAll(lang) { playMode(lang); }
 
+// --- HÀM TOGGLE PAUSE (ĐÃ SỬA LỖI) ---
 function togglePause() {
     if(!playerState.isPlaying) return;
+    
     if(playerState.isPaused) { 
+        // Đang dừng -> Bấm để chạy tiếp
         playerState.isPaused = false;
-        window.speechSynthesis.resume();
+        window.speechSynthesis.resume(); // Dùng RESUME thay vì speakNext
     } else { 
+        // Đang chạy -> Bấm để dừng
         playerState.isPaused = true;
-        window.speechSynthesis.cancel();
+        window.speechSynthesis.pause(); // Dùng PAUSE thay vì CANCEL
     }
     updatePauseBtnUI();
 }
 
 function stopPlayer() {
-    window.speechSynthesis.cancel();
+    window.speechSynthesis.cancel(); // Stop hẳn thì dùng Cancel
     playerState.isPlaying = false;
     playerState.isPaused = false;
     if(playerState.activeSpeechMap) playerState.activeSpeechMap.clearHighlights();
@@ -181,6 +174,7 @@ function stopPlayer() {
 }
 
 function updatePauseBtnUI() {
+    // Tìm nút Pause ở cả 2 giao diện
     const btn = document.querySelector('.btn-pause') || document.getElementById('btnPause');
     if(!btn) return;
     if (playerState.isPaused) {
@@ -201,7 +195,7 @@ function speakNext() {
 
     const lineData = playerState.scriptLines[playerState.currentIndex];
     
-    // 1. Highlight dòng (Row)
+    // Highlight
     const rowEl = document.getElementById(lineData.rowId);
     if (rowEl) {
         document.querySelectorAll('.row').forEach(r => r.classList.remove('active'));
@@ -209,10 +203,9 @@ function speakNext() {
         rowEl.scrollIntoView({behavior: "smooth", block: "center"});
     }
 
-    // 2. Lấy nội dung & Chuẩn bị Map Highlight
+    // Prepare Text
     let textToSpeak = "";
     if (playerState.langMode === 'jp') {
-        // Dùng hàm buildSpeechMap gốc -> Đảm bảo đọc Furigana và Highlight đúng
         playerState.activeSpeechMap = buildSpeechMap(document.getElementById(lineData.jpId));
         textToSpeak = playerState.activeSpeechMap.speakableText;
     } else {
@@ -229,19 +222,19 @@ function speakNext() {
     const utter = new SpeechSynthesisUtterance(textToSpeak);
     utter.rate = 1.0; 
 
-    // 3. Chọn giọng (Logic mới)
+    // Voice
     const savedVoiceConfig = playerState.currentLessonConfig[lineData.char];
     const preferredURI = savedVoiceConfig ? savedVoiceConfig[playerState.langMode] : null;
     const bestVoice = voiceManager.getBestVoice(lineData.char, preferredURI, playerState.langMode);
     
     if(bestVoice) utter.voice = bestVoice;
 
-    // 4. Highlight Karaoke (Chỉ chạy khi có speechMap)
+    // Events
     if(playerState.langMode === 'jp') {
         utter.onboundary = (event) => {
+            // Quan trọng: Nếu đang Pause thì không highlight nữa
             if(playerState.isPaused) return; 
             if(event.name === 'word' && playerState.activeSpeechMap) {
-                // Mapping highlight chính xác theo file gốc
                 playerState.activeSpeechMap.applyHighlight(event.charIndex, event.charLength);
             }
         };
@@ -249,7 +242,10 @@ function speakNext() {
 
     utter.onend = () => {
         if(playerState.activeSpeechMap) playerState.activeSpeechMap.clearHighlights();
+        
+        // Nếu bị pause giữa chừng thì không tự nhảy câu tiếp
         if(playerState.isPaused) return; 
+        
         if(playerState.isPlaying) {
             playerState.currentIndex++;
             setTimeout(speakNext, 600);
@@ -257,6 +253,7 @@ function speakNext() {
     };
     
     utter.onerror = (e) => { 
+        // Lỗi cũng bỏ qua nếu đang pause
         if(!playerState.isPaused && playerState.isPlaying) {
             console.log("Skip error:", e);
             playerState.currentIndex++;
