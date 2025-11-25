@@ -155,4 +155,56 @@ function speakNext() {
         langCode = 'jp';
     } else {
         // Tiếng Việt thì lấy textContent bình thường
-        const el
+        const el = document.getElementById(line.vnId);
+        textToRead = el ? el.textContent : "";
+        langCode = 'vn';
+    }
+
+    // Nếu dòng này trống (ví dụ chỉ có tiếng Nhật mà đang chọn chế độ nghe Việt), bỏ qua
+    if (!textToRead) {
+        playerState.currentIndex++;
+        speakNext();
+        return;
+    }
+
+    // 3. CẤU HÌNH GIỌNG ĐỌC
+    const u = new SpeechSynthesisUtterance(textToRead);
+    
+    if (langCode === 'jp') {
+        // Lấy config
+        const confURI = playerState.currentVoiceConfig[line.char] ? playerState.currentVoiceConfig[line.char].jp : null;
+        // Tìm giọng (Ưu tiên config -> Ưu tiên role -> Mặc định)
+        const voice = voiceManager.getVoice(line.char, 'jp', confURI);
+        if(voice) u.voice = voice;
+        u.rate = 1.0; 
+    } else {
+        const voice = voiceManager.getVoice(null, 'vn', null);
+        if(voice) u.voice = voice;
+        u.rate = 1.1; 
+    }
+
+    // 4. SỰ KIỆN KHI ĐỌC XONG
+    u.onend = () => {
+        if(playerState.isPlaying && !playerState.isPaused) {
+            // Nghỉ 600ms rồi đọc câu tiếp theo
+            setTimeout(() => {
+                if(playerState.isPlaying && !playerState.isPaused) {
+                    playerState.currentIndex++;
+                    speakNext();
+                }
+            }, 600);
+        }
+    };
+
+    u.onerror = (e) => {
+        console.error("Lỗi đọc:", e);
+        // Nếu lỗi vẫn cố gắng qua câu sau để không bị kẹt
+        if(playerState.isPlaying) {
+            playerState.currentIndex++;
+            speakNext();
+        }
+    };
+
+    playerState.utterance = u;
+    speechSynthesis.speak(u);
+}
