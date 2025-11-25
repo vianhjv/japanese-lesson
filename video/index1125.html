@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện Tập Hội Thoại Tiếng Nhật</title>
+    <link rel="stylesheet" href="styles-video.css">
+    
+    <!-- CSS riêng cho các nút bấm (Giữ nguyên như bạn đang dùng) -->
+    <style>
+        .controls {
+            display: flex; flex-wrap: wrap; justify-content: space-around;
+            gap: 5px; padding: 10px 5px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
+        }
+        .controls .btn {
+            flex: 1; justify-content: center; min-width: 70px;
+            font-size: 13px; padding: 10px 4px;
+            white-space: nowrap;
+        }
+        /* Màu sắc phân biệt cho 4 nút */
+        .btn-jp { background: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
+        .btn-vn { background: #e8f5e9; color: #2e7d32; border: 1px solid #a5d6a7; }
+        .btn-pause { background: #fff3e0; color: #ef6c00; border: 1px solid #ffcc80; }
+        .btn-stop { background: #ffebee; color: #c62828; border: 1px solid #ef9a9a; }
+        
+        /* CSS cho Menu Dropdown mới */
+        .lesson-selector {
+            position: absolute; 
+            top: 15px; left: 15px; 
+            z-index: 100;
+            max-width: 80%;
+        }
+        .lesson-selector select {
+            padding: 10px 15px; 
+            border-radius: 25px; 
+            border: 2px solid #fff; 
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); 
+            font-weight: bold; 
+            font-size: 14px; 
+            background: rgba(255,255,255,0.95);
+            color: #333;
+            outline: none;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- KHU VỰC 1: ẢNH MINH HỌA (50%) -->
+    <div class="media-stage">
+        <!-- Menu chọn bài dạng Drop-down (MỚI) -->
+        <div class="lesson-selector">
+            <select id="lessonSelect" onchange="loadLesson(this.value)">
+                <option value="">-- Đang tải danh sách bài... --</option>
+            </select>
+        </div>
+
+        <img id="bgImg" class="media-content" src="" alt="Minh họa" style="display:none;">
+        <video id="bgVid" class="media-content" style="display:none;" controls></video>
+    </div>
+
+    <!-- KHU VỰC 2: LỜI THOẠI (50%) -->
+    <div class="script-stage" id="scriptContent">
+        <div style="text-align: center; color: #888; padding-top: 60px;">
+            <p>Đang tải bài học...</p>
+        </div>
+    </div>
+
+    <!-- KHU VỰC 3: THANH ĐIỀU KHIỂN (4 NÚT - GIỮ NGUYÊN) -->
+    <div class="controls">
+        <button class="btn btn-jp" onclick="playMode('jp')">
+            🇯🇵 Nghe Nhật
+        </button>
+        <button class="btn btn-vn" onclick="playMode('vn')">
+            🇻🇳 Nghe Việt
+        </button>
+        <button class="btn btn-pause" onclick="togglePause()">
+            ⏸ Tạm dừng
+        </button>
+        <button class="btn btn-stop" onclick="stopPlayer()">
+            ⏹ Dừng lại
+        </button>
+    </div>
+
+    <!-- SCRIPT -->
+    <script src="data.js"></script>
+    <script src="script-video.js"></script>
+
+    <script>
+        // --- LOGIC GIAO DIỆN MỚI ---
+        
+        window.onload = async function() {
+            // 1. Kiểm tra dữ liệu
+            if (typeof lessonData === 'undefined') {
+                alert("Lỗi: Không tìm thấy data.js. Hãy kiểm tra lại file."); return;
+            }
+
+            // 2. Khởi tạo giọng nói (đợi load xong)
+            await voiceManager.init();
+            
+            // 3. Tạo Menu Dropdown
+            const sel = document.getElementById('lessonSelect');
+            sel.innerHTML = '<option value="">-- 📚 Chọn bài học để ôn tập --</option>'; // Reset
+            
+            lessonData.forEach(l => {
+                const opt = document.createElement('option');
+                opt.value = l.id; 
+                opt.textContent = l.title; // Ví dụ: "Bài 1: Chào hỏi"
+                sel.appendChild(opt);
+            });
+
+            // 4. [MỚI] Tự động load bài đầu tiên (để màn hình không bị đen)
+            if(lessonData.length > 0) {
+                const firstLessonId = lessonData[0].id;
+                sel.value = firstLessonId; // Chọn sẵn trên menu
+                loadLesson(firstLessonId); // Hiển thị nội dung ngay
+            }
+        };
+
+        // Hàm hiển thị bài học
+        function loadLesson(id) {
+            if(!id) return;
+            stopPlayer(); // Dừng bài cũ nếu đang đọc
+
+            const lesson = lessonData.find(l => l.id === id);
+            if(!lesson) return;
+            
+            // 1. Xử lý Media (Ảnh/Video)
+            const img = document.getElementById('bgImg');
+            const vid = document.getElementById('bgVid');
+            if(lesson.mediaUrl && lesson.mediaUrl.match(/\.(mp4|webm)$/i)) {
+                vid.src = lesson.mediaUrl; vid.style.display='block'; img.style.display='none';
+            } else {
+                img.src = lesson.mediaUrl || ''; img.style.display='block'; vid.style.display='none';
+            }
+
+            // 2. Xử lý Lời thoại (Script)
+            const container = document.getElementById('scriptContent');
+            container.innerHTML = '';
+            
+            const lines = (lesson.script || "").split('\n').filter(l => l.trim());
+            const parsedLines = [];
+            let lastChar = '', isLeft = true;
+
+            lines.forEach((line, idx) => {
+                // Tách Tên: Nội dung
+                const parts = line.split(':');
+                if(parts.length < 2) return;
+                
+                const charName = parts[0].trim();
+                const contentBody = parts.slice(1).join(':'); // Lấy phần sau dấu :
+                const contentParts = contentBody.split('|');
+                
+                const jp = contentParts[0].trim();
+                const vn = contentParts[1] ? contentParts[1].trim() : "";
+
+                // Đổi bên nếu đổi người nói
+                if(lastChar && charName !== lastChar) isLeft = !isLeft;
+                lastChar = charName;
+
+                // HTML bong bóng chat
+                const div = document.createElement('div');
+                div.className = `row ${isLeft ? 'left' : 'right'} t${(idx % 3) + 1}`;
+                div.id = `line-${idx}`;
+                div.innerHTML = `
+                    <div class="avatar">${charName.charAt(0)}</div>
+                    <div class="bubble">
+                        <div class="japanese-text" id="jp-text-${idx}">${jp}</div>
+                        ${vn ? `<span class="vietnamese-text" id="vn-text-${idx}">${vn}</span>` : ''}
+                    </div>
+                `;
+                
+                // Click dòng nào đọc dòng đó (Mặc định đọc Tiếng Nhật)
+                div.onclick = () => {
+                    stopPlayer();
+                    playerState.currentIndex = idx;
+                    playerState.mode = 'jp'; 
+                    playerState.isPlaying = true;
+                    speakNext();
+                };
+
+                container.appendChild(div);
+                parsedLines.push({ index: idx, char: charName, jpId: `jp-text-${idx}`, vnId: `vn-text-${idx}`, rowId: `line-${idx}` });
+            });
+
+            // 3. Nạp dữ liệu vào máy đọc
+            initPlayer(parsedLines, lesson.voiceConfig);
+        }
+    </script>
+</body>
+</html>
