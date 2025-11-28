@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tổng hợp Kính ngữ JLPT N4 - Master Keigo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #2980b9;
+            --sonkei-orange: #d35400;
+            --sonkei-bg: #fcefe6;
+            --kenjou-green: #27ae60;
+            --kenjou-bg: #eafaf1;
+            --highlight-red: #e74c3c;
+            --text-dark: #333;
+            --border-color: #ddd;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-blue);
+            border-bottom: 2px solid var(--primary-blue);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #fff;
+            background-color: var(--primary-blue);
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top: 40px;
+            font-size: 1.2rem;
+        }
+
+        h3 {
+            color: var(--primary-blue);
+            border-left: 5px solid var(--primary-blue);
+            padding-left: 10px;
+            margin-top: 25px;
+        }
+
+        /* Styles cho Furigana */
+        ruby {
+            font-size: 1.1em;
+        }
+        rt {
+            font-size: 0.6em;
+            color: #666;
+        }
+
+        /* Styles cho Màu sắc ngữ pháp */
+        .text-orange { color: var(--sonkei-orange); font-weight: bold; }
+        .text-green { color: var(--kenjou-green); font-weight: bold; }
+        .text-red { color: var(--highlight-red); font-weight: bold; }
+        .text-blue { color: var(--primary-blue); font-weight: bold; }
+        
+        .bg-orange { background-color: var(--sonkei-bg); }
+        .bg-green { background-color: var(--kenjou-bg); }
+
+        /* Bảng biểu */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px 10px;
+            vertical-align: middle;
+        }
+
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Phần Bài tập Trắc nghiệm */
+        .quiz-container {
+            margin-top: 20px;
+        }
+
+        .quiz-item {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .quiz-question {
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option-btn {
+            background: #f8f9fa;
+            border: 1px solid #ccc;
+            padding: 10px 15px;
+            text-align: left;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: all 0.2s;
+            font-family: inherit;
+            font-size: 0.95rem;
+        }
+
+        .option-btn:hover {
+            background: #e9ecef;
+        }
+
+        .option-btn.correct {
+            background-color: #d4edda;
+            border-color: #c3e6cb;
+            color: #155724;
+            position: relative;
+        }
+        
+        .option-btn.correct::after {
+            content: "⭕ 正解 (Đúng)";
+            position: absolute;
+            right: 15px;
+            font-weight: bold;
+        }
+
+        .option-btn.incorrect {
+            background-color: #f8d7da;
+            border-color: #f5c6cb;
+            color: #721c24;
+            opacity: 0.7;
+        }
+
+        /* Phần Đọc hiểu */
+        .reading-box {
+            background-color: #fdfdfd;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .reading-content {
+            background-color: #fff;
+            padding: 15px;
+            border: 1px dashed #ccc;
+            margin-bottom: 15px;
+            font-family: "Yu Mincho", serif; /* Font giống sách báo */
+        }
+        details {
+            margin-top: 10px;
+            cursor: pointer;
+            background: #eee;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        summary {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+        .answer-text {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fff;
+            border-left: 4px solid var(--highlight-red);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Tổng hợp Kính ngữ JLPT N4 (敬語マスター)</h1>
+
+    <!-- PHẦN 1: KHÁI NIỆM -->
+    <section>
+        <p>Trong tiếng Nhật N4, Kính ngữ là phần rất quan trọng. Bạn cần nhớ 3 trụ cột chính:</p>
+        <ul>
+            <li><span class="text-orange">Tôn Kính Ngữ (尊敬語)</span>: Dùng cho <b>Người khác</b> (Giám đốc, Thầy cô, Khách hàng).</li>
+            <li><span class="text-green">Khiêm Nhường Ngữ (謙譲語)</span>: Dùng cho <b>Bản thân</b> hoặc <b>Người nhà</b>.</li>
+            <li><span class="text-blue">Lịch Sự Ngữ (丁寧語)</span>: Thêm「です・ます・ございます」để làm đẹp lời nói.</li>
+        </ul>
+    </section>
+
+    <!-- PHẦN 2: BẢNG ĐỘNG TỪ ĐẶC BIỆT -->
+    <section>
+        <h2>1. Bảng Động Từ Đặc Biệt (Thể MASU)</h2>
+        <p>⚠️ <span class="text-red">Bắt buộc học thuộc lòng bảng này để thi N4.</span></p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Ý nghĩa</th>
+                    <th style="width: 20%;">Động từ gốc</th>
+                    <th style="width: 30%; background-color: var(--sonkei-bg); color: var(--sonkei-orange);">Tôn Kính (Người khác)</th>
+                    <th style="width: 30%; background-color: var(--kenjou-bg); color: var(--kenjou-green);">Khiêm Nhường (Tôi)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Đi<br>Đến<br>Có mặt</td>
+                    <td><ruby>行<rt>い</rt></ruby>きます<br><ruby>来<rt>き</rt></ruby>きます<br>います</td>
+                    <td class="bg-orange">いらっしゃいます<br>おいでになります</td>
+                    <td class="bg-green"><ruby>参<rt>まい</rt></ruby>ります<br>おります (Có mặt)</td>
+                </tr>
+                <tr>
+                    <td>Ăn / Uống</td>
+                    <td><ruby>食<rt>た</rt></ruby>べます<br><ruby>飲<rt>の</rt></ruby>みます</td>
+                    <td class="bg-orange"><ruby>召<rt>め</rt></ruby>し<ruby>上<rt>あ</rt></ruby>がります</td>
+                    <td class="bg-green">いただきます</td>
+                </tr>
+                <tr>
+                    <td>Nói</td>
+                    <td><ruby>言<rt>い</rt></ruby>います</td>
+                    <td class="bg-orange">おっしゃいます</td>
+                    <td class="bg-green"><ruby>申<rt>もう</rt></ruby>します<br><ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げます</td>
+                </tr>
+                <tr>
+                    <td>Làm</td>
+                    <td>します</td>
+                    <td class="bg-orange">なさいます</td>
+                    <td class="bg-green">いたします</td>
+                </tr>
+                <tr>
+                    <td>Nhìn / Xem</td>
+                    <td><ruby>見<rt>み</rt></ruby>ます</td>
+                    <td class="bg-orange">ご<ruby>覧<rt>らん</rt></ruby>になります</td>
+                    <td class="bg-green"><ruby>拝見<rt>はいけん</rt></ruby>します</td>
+                </tr>
+                <tr>
+                    <td>Biết</td>
+                    <td><ruby>知<rt>し</rt></ruby>っています</td>
+                    <td class="bg-orange">ご<ruby>存<rt>ぞん</rt></ruby>じです</td>
+                    <td class="bg-green"><ruby>存<rt>ぞん</rt></ruby>じております</td>
+                </tr>
+                <tr>
+                    <td>Gặp</td>
+                    <td><ruby>会<rt>あ</rt></ruby>います</td>
+                    <td class="bg-orange"><i>(Dùng quy tắc chung)</i></td>
+                    <td class="bg-green">お<ruby>目<rt>め</rt></ruby>にかかります</td>
+                </tr>
+                <tr>
+                    <td>Hỏi / Thăm</td>
+                    <td><ruby>聞<rt>き</rt></ruby>ます</td>
+                    <td class="bg-orange"><i>(Dùng quy tắc chung)</i></td>
+                    <td class="bg-green">うかがいます</td>
+                </tr>
+            </tbody>
+
+<!-- BẮT ĐẦU ĐOẠN CẦN COPY -->
+<tbody>
+
+     <tr>      <td colspan="4" style="background-color: #f4f8d3; color: #4e5d28; font-weight: bold; padding: 10px 15px; border-bottom: 2px solid #e0e6c5;">
+        📝 Câu ví dụ (例文)
+    </td> </tr>
+    <tr>
+        <td>Đi<br>Đến<br>Có mặt</td>
+        <td><ruby>行<rt>い</rt></ruby>きます<br><ruby>来<rt>き</rt></ruby>きます<br>います</td>
+        <td class="bg-orange">
+            <b>いらっしゃいます</b><br>
+            <b>おいでになります</b><br>
+            <hr style="border: 0; border-top: 1px dashed #f5b7b1; margin: 5px 0;">
+            <span style="font-size: 0.9em;">先生は <b>いらっしゃいます</b>か。<br>
+            <small>(Thầy có ở đây không ạ?)</small></span>
+        </td>
+        <td class="bg-green">
+            <b><ruby>参<rt>まい</rt></ruby>ります</b><br>
+            <b>おります</b> (Có mặt)<br>
+            <hr style="border: 0; border-top: 1px dashed #a9dfbf; margin: 5px 0;">
+            <span style="font-size: 0.9em;">はい、ただ今 <b>参ります</b>。<br>
+            <small>(Vâng, tôi đến ngay đây ạ.)</small></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Ăn / Uống</td>
+        <td><ruby>食<rt>た</rt></ruby>べます<br><ruby>飲<rt>の</rt></ruby>みます</td>
+        <td class="bg-orange">
+            <b><ruby>召<rt>め</rt></ruby>し<ruby>上<rt>あ</rt></ruby>がります</b><br>
+            <hr style="border: 0; border-top: 1px dashed #f5b7b1; margin: 5px 0;">
+            <span style="font-size: 0.9em;">どうぞ <b>召し上がって</b>ください。<br>
+            <small>(Xin mời dùng bữa ạ.)</small></span>
+        </td>
+        <td class="bg-green">
+            <b>いただきます</b><br>
+            <hr style="border: 0; border-top: 1px dashed #a9dfbf; margin: 5px 0;">
+            <span style="font-size: 0.9em;">遠慮なく <b>いただきます</b>。<br>
+            <small>(Tôi xin phép không khách sáo ạ.)</small></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Nói</td>
+        <td><ruby>言<rt>い</rt></ruby>います</td>
+        <td class="bg-orange">
+            <b>おっしゃいます</b><br>
+            <hr style="border: 0; border-top: 1px dashed #f5b7b1; margin: 5px 0;">
+            <span style="font-size: 0.9em;">社長が <b>おっしゃいました</b>。<br>
+            <small>(Giám đốc đã nói vậy.)</small></span>
+        </td>
+        <td class="bg-green">
+            <b><ruby>申<rt>もう</rt></ruby>します</b><br>
+            <b><ruby>申<rt>もう</rt></ruby>し<ruby>上<rt>あ</rt></ruby>げます</b><br>
+            <hr style="border: 0; border-top: 1px dashed #a9dfbf; margin: 5px 0;">
+            <span style="font-size: 0.9em;">私は タムと <b>申します</b>。<br>
+            <small>(Tên tôi là Tâm.)</small></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Làm</td>
+        <td>します</td>
+        <td class="bg-orange">
+            <b>なさいます</b><br>
+            <hr style="border: 0; border-top: 1px dashed #f5b7b1; margin: 5px 0;">
+            <span style="font-size: 0.9em;">週末は 何を <b>なさいます</b>か。<br>
+            <small>(Cuối tuần ngài làm gì ạ?)</small></span>
+        </td>
+        <td class="bg-green">
+            <b>いたします</b><br>
+            <hr style="border: 0; border-top: 1px dashed #a9dfbf; margin: 5px 0;">
+            <span style="font-size: 0.9em;">私が <b>いたします</b>。<br>
+            <small>(Tôi sẽ làm việc đó ạ.)</small></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Nhìn / Xem</td>
+        <td><ruby>見<rt>み</rt></ruby>ます</td>
+        <td class="bg-orange">
+            <b>ご<ruby>覧<rt>らん</rt></ruby>になります</b><br>
+            <hr style="border: 0; border-top: 1px dashed #f5b7b1; margin: 5px 0;">
+            <span style="font-size: 0.9em;">こちらを <b>ご覧ください</b>。<br>
+            <small>(Xin hãy nhìn vào đây ạ.)</small></span>
+        </td>
+        <td class="bg-green">
+            <b><ruby>拝見<rt>はいけん</rt></ruby>します</b><br>
+            <hr style="border: 0; border-top: 1px dashed #a9dfbf; margin: 5px 0;">
+            <span style="font-size: 0.9em;">メールを <b>拝見しました</b>。<br>
+            <small>(Tôi đã xem mail rồi ạ.)</small></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Biết</td>
+        <td><ruby>知<rt>し</rt></ruby>っています</td>
+        <td class="bg-orange">
+            <b>ご<ruby>存<rt>ぞん</rt></ruby>じです</b><br>
+            <hr style="border: 0; border-top: 1px dashed #f5b7b1; margin: 5px 0;">
+            <span style="font-size: 0.9em;">あのニュースを <b>ご存じですか</b>。<br>
+            <small>(Ngài có biết tin đó không?)</small></span>
+        </td>
+        <td class="bg-green">
+            <b><ruby>存<rt>ぞん</rt></ruby>じております</b><br>
+            <hr style="border: 0; border-top: 1px dashed #a9dfbf; margin: 5px 0;">
+            <span style="font-size: 0.9em;">はい、<b>存じております</b>。<br>
+            <small>(Vâng, tôi có biết ạ.)</small></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Gặp</td>
+        <td><ruby>会<rt>あ</rt></ruby>います</td>
+        <td class="bg-orange">
+            <i>(Dùng quy tắc chung)</i><br>
+            お会いになります
+        </td>
+        <td class="bg-green">
+            <b>お<ruby>目<rt>め</rt></ruby>にかかります</b><br>
+            <hr style="border: 0; border-top: 1px dashed #a9dfbf; margin: 5px 0;">
+            <span style="font-size: 0.9em;">早く <b>お目にかかりたい</b>です。<br>
+            <small>(Tôi muốn sớm được gặp ngài.)</small></span>
+        </td>
+    </tr>
+    <tr>
+        <td>Hỏi / Thăm</td>
+        <td><ruby>聞<rt>き</rt></ruby>ます</td>
+        <td class="bg-orange">
+            <i>(Dùng quy tắc chung)</i><br>
+            お聞きになります
+        </td>
+        <td class="bg-green">
+            <b>うかがいます</b><br>
+            <hr style="border: 0; border-top: 1px dashed #a9dfbf; margin: 5px 0;">
+            <span style="font-size: 0.9em;">3時に <b>うかがいます</b>。<br>
+            <small>(Tôi sẽ đến thăm/hỏi lúc 3 giờ.)</small></span>
+        </td>
+    </tr>
+</tbody>
+<!-- KẾT THÚC ĐOẠN CẦN COPY -->
+
+
+
+        </table>
+    </section>
+
+    <!-- PHẦN 3: MẪU CÂU NGỮ PHÁP -->
+    <section>
+        <h2>2. Các Mẫu Câu Kính Ngữ Thường Gặp</h2>
+
+        <h3>A. Tôn Kính Ngữ (Dùng cho đối phương)</h3>
+        <div style="background: var(--sonkei-bg); padding: 15px; border-radius: 5px;">
+            <p><b>1. Mẫu cơ bản:</b> <span class="text-orange">お</span> + <span class="text-red">V<s>ます</s></span> + <span class="text-orange">に なります</span></p>
+            <ul>
+                <li><ruby>社長<rt>しゃちょう</rt></ruby>は <span class="text-orange">お<ruby>帰<rt>かえ</rt></ruby>りになりました</span>。<br>(Giám đốc đã về rồi.)</li>
+            </ul>
+
+            <p><b>2. Mẫu yêu cầu lịch sự (Hay thi):</b> <span class="text-orange">お</span> + <span class="text-red">V<s>ます</s></span> + <span class="text-orange">ください</span></p>
+            <ul>
+                <li><ruby>少々<rt>しょうしょう</rt></ruby> <span class="text-orange">お<ruby>待<rt>ま</rt></ruby>ちください</span>。<br>(Xin vui lòng đợi một chút.)</li>
+                <li><i>Lưu ý N3 (Hán ngữ):</i> <span class="text-orange">ご</span> + N + <span class="text-orange">ください</span> (Ví dụ: ご<ruby>注意<rt>ちゅうい</rt></ruby>ください)</li>
+            </ul>
+        </div>
+
+        <h3>B. Khiêm Nhường Ngữ (Dùng cho mình)</h3>
+        <div style="background: var(--kenjou-bg); padding: 15px; border-radius: 5px;">
+            <p><b>1. Mẫu cơ bản:</b> <span class="text-green">お</span> + <span class="text-red">V<s>ます</s></span> + <span class="text-green">します</span></p>
+            <ul>
+                <li><ruby>荷物<rt>にもつ</rt></ruby>を <span class="text-green">お<ruby>持<rt>も</rt></ruby>ちします</span>。<br>(Tôi xin xách hành lý giúp ngài.)</li>
+            </ul>
+
+            <p><b>2. Mẫu xin phép (Tôi làm được không?):</b> <span class="text-red">V(使役)-て</span> + <span class="text-green">いただけませんか</span></p>
+            <ul>
+                <li><ruby>詳<rt>くわ</rt></ruby>しい<ruby>話<rt>はなし</rt></ruby>を <span class="text-green"><ruby>聞<rt>き</rt></ruby>かせていただけませんか</span>。<br>(Cho phép tôi nghe chi tiết được không?)</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- PHẦN 4: TỪ VỰNG LỊCH SỰ -->
+    <section>
+        <h2>3. Từ Vựng & Lời Chào (Teineigo)</h2>
+        <table>
+            <tr>
+                <th>Thông thường</th>
+                <th class="text-blue">Lịch sự</th>
+                <th>Ví dụ</th>
+            </tr>
+            <tr>
+                <td>だれ (Ai)</td>
+                <td class="text-blue">どなた / どちら<ruby>様<rt>さま</rt></ruby></td>
+                <td>失礼ですが、<b>どちら様</b>でしょうか。</td>
+            </tr>
+            <tr>
+                <td>どう (Thế nào)</td>
+                <td class="text-blue">いかが</td>
+                <td>お茶は <b>いかが</b>ですか。</td>
+            </tr>
+            <tr>
+                <td>今日 / 明日</td>
+                <td class="text-blue">本日 / 明日(あす)</td>
+                <td><b>本日</b>は 晴天なり。</td>
+            </tr>
+            <tr>
+                <td>あります</td>
+                <td class="text-blue">ございます</td>
+                <td>トイレは ２階に <b>ございます</b>。</td>
+            </tr>
+            <tr>
+                <td>です</td>
+                <td class="text-blue">でございます</td>
+                <td><ruby>田中<rt>たなか</rt></ruby><b>でございます</b>。</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- PHẦN 5: CÂU CHÀO KINH ĐIỂN -->
+    <section>
+        <h2>4. Các Câu Chào "Kinh Điển" (Store & Business)</h2>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+            <div style="background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+                <h3 style="margin-top:0;">🏪 Cửa hàng / Dịch vụ</h3>
+                <ul>
+                    <li><b>いらっしゃいませ。</b><br>(Kính chào quý khách)</li>
+                    <li><b>かしこまりました。</b><br>(Tôi đã hiểu / Tuân lệnh)</li>
+                    <li><b><ruby>少々<rt>しょうしょう</rt></ruby> お<ruby>待<rt>ま</rt></ruby>ちください。</b><br>(Xin vui lòng đợi chút)</li>
+                    <li><b><ruby>申<rt>もう</rt></ruby>し<ruby>訳<rt>わけ</rt></ruby>ございません。</b><br>(Thành thật xin lỗi)</li>
+                </ul>
+            </div>
+            <div style="background: #fff; border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
+                <h3 style="margin-top:0;">🏢 Công ty / Điện thoại</h3>
+                <ul>
+                    <li><b>お<ruby>世話<rt>せわ</rt></ruby>に なっております。</b><br>(Cảm ơn vì luôn giúp đỡ)</li>
+                    <li><b>お<ruby>疲<rt>つか</rt></ruby>れ<ruby>様<rt>さま</rt></ruby>です。</b><br>(Chào đồng nghiệp)</li>
+                    <li><b><ruby>席<rt>せき</rt></ruby>を はずしております。</b><br>(Hiện không có ở chỗ ngồi)</li>
+                    <li><b><ruby>後<rt>のち</rt></ruby>ほど かけなおします。</b><br>(Tôi sẽ gọi lại sau)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHẦN 6: BÀI TẬP THỰC CHIẾN -->
+    <section>
+        <h2>5. Bài Tập Thực Chiến N4 (20 Câu)</h2>
+        <p><i>Hãy chọn đáp án đúng nhất cho các câu dưới đây.</i></p>
+
+        <div class="quiz-container" id="quiz-area">
+            <!-- Quiz Items will be generated here just like written manually -->
+            
+            <!-- Câu 1 -->
+            <div class="quiz-item">
+                <div class="quiz-question">1. (Học sinh nói với thầy) 先生は 明日 学校に ＿＿＿＿＿か。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. 参(まい)ります</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. いらっしゃいます</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. います</button>
+                </div>
+            </div>
+
+            <!-- Câu 2 -->
+            <div class="quiz-item">
+                <div class="quiz-question">2. (Nhân viên nói với khách) どうぞ、あちらの ソファーに ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. すわってください</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. おかけください</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. かけています</button>
+                </div>
+            </div>
+
+            <!-- Câu 3 -->
+            <div class="quiz-item">
+                <div class="quiz-question">3. (Tự giới thiệu) 私は ベトナムから ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. いらっしゃいました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">B. きました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">C. 参(まい)りました</button>
+                </div>
+            </div>
+
+            <!-- Câu 4 -->
+            <div class="quiz-item">
+                <div class="quiz-question">4. (Mời ăn uống) ケーキです。どうぞ ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. いただいてください</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">B. 食べてください</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">C. 召(め)し上(あ)がってください</button>
+                </div>
+            </div>
+
+            <!-- Câu 5 -->
+            <div class="quiz-item">
+                <div class="quiz-question">5. (Hỏi tên) 失礼ですが、お名前は 何と ＿＿＿＿＿か。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. 申(もう)します</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. おっしゃいます</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. 言います</button>
+                </div>
+            </div>
+            
+            <!-- Câu 6 -->
+            <div class="quiz-item">
+                <div class="quiz-question">6. 重そうですね。私が ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. お持ちになります</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. お持ちします</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. 持ってくださいます</button>
+                </div>
+            </div>
+
+            <!-- Câu 7 -->
+            <div class="quiz-item">
+                <div class="quiz-question">7. 社長、こちらの 資料(しりょう)を ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. 見てください</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. ご覧(らん)ください</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. 拝見します</button>
+                </div>
+            </div>
+
+            <!-- Câu 8 -->
+            <div class="quiz-item">
+                <div class="quiz-question">8. 先生に 本を ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. やりました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">B. あげました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">C. 差(さ)し上(あ)げました</button>
+                </div>
+            </div>
+
+            <!-- Câu 9 -->
+            <div class="quiz-item">
+                <div class="quiz-question">9. ここに 名前を ＿＿＿＿＿ いただけませんか。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. 書いて</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. 書かせて</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. お書きして</button>
+                </div>
+            </div>
+
+            <!-- Câu 10 -->
+            <div class="quiz-item">
+                <div class="quiz-question">10. 部長は 奥様(おくさま)と テニスを ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. いたします</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">B. して おります</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">C. なさいます</button>
+                </div>
+            </div>
+
+             <!-- Câu 11 -->
+             <div class="quiz-item">
+                <div class="quiz-question">11. (Trong điện thoại) A:「田中は いますか。」 B:「すみません、今 ＿＿＿＿＿。」</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. いらっしゃいません</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. おりません</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. いません</button>
+                </div>
+            </div>
+
+            <!-- Câu 12 -->
+            <div class="quiz-item">
+                <div class="quiz-question">12. A:「トイレは どこですか。」 B:「あちらに ＿＿＿＿＿。」</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. あります</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">B. います</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">C. ございます</button>
+                </div>
+            </div>
+
+            <!-- Câu 13 -->
+            <div class="quiz-item">
+                <div class="quiz-question">13. 店員:「コーヒーで よろしいでしょうか。」 客:「＿＿＿＿＿。」</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. はい、いいです</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. はい、けっこうです</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. はい、そうです</button>
+                </div>
+            </div>
+
+            <!-- Câu 14 -->
+            <div class="quiz-item">
+                <div class="quiz-question">14. (Nói về thầy giáo) 先生は ご家族と ハワイへ ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. 参りました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. 行かれました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. いたしました</button>
+                </div>
+            </div>
+
+            <!-- Câu 15 -->
+            <div class="quiz-item">
+                <div class="quiz-question">15. (Nhờ vả) すみません、この 漢字の 読み方を ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, true)">A. 教えて くださいませんか</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">B. 教えて いただきませんか</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. 教えさせませんか</button>
+                </div>
+            </div>
+
+            <!-- Câu 16 -->
+            <div class="quiz-item">
+                <div class="quiz-question">16. (Nói về mẹ mình) 私の ＿＿＿＿＿は ５０さいです。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. お母さん</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. 母(はは)</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. お母様</button>
+                </div>
+            </div>
+
+            <!-- Câu 17 -->
+            <div class="quiz-item">
+                <div class="quiz-question">17. (Hỏi về vợ giám đốc) 社長の ＿＿＿＿＿は お元気ですか。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. 家内(かない)</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">B. 妻(つま)</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">C. 奥様(おくさま)</button>
+                </div>
+            </div>
+
+            <!-- Câu 18 -->
+            <div class="quiz-item">
+                <div class="quiz-question">18. 弟(おとうと)は 来月 アメリカへ ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. いらっしゃいます</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. 参(まい)ります</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. 行かれます</button>
+                </div>
+            </div>
+
+            <!-- Câu 19 -->
+            <div class="quiz-item">
+                <div class="quiz-question">19. (Khi khách đến) 「ようこそ ＿＿＿＿＿。」</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. お越ししました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">B. 参りました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">C. お越しくださいました</button>
+                </div>
+            </div>
+
+             <!-- Câu 20 -->
+             <div class="quiz-item">
+                <div class="quiz-question">20. 先生が この 本を ＿＿＿＿＿。</div>
+                <div class="quiz-options">
+                    <button class="option-btn" onclick="checkAnswer(this, false)">A. くれました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, true)">B. くださいました</button>
+                    <button class="option-btn" onclick="checkAnswer(this, false)">C. もらいました</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PHẦN 7: ĐỌC HIỂU -->
+    <section>
+        <h2>6. Đọc Hiểu Ứng Dụng (Reading Comprehension)</h2>
+        <p><i>Đọc đoạn văn và chọn câu trả lời đúng.</i></p>
+
+        <!-- Bài đọc 1 -->
+        <div class="reading-box">
+            <h4>Bài 1: Thông báo nghỉ của nhà hàng (お知らせ)</h4>
+            <div class="reading-content">
+                いつも 当店(とうてん)を <b>ご利用いただき</b>、ありがとうございます。<br>
+                誠(まこと)に 勝手(かって)ながら、12月30日から 1月3日まで お休み<b>させていただきます</b>。<br>
+                1月4日から 通常(つうじょう)通り 営業<b>いたします</b>。<br><br>
+                店主(てんしゅ)
+            </div>
+            <div class="quiz-question">Q: この 店は 1月1日に 開(あ)いていますか。</div>
+            <details>
+                <summary>Xem đáp án</summary>
+                <div class="answer-text">
+                    <b>いいえ、閉(し)まっています。</b><br>
+                    (Vì cửa hàng thông báo nghỉ từ 30/12 đến 3/1. "お休みさせていただきます" là khiêm nhường ngữ của "Xin phép được nghỉ".)
+                </div>
+            </details>
+        </div>
+
+        <!-- Bài đọc 2 -->
+        <div class="reading-box">
+            <h4>Bài 2: Email thầy giáo (連絡)</h4>
+            <div class="reading-content">
+                学生の 皆さんへ<br>
+                来週の 月曜日は 私が 会議に 出席<b>いたします</b>ので、授業は 休講(きゅうこう)になります。<br>
+                代わりに レポートを 書いて、来月 <b>提出してください</b>。<br>
+                よろしくお願(ねが)い<b>いたします</b>。<br>
+                田中
+            </div>
+            <div class="quiz-question">Q: 来週の 月曜日、学生は 授業が ありますか。</div>
+            <details>
+                <summary>Xem đáp án</summary>
+                <div class="answer-text">
+                    <b>いいえ、ありません。</b><br>
+                    (Thầy dùng "出席いたします" - khiêm nhường - để nói thầy đi họp, nên lớp nghỉ.)
+                </div>
+            </details>
+        </div>
+
+        <!-- Bài đọc 3 -->
+        <div class="reading-box">
+            <h4>Bài 3: Email xin phép (お願い)</h4>
+            <div class="reading-content">
+                山田先生<br>
+                いつも <b>お世話になっております</b>。トムです。<br>
+                実は、熱がありますので、今日の クラスを <b>休ませていただけませんか</b>。<br>
+                明日は <b>参ります</b>。<br>
+                申し訳<b>ございません</b>。
+            </div>
+            <div class="quiz-question">Q: トムさんは どうして メールを 送りましたか。</div>
+            <details>
+                <summary>Xem đáp án</summary>
+                <div class="answer-text">
+                    <b>授業を 休みたいからです。</b><br>
+                    (Cấu trúc "休ませていただけませんか" là xin phép nghỉ một cách lịch sự.)
+                </div>
+            </details>
+        </div>
+
+         <!-- Bài đọc 4 -->
+         <div class="reading-box">
+            <h4>Bài 4: Giấy nhắn (メモ)</h4>
+            <div class="reading-content">
+                鈴木部長<br>
+                先ほど、ミラー様が <b>お見えになりました</b>。<br>
+                部長が <b>席をはずして</b> いらっしゃったので、ミラー様は 「また あとで <b>参ります</b>」と <b>おっしゃいました</b>。<br>
+                ２時ごろ また <b>いらっしゃる</b>そうです。<br>
+                受付：佐藤
+            </div>
+            <div class="quiz-question">Q: ミラーさんは 2時ごろ どうしますか。</div>
+            <details>
+                <summary>Xem đáp án</summary>
+                <div class="answer-text">
+                    <b>また 鈴木部長の ところへ 来ます。</b><br>
+                    ("参ります" là khiêm nhường ngữ Miller dùng để nói về hành động đến của mình. 佐藤 tường thuật lại dùng "いらっしゃるそうです" là tôn kính ngữ.)
+                </div>
+            </details>
+        </div>
+
+         <!-- Bài đọc 5 -->
+         <div class="reading-box">
+            <h4>Bài 5: Thông báo trên tàu (アナウンス)</h4>
+            <div class="reading-content">
+                「ご乗車 ありがとうございます。<br>
+                次は 東京駅で <b>ございます</b>。<br>
+                お降(お)りの 際は、お忘れ物の ないよう、<b>ご注意ください</b>。<br>
+                本日も JRを <b>ご利用いただき</b>、ありがとうございました。」
+            </div>
+            <div class="quiz-question">Q: 乗客(じょうきゃく)は 何を しなければなりませんか。</div>
+            <details>
+                <summary>Xem đáp án</summary>
+                <div class="answer-text">
+                    <b>荷物を 忘れないように 気をつけます。</b><br>
+                    ("ご注意ください" = Xin hãy chú ý.)
+                </div>
+            </details>
+        </div>
+
+    </section>
+
+</div>
+
+<script>
+    function checkAnswer(btn, isCorrect) {
+        // Tìm thẻ cha chứa các lựa chọn của câu hỏi này
+        const parent = btn.parentElement;
+        const buttons = parent.getElementsByClassName('option-btn');
+
+        // Reset màu các nút khác trong cùng câu hỏi (nếu muốn cho chọn lại)
+        // Hoặc disable để chốt đáp án (ở đây tôi làm đơn giản là hiện màu)
+        
+        if (isCorrect) {
+            btn.classList.add('correct');
+        } else {
+            btn.classList.add('incorrect');
+        }
+    }
+</script>
+
+</body>
+</html>
