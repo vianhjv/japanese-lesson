@@ -599,5 +599,26 @@ id="dialogue-1"><ruby>田中<rt>たなか</rt></ruby>さん、<ruby>週末<rt>�
 
     </div>
     <script src="script-l1-basic.js"></script>
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+<div style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+  <button onclick="netlifyIdentity.open()" 
+          style="background-color: #00d1b2; color: white; padding: 15px 25px; border: none; border-radius: 50px; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; font-size: 16px;">
+    🔑 Đăng nhập vào Luyện Tập
+  </button>
+</div>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        console.log("Khách vãng lai chưa đăng nhập.");
+      } else {
+        console.log("Chào mừng mục đồng:", user.email);
+        console.log("Token:", user.token);
+      }
+    });
+  }
+</script>
 </body>
 </html>
