@@ -620,124 +620,89 @@ id="dialogue-1"><ruby>田中<rt>たなか</rt></ruby>さん、<ruby>週末<rt>�
     });
   }
 </script>
-<div id="onboarding-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 10000; justify-content: center; align-items: center; overflow-y: auto;">
-  <div style="background: white; padding: 40px; border-radius: 12px; width: 90%; max-width: 550px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); max-height: 90vh; overflow-y: auto;">
-    
-    <h2 style="color: #00d1b2; text-align: center; margin-bottom: 5px;">👋 CHÀO BẠN MỚI!</h2>
-    <p style="text-align: center; color: #666; margin-bottom: 25px;">Hãy giúp AI hiểu bạn để thiết kế lộ trình học tốt nhất.</p>
 
-    <h4 style="border-bottom: 2px solid #eee; padding-bottom: 10px;">1. Thông tin cơ bản</h4>
+<div id="truth-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; justify-content: center; align-items: center;">
+  <div style="background: white; padding: 30px; border-radius: 15px; width: 90%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <h2 style="color: #d9534f; margin-top: 0;">🛑 KHOAN ĐÃ! AI CẦN HIỂU BẠN</h2>
+    <p>Để AI Mentor thiết kế lộ trình, hãy trả lời thật lòng 3 câu hỏi này. Đừng dối lòng mình.</p>
     
     <div style="margin-bottom: 15px;">
-      <label style="font-weight: bold; display: block; margin-bottom: 5px;">Tên bạn muốn được gọi là gì?</label>
-      <input type="text" id="inp-name" placeholder="Ví dụ: Moca, ToChinh..." style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
+      <label>1. Bạn đã "nuôi" ý định học tiếng Nhật bao nhiêu tháng rồi mà chưa thành công?</label>
+      <input type="number" id="input-delay" placeholder="Ví dụ: 12 tháng" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px;">
     </div>
-
-    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
-      <div style="flex: 1;">
-        <label style="font-weight: bold; display: block; margin-bottom: 5px;">Trình độ hiện tại?</label>
-        <select id="inp-current-level" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; background: white;">
-          <option value="Zero">Số 0 (Chưa biết gì)</option>
-          <option value="N5">N5 (Sơ cấp 1)</option>
-          <option value="N4">N4 (Sơ cấp 2)</option>
-          <option value="N3">N3 (Trung cấp)</option>
-          <option value="N2">N2 (Cao cấp)</option>
-        </select>
-      </div>
-      <div style="flex: 1;">
-        <label style="font-weight: bold; display: block; margin-bottom: 5px;">Mục tiêu 6 tháng tới?</label>
-        <select id="inp-target-level" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px; background: white;">
-          <option value="N5">Đạt N5</option>
-          <option value="N4">Đạt N4</option>
-          <option value="N3">Đạt N3</option>
-          <option value="N2">Đạt N2</option>
-          <option value="GiaoTiep">Giao tiếp trôi chảy</option>
-        </select>
-      </div>
-    </div>
-
-    <h4 style="border-bottom: 2px solid #eee; padding-bottom: 10px; margin-top: 25px;">2. Chỉ số quyết tâm</h4>
 
     <div style="margin-bottom: 15px;">
-      <label style="display: block; margin-bottom: 5px;">Bạn đã trì hoãn việc học bao lâu rồi?</label>
-      <input type="number" id="inp-delay" placeholder="Số tháng (VD: 12)" style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 6px;">
+      <label>2. Bạn ước tính mình đã mất bao nhiêu tiền (cơ hội) vì không biết tiếng Nhật?</label>
+      <input type="number" id="input-cost" placeholder="Ví dụ: 50.000.000 VNĐ" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px;">
     </div>
 
-    <button onclick="saveProfile()" style="background: #00d1b2; color: white; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; font-size: 16px; margin-top: 20px; cursor: pointer; transition: 0.3s;">
-      🚀 LƯU HỒ SƠ & BẮT ĐẦU
+    <div style="margin-bottom: 20px;">
+      <label>3. Bạn dành bao nhiêu phút mỗi ngày cho TikTok/Facebook?</label>
+      <input type="number" id="input-waste" placeholder="Ví dụ: 60 phút" style="width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
+
+    <button onclick="saveTruth()" style="background: #00d1b2; color: white; border: none; padding: 12px 20px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 16px;">
+      LƯU HỒ SƠ & BẮT ĐẦU HỌC
     </button>
   </div>
 </div>
 
 <script>
-  // 1. Kiểm tra User khi trang vừa tải xong
-  document.addEventListener("DOMContentLoaded", () => {
-    if (window.netlifyIdentity) {
-      const user = netlifyIdentity.currentUser();
-      if (user) {
-        checkUserOnboarding(user);
-      }
-      
-      // Lắng nghe sự kiện login mới
-      netlifyIdentity.on("login", user => {
-        netlifyIdentity.close();
-        checkUserOnboarding(user);
-      });
-    }
-  });
-
-  // Hàm kiểm tra xem đã khai báo chưa
-  function checkUserOnboarding(user) {
-    // Nếu chưa có trường 'onboarding_done' trong metadata -> Hiện Form
-    if (!user.user_metadata.onboarding_done) {
-      console.log("User mới -> Hiện form khai báo");
-      document.getElementById("onboarding-modal").style.display = "flex";
-      
-      // Tự động điền tên từ Google/Email nếu có
-      if(user.user_metadata.full_name) {
-        document.getElementById("inp-name").value = user.user_metadata.full_name;
-      }
-    } else {
-      console.log("User cũ -> Cho vào học");
-    }
+  // Hàm hiển thị Modal
+  function showModal() {
+    document.getElementById("truth-modal").style.display = "flex";
   }
 
-  // Hàm Lưu dữ liệu
-  function saveProfile() {
-    const name = document.getElementById("inp-name").value;
-    const current = document.getElementById("inp-current-level").value;
-    const target = document.getElementById("inp-target-level").value;
-    const delay = document.getElementById("inp-delay").value;
+  // Hàm ẩn Modal
+  function hideModal() {
+    document.getElementById("truth-modal").style.display = "none";
+  }
 
-    if (!name || !delay) {
-      alert("Vui lòng nhập Tên và Thời gian trì hoãn để AI hiểu bạn hơn!");
+  // LOGIC CHÍNH: Xử lý khi lưu dữ liệu từ Form
+  function saveTruth() {
+    const delay = document.getElementById("input-delay").value;
+    const cost = document.getElementById("input-cost").value;
+    const waste = document.getElementById("input-waste").value;
+
+    if (!delay || !cost || !waste) {
+      alert("Hãy trả lời hết đi! Đừng trốn tránh sự thật.");
       return;
     }
 
     const user = netlifyIdentity.currentUser();
     if (user) {
-      // Đổi nút bấm thành "Đang lưu..."
-      const btn = document.querySelector("button[onclick='saveProfile()']");
-      btn.innerText = "⏳ Đang ghi dữ liệu...";
-
       user.update({
         data: {
-          full_name: name,             // Tên gọi
-          current_level: current,      // Trình độ hiện tại
-          target_level: target,        // Mục tiêu
-          procrastination_months: delay, // Chỉ số trì hoãn
-          onboarding_done: true        // Đánh dấu đã xong!
+          procrastination_index: parseInt(delay),
+          missed_opportunity_cost: parseInt(cost),
+          wasted_time_daily: parseInt(waste),
+          onboarding_completed: true // Đánh dấu là đã khai báo
         }
       }).then(() => {
-        alert("Tuyệt vời! Chào mừng " + name + " đến với lộ trình " + current + " -> " + target);
-        document.getElementById("onboarding-modal").style.display = "none";
-        location.reload(); // Tải lại trang để cập nhật giao diện
-      }).catch(err => {
-        console.error(err);
-        alert("Lỗi lưu trữ: " + err.message);
-        btn.innerText = "Thử lại";
+        alert("Đã lưu! AI đã nắm được điểm yếu của bạn. Hãy bắt đầu học.");
+        hideModal();
+        // Ở đây có thể reload trang để cập nhật giao diện
+        location.reload();
       });
     }
+  }
+
+  // LOGIC KIỂM TRA LÚC LOGIN
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("login", user => {
+      console.log("Kiểm tra hồ sơ của:", user.email);
+      netlifyIdentity.close(); // Đóng popup login
+
+      // KIỂM TRA QUAN TRỌNG: Đã khai báo chưa?
+      // Nếu chưa có 'procrastination_index' -> Hiện Modal ngay lập tức
+      if (!user.user_metadata.procrastination_index) {
+        console.log("Người dùng mới! Kích hoạt Form Tra Tấn.");
+        showModal();
+      } else {
+        console.log("Người quen! Chỉ số trì hoãn:", user.user_metadata.procrastination_index);
+        alert("Chào mừng trở lại, Mục đồng " + user.user_metadata.full_name);
+      }
+    });
   }
 </script>                    
 </body>
