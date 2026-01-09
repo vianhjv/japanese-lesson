@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Học tiếng Nhật cùng An - Bản Nâng Cấp</title>
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --primary: #3498db; --secondary: #2ecc71; --accent: #9b59b6; --bg: #f0f4f8; --text: #2c3e50; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: var(--bg); margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center; color: var(--text); }
+        
+        .app-container { width: 100%; max-width: 600px; background: white; padding: 15px; border-radius: 25px; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+        /* Bố cục mới: Writing Zone */
+        .writing-zone { 
+            display: flex; min-height: 220px; background: #fff; border: 2px solid #e1e8ed; 
+            border-radius: 20px; margin-bottom: 15px; overflow: hidden;
+        }
+
+        /* Cột trái: 1/3 diện tích cho Thông tin */
+        .char-info { 
+            flex: 1.2; background: #f8fbff; border-right: 2px solid #f0f4f8;
+            display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px;
+        }
+        .info-romaji { font-size: 2.8rem; font-weight: 800; color: var(--primary); line-height: 1; }
+        .info-icon { font-size: 3.5rem; margin: 10px 0; }
+        .info-word { font-size: 1.2rem; font-weight: bold; color: #34495e; }
+        .info-mean { font-size: 0.95rem; color: #7f8c8d; margin-top: 5px; }
+
+        /* Cột phải: 2/3 diện tích cho Khung viết */
+        .char-canvas { 
+            flex: 2; display: flex; justify-content: center; align-items: flex-end; 
+            padding: 10px; gap: 5px; background: white;
+        }
+        .writer-container { width: 170px; height: 170px; border: 1px solid #f0f0f0; }
+        .writer-container.small { width: 100px; height: 100px; }
+
+        /* Điều khiển */
+        .status { text-align: center; font-size: 0.85rem; font-weight: bold; color: #e67e22; margin-bottom: 10px; height: 18px; }
+        .actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+        .btn { padding: 12px 5px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; gap: 6px; transition: 0.2s; }
+        .btn:active { transform: scale(0.95); }
+        .btn-audio { background: var(--accent); }
+        .btn-play { background: var(--secondary); }
+        .btn-quiz { background: var(--primary); }
+
+        /* Bảng chữ cái */
+        .cat-tabs { display: flex; gap: 5px; margin: 15px 0 10px; background: #eee; border-radius: 12px; padding: 5px; }
+        .cat-tab { flex: 1; padding: 10px; cursor: pointer; border-radius: 10px; font-size: 0.85rem; font-weight: 600; text-align: center; }
+        .cat-tab.active { background: white; color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+
+        .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; max-height: 250px; overflow-y: auto; padding: 5px; }
+        .char-card { aspect-ratio: 1/1; background: #fff; border: 1px solid #dfe6e9; border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 1.3rem; font-weight: bold; transition: 0.2s; }
+        .char-card:hover { border-color: var(--primary); }
+        .char-card.active { background: var(--primary); color: white; }
+
+        @media (max-width: 480px) {
+            .writing-zone { flex-direction: column; }
+            .char-info { border-right: none; border-bottom: 2px solid #f0f4f8; padding: 15px; }
+            .char-canvas { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <div class="writing-zone">
+        <!-- Phần thông tin (Trái) -->
+        <div class="char-info">
+            <div id="info-romaji" class="info-romaji">-</div>
+            <div id="info-icon" class="info-icon">❓</div>
+            <div id="info-word" class="info-word">Đang tải...</div>
+            <div id="info-mean" class="info-mean">...</div>
+        </div>
+        
+        <!-- Phần tập viết (Phải) -->
+        <div class="char-canvas">
+            <div id="t1" class="writer-container"></div>
+            <div id="t2" class="writer-container small" style="display: none;"></div>
+        </div>
+    </div>
+
+    <div id="status" class="status">Chọn một chữ để bắt đầu</div>
+
+    <div class="actions">
+        <button class="btn btn-audio" onclick="playVoice()"><i class="fas fa-volume-up"></i> Nghe</button>
+        <button class="btn btn-play" onclick="animateAll()"><i class="fas fa-play"></i> Mẫu</button>
+        <button class="btn btn-quiz" onclick="startQuiz()"><i class="fas fa-edit"></i> Viết</button>
+    </div>
+
+    <div class="cat-tabs">
+        <div id="c-basic" class="cat-tab active" onclick="setCat('basic')">Cơ bản</div>
+        <div id="c-daku" class="cat-tab" onclick="setCat('daku')">Âm đục</div>
+        <div id="c-yoon" class="cat-tab" onclick="setCat('yoon')">Âm ghép</div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+</div>
+
+<script>
+    // TỪ ĐIỂN TỪ VỰNG & MINH HỌA
+    const VOCAB_DATA = {
+        'あ': { romaji: 'A', word: 'あめ (Ame)', mean: 'Cơn mưa', icon: '☔' },
+        'い': { romaji: 'I', word: 'いぬ (Inu)', mean: 'Con chó', icon: '🐶' },
+        'う': { romaji: 'U', word: 'うみ (Umi)', mean: 'Biển', icon: '🌊' },
+        'え': { romaji: 'E', word: 'えんぴつ (Enpitsu)', mean: 'Bút chì', icon: '✏️' },
+        'お': { romaji: 'O', word: 'おにぎり (Onigiri)', mean: 'Cơm nắm', icon: '🍙' },
+        'か': { romaji: 'Ka', word: 'かめ (Kame)', mean: 'Con rùa', icon: '🐢' },
+        // ... các chữ khác sẽ hiển thị mặc định nếu chưa có dữ liệu chi tiết
+    };
+
+    const DATA = {
+        hira: {
+            basic: [['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so'],['た','ta'],['chi','chi'],['tsu','tsu'],['te','te'],['to','to'],['na','na'],['ni','ni'],['nu','nu'],['ne','ne'],['no','no'],['ha','ha'],['hi','hi'],['fu','fu'],['he','he'],['ho','ho'],['ma','ma'],['mi','mi'],['mu','mu'],['me','me'],['mo','mo'],['ya','ya'],['',''],['yu','yu'],['',''],['yo','yo'],['ra','ra'],['ri','ri'],['ru','ru'],['re','re'],['ro','ro'],['wa','wa'],['',''],['',''],['',''],['wo','wo'],['n','n']],
+            daku: [['が','ga'],['ぎ','gi'],['ぐ','gu'],['げ','ge'],['ご','go'],['ざ','za'],['じ','ji'],['ず','zu'],['ぜ','ze'],['ぞ','zo'],['だ','da'],['ぢ','ji'],['づ','zu'],['で','de'],['ど','do'],['ば','ba'],['び','bi'],['ぶ','bu'],['べ','be'],['ぼ','bo'],['ぱ','pa'],['ぴ','pi'],['ぷ','pu'],['ぺ','pe'],['ぽ','po']],
+            yoon: [['きゃ','kya'],['きゅ','kyu'],['きょ','kyo'],['しゃ','sha'],['しゅ','shu'],['しょ','sho']]
+        }
+    };
+
+    let curChar = 'あ', writers = [];
+
+    function renderGrid() {
+        const grid = document.getElementById('grid');
+        grid.innerHTML = '';
+        DATA.hira.basic.forEach(item => {
+            const card = document.createElement('div');
+            if (item[0] === '') { card.className = 'char-card empty'; }
+            else {
+                card.className = 'char-card' + (item[0]===curChar?' active':'');
+                card.innerText = item[0];
+                card.onclick = () => selectChar(item[0]);
+            }
+            grid.appendChild(card);
+        });
+    }
+
+    function selectChar(c) {
+        curChar = c;
+        renderGrid();
+        
+        // 1. Cập nhật thông tin bên trái
+        const info = VOCAB_DATA[c] || { romaji: c.toUpperCase(), word: c, mean: 'Từ vựng đang cập nhật', icon: '🇯🇵' };
+        document.getElementById('info-romaji').innerText = info.romaji;
+        document.getElementById('info-icon').innerText = info.icon;
+        document.getElementById('info-word').innerText = info.word;
+        document.getElementById('info-mean').innerText = info.mean;
+
+        // 2. Cập nhật khung viết bên phải
+        const chars = c.split('');
+        document.getElementById('t1').innerHTML = '';
+        document.getElementById('t2').innerHTML = '';
+        document.getElementById('t2').style.display = chars.length > 1 ? 'block' : 'none';
+        
+        writers = [];
+        writers.push(createW('t1', chars[0], 170));
+        if(chars.length > 1) writers.push(createW('t2', chars[1], 100));
+    }
+
+    function createW(id, char, size) {
+        return HanziWriter.create(id, char, {
+            width: size, height: size, padding: 10, showOutline: true,
+            strokeColor: '#2c3e50', outlineColor: '#f0f0f0', drawingColor: '#3498db',
+            charDataLoader: (charToLoad, onComplete) => {
+                fetch(`https://cdn.jsdelivr.net/gh/ailectra/kana-json@master/data/${encodeURIComponent(charToLoad)}.json`)
+                    .then(res => res.json())
+                    .then(data => { onComplete(data); });
+            }
+        });
+    }
+
+    function playVoice() {
+        const ut = new SpeechSynthesisUtterance(curChar);
+        ut.lang = 'ja-JP';
+        window.speechSynthesis.speak(ut);
+    }
+
+    async function animateAll() {
+        for (let w of writers) await w.animateCharacter();
+    }
+
+    function startQuiz() {
+        if (!writers.length) return;
+        document.getElementById('status').innerText = "Hãy viết theo nét mờ...";
+        writers[0].quiz({ onComplete: () => { 
+            if(writers[1]) {
+                document.getElementById('status').innerText = "Viết tiếp chữ nhỏ...";
+                writers[1].quiz({ onComplete: () => document.getElementById('status').innerText = "Xuất sắc!" });
+            } else {
+                document.getElementById('status').innerText = "Giỏi lắm!";
+            }
+        }});
+    }
+
+    window.onload = () => { renderGrid(); selectChar('あ'); };
+</script>
+</body>
+</html>
