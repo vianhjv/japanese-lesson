@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Học viết cùng An - N5 (Stable)</title>
+    <title>Học viết cùng An - N5 chuẩn</title>
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
     <style>
-        body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; background-color: #f0f7ff; padding: 20px; }
-        .container { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.15); width: 100%; max-width: 400px; text-align: center; }
-        #target { background: #fff; border: 2px dashed #3498db; border-radius: 12px; margin: 20px auto; width: 220px; height: 220px; }
-        .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        button { padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; background-color: #f4f7f9; padding: 20px; }
+        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        #target { background: #fff; border: 2px solid #e0e6ed; border-radius: 15px; margin: 20px auto; width: 250px; height: 250px; position: relative; }
+        .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        button { padding: 12px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
         .play { background: #2ecc71; color: white; }
         .quiz { background: #3498db; color: white; }
-        .selector { margin-bottom: 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
-        .c-btn { width: 45px; height: 45px; border: 1px solid #dee2e6; background: white; border-radius: 8px; font-size: 20px; cursor: pointer; }
+        .selector { margin-bottom: 25px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+        .c-btn { width: 45px; height: 45px; border: 2px solid #dcdde1; background: white; border-radius: 10px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
         .c-btn.active { background: #3498db; color: white; border-color: #3498db; }
-        #msg { margin-top: 15px; color: #e67e22; font-weight: bold; min-height: 24px; }
+        #msg { margin-top: 15px; color: #7f8c8d; font-size: 14px; min-height: 20px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2>Tập viết Hiragana cùng An</h2>
+    <h3>Tập viết Hiragana cùng An</h3>
     
     <div class="selector">
         <button class="c-btn active" onclick="change('あ', this)">あ</button>
@@ -33,7 +33,7 @@
     </div>
 
     <div id="target"></div>
-    <div id="msg">Đang sẵn sàng...</div>
+    <div id="msg">Đang chuẩn bị dữ liệu...</div>
 
     <div class="btns">
         <button class="play" onclick="writer.animateCharacter()">Xem mẫu</button>
@@ -42,39 +42,47 @@
 </div>
 
 <script>
-    // DỮ LIỆU ĐÃ NHÚNG TRỰC TIẾP - KHÔNG LO LỖI 404
-    const localData = {
-        'あ': {"strokes":["M 55.25 35.75 C 53.75 36.5 52.25 37.5 50.75 38.5 Q 43.5 43.25 36.25 48 C 34.75 49 33.25 50 31.75 51","M 51.5 16.25 C 51.75 17.75 52 19.25 52.25 20.75 Q 53 25.25 53.75 29.75 C 54.5 34.25 55.25 38.75 56 43.25 Q 56.5 46.25 57 49.25 C 58.75 59.75 60.5 70.25 62.25 80.75 C 62.5 82.25 62.75 83.75 63 85.25","M 41.5 56.75 C 43.5 54.5 45.5 52.25 47.5 50 C 49.5 47.75 51.5 45.5 53.5 43.25 C 55 41.5 56.5 39.75 58 38 C 65.75 30.5 73.5 23 81.25 15.5 Q 84.75 13.5 88.25 11.5 C 91.75 12.5 95.25 13.5 98.75 14.5 C 96.25 18 93.75 21.5 91.25 25 C 83 36.5 74.75 48 66.5 59.5 C 65.5 61 64.5 62.5 63.5 64 Q 60.5 69.5 57.5 75 C 53.75 82.25 50 89.5 46.25 96.75 C 44.25 97.75 42.25 98.75 40.25 99.75 C 36.25 99 32.25 98.25 28.25 97.5 Q 23.5 94.75 18.75 92 C 14 89.25 9.25 86.5 4.5 83.75 C 5.5 81.25 6.5 78.75 7.5 76.25 C 9.5 71.25 11.5 66.25 13.5 61.25 C 16.5 53.75 19.5 46.25 22.5 38.75 Q 23.5 36.25 24.5 33.75 Q 28 32.5 31.5 31.25 C 34.75 33.75 38 36.25 41.25 38.75 Q 46.5 42.75 51.75 46.75"],"medians":[[[55.25,35.75],[31.75,51]],[[51.5,16.25],[63,85.25]],[[41.5,56.75],[63.5,64],[46.25,96.75],[4.5,83.75],[24.5,33.75],[51.75,46.75]]]},
-        'い': {"strokes":["M 29.25 20.75 C 27.5 24 25.75 27.25 24 30.5 C 19 39.75 14 49 9 58.25 C 8.25 59.75 7.5 61.25 6.75 62.75 Q 6.5 68.25 6.25 73.75 C 6 79.25 5.75 84.75 5.5 90.25 Q 7.75 92.25 10 94.25 C 12.25 93 14.5 91.75 16.75 90.5 C 19 86.25 21.25 82 23.5 77.75 C 24.25 76.25 25 74.75 25.75 73.25","M 76.25 23.25 C 77.5 25.75 78.75 28.25 80 30.75 C 83 36.75 86 42.75 89 48.75 C 90.5 51.75 92 54.75 93.5 57.75 Q 93.25 61 93 64.25 C 92.75 67.5 92.5 70.75 92.25 74 C 90 75.75 87.75 77.5 85.5 79.25 C 81 76.5 76.5 73.75 72 71 C 68.5 67.5 65 64 61.5 60.5"],"medians":[[[29.25,20.75],[9,58.25],[5.5,90.25],[25.75,73.25]],[[76.25,23.25],[93.5,57.75],[92.25,74],[61.5,60.5]]]},
-        'う': {"strokes":["M 37.5 13.25 C 41 12.75 44.5 12.25 48 11.75 Q 56.5 10.5 65 9.25 Q 67.75 13 70.5 16.75 C 68 18.5 65.5 20.25 63 22 Q 54.5 26.25 46 30.5 C 43.5 31 41 31.5 38.5 32","M 24 45.25 C 27.5 44.5 31 43.75 34.5 43 Q 46.25 40.25 58 37.5 C 62.5 37 67 36.5 71.5 36 Q 78.5 38 85.5 40 C 89.75 45.25 94 50.5 98.25 55.75 C 96 61.5 93.75 67.25 91.5 73 C 86.5 81.25 81.5 89.5 76.5 97.75 C 71.75 97.75 67 97.75 62.25 97.75 Q 56.25 94.5 50.25 91.25 C 44.25 88 38.25 84.75 32.25 81.5 Q 36 78 39.75 74.5 C 42.5 70.25 45.25 66 48 61.75"],"medians":[[[37.5,13.25],[65,9.25],[38.5,32]],[[24,45.25],[71.5,36],[98.25,55.75],[76.5,97.75],[32.25,81.5],[48,61.75]]]},
-        'え': {"strokes":["M 46.5 10.75 C 49 10.5 51.5 10.25 54 10 Q 58.75 10 63.5 10 C 65.25 14.25 67 18.5 68.75 22.75 C 66.25 24 63.75 25.25 61.25 26.5 Q 56 28 50.75 29.5","M 24.5 45.5 C 28 44.25 31.5 43 35 41.75 Q 48.75 36.75 62.5 31.75 C 66.5 30.5 70.5 29.25 74.5 28 Q 78.75 27.25 83 26.5 Q 71.75 39.25 60.5 52 C 55 58.25 49.5 64.5 44 70.75 Q 40.25 75.75 36.5 80.75 C 41 81.75 45.5 82.75 50 83.75 Q 60.75 86.5 71.5 89.25 C 74.75 90 78 90.75 81.25 91.5 Q 84.75 89 88.25 86.5 Q 81.5 84 74.75 81.5 C 70.75 78.5 66.75 75.5 62.75 72.5 Q 54.75 68 46.75 63.5"],"medians":[[[46.5,10.75],[63.5,10],[50.75,29.5]],[[24.5,45.5],[83,26.5],[36.5,80.75],[81.25,91.5],[88.25,86.5],[46.75,63.5]]]},
-        'お': {"strokes":["M 31.75 38.75 C 34.5 37.75 37.25 36.75 40 35.75 Q 50 32.25 60 28.75 C 61.75 28.25 63.5 27.75 65.25 27.25","M 51.25 15.25 C 51.5 16.75 51.75 18.25 52 19.75 Q 53 25.5 54 31.25 C 54.75 36.5 55.5 41.75 56.25 47 Q 56.5 50.25 56.75 53.5 Q 52.75 53.75 48.75 54 C 44.5 54.5 40.25 55 36 55.5 C 32.75 56 29.5 56.5 26.25 57 C 22.5 57.5 18.75 58 15 58.5 C 16.25 61.25 17.5 64 18.75 66.75 C 23.5 76 28.25 85.25 33 94.5 C 36.5 95.5 40 96.5 43.5 97.5 Q 52.5 98.75 61.5 100 C 65.5 99.75 69.5 99.5 73.5 99.25 Q 81.25 96.5 89 93.75 C 92.5 91.5 96 89.25 99.5 87 C 98.5 84 97.5 81 96.5 78 C 93 70 89.5 62 86 54 C 83.25 49 80.5 44 77.75 39 C 75.75 41 73.75 43 71.75 45","M 76.5 13.5 C 78.5 15.5 80.5 17.5 82.5 19.5 C 85.5 23 88.5 26.5 91.5 30 Q 93 33.25 94.5 36.5 C 92.5 38 90.5 39.5 88.5 41"],"medians":[[[31.75,38.75],[65.25,27.25]],[[51.25,15.25],[56.75,53.5],[15,58.5],[33,94.5],[99.5,87],[71.75,45]],[[76.5,13.5],[91.5,30],[88.5,41]]]}
-    };
-
     let writer;
     const msgEl = document.getElementById('msg');
 
     function init(char) {
-        msgEl.innerText = "Chữ: " + char;
+        msgEl.innerText = "Đang tải chữ: " + char;
         document.getElementById('target').innerHTML = '';
         
         writer = HanziWriter.create('target', char, {
-            width: 220,
-            height: 220,
-            padding: 20,
+            width: 250,
+            height: 250,
+            padding: 25,
             showOutline: true,
             strokeColor: '#2c3e50',
-            outlineColor: '#f1f3f5',
+            outlineColor: '#f1f2f6',
             drawingColor: '#3498db',
-            // Nạp dữ liệu từ biến localData ở trên
-            charDataLoader: (c, onComplete) => onComplete(localData[c])
+            drawingWidth: 15,
+            // ĐÂY LÀ PHẦN QUAN TRỌNG NHẤT: Link dữ liệu chuẩn 1024x1024
+            charDataLoader: function(charToLoad, onComplete) {
+                const encodedChar = encodeURIComponent(charToLoad);
+                // Sử dụng CDN của JSDelivr trỏ vào kho dữ liệu JP chuẩn của HanziWriter
+                fetch(`https://cdn.jsdelivr.net/gh/chanind/hanzi-writer-data-jp@master/data/${encodedChar}.json`)
+                    .then(res => {
+                        if (!res.ok) throw new Error("Lỗi tải file");
+                        return res.json();
+                    })
+                    .then(data => {
+                        msgEl.innerText = "Sẵn sàng viết chữ " + charToLoad;
+                        onComplete(data);
+                    })
+                    .catch(err => {
+                        msgEl.innerText = "Lỗi: Không tải được dữ liệu chữ cái.";
+                        console.error(err);
+                    });
+            }
         });
     }
 
     function start() {
-        msgEl.innerText = "Mời bạn tô theo nét mờ!";
+        msgEl.innerText = "Hãy tô theo nét mờ!";
         writer.quiz({
-            onComplete: () => msgEl.innerText = "Xuất sắc! Bạn viết đúng rồi."
+            onComplete: () => msgEl.innerText = "Chúc mừng! Bạn đã hoàn thành chữ này."
         });
     }
 
@@ -84,7 +92,7 @@
         init(char);
     }
 
-    // Tự động khởi chạy
+    // Khởi tạo chữ đầu tiên
     window.onload = () => init('あ');
 </script>
 
