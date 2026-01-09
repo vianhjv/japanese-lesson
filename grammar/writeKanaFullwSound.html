@@ -3,69 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Học tiếng Nhật cùng An - Bản hoàn thiện</title>
+    <title>Học tiếng Nhật cùng An - Final Fix</title>
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
-    <!-- Thêm icon cho nút âm thanh -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #3498db; --secondary: #2ecc71; --accent: #9b59b6; --bg: #f0f2f5; }
+        :root { --primary: #3498db; --secondary: #2ecc71; --accent: #9b59b6; --bg: #f4f7f9; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center; }
+        .app-container { width: 100%; max-width: 500px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
         
-        .app-container { width: 100%; max-width: 550px; background: white; padding: 20px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); box-sizing: border-box; }
-        
-        .mode-switch { display: flex; gap: 10px; margin-bottom: 20px; }
-        .mode-btn { flex: 1; padding: 12px; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; background: #e0e0e0; transition: 0.3s; }
+        .mode-switch { display: flex; gap: 10px; margin-bottom: 15px; }
+        .mode-btn { flex: 1; padding: 12px; border: none; border-radius: 12px; cursor: pointer; font-weight: bold; background: #eee; }
         .mode-btn.active { background: var(--primary); color: white; }
 
-        /* Vùng viết được tinh chỉnh cho âm ghép */
         .writing-zone { 
-            display: flex; 
-            justify-content: center; 
-            align-items: flex-end; /* Quan trọng: Chân của 2 chữ luôn bằng nhau */
-            gap: 2px; /* Khoảng cách rất nhỏ để tạo cảm giác 1 chữ ghép */
-            margin-bottom: 15px; 
-            min-height: 220px; 
-            background: #fff; 
-            padding: 15px; 
-            border-radius: 15px; 
-            border: 2px solid #eee;
+            display: flex; justify-content: center; align-items: flex-end; 
+            gap: 5px; margin-bottom: 10px; min-height: 200px; 
+            background: #fdfdfd; padding: 10px; border-radius: 15px; border: 1px solid #eee;
         }
-        .writer-container { width: 180px; height: 180px; border: 1px dashed #ccc; border-radius: 8px; }
-        .writer-container.small { width: 120px; height: 120px; } /* Chữ nhỏ bằng khoảng 2/3 chữ lớn */
+        .writer-container { width: 180px; height: 180px; border: 1px solid #f0f0f0; background: white; }
+        .writer-container.small { width: 110px; height: 110px; }
 
-        .status { text-align: center; font-weight: bold; color: #e67e22; margin-bottom: 10px; height: 24px; font-size: 0.9rem; }
+        .status { text-align: center; font-weight: bold; color: #e67e22; margin-bottom: 10px; height: 20px; font-size: 0.9rem; }
 
-        .actions { display: grid; grid-template-columns: 1fr 2fr 1.5fr; gap: 8px; margin-top: 10px; }
-        .btn { padding: 12px 5px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; gap: 5px; font-size: 0.9rem; }
+        .actions { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; }
+        .btn { padding: 12px 5px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; gap: 5px; }
         .btn-audio { background: var(--accent); }
         .btn-play { background: var(--secondary); }
         .btn-quiz { background: var(--primary); }
-        .btn:active { transform: scale(0.95); }
 
-        .cat-tabs { display: flex; justify-content: space-around; margin: 20px 0 15px; background: #eee; border-radius: 10px; padding: 5px; }
-        .cat-tab { padding: 8px 10px; cursor: pointer; border-radius: 8px; font-size: 0.85rem; font-weight: 600; flex: 1; text-align: center; }
-        .cat-tab.active { background: white; color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .cat-tabs { display: flex; gap: 5px; margin: 20px 0 10px; background: #eee; border-radius: 10px; padding: 5px; }
+        .cat-tab { flex: 1; padding: 8px; cursor: pointer; border-radius: 7px; font-size: 0.8rem; font-weight: 600; text-align: center; }
+        .cat-tab.active { background: white; color: var(--primary); }
 
-        .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; max-height: 300px; overflow-y: auto; padding: 5px; }
+        .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; max-height: 250px; overflow-y: auto; padding: 5px; border: 1px solid #eee; border-radius: 10px; }
         .grid.yoon { grid-template-columns: repeat(3, 1fr); }
-        
-        .char-card { aspect-ratio: 1/1; background: white; border: 1px solid #ddd; border-radius: 10px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; }
+        .char-card { aspect-ratio: 1/1; background: white; border: 1px solid #ddd; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; cursor: pointer; }
         .char-card.active { background: var(--primary); color: white; border-color: var(--primary); }
-        .char-card span { font-size: 1.1rem; font-weight: bold; }
-        .char-card small { font-size: 0.7rem; opacity: 0.7; }
-        .char-card.empty { visibility: hidden; }
-
-        /* Tối ưu cuộn trên mobile */
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
+        .char-card span { font-size: 1.2rem; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="app-container">
     <div class="mode-switch">
-        <button class="mode-btn active" id="btn-hira" onclick="setMode('hira')">HIRAGANA</button>
-        <button class="mode-btn" id="btn-kata" onclick="setMode('kata')">KATAKANA</button>
+        <button id="m-hira" class="mode-btn active" onclick="setMode('hira')">HIRAGANA</button>
+        <button id="m-kata" class="mode-btn" onclick="setMode('kata')">KATAKANA</button>
     </div>
 
     <div class="writing-zone">
@@ -73,127 +55,116 @@
         <div id="t2" class="writer-container small" style="display: none;"></div>
     </div>
 
-    <div id="status" class="status">Hãy chọn một chữ bên dưới</div>
+    <div id="status" class="status">Đang tải...</div>
 
     <div class="actions">
-        <button class="btn btn-audio" onclick="playAudio()"><i class="fas fa-volume-up"></i> Nghe</button>
-        <button class="btn btn-play" onclick="animateChars()"><i class="fas fa-eye"></i> Xem mẫu</button>
-        <button class="btn btn-quiz" onclick="startQuiz()"><i class="fas fa-pen-nib"></i> Tập viết</button>
+        <button class="btn btn-audio" onclick="playVoice()"><i class="fas fa-volume-up"></i> Nghe</button>
+        <button class="btn btn-play" onclick="animateAll()"><i class="fas fa-eye"></i> Mẫu</button>
+        <button class="btn btn-quiz" onclick="startQuiz()"><i class="fas fa-pen"></i> Viết</button>
     </div>
 
     <div class="cat-tabs">
-        <div class="cat-tab active" id="tab-basic" onclick="setCat('basic')">Cơ bản</div>
-        <div class="cat-tab" id="tab-daku" onclick="setCat('daku')">Âm đục</div>
-        <div class="cat-tab" id="tab-yoon" onclick="setCat('yoon')">Âm ghép</div>
+        <div id="c-basic" class="cat-tab active" onclick="setCat('basic')">Cơ bản</div>
+        <div id="c-daku" class="cat-tab" onclick="setCat('daku')">Âm đục</div>
+        <div id="c-yoon" class="cat-tab" onclick="setCat('yoon')">Âm ghép</div>
     </div>
 
     <div id="grid" class="grid"></div>
 </div>
 
 <script>
-    // [Dữ liệu giữ nguyên như bản trước để đảm bảo đầy đủ]
+    // DATA CHUẨN - ĐÃ FIX LỖI TYPO
     const DATA = {
         hira: {
-            basic: [['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so'],['た','ta'],['ち','chi'],['つ','tsu'],['て','te'],['と','to'],['な','na'],['ni','ni'],['ぬ','nu'],['ね','ne'],['の','no'],['は','ha'],['ひ','hi'],['ふ','fu'],['へ','he'],['ほ','ho'],['ま','ma'],['み','mi'],['む','mu'],['め','me'],['も','mo'],['や','ya'],['',''],['ゆ','yu'],['',''],['よ','yo'],['ら','ra'],['り','ri'],['る','ru'],['れ','re'],['ろ','ro'],['わ','wa'],['',''],['',''],['',''],['を','wo'],['ん','n']],
-            daku: [['が','ga'],['ぎ','gi'],['ぐ','gu'],['げ','ge'],['ご','go'],['ざ','za'],['じ','ji'],['ず','zu'],['ぜ','ze'],['ぞ','zo'],['だ','da'],['ぢ','ji'],['づ','zu'],['đ','de'],['ど','do'],['ば','ba'],['び','bi'],['ぶ','bu'],['べ','be'],['ぼ','bo'],['ぱ','pa'],['ぴ','pi'],['ぷ','pu'],['ぺ','pe'],['ぽ','po']],
+            basic: [['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so'],['た','ta'],['ち','chi'],['つ','tsu'],['て','te'],['と','to'],['な','na'],['に','ni'],['ぬ','nu'],['ね','ne'],['の','no'],['は','ha'],['ひ','hi'],['ふ','fu'],['へ','he'],['ほ','ho'],['ま','ma'],['み','mi'],['む','mu'],['め','me'],['も','mo'],['や','ya'],['',''],['ゆ','yu'],['',''],['よ','yo'],['ら','ra'],['り','ri'],['る','ru'],['れ','re'],['ろ','ro'],['わ','wa'],['',''],['',''],['',''],['を','wo'],['ん','n']],
+            daku: [['が','ga'],['ぎ','gi'],['ぐ','gu'],['げ','ge'],['ご','go'],['ざ','za'],['じ','ji'],['ず','zu'],['ぜ','ze'],['ぞ','zo'],['だ','da'],['ぢ','ji'],['づ','zu'],['で','de'],['ど','do'],['ば','ba'],['び','bi'],['ぶ','bu'],['べ','be'],['ぼ','bo'],['ぱ','pa'],['ぴ','pi'],['ぷ','pu'],['ぺ','pe'],['ぽ','po']],
             yoon: [['きゃ','kya'],['きゅ','kyu'],['きょ','kyo'],['しゃ','sha'],['しゅ','shu'],['しょ','sho'],['ちゃ','cha'],['ちゅ','chu'],['ちょ','cho'],['にゃ','nya'],['にゅ','nyu'],['にょ','nyo'],['ひゃ','hya'],['ひゅ','hyu'],['ひょ','hyo'],['みゃ','mya'],['みゅ','myu'],['みょ','myo'],['りゃ','rya'],['りゅ','ryu'],['りょ','ryo'],['ぎゃ','gya'],['ぎゅ','gyu'],['ぎょ','gyo'],['じゃ','ja'],['じゅ','ju'],['じょ','jo'],['びゃ','bya'],['びゅ','byu'],['びょ','byo'],['ぴゃ','pya'],['ぴゅ','pyu'],['ぴょ','pyo']]
         },
         kata: {
             basic: [['ア','a'],['イ','i'],['ウ','u'],['エ','e'],['オ','o'],['カ','ka'],['キ','ki'],['ク','ku'],['ケ','ke'],['コ','ko'],['サ','sa'],['シ','shi'],['ス','su'],['セ','se'],['ソ','so'],['タ','ta'],['チ','chi'],['ツ','tsu'],['テ','te'],['ト','to'],['ナ','na'],['ニ','ni'],['ヌ','nu'],['ネ','ne'],['ノ','no'],['ハ','ha'],['ヒ','hi'],['フ','fu'],['ヘ','he'],['ホ','ho'],['マ','ma'],['ミ','mi'],['ム','mu'],['メ','me'],['モ','mo'],['ヤ','ya'],['',''],['ユ','yu'],['',''],['ヨ','yo'],['ラ','ra'],['リ','ri'],['ル','ru'],['レ','re'],['ロ','ro'],['ワ','wa'],['',''],['',''],['',''],['ヲ','wo'],['ン','n']],
             daku: [['ガ','ga'],['ギ','gi'],['グ','gu'],['ゲ','ge'],['ゴ','go'],['ザ','za'],['ジ','ji'],['ズ','zu'],['ゼ','ze'],['ゾ','zo'],['ダ','da'],['ヂ','ji'],['ヅ','zu'],['デ','de'],['ド','do'],['バ','ba'],['ビ','bi'],['ブ','bu'],['ベ','be'],['ボ','bo'],['パ','pa'],['ピ','pi'],['プ','pu'],['ペ','pe'],['ポ','po']],
-            yoon: [['キャ','kya'],['キュ','kyu'],['キョ','kyo'],['シャ','sha'],['シュ','shu'],['ショ','sho'],['チャ','cha'],['チュ','chu'],['チョ','cho'],['ニャ','nya'],['ニュ','nyu'],['ニョ','nyo'],['ヒャ','hya'],['ヒュ','hyu'],['ヒョ','hyo'],['ミャ','mya'],['ミュ','myu'],['ミョ','myo'],['リャ','rya'],['リュ','ryu'],['リョ','ryo'],['ギャ','gya'],['ギュ','gyu'],['ギョ','gyo'],['ジャ','ja'],['ジュ','ju'],['ジョ','jo'],['ビャ','bya'],['ビュ','byu'],['ビョ','byo'],['ピャ','pya'],['ピュ','pyu'],['ピョ','pyo']]
+            yoon: [['キャ','kya'],['キュ','kyu'],['キョ','kyo'],['シャ','sha'],['シュ','shu'],['ショ','sho'],['チャ','cha'],['チュ','chu'],['チョ','cho'],['ニャ','nya'],['ニュ','nyu'],['ニョ','nyo'],['ヒャ','hya'],['ヒュ','hyu'],['ヒョ','hyo'],['ミャ','mya'],['ミュ','myu'],['ミョ','myo'],['リャ','rya'],['リュ','ryu'],['リョ','ryo'],['ギャ','gya'],['ギュ','gyu'],['ギョ','gyo'],['ジャ','ja'],['ジュ','ju'],['ジョ','jo'],['ビャ','bya'],['びゅ','byu'],['ビョ','byo'],['ピャ','pya'],['ピュ','pyu'],['ピョ','pyo']]
         }
     };
 
-    let curMode = 'hira';
-    let curCat = 'basic';
-    let curText = 'あ';
-    let writers = [];
+    let curMode = 'hira', curCat = 'basic', curChar = 'あ', writers = [];
 
     function setMode(m) {
         curMode = m;
-        document.getElementById('btn-hira').className = 'mode-btn' + (m==='hira'?' active':'');
-        document.getElementById('btn-kata').className = 'mode-btn' + (m==='kata'?' active':'');
+        document.getElementById('m-hira').classList.toggle('active', m==='hira');
+        document.getElementById('m-kata').classList.toggle('active', m==='kata');
         renderGrid();
     }
 
     function setCat(c) {
         curCat = c;
-        ['basic','daku','yoon'].forEach(id => {
-            document.getElementById('tab-'+id).className = 'cat-tab' + (id===c?' active':'');
-        });
+        ['basic','daku','yoon'].forEach(i => document.getElementById('c-'+i).classList.toggle('active', i===c));
         renderGrid();
     }
 
     function renderGrid() {
         const grid = document.getElementById('grid');
         grid.innerHTML = '';
-        grid.className = 'grid ' + (curCat === 'yoon' ? 'yoon' : '');
+        grid.className = 'grid ' + (curCat==='yoon'?'yoon':'');
         DATA[curMode][curCat].forEach(item => {
-            if (item[0] === '') {
-                grid.innerHTML += `<div class="char-card empty"></div>`;
-            } else {
-                const active = item[0] === curText ? 'active' : '';
-                const card = document.createElement('div');
-                card.className = 'char-card ' + active;
+            const card = document.createElement('div');
+            if (item[0] === '') { card.className = 'char-card empty'; }
+            else {
+                card.className = 'char-card' + (item[0]===curChar?' active':'');
                 card.innerHTML = `<span>${item[0]}</span><small>${item[1]}</small>`;
                 card.onclick = () => selectChar(item[0]);
-                grid.appendChild(card);
             }
+            grid.appendChild(card);
         });
     }
 
-    function selectChar(txt) {
-        curText = txt;
-        document.querySelectorAll('.char-card').forEach(c => c.classList.remove('active'));
-        renderGrid(); // Cập nhật trạng thái active
-        
-        const chars = txt.split('');
+    function selectChar(c) {
+        curChar = c;
+        renderGrid();
+        const chars = c.split('');
         document.getElementById('t1').innerHTML = '';
         document.getElementById('t2').innerHTML = '';
         document.getElementById('t2').style.display = chars.length > 1 ? 'block' : 'none';
         
         writers = [];
-        document.getElementById('status').innerText = "Đang tải " + txt + "...";
-
-        writers.push(createWriter('t1', chars[0], 180));
-        if (chars.length > 1) {
-            writers.push(createWriter('t2', chars[1], 120));
-        }
+        document.getElementById('status').innerText = "Đang tải " + c + "...";
+        
+        writers.push(createW('t1', chars[0], 180));
+        if(chars.length > 1) writers.push(createW('t2', chars[1], 110));
     }
 
-    function createWriter(id, char, size) {
+    function createW(id, char, size) {
         return HanziWriter.create(id, char, {
-            width: size, height: size, padding: 15,
-            showOutline: true, strokeColor: '#2c3e50', outlineColor: '#eee', drawingColor: '#3498db', drawingWidth: 10,
-            charDataLoader: (c, onComplete) => {
-                fetch(`https://cdn.jsdelivr.net/gh/ailectra/kana-json@master/data/${encodeURIComponent(c)}.json`)
+            width: size, height: size, padding: 15, showOutline: true,
+            strokeColor: '#2c3e50', outlineColor: '#eee', drawingColor: '#3498db',
+            charDataLoader: (charToLoad, onComplete) => {
+                fetch(`https://cdn.jsdelivr.net/gh/ailectra/kana-json@master/data/${encodeURIComponent(charToLoad)}.json`)
                     .then(res => res.json())
-                    .then(data => {
-                        document.getElementById('status').innerText = "Đã sẵn sàng!";
-                        onComplete(data);
-                    });
+                    .then(data => { document.getElementById('status').innerText = "Sẵn sàng!"; onComplete(data); })
+                    .catch(() => document.getElementById('status').innerText = "Lỗi tải dữ liệu!");
             }
         });
     }
 
-    function playAudio() {
-        const audio = new Audio(`https://translate.google.com/translate_tts?ie=UTF-8&tl=ja&client=tw-ob&q=${encodeURIComponent(curText)}`);
-        audio.play();
+    function playVoice() {
+        const ut = new SpeechSynthesisUtterance(curChar);
+        ut.lang = 'ja-JP';
+        ut.rate = 0.8;
+        window.speechSynthesis.speak(ut);
     }
 
-    async function animateChars() {
-        for (let w of writers) { await w.animateCharacter(); }
+    async function animateAll() {
+        for (let w of writers) await w.animateCharacter();
     }
 
     function startQuiz() {
-        if (writers.length === 0) return;
-        document.getElementById('status').innerText = "Mời bạn tập viết...";
+        if (!writers.length) return;
+        document.getElementById('status').innerText = "Mời bạn viết...";
         if (writers.length === 1) {
-            writers[0].quiz({ onComplete: () => document.getElementById('status').innerText = "Tuyệt vời!" });
+            writers[0].quiz({ onComplete: () => document.getElementById('status').innerText = "Giỏi lắm!" });
         } else {
             writers[0].quiz({ onComplete: () => {
-                document.getElementById('status').innerText = "Viết tiếp chữ nhỏ...";
+                document.getElementById('status').innerText = "Viết chữ nhỏ...";
                 writers[1].quiz({ onComplete: () => document.getElementById('status').innerText = "Hoàn hảo!" });
             }});
         }
@@ -201,6 +172,5 @@
 
     window.onload = () => { renderGrid(); selectChar('あ'); };
 </script>
-
 </body>
 </html>
