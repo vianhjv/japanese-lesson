@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Học viết cùng An - N5 chuẩn</title>
+    <title>An học tiếng Nhật - N5</title>
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
     <style>
-        body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; background-color: #f4f7f9; padding: 20px; }
+        body { font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; background-color: #f0f4f8; padding: 20px; }
         .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
-        #target { background: #fff; border: 2px solid #e0e6ed; border-radius: 15px; margin: 20px auto; width: 250px; height: 250px; position: relative; }
-        .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        button { padding: 12px; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; font-size: 16px; transition: 0.3s; }
+        #target { background: #fff; border: 2px solid #3498db; border-radius: 15px; margin: 20px auto; width: 250px; height: 250px; }
+        .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
         .play { background: #2ecc71; color: white; }
         .quiz { background: #3498db; color: white; }
-        .selector { margin-bottom: 25px; display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
-        .c-btn { width: 45px; height: 45px; border: 2px solid #dcdde1; background: white; border-radius: 10px; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .selector { margin-bottom: 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .c-btn { width: 45px; height: 45px; border: 1px solid #dee2e6; background: white; border-radius: 8px; font-size: 20px; cursor: pointer; }
         .c-btn.active { background: #3498db; color: white; border-color: #3498db; }
-        #msg { margin-top: 15px; color: #7f8c8d; font-size: 14px; min-height: 20px; }
+        #msg { margin-top: 15px; color: #e67e22; font-weight: bold; min-height: 24px; }
     </style>
 </head>
 <body>
@@ -33,7 +33,7 @@
     </div>
 
     <div id="target"></div>
-    <div id="msg">Đang chuẩn bị dữ liệu...</div>
+    <div id="msg">Đang sẵn sàng...</div>
 
     <div class="btns">
         <button class="play" onclick="writer.animateCharacter()">Xem mẫu</button>
@@ -46,7 +46,8 @@
     const msgEl = document.getElementById('msg');
 
     function init(char) {
-        msgEl.innerText = "Đang tải chữ: " + char;
+        msgEl.style.color = "#e67e22";
+        msgEl.innerText = "Đang tải chữ: " + char + "...";
         document.getElementById('target').innerHTML = '';
         
         writer = HanziWriter.create('target', char, {
@@ -55,25 +56,25 @@
             padding: 25,
             showOutline: true,
             strokeColor: '#2c3e50',
-            outlineColor: '#f1f2f6',
+            outlineColor: '#f1f3f5',
             drawingColor: '#3498db',
             drawingWidth: 15,
-            // ĐÂY LÀ PHẦN QUAN TRỌNG NHẤT: Link dữ liệu chuẩn 1024x1024
             charDataLoader: function(charToLoad, onComplete) {
+                // SỬ DỤNG KHO DỮ LIỆU KANA CHUẨN
                 const encodedChar = encodeURIComponent(charToLoad);
-                // Sử dụng CDN của JSDelivr trỏ vào kho dữ liệu JP chuẩn của HanziWriter
-                fetch(`https://cdn.jsdelivr.net/gh/chanind/hanzi-writer-data-jp@master/data/${encodedChar}.json`)
+                fetch(`https://cdn.jsdelivr.net/gh/ailectra/kana-json@master/data/${encodedChar}.json`)
                     .then(res => {
-                        if (!res.ok) throw new Error("Lỗi tải file");
+                        if (!res.ok) throw new Error("Không tìm thấy dữ liệu cho chữ này");
                         return res.json();
                     })
                     .then(data => {
-                        msgEl.innerText = "Sẵn sàng viết chữ " + charToLoad;
+                        msgEl.style.color = "#27ae60";
+                        msgEl.innerText = "Đã tải xong chữ " + charToLoad;
                         onComplete(data);
                     })
                     .catch(err => {
-                        msgEl.innerText = "Lỗi: Không tải được dữ liệu chữ cái.";
-                        console.error(err);
+                        msgEl.style.color = "#c0392b";
+                        msgEl.innerText = "Lỗi: " + err.message;
                     });
             }
         });
@@ -82,7 +83,10 @@
     function start() {
         msgEl.innerText = "Hãy tô theo nét mờ!";
         writer.quiz({
-            onComplete: () => msgEl.innerText = "Chúc mừng! Bạn đã hoàn thành chữ này."
+            onComplete: () => {
+                msgEl.style.color = "#27ae60";
+                msgEl.innerText = "Tuyệt vời! Bạn đã viết đúng.";
+            }
         });
     }
 
@@ -92,7 +96,6 @@
         init(char);
     }
 
-    // Khởi tạo chữ đầu tiên
     window.onload = () => init('あ');
 </script>
 
