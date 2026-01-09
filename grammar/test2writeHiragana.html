@@ -62,15 +62,16 @@
             drawingColor: '#007bff',
             // Cách nạp dữ liệu ổn định nhất cho môi trường Server
             charDataLoader: function(charToLoad, onComplete) {
-                // Encode ký tự để tránh lỗi URL
+                // Nguồn dữ liệu từ GitHub chính thức của Hanzi Writer Japanese Data
                 const encodedChar = encodeURIComponent(charToLoad);
-                fetch(`https://cdn.jsdelivr.net/npm/hanzi-writer-data-jp@1.0/${encodedChar}.json`)
+                // Lưu ý link này: trỏ trực tiếp vào thư mục /data/ của repo
+                fetch(`https://raw.githubusercontent.com/chanind/hanzi-writer-data-jp/master/data/${encodedChar}.json`)
                     .then(res => {
-                        if (!res.ok) throw new Error("Không tìm thấy dữ liệu trên CDN");
+                        if (!res.ok) throw new Error("Không tìm thấy dữ liệu cho chữ: " + charToLoad);
                         return res.json();
                     })
                     .then(data => {
-                        log(""); // Xóa log khi thành công
+                        log(""); 
                         onComplete(data);
                     })
                     .catch(err => {
@@ -78,6 +79,9 @@
                         console.error(err);
                     });
             }
+
+
+            
         });
     }
 
