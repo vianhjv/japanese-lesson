@@ -3,169 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>An's Japanese Writing - Demo</title>
-    <!-- Nhúng thư viện HanziWriter từ CDN -->
+    <title>Học viết cùng An - N5</title>
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #f0f4f8;
-            margin: 0;
-            padding: 20px;
-        }
-
-        h1 { color: #2c3e50; font-size: 1.5rem; text-align: center; }
-
-        #character-target {
-            background: white;
-            border: 2px solid #3498db;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin: 20px 0;
-            cursor: crosshair;
-            /* Tối ưu cho mobile */
-            touch-action: none; 
-        }
-
-        .controls {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            width: 100%;
-            max-width: 300px;
-        }
-
-        button {
-            padding: 12px;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-            font-size: 1rem;
-        }
-
-        .btn-play { background-color: #2ecc71; color: white; }
-        .btn-trace { background-color: #3498db; color: white; }
-        .btn-reset { background-color: #95a5a6; color: white; grid-column: span 2; }
-        
-        button:active { transform: scale(0.95); opacity: 0.8; }
-
-        .char-selector {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .char-btn {
-            width: 45px;
-            height: 45px;
-            border: 1px solid #bdc3c7;
-            background: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-
-        .char-btn.active {
-            background-color: #3498db;
-            color: white;
-            border-color: #3498db;
-        }
-
-        #message {
-            margin-top: 15px;
-            font-weight: bold;
-            height: 20px;
-            color: #e67e22;
-        }
+        body { font-family: -apple-system, sans-serif; display: flex; flex-direction: column; align-items: center; background-color: #f8f9fa; padding: 20px; }
+        .container { background: white; padding: 25px; border-radius: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        #target { background: #fff; border: 2px solid #e9ecef; border-radius: 12px; margin: 20px auto; width: 200px; height: 200px; }
+        .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.2s; }
+        .play { background: #28a745; color: white; }
+        .quiz { background: #007bff; color: white; }
+        .selector { margin-bottom: 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .c-btn { width: 45px; height: 45px; border: 1px solid #dee2e6; background: white; border-radius: 8px; font-size: 18px; }
+        .c-btn.active { background: #007bff; color: white; border-color: #007bff; }
+        #debug-log { margin-top: 15px; font-size: 12px; color: #dc3545; min-height: 20px; }
     </style>
 </head>
 <body>
 
-    <h1>Hành trình của An: Tập viết Hiragana</h1>
-
-    <div class="char-selector" id="selector">
-        <!-- Các chữ cái demo -->
-        <div class="char-btn active" onclick="changeChar('あ', this)">あ</div>
-        <div class="char-btn" onclick="changeChar('い', this)">い</div>
-        <div class="char-btn" onclick="changeChar('う', this)">う</div>
-        <div class="char-btn" onclick="changeChar('え', this)">え</div>
-        <div class="char-btn" onclick="changeChar('お', this)">お</div>
+<div class="container">
+    <h3>Tập viết Hiragana</h3>
+    
+    <div class="selector">
+        <button class="c-btn active" onclick="change('あ', this)">あ</button>
+        <button class="c-btn" onclick="change('い', this)">い</button>
+        <button class="c-btn" onclick="change('う', this)">う</button>
+        <button class="c-btn" onclick="change('え', this)">え</button>
+        <button class="c-btn" onclick="change('お', this)">お</button>
     </div>
 
-    <div id="character-target"></div>
+    <div id="target"></div>
+    <div id="debug-log"></div>
 
-    <div id="message">Nhấn "Tập viết" để bắt đầu!</div>
-
-    <div class="controls">
-        <button class="btn-play" onclick="animateChar()">Xem viết (Play)</button>
-        <button class="btn-trace" onclick="startQuiz()">Tập viết (Trace)</button>
-        <button class="btn-reset" onclick="resetChar()">Làm mới</button>
+    <div class="btns">
+        <button class="play" onclick="writer.animateCharacter()">Xem mẫu</button>
+        <button class="quiz" onclick="start()">Tập viết</button>
     </div>
+</div>
 
-    <script>
-        let writer;
-        let currentChar = 'あ';
+<script>
+    let writer;
+    const logEl = document.getElementById('debug-log');
 
-        function initWriter(char) {
-            // Xóa nội dung cũ nếu có
-            document.getElementById('character-target').innerHTML = '';
-            
-            writer = HanziWriter.create('character-target', char, {
-                width: 250,
-                height: 250,
-                padding: 20,
-                showOutline: true,
-                strokeAnimationSpeed: 1, 
-                delayBetweenStrokes: 500, // ms
-                strokeColor: '#2c3e50', // Màu nét vẽ
-                outlineColor: '#ecf0f1', // Màu nét mờ
-                drawingColor: '#3498db', // Màu khi người dùng tô
-                drawingWidth: 15,
-                showHintAfterMisses: 1 // Hiện gợi ý sau 1 lần viết sai
-            });
+    function log(msg) { logEl.innerText = msg; }
+
+    function init(char) {
+        log("Đang tải dữ liệu cho chữ: " + char + "...");
+        document.getElementById('target').innerHTML = '';
+        
+        // Sử dụng nguồn dữ liệu tiếng Nhật chuyên dụng
+        writer = HanziWriter.create('target', char, {
+            width: 200,
+            height: 200,
+            padding: 20,
+            showOutline: true,
+            strokeColor: '#212529',
+            outlineColor: '#f1f3f5',
+            drawingColor: '#007bff',
+            // Cách nạp dữ liệu ổn định nhất cho môi trường Server
+            charDataLoader: function(charToLoad, onComplete) {
+                // Encode ký tự để tránh lỗi URL
+                const encodedChar = encodeURIComponent(charToLoad);
+                fetch(`https://cdn.jsdelivr.net/npm/hanzi-writer-data-jp@1.0/${encodedChar}.json`)
+                    .then(res => {
+                        if (!res.ok) throw new Error("Không tìm thấy dữ liệu trên CDN");
+                        return res.json();
+                    })
+                    .then(data => {
+                        log(""); // Xóa log khi thành công
+                        onComplete(data);
+                    })
+                    .catch(err => {
+                        log("Lỗi: " + err.message);
+                        console.error(err);
+                    });
+            }
+        });
+    }
+
+    function start() {
+        log("Hãy tô theo nét mờ!");
+        writer.quiz({
+            onComplete: () => log("Tuyệt vời! Bạn đã viết đúng!")
+        });
+    }
+
+    function change(char, el) {
+        document.querySelectorAll('.c-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+        init(char);
+    }
+
+    // Đợi trang web tải xong hoàn toàn mới bắt đầu
+    document.addEventListener('DOMContentLoaded', () => {
+        if (typeof HanziWriter === 'undefined') {
+            log("Lỗi: Không tải được thư viện HanziWriter từ CDN.");
+        } else {
+            init('あ');
         }
+    });
+</script>
 
-        function animateChar() {
-            document.getElementById('message').innerText = "An đang viết mẫu...";
-            writer.animateCharacter();
-        }
-
-        function startQuiz() {
-            document.getElementById('message').innerText = "Mời bạn tô theo nét mờ!";
-            writer.quiz({
-                onComplete: function(data) {
-                    document.getElementById('message').innerText = "Tuyệt vời! Bạn viết đúng rồi!";
-                }
-            });
-        }
-
-        function resetChar() {
-            initWriter(currentChar);
-            document.getElementById('message').innerText = "Đã làm mới bảng.";
-        }
-
-        function changeChar(char, el) {
-            currentChar = char;
-            // Update UI selector
-            document.querySelectorAll('.char-btn').forEach(btn => btn.classList.remove('active'));
-            el.classList.add('active');
-            // Init new char
-            initWriter(char);
-            document.getElementById('message').innerText = "Chữ mới: " + char;
-        }
-
-        // Khởi tạo lần đầu
-        initWriter('あ');
-    </script>
 </body>
 </html>
