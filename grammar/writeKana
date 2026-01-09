@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>An học tiếng Nhật - N5</title>
+    <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; display: flex; flex-direction: column; align-items: center; background-color: #f0f4f8; padding: 20px; }
+        .container { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; max-width: 400px; text-align: center; }
+        #target { background: #fff; border: 2px solid #3498db; border-radius: 15px; margin: 20px auto; width: 250px; height: 250px; }
+        .btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        button { padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: 0.2s; }
+        .play { background: #2ecc71; color: white; }
+        .quiz { background: #3498db; color: white; }
+        .selector { margin-bottom: 20px; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; }
+        .c-btn { width: 45px; height: 45px; border: 1px solid #dee2e6; background: white; border-radius: 8px; font-size: 20px; cursor: pointer; }
+        .c-btn.active { background: #3498db; color: white; border-color: #3498db; }
+        #msg { margin-top: 15px; color: #e67e22; font-weight: bold; min-height: 24px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h3>Tập viết Hiragana cùng An</h3>
+    
+    <div class="selector">
+        <button class="c-btn active" onclick="change('あ', this)">あ</button>
+        <button class="c-btn" onclick="change('い', this)">い</button>
+        <button class="c-btn" onclick="change('う', this)">う</button>
+        <button class="c-btn" onclick="change('え', this)">え</button>
+        <button class="c-btn" onclick="change('お', this)">お</button>
+    </div>
+
+    <div id="target"></div>
+    <div id="msg">Đang sẵn sàng...</div>
+
+    <div class="btns">
+        <button class="play" onclick="writer.animateCharacter()">Xem mẫu</button>
+        <button class="quiz" onclick="start()">Tập viết</button>
+    </div>
+</div>
+
+<script>
+    let writer;
+    const msgEl = document.getElementById('msg');
+
+    function init(char) {
+        msgEl.style.color = "#e67e22";
+        msgEl.innerText = "Đang tải chữ: " + char + "...";
+        document.getElementById('target').innerHTML = '';
+        
+        writer = HanziWriter.create('target', char, {
+            width: 250,
+            height: 250,
+            padding: 25,
+            showOutline: true,
+            strokeColor: '#2c3e50',
+            outlineColor: '#f1f3f5',
+            drawingColor: '#3498db',
+            drawingWidth: 15,
+            charDataLoader: function(charToLoad, onComplete) {
+                // SỬ DỤNG KHO DỮ LIỆU KANA CHUẨN
+                const encodedChar = encodeURIComponent(charToLoad);
+                fetch(`https://cdn.jsdelivr.net/gh/ailectra/kana-json@master/data/${encodedChar}.json`)
+                    .then(res => {
+                        if (!res.ok) throw new Error("Không tìm thấy dữ liệu cho chữ này");
+                        return res.json();
+                    })
+                    .then(data => {
+                        msgEl.style.color = "#27ae60";
+                        msgEl.innerText = "Đã tải xong chữ " + charToLoad;
+                        onComplete(data);
+                    })
+                    .catch(err => {
+                        msgEl.style.color = "#c0392b";
+                        msgEl.innerText = "Lỗi: " + err.message;
+                    });
+            }
+        });
+    }
+
+    function start() {
+        msgEl.innerText = "Hãy tô theo nét mờ!";
+        writer.quiz({
+            onComplete: () => {
+                msgEl.style.color = "#27ae60";
+                msgEl.innerText = "Tuyệt vời! Bạn đã viết đúng.";
+            }
+        });
+    }
+
+    function change(char, el) {
+        document.querySelectorAll('.c-btn').forEach(b => b.classList.remove('active'));
+        el.classList.add('active');
+        init(char);
+    }
+
+    window.onload = () => init('あ');
+</script>
+
+</body>
+</html>
