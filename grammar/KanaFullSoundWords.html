@@ -3,148 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>An's Japanese - Mobile Optimized</title>
+    <title>Hệ thống học chữ cái N5 - Toàn diện</title>
     <script src="https://cdn.jsdelivr.net/npm/hanzi-writer@3.5/dist/hanzi-writer.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #3498db; --secondary: #2ecc71; --accent: #9b59b6; --bg: #f0f2f5; --card: #ffffff; }
-        
+        :root { --primary: #3498db; --secondary: #2ecc71; --accent: #9b59b6; --bg: #f8f9fa; }
         * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        body { font-family: sans-serif; background: var(--bg); margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center; }
         
-        body { 
-            font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); 
-            margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden;
-        }
-
         .app-container { width: 100%; max-width: 500px; }
+        
+        /* Bố cục Mobile: Info trên, Canvas dưới */
+        .learning-card { background: #fff; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05); margin-bottom: 15px; overflow: hidden; }
+        
+        .info-section { display: flex; align-items: center; padding: 15px; background: #fdfdfd; border-bottom: 1px solid #f0f0f0; }
+        .info-left { flex: 1; }
+        .romaji { font-size: 2.2rem; font-weight: bold; color: var(--primary); line-height: 1; }
+        .vocab { font-size: 1rem; color: #333; font-weight: bold; margin-top: 5px; }
+        .mean { font-size: 0.85rem; color: #666; }
+        .emoji { font-size: 3rem; }
 
-        /* Writing Zone - Linh hoạt cho Mobile */
-        .learning-box {
-            background: var(--card); border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            margin-bottom: 15px; overflow: hidden; display: flex; flex-direction: column;
-        }
+        .writing-section { height: 220px; display: flex; justify-content: center; align-items: center; background: #fff; touch-action: none; gap: 5px; }
+        .writer-box { width: 180px; height: 180px; }
+        .writer-box-s { width: 110px; height: 110px; margin-top: 50px; }
 
-        /* Phần thông tin phía trên */
-        .info-bar {
-            display: flex; align-items: center; padding: 15px;
-            background: linear-gradient(to right, #f8fbff, #ffffff);
-            border-bottom: 1px solid #eee;
-        }
-        .info-main { flex: 1; }
-        .info-romaji { font-size: 2rem; font-weight: 800; color: var(--primary); line-height: 1; }
-        .info-text { font-size: 0.9rem; color: #666; margin-top: 4px; }
-        .info-visual { font-size: 2.5rem; }
-
-        /* Khu vực viết chính - Quan trọng nhất */
-        .canvas-area {
-            height: 240px; display: flex; justify-content: center; align-items: center;
-            position: relative; touch-action: none; /* Chống scroll khi vẽ */
-            background: #fff; gap: 10px;
-        }
-        .writer-container { width: 200px; height: 200px; }
-        .writer-container.small { width: 120px; height: 120px; margin-top: 60px; }
-
-        /* Nút hành động */
-        .action-bar { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .btn { 
-            border: none; border-radius: 12px; padding: 12px 5px; color: white;
-            font-weight: bold; font-size: 0.9rem; cursor: pointer;
-            display: flex; flex-direction: column; align-items: center; gap: 5px;
-        }
+        .btn-group { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 15px; }
+        .btn { border: none; border-radius: 12px; padding: 12px; color: #fff; font-weight: bold; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; }
         .btn-audio { background: var(--accent); }
         .btn-play { background: var(--secondary); }
         .btn-quiz { background: var(--primary); }
-        .btn i { font-size: 1.2rem; }
 
-        /* Tabs & Grid */
-        .tabs { display: flex; background: #ddd; padding: 4px; border-radius: 12px; margin-bottom: 10px; }
-        .tab { flex: 1; padding: 8px; text-align: center; border-radius: 10px; font-weight: bold; font-size: 0.8rem; cursor: pointer; }
-        .tab.active { background: white; color: var(--primary); }
+        /* Tabs cho các loại chữ */
+        .nav-tabs { display: flex; background: #eee; padding: 4px; border-radius: 12px; margin-bottom: 10px; font-size: 0.8rem; }
+        .nav-tab { flex: 1; padding: 10px 5px; text-align: center; border-radius: 8px; cursor: pointer; font-weight: bold; }
+        .nav-tab.active { background: #fff; color: var(--primary); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
-        .grid { 
-            display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; 
-            padding: 5px; background: #fff; border-radius: 15px;
-            max-height: 250px; overflow-y: auto;
-        }
-        .char-card { 
-            aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
-            background: #fff; border: 1px solid #eee; border-radius: 10px;
-            font-size: 1.2rem; font-weight: bold; transition: 0.2s;
-        }
-        .char-card.active { background: var(--primary); color: white; transform: scale(0.9); }
-
-        #status { text-align: center; color: #e67e22; font-size: 0.85rem; font-weight: bold; height: 20px; margin-bottom: 5px; }
-
-        /* Responsive cho màn hình ngang hoặc Desktop */
-        @media (min-width: 600px) {
-            .learning-box { flex-direction: row; height: 250px; }
-            .info-bar { width: 150px; flex-direction: column; border-bottom: none; border-right: 1px solid #eee; }
-            .canvas-area { flex: 1; height: auto; }
-        }
+        /* Lưới chữ cái */
+        .char-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; background: #fff; padding: 10px; border-radius: 15px; max-height: 250px; overflow-y: auto; }
+        .char-grid.yoon { grid-template-columns: repeat(3, 1fr); }
+        .char-item { aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; border: 1px solid #eee; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; }
+        .char-item.active { background: var(--primary); color: #fff; border-color: var(--primary); }
     </style>
 </head>
 <body>
 
 <div class="app-container">
-    <div id="status">Sẵn sàng học cùng An!</div>
-    
-    <div class="learning-box">
-        <div class="info-bar">
-            <div class="info-main">
-                <div id="info-romaji" class="info-romaji">A</div>
-                <div id="info-word" class="info-text">あめ (Ame)</div>
-                <div id="info-mean" class="info-text">Cơn mưa</div>
+    <div class="learning-card">
+        <div class="info-section">
+            <div class="info-left">
+                <div id="disp-romaji" class="romaji">A</div>
+                <div id="disp-vocab" class="vocab">あめ</div>
+                <div id="disp-mean" class="mean">Cơn mưa</div>
             </div>
-            <div id="info-icon" class="info-visual">☔</div>
+            <div id="disp-emoji" class="emoji">☔</div>
         </div>
-
-        <div class="canvas-area">
-            <div id="t1" class="writer-container"></div>
-            <div id="t2" class="writer-container small" style="display: none;"></div>
+        <div class="writing-section">
+            <div id="t1" class="writer-box"></div>
+            <div id="t2" class="writer-box-s" style="display:none"></div>
         </div>
     </div>
 
-    <div class="action-bar">
-        <button class="btn btn-audio" onclick="playVoice()"><i class="fas fa-volume-up"></i>Nghe</button>
-        <button class="btn btn-play" onclick="animateAll()"><i class="fas fa-play"></i>Mẫu</button>
-        <button class="btn btn-quiz" onclick="startQuiz()"><i class="fas fa-pen-nib"></i>Viết</button>
+    <div class="btn-group">
+        <button class="btn btn-audio" onclick="talk()"><i class="fas fa-volume-up"></i>Nghe</button>
+        <button class="btn btn-play" onclick="showMe()"><i class="fas fa-eye"></i>Mẫu</button>
+        <button class="btn btn-quiz" onclick="tryWrite()"><i class="fas fa-pen-fancy"></i>Viết</button>
     </div>
 
-    <div class="tabs">
-        <div id="t-hira" class="tab active" onclick="setMode('hira')">Hiragana</div>
-        <div id="t-kata" class="tab" onclick="setMode('kata')">Katakana</div>
+    <div class="nav-tabs">
+        <div id="tab-hira" class="nav-tab active" onclick="switchType('hira')">Hiragana</div>
+        <div id="tab-kata" class="nav-tab" onclick="switchType('kata')">Katakana</div>
+        <div id="tab-yoon" class="nav-tab" onclick="switchType('yoon')">Âm ghép</div>
     </div>
 
-    <div id="grid" class="grid"></div>
+    <div id="grid" class="char-grid"></div>
 </div>
 
 <script>
-    // Dữ liệu từ vựng mở rộng
-    const VOCAB = {
-        'あ': { r: 'A', w: 'あめ (Ame)', m: 'Cơn mưa', i: '☔' },
-        'い': { r: 'I', w: 'いぬ (Inu)', m: 'Con chó', i: '🐶' },
-        'う': { r: 'U', w: 'うみ (Umi)', m: 'Biển', i: '🌊' },
-        'え': { r: 'E', w: 'えんぴつ (Enpitsu)', m: 'Bút chì', i: '✏️' },
-        'お': { r: 'O', w: 'おにぎり (Onigiri)', m: 'Cơm nắm', i: '🍙' },
-        'か': { r: 'Ka', w: 'かめ (Kame)', m: 'Con rùa', i: '🐢' },
-        'き': { r: 'Ki', w: 'きつね (Kitsune)', m: 'Con cáo', i: '🦊' },
-        // ... (Bạn có thể thêm tiếp tại đây)
+    // 1. DỮ LIỆU TỪ VỰNG CHI TIẾT
+    const VOCAB_DB = {
+        'あ': { r: 'A', w: 'あめ', m: 'Cơn mưa', i: '☔' },
+        'い': { r: 'I', w: 'いぬ', m: 'Con chó', i: '🐶' },
+        'う': { r: 'U', w: 'うみ', m: 'Biển', i: '🌊' },
+        'え': { r: 'E', w: 'えんぴつ', m: 'Bút chì', i: '✏️' },
+        'お': { r: 'O', w: 'おにぎり', m: 'Cơm nắm', i: '🍙' },
+        'ア': { r: 'A', w: 'アイス', m: 'Kem', i: '🍦' },
+        'イ': { r: 'I', w: 'インク', m: 'Mực', i: '🖋️' },
+        'きゃ': { r: 'Kya', w: 'きゃく', m: 'Khách hàng', i: '👤' },
+        'きゅ': { r: 'Kyu', w: 'きゅうり', m: 'Dưa chuột', i: '🥒' },
+        // Thêm các từ khác tương tự ở đây...
     };
 
-    const CHARS = [['あ','a'],['い','i'],['う','u'],['え','e'],['お','o'],['か','ka'],['き','ki'],['く','ku'],['け','ke'],['こ','ko'],['さ','sa'],['し','shi'],['す','su'],['せ','se'],['そ','so']];
+    // 2. DANH SÁCH CHỮ CÁI CHO GRID
+    const CHAR_LISTS = {
+        hira: ['あ','い','う','え','お','か','き','く','け','こ','さ','し','す','せ','そ','た','ち','つ','て','と','な','に','ぬ','ね','の','は','ひ','ふ','へ','ほ','ま','み','む','me','mo','ya','yu','yo','ra','ri','ru','re','ro','wa','wo','ん'],
+        kata: ['ア','イ','ウ','エ','オ','カ','キ','ク','ケ','コ','サ','シ','ス','セ','ソ','タ','チ','ツ','テ','ト','ナ','ニ','ヌ','ネ','ノ','ハ','ヒ','フ','ヘ','ホ','マ','ミ','ム','メ','モ','ヤ','ユ','ヨ','ラ','リ','ル','レ','ロ','ワ','ヲ','ン'],
+        yoon: ['きゃ','きゅ','きょ','しゃ','しゅ','しょ','ちゃ','ちゅ','ちょ','にゃ','にゅ','にょ','ひゃ','ひゅ','ひょ','みゃ','みゅ','みょ','りゃ','りゅ','りょ']
+    };
 
-    let curChar = 'あ', writers = [];
+    let curChar = 'あ', curType = 'hira', writers = [];
+
+    function switchType(type) {
+        curType = type;
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.getElementById('tab-' + type).classList.add('active');
+        const grid = document.getElementById('grid');
+        grid.className = 'char-grid ' + (type === 'yoon' ? 'yoon' : '');
+        renderGrid();
+        selectChar(CHAR_LISTS[type][0]);
+    }
 
     function renderGrid() {
         const grid = document.getElementById('grid');
         grid.innerHTML = '';
-        CHARS.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'char-card' + (item[0]===curChar?' active':'');
-            card.innerText = item[0];
-            card.onclick = () => selectChar(item[0]);
-            grid.appendChild(card);
+        CHAR_LISTS[curType].forEach(c => {
+            const div = document.createElement('div');
+            div.className = 'char-item' + (c === curChar ? ' active' : '');
+            div.innerText = c;
+            div.onclick = () => selectChar(c);
+            grid.appendChild(div);
         });
     }
 
@@ -152,49 +128,53 @@
         curChar = c;
         renderGrid();
         
-        // Cập nhật thông tin
-        const data = VOCAB[c] || { r: c.toUpperCase(), w: c, m: 'Từ vựng', i: '🇯🇵' };
-        document.getElementById('info-romaji').innerText = data.r;
-        document.getElementById('info-word').innerText = data.w;
-        document.getElementById('info-mean').innerText = data.m;
-        document.getElementById('info-icon').innerText = data.i;
+        // Cập nhật UI Info
+        const info = VOCAB_DB[c] || { r: '?', w: c, m: 'Đang cập nhật', i: '🇯🇵' };
+        document.getElementById('disp-romaji').innerText = info.r;
+        document.getElementById('disp-vocab').innerText = info.w;
+        document.getElementById('disp-mean').innerText = info.m;
+        document.getElementById('disp-emoji').innerText = info.i;
 
-        // Cập nhật khung viết
+        // Cập nhật Khung viết
+        const chars = c.split('');
         document.getElementById('t1').innerHTML = '';
         document.getElementById('t2').innerHTML = '';
-        writers = [createW('t1', c, 200)];
+        document.getElementById('t2').style.display = chars.length > 1 ? 'block' : 'none';
+        
+        writers = [initWriter('t1', chars[0], 180)];
+        if(chars.length > 1) writers.push(initWriter('t2', chars[1], 110));
     }
 
-    function createW(id, char, size) {
+    function initWriter(id, char, size) {
         return HanziWriter.create(id, char, {
             width: size, height: size, padding: 10,
             strokeColor: '#2c3e50', drawingColor: '#3498db',
             charDataLoader: (charToLoad, onComplete) => {
                 fetch(`https://cdn.jsdelivr.net/gh/ailectra/kana-json@master/data/${encodeURIComponent(charToLoad)}.json`)
-                    .then(res => res.json()).then(d => { 
-                        document.getElementById('status').innerText = "Sẵn sàng!";
-                        onComplete(d); 
-                    });
+                    .then(res => res.json()).then(d => onComplete(d));
             }
         });
     }
 
-    function playVoice() {
-        const ut = new SpeechSynthesisUtterance(curChar);
-        ut.lang = 'ja-JP';
-        window.speechSynthesis.speak(ut);
+    function talk() {
+        const msg = new SpeechSynthesisUtterance(curChar);
+        msg.lang = 'ja-JP';
+        window.speechSynthesis.speak(msg);
     }
 
-    async function animateAll() {
+    async function showMe() {
         for (let w of writers) await w.animateCharacter();
     }
 
-    function startQuiz() {
-        document.getElementById('status').innerText = "Mời bạn tập viết...";
-        writers[0].quiz({ onComplete: () => document.getElementById('status').innerText = "Giỏi lắm!" });
+    function tryWrite() {
+        if(writers.length === 1) {
+            writers[0].quiz();
+        } else {
+            writers[0].quiz({ onComplete: () => writers[1].quiz() });
+        }
     }
 
-    window.onload = () => { renderGrid(); selectChar('あ'); };
+    window.onload = () => switchType('hira');
 </script>
 </body>
 </html>
