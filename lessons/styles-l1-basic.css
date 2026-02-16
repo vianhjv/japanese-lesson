@@ -1,0 +1,651 @@
+/* =============================================================== */
+/* === FILE CSS NÂNG CẤP - BẮT ĐẦU VỚI PHẦN HỘI THOẠI === */
+/* =============================================================== */
+
+/* --- ROOT VARIABLES & BASE STYLES (Lấy từ file 1005 để đảm bảo tương thích) --- */
+:root {
+    --bg-main: #f4f6fc;
+    --sidebar-bg: #ffffff;
+    --card-bg: #ffffff;
+    --primary-text: #2c3e50;
+    --secondary-text: #7f8c8d;
+    --border-color: #e_a_ecee; /* Sẽ được sửa sau */
+    --soft-shadow: 0 10px 30px rgba(44, 62, 80, 0.08);
+
+    --c-dialogue: linear-gradient(135deg, #48c9b0, #1abc9c);
+    --c-vocab: linear-gradient(135deg, #af7ac5, #9b59b6);
+    --c-grammar: linear-gradient(135deg, #f5b041, #e67e22);
+    --c-reading: linear-gradient(135deg, #5dade2, #3498db);
+    --c-tools: linear-gradient(135deg, #5d6d7e, #34495e);
+    --accent-color: #3498db;
+}
+
+body {
+    font-family: 'Segoe UI', 'Yu Gothic', 'Hiragino Sans', 'Meiryo', sans-serif;
+    line-height: 1.7;
+    color: var(--primary-text);
+    background-color: var(--bg-main);
+    /* Giữ nguyên layout gốc của file 1005 */
+    
+}
+/* Các style cơ bản khác giữ nguyên từ file 1005 gốc của bạn */
+.main-container { display: flex; width: 100%; }
+main { flex-grow: 1; padding: 20px; overflow-y: auto; height: 100vh; }
+
+
+
+.sidebar-header, .main-header { text-align: center; margin-bottom: 30px; }
+.sidebar-nav ul { list-style: none; }
+.sidebar-nav a { display: flex; align-items: center; gap: 15px; padding: 15px; border-radius: 10px; text-decoration: none; color: var(--secondary-text); font-weight: 500; transition: all 0.3s ease; margin-bottom: 10px; }
+.sidebar-nav a:hover, .sidebar-nav a.active { background: var(--accent-color); color: white; }
+.progress-container { margin-top: auto; padding-top: 20px; border-top: 1px solid #e0e0e0; }
+.progress-bar-background { background: #e0e0e0; border-radius: 5px; height: 10px; }
+.progress-bar-foreground { background: var(--accent-color); height: 100%; width: 0%; border-radius: 5px; transition: width 0.5s ease; }
+#progress-percentage { text-align: center; display: block; margin-top: 5px; font-weight: bold; }
+.section-container { background: var(--card-bg); border-radius: 15px; margin-bottom: 30px; box-shadow: var(--soft-shadow); overflow: hidden; }
+.section-title { color: white; padding: 20px; }
+.section-title h2 { font-size: 1.5rem; }
+.section-body { padding: 20px; }
+
+
+/* === [NÂNG CẤP] PHONG CÁCH MỚI CHO HỘI THOẠI (TỪ 1003) === */
+.dialogue-wrapper { padding: 10px; }
+.scene-tag { 
+    display: inline-block; 
+    padding: 8px 18px; 
+    background-color: #e9ecef; 
+    border: 1px solid #dee2e6; 
+    border-radius: 25px; 
+    font-weight: 600; 
+    margin-bottom: 25px; 
+    font-size: 1rem; 
+    color: #495057; 
+}
+.dialogue-line { 
+    margin-bottom: 20px; 
+    padding: 20px; 
+    border-radius: 15px; 
+    background-color: #F8F9FA; 
+    border: 1px solid #e0e0e0; 
+    /* Áp dụng border-left đặc trưng */
+    border-left-width: 5px;
+    border-left-style: solid;
+}
+.speaker { 
+    font-weight: 700; 
+    margin-bottom: 10px; 
+    font-size: 1.1rem; 
+}
+
+/* Tô màu cho từng nhân vật */
+.speaker.suzuki { color: #e84393; } .dialogue-line:has(.speaker.suzuki) { border-left-color: #e84393; }
+.speaker.tanaka { color: #0984e3; } .dialogue-line:has(.speaker.tanaka) { border-left-color: #0984e3; }
+.speaker.an { color: #6c5ce7; } .dialogue-line:has(.speaker.an) { border-left-color: #6c5ce7; }
+.speaker.sato { color: #d35400; } .dialogue-line:has(.speaker.sato) { border-left-color: #d35400; }
+
+.dialogue-text-content { 
+    display: flex; 
+    align-items: center; 
+    gap: 15px; 
+}
+.dialogue-play-btn {
+    background: none; border: none; font-size: 1.5rem; cursor: pointer;
+    color: var(--secondary-text); transition: color 0.3s ease;
+    padding: 0; line-height: 1;
+}
+.dialogue-play-btn:hover { color: var(--accent-color); }
+
+.japanese-text { 
+    font-size: 1.2rem; 
+    line-height: 1.9; 
+    margin: 0; 
+}
+
+/* === [CẬP NHẬT] Style cho phần dịch tiếng Việt trong hội thoại === */
+.vietnamese-text { 
+    /* --- Thuộc tính mới --- */
+    font-style: italic;               /* 1. Chuyển thành chữ nghiêng */
+    color: #27ae60 ;                  /* 2. Đổi màu xanh lá cây đậm và dịu mắt hơn #468966 */
+    font-weight: 400;                 /* 3. Chữ mảnh hơn (400 là độ dày bình thường) */
+    font-size: 0.95rem;               /* 4. Hơi nhỏ hơn một chút để đỡ nổi bật */
+    margin-top: 8px;                  /* 5. Giảm khoảng cách với dòng tiếng Nhật */
+
+    /* --- Xóa bỏ/Reset các thuộc tính cũ để loại bỏ "khung" --- */
+    padding: 0;                       /* Bỏ đệm */
+    background-color: transparent;    /* Bỏ màu nền */
+    border: none;                     /* Bỏ đường viền */
+    border-radius: 0;                 /* Bỏ bo góc */
+}
+
+
+
+.grammar-point { font-weight: bold; color: #d6336c; }
+rt { font-size: 0.65em; color: #555; }
+.highlight-word { background-color: #fcf8a2; border-radius: 3px; }
+
+/* Các style còn lại sẽ được thêm sau */
+
+
+/* =============================================================== */
+/* === [BƯỚC 1.2] SỬA LỖI GIAO DIỆN CHO PHẦN CÔNG CỤ === */
+/* =============================================================== */
+
+/* Reset lại một số style chung có thể gây xung đột */
+#section-tools .section-body {
+    padding: 20px; /* Giảm padding một chút cho gọn gàng */
+}
+
+/* [SỬA LỖI] Định dạng lại card chính của công cụ */
+.text-reader-card {
+    padding: 0; /* Bỏ padding cũ */
+}
+
+.text-reader-app {
+    padding: 0; /* Bỏ padding cũ */
+    background: none;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+/* [SỬA LỖI] Đảm bảo ô nhập liệu chiếm toàn bộ chiều rộng */
+#text-to-read-input {
+    width: 100%;
+    font-size: 1.1rem;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    resize: vertical;
+    min-height: 120px;
+    margin-bottom: 20px; /* Thêm khoảng cách với các nút điều khiển */
+}
+
+/* [SỬA LỖI] Đảm bảo layout các nút điều khiển cân đối */
+#section-tools .reading-controls {
+    display: flex;
+    flex-direction: column; /* Xếp các thành phần theo chiều dọc */
+    align-items: stretch; /* Kéo dãn các thành phần cho bằng chiều rộng */
+    gap: 15px; /* Khoảng cách giữa các hàng */
+    margin-bottom: 0; /* Bỏ margin-bottom cũ */
+}
+
+#section-tools .control-btn.play {
+    width: 100%; /* Nút bấm chiếm toàn bộ chiều rộng */
+    padding: 12px;
+    font-size: 1.1rem;
+}
+
+/* Gom nhóm Giọng đọc và Tốc độ lại với nhau */
+.reader-settings-wrapper {
+    display: flex;
+    justify-content: space-between; /* Đẩy 2 cụm ra 2 bên */
+    align-items: center;
+    width: 100%;
+    background-color: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+#section-tools .voice-selector-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#section-tools .speed-controls {
+    margin-bottom: 0; /* Bỏ margin-bottom cũ */
+}
+
+
+
+
+/* =============================================================== */
+/* === [BƯỚC 1] CẢI THIỆN GIAO DIỆN PHẦN NGỮ PHÁP === */
+/* =============================================================== */
+/* =============================================================== */
+/* === [BƯỚC 1 - V2] CẢI THIỆN GIAO DIỆN PHẦN NGỮ PHÁP === */
+/* =============================================================== */
+
+/* --- Cấu trúc chung --- */
+#section-grammar .grammar-explanation h4 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+    color: var(--primary-text);
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 10px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+#section-grammar .heading-icon {
+    font-size: 1.5rem;
+}
+
+#section-grammar .explanation-list {
+    list-style: none;
+    padding-left: 0;
+}
+#section-grammar .explanation-list li {
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    border-left: 4px solid #f39c12; /* Accent color cam */
+}
+
+/* --- Styling cho các bảng ngữ pháp --- */
+.verb-group-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 30px 0;
+    box-shadow: var(--soft-shadow);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.verb-group-table caption {
+    caption-side: top;
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px;
+    background-color: #fffaf0; /* Màu nền cam rất nhạt */
+    color: #d35400; /* Màu chữ cam đậm */
+    text-align: left;
+    border-bottom: 2px solid #fdebd0;
+}
+
+.verb-group-table th, .verb-group-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+}
+
+.verb-group-table thead th {
+    background-color: #fdf2e2;
+    font-weight: 600;
+    color: #a0522d;
+}
+
+.verb-group-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.verb-group-table tbody tr:hover {
+    background-color: #fefcf5;
+}
+
+/* --- Các lớp highlight và màu sắc --- */
+.vowel-i { color: #d6336c; font-weight: bold; } /* Màu hồng đậm cho dễ thấy */
+.vowel-e { color: #1971c2; font-weight: bold; } /* Màu xanh dương đậm */
+.highlight-yellow {
+    background-color: #fff9db;
+}
+td.highlight-yellow { /* Làm cho highlight trong bảng nổi hơn */
+    background-color: #fff9db !important;
+}
+.romanji {
+    font-size: 0.9em;
+    color: var(--secondary-text);
+}
+.group-label {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center !important;
+    background-color: #f8f9fa;
+}
+
+/* --- Box ghi chú --- */
+#section-grammar .note {
+    background-color: #fff8e1;
+    border-left: 5px solid #ffb300;
+    padding: 15px 20px;
+    margin-top: 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* --- Phần bài tập --- */
+#section-grammar .exercise-section h3 {
+    font-size: 1.5rem;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f0;
+    margin-bottom: 20px;
+    margin-top: 40px; /* Tách biệt với phần giải thích */
+}
+
+
+
+/* =============================================================== */
+/* === [BƯỚC 1.5] CẢI THIỆN GIAO DIỆN BÀI TẬP NGỮ PHÁP === */
+/* =============================================================== */
+
+/* =============================================================== */
+/* === GIAO DIỆN BÀI TẬP CHUNG (ÁP DỤNG CHO CẢ NGỮ PHÁP & ĐỌC HIỂU) === */
+/* =============================================================== */
+
+.exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 25px;
+}
+
+.reading-card .exercise-item,
+.exercise-item {
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: var(--soft-shadow);
+    border: 1px solid #f0f0f0;
+    margin-bottom: 25px; /* Thêm khoảng cách giữa các câu hỏi đọc hiểu */
+}
+
+.exercise-question {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+.exercise-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.exercise-option {
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+    display: flex; /* Căn chỉnh icon và text */
+    justify-content: space-between; /* Đẩy icon ra cuối */
+    align-items: center;
+}
+
+/* --- TRẠNG THÁI TƯƠNG TÁC --- */
+
+/* Khi di chuột vào (chưa trả lời) */
+.exercise-item:not(.answered) .exercise-option:hover {
+    border-color: #3498db; /* Viền xanh dương */
+    background-color: #f0f8ff;
+}
+
+/* Khi đã trả lời, vô hiệu hóa hover */
+.exercise-item.answered .exercise-option:not(.correct):not(.incorrect) {
+     cursor: not-allowed;
+     opacity: 0.7;
+}
+
+/* Khi chọn ĐÚNG */
+.exercise-option.correct {
+    background-color: #e8f5e9; /* Nền xanh lá nhạt */
+    border-color: #4caf50;   /* Viền xanh lá đậm */
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+/* Khi chọn SAI */
+.exercise-option.incorrect {
+    background-color: #ffebee; /* Nền đỏ nhạt */
+    border-color: #f44336;   /* Viền đỏ đậm */
+    color: #c62828;
+    font-weight: bold;
+}
+
+/* --- PHẢN HỒI VÀ GIẢI THÍCH --- */
+
+/* Ẩn giải thích mặc định */
+.explanation.hidden {
+    display: none;
+}
+
+/* Định dạng box giải thích khi hiện ra */
+.explanation {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    border-left: 5px solid #2196f3;
+}
+
+/* Dấu X và chữ "Chưa đúng" */
+.feedback-text {
+    font-weight: normal;
+    font-style: italic;
+}
+
+/* =============================================================== */
+/* === [BƯỚC 2] GIAO DIỆN NÚT ĐIỀU KHIỂN AUDIO NÂNG CẤP === */
+/* =============================================================== */
+
+.audio-controls {
+    display: flex;
+    flex-wrap: wrap; /* Cho phép xuống dòng trên mobile */
+    gap: 15px;
+    align-items: center;
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-radius: 12px;
+}
+
+.audio-controls .control-btn {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.audio-controls .play-pause {
+    background-color: #28a745; /* Màu xanh lá */
+    color: white;
+}
+.audio-controls .play-pause:hover {
+    background-color: #218838;
+}
+
+.audio-controls .stop {
+    background-color: #dc3545; /* Màu đỏ */
+    color: white;
+}
+.audio-controls .stop:hover {
+    background-color: #c82333;
+}
+
+.audio-controls .speed-controls {
+    margin-left: auto; /* Đẩy cụm tốc độ sang phải */
+}
+
+
+
+/* =============================================================== */
+/* === GIAI ĐOẠN 1: TỐI ƯU LAYOUT (TOP NAV BAR) === */
+/* =============================================================== */
+
+/* --- Cấu trúc layout chính mới --- */
+.main-container {
+    width: 100%;
+    display: block; /* Chuyển về layout bình thường */
+}
+
+.main-content {
+    max-width: 1200px; /* Giới hạn chiều rộng để dễ đọc hơn */
+    margin: 0 auto;    /* Căn giữa nội dung */
+    padding: 20px;
+    height: auto;      /* Bỏ chiều cao cố định */
+}
+
+/* --- Thanh điều hướng trên cùng --- */
+.top-nav-container {
+    background: var(--card-bg);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: var(--soft-shadow);
+    margin-bottom: 30px;
+    border: 1px solid #e_a_ecee;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap; /* Đây là thuộc tính quan trọng để tự động xuống dòng */
+    justify-content: center; /* Căn giữa các mục */
+    gap: 10px; /* Khoảng cách giữa các mục */
+    padding: 0;
+    margin: 0;
+}
+
+/* --- Các mục menu (link) --- */
+.sidebar-nav a {
+    /* Reset lại style cũ */
+    margin-bottom: 0; 
+    
+    /* Style mới */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: var(--secondary-text);
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: 2px solid transparent; /* Thêm viền trong suốt để không bị giật khi active */
+}
+
+.sidebar-nav a:hover {
+    background: #f0f8ff;
+    color: var(--accent-color);
+}
+
+.sidebar-nav a.active {
+    color: var(--accent-color);
+    font-weight: 600;
+    background: transparent;
+    border-bottom: 2px solid var(--accent-color); /* Highlight bằng gạch chân */
+    border-radius: 0; /* Bỏ bo góc khi active để gạch chân đẹp hơn */
+}
+
+/* --- Thanh tiến độ --- */
+.top-nav-container .progress-container {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.top-nav-container #progress-percentage {
+    margin-top: 8px;
+}
+
+
+/* =============================================================== */
+/* === NÂNG CẤP GIAO DIỆN BẢNG TỪ VỰNG === */
+/* =============================================================== */
+
+/* --- 1. Sắp xếp lại cột Ví dụ --- */
+.example-sentence-cell {
+    display: flex; /* Bật Flexbox để các item nằm trên một hàng */
+    justify-content: space-between; /* Đẩy text và button ra hai phía */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    gap: 15px; /* Thêm khoảng cách giữa text và button */
+}
+
+/* --- 2. Thêm hiệu ứng Hover cho hàng từ vựng --- */
+.vocab-row {
+    transition: background-color 0.3s ease; /* Thêm hiệu ứng chuyển màu mượt mà */
+}
+
+.vocab-row:hover {
+    background-color: #f3e5f5; /* Màu tím pastel rất nhạt */
+    cursor: pointer; /* Đổi con trỏ chuột để báo hiệu có thể tương tác */
+}
+
+/* --- 3. Đổi màu highlight từ vựng trong câu ví dụ --- */
+/* Selector này chỉ áp dụng cho .grammar-point bên trong bảng từ vựng */
+.vocabulary-table .grammar-point {
+    color: #0d47a1; /* Màu xanh dương đậm, dễ đọc */
+    background-color: #e3f2fd; /* Thêm nền xanh dương rất nhạt */
+    padding: 2px 6px; /* Thêm một chút đệm */
+    border-radius: 4px; /* Bo góc nhẹ */
+    font-weight: 500;
+}
+
+/* --- Tinh chỉnh lại nút audio cho đẹp hơn --- */
+.play-btn-small {
+    background-color: #e3f2fd;
+    border: 1px solid #bbdefb;
+    border-radius: 50%; /* Bo tròn nút */
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0; /* Ngăn nút bị co lại */
+    font-size: 1rem;
+    color: #1976d2;
+}
+
+.play-btn-small:hover {
+    background-color: #bbdefb;
+    transform: scale(1.1);
+}
+
+
+/* =============================================================== */
+/* === [THÊM MỚI] GIÚP HÌNH ẢNH TƯƠNG THÍCH VỚI MOBILE (RESPONSIVE) === */
+/* =============================================================== */
+
+.sticky-illustration,
+.reading-image {
+    max-width: 100%;     /* Quan trọng nhất: Giới hạn chiều rộng tối đa bằng container chứa nó */
+    height: auto;        /* Tự động điều chỉnh chiều cao để giữ đúng tỷ lệ, tránh méo ảnh */
+    display: block;      /* Đảm bảo hình ảnh là một khối block, dễ căn chỉnh */
+    margin: 25px auto;   /* Tự động căn giữa hình ảnh và tạo khoảng cách trên/dưới */
+    border-radius: 12px; /* Thêm bo góc cho đồng bộ với thiết kế card */
+    box-shadow: var(--soft-shadow); /* Thêm bóng đổ nhẹ cho đẹp */
+}
+
+/* Tùy chỉnh nhỏ cho ảnh trong phần hội thoại để không quá lớn trên màn hình rộng */
+.scene-illustration-wrapper {
+    max-width: 500px; /* Giới hạn chiều rộng tối đa của container chứa ảnh */
+    margin: 0 auto 25px auto; /* Căn giữa container này */
+}
+
+
+/* =============================================================== */
+/* === [CẬP NHẬT] GIAO DIỆN PHẦN ĐỌC HIỂU (EMAIL) === */
+/* =============================================================== */
+
+/* --- 1. Tạo khung nền kem cho đoạn văn bản --- */
+#reading-passage.email-content {
+    background-color: #fefdf5; /* Màu nền kem nhẹ nhàng */
+    padding: 25px;
+    border-radius: 8px;
+    border: 1px solid #f0eada;
+    line-height: 2.2; /* Tăng khoảng cách dòng để dễ đọc hơn với Furigana */
+    margin-bottom: 20px; /* Tạo khoảng cách với nút "Xem bản dịch" */
+}
+
+/* --- 2. Định dạng cho các từ khóa ngữ pháp được highlight --- */
+.reading-highlight {
+    background-color: #ffe8e8; /* Màu nền hồng nhạt */
+    color: #c0392b;            /* Màu chữ đỏ đậm để nổi bật */
+    font-weight: 500;
+    padding: 3px 6px;
+    border-radius: 4px;
+    margin: 0 2px; /* Thêm khoảng cách nhỏ giữa các highlight liền kề */
+}
+
+
+
+
