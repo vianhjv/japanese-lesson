@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luyện thi JLPT - Mục lục N5 (Hành trình của An)</title>
+    <style>
+        /* Tôi giữ nguyên toàn bộ CSS của bạn để đảm bảo đồng bộ 100% */
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+        }
+        .main-header {
+            background-color: #008080;
+            color: #F0E68C;
+            padding: 20px 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .main-header h1 { margin: 0 0 15px 0; font-size: 1.8rem; text-align: center; }
+        .level-nav { display: flex; justify-content: center; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; }
+        .level-nav a { color: #F0E68C; text-decoration: none; padding: 10px 20px; border: 1px solid #b2dfdb; border-radius: 20px; font-weight: 600; transition: all 0.2s ease; }
+        .level-nav a:hover { background-color: #4db6ac; border-color: #4db6ac; }
+        .level-nav a.active { background-color: #ffffff; color: #008080; border-color: #ffffff; }
+        .lang-switcher { text-align: center; }
+        .lang-switcher a { color: #F0E68C; text-decoration: none; padding: 8px 18px; background-color: rgba(255,255,255,0.2); border-radius: 15px; font-weight: 500; transition: background-color 0.2s; }
+        
+        .main-content { max-width: 900px; margin: 0 auto; padding: 0 20px 20px 20px; }
+        .hero-image { width: 100%; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.15); margin-bottom: 30px; }
+        .hero-image img { width: 100%; display: block; }
+
+        .lesson-section { margin-bottom: 20px; border-radius: 15px; overflow: hidden; background-color: #ffffff; box-shadow: 0 5px 20px rgba(0,0,0,0.08); border: 1px solid #e2e8f0; }
+        .lesson-section summary { font-size: 1.3rem; font-weight: 700; padding: 20px 25px; background-color: #008080; color: #F0E68C; cursor: pointer; outline: none; border-bottom: 1px solid #e2e8f0; }
+        .lesson-section summary:hover { background-color: #006666; }
+        
+        .lesson-table { width: 100%; border-collapse: collapse; }
+        .lesson-table tbody tr.lesson-active { cursor: pointer; }
+        .lesson-table tbody tr.lesson-active:hover { background-color: #fff9c4 !important; transform: scale(1.015); box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .lesson-table tbody tr:nth-child(odd) { background-color: #ffffff; }
+        .lesson-table tbody tr:nth-child(even) { background-color: #e0f7fa; }
+        .lesson-table td { padding: 20px 18px; border-bottom: 1px solid #edf2f7; vertical-align: middle; }
+        .lesson-table td:first-child { font-weight: 700; color: #2c5282; width: 120px; }
+        
+        .lesson-locked { opacity: 0.5; cursor: not-allowed; background-color: #f7fafc !important; }
+        .lesson-meaning { display: block; margin-top: 6px; font-size: 0.9em; color: #1a5276; font-weight: 400; }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Hành Trình của An - Chinh phục N5</h1>
+        <nav class="level-nav">
+            <a href="index-n5.html" class="active">N5</a>
+            <a href="index.html">N4</a>
+            <a href="#">N3</a>
+            <a href="#">N2</a>
+            <a href="#">N1</a>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="hero-image">
+            <img src="../photo/shadowing-banner.jpg" alt="N5 Study Banner">
+        </div>
+
+        <!-- GIAI ĐOẠN 1 -->
+        <details class="lesson-section" open>
+            <summary>Giai đoạn 1: Khởi động (Bài 1 - Bài 6)</summary>
+            <div class="table-container">
+                <table class="lesson-table">
+                    <tbody>
+                        <tr class="lesson-active" onclick="window.location.href='n5-bai1.html';">
+                            <td>Bài 1</td>
+                            <td class="lesson-title">Tin vui từ Tokyo<span class="lesson-meaning">(Câu danh từ: N1 wa N2 desu, Trợ từ MO)</span></td>
+                        </tr>
+                        <tr class="lesson-active" onclick="window.location.href='n5-bai2.html';">
+                            <td>Bài 2</td>
+                            <td class="lesson-title">Lớp học đầu tiên<span class="lesson-meaning">(Chỉ thị từ: Kore/Sore/Are, Kono/Sono/Ano)</span></td>
+                        </tr>
+                        <tr class="lesson-active" onclick="window.location.href='n5-bai3.html';">
+                            <td>Bài 3</td>
+                            <td class="lesson-title">Ở đây là đâu?<span class="lesson-meaning">(Địa điểm: Koko/Soko/Asoko, Kochira/Sochira...)</span></td>
+                        </tr>
+                        <tr class="lesson-active" onclick="window.location.href='n5-bai4.html';">
+                            <td>Bài 4</td>
+                            <td class="lesson-title">Một ngày của An<span class="lesson-meaning">(Thời gian, Động từ V-masu, Trợ từ NI, Kara-Made)</span></td>
+                        </tr>
+                        <tr class="lesson-locked">
+                            <td>Bài 5</td>
+                            <td class="lesson-title">Cuối tuần đi đâu?<span class="lesson-meaning">(Động từ di chuyển, Trợ từ E, DE, TO)</span></td>
+                        </tr>
+                        <tr class="lesson-locked">
+                            <td>Bài 6</td>
+                            <td class="lesson-title">Căn phòng của An<span class="lesson-meaning">(Sự tồn tại: Arimasu/Imasu, Vị trí đồ vật)</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+        <!-- GIAI ĐOẠN 2 -->
+        <details class="lesson-section">
+            <summary>Giai đoạn 2: Cảm nhận & Sở thích (Bài 7 - Bài 14)</summary>
+            <div class="table-container">
+                <table class="lesson-table">
+                    <tbody>
+                        <tr class="lesson-locked"><td>Bài 7</td><td class="lesson-title">Món ăn Việt Nam<span class="lesson-meaning">(Tính từ đuôi I & đuôi NA)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 8</td><td class="lesson-title">Sở thích của tôi<span class="lesson-meaning">(Suki/Kirai, Giỏi/Kém, Lý do Kara)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 9</td><td class="lesson-title">Tại quán cà phê<span class="lesson-meaning">(Trợ từ O, Đề nghị Mashou/Masenka)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 10</td><td class="lesson-title">Đi siêu thị<span class="lesson-meaning">(Cách đếm đồ vật, số lượng)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 11</td><td class="lesson-title">Sinh nhật bạn<span class="lesson-meaning">(Cho và Nhận quà tặng: Ageru/Morau)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 12</td><td class="lesson-title">Hà Nội vs Tokyo<span class="lesson-meaning">(So sánh hơn, so sánh nhất)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 13</td><td class="lesson-title">Ước mơ của An<span class="lesson-meaning">(Muốn làm V-tai, Muốn có N ga hoshii)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 14</td><td class="lesson-title">Ôn tập giữa kỳ<span class="lesson-meaning">(Tổng hợp kiến thức từ Bài 1 - 13)</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+        <!-- GIAI ĐOẠN 3 -->
+        <details class="lesson-section">
+            <summary>Giai đoạn 3: Hành động liên tiếp (Bài 15 - Bài 22)</summary>
+            <div class="table-container">
+                <table class="lesson-table">
+                    <tbody>
+                        <tr class="lesson-locked"><td>Bài 15</td><td class="lesson-title">Hãy giúp tôi với!<span class="lesson-meaning">(Thể TE, Sai khiến V-te kudasai)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 16</td><td class="lesson-title">Đang làm gì thế?<span class="lesson-meaning">(Tiếp diễn V-te imasu, Đề nghị giúp đỡ Mashouka)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 17</td><td class="lesson-title">Quy định lớp học<span class="lesson-meaning">(Cho phép V-te mo ii, Cấm V-te wa ikemasen)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 18</td><td class="lesson-title">Một ngày bận rộn<span class="lesson-meaning">(Nối câu V-te, Liệt kê hành động theo trình tự)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 19</td><td class="lesson-title">Lời dặn bác sĩ<span class="lesson-meaning">(Thể NAI, Xin đừng, Phải làm, Không cần cũng được)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 20</td><td class="lesson-title">Phỏng vấn thử<span class="lesson-meaning">(Thể Từ điển, Có thể làm gì koto ga dekimasu)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 21</td><td class="lesson-title">Lịch trình chi tiết<span class="lesson-meaning">(Trước khi V-dic mae ni, Khoảng thời gian)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 22</td><td class="lesson-title">Kinh nghiệm sống<span class="lesson-meaning">(Thể TA, Đã từng làm gì, Liệt kê V-tari tari)</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+
+        <!-- GIAI ĐOẠN 4 -->
+        <details class="lesson-section">
+            <summary>Giai đoạn 4: Sẵn sàng lên đường (Bài 23 - Bài 30)</summary>
+            <div class="table-container">
+                <table class="lesson-table">
+                    <tbody>
+                        <tr class="lesson-locked"><td>Bài 23</td><td class="lesson-title">Cuộc gọi chia tay<span class="lesson-meaning">(Thể thông thường Plain Form)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 24</td><td class="lesson-title">Anh ấy nói rằng...<span class="lesson-meaning">(Trích dẫn To iimasu, Ý kiến To omoimasu)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 25</td><td class="lesson-title">Người đội mũ xanh<span class="lesson-meaning">(Định ngữ: Mệnh đề bổ nghĩa cho danh từ)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 26</td><td class="lesson-title">Hễ đến sân bay<span class="lesson-meaning">(Mệnh đề thời gian Toki, Điều kiện To)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 27</td><td class="lesson-title">Cho & Nhận tình cảm<span class="lesson-meaning">(V-te ageru/morau/kureru)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 28</td><td class="lesson-title">Nếu lạc đường...<span class="lesson-meaning">(Điều kiện giả định V-tara, Dù cho V-te mo)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 29</td><td class="lesson-title">Xin chào Tokyo<span class="lesson-meaning">(Trạng thái V-te imasu, Trở nên narimasu)</span></td></tr>
+                        <tr class="lesson-locked"><td>Bài 30</td><td class="lesson-title">Về nhà mới<span class="lesson-meaning">(Tổng kết toàn bộ N5 - Happy Ending)</span></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </details>
+    </main>
+
+</body>
+</html>
