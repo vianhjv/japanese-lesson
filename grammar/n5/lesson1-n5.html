@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 1: Tin Vui Từ Tokyo | Hành trình của An</title>
+    <!-- Link tới file CSS của bạn -->
+    <link rel="stylesheet" href="styles-talk1029.css">
+    <style>
+        /* TỐI ƯU PHẦN BỐI CẢNH (STORY) */
+        .story-intro {
+            max-width: 800px; /* Cố định chiều rộng bằng khung hội thoại */
+            margin: 20px auto; /* Căn giữa màn hình */
+            background-color: #fdf6e3; 
+            padding: 30px;
+            border-radius: 20px; /* Bo tròn góc */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08); /* Đổ bóng nhẹ */
+            border-left: 8px solid #e67e22; /* Thanh nhấn màu cam bên trái */
+        }
+        .story-intro h3 {
+            margin-top: 0;
+            color: #2c3e50;
+            border-bottom: 2px solid #e67e22;
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* CSS bổ sung cho phần Chat và Danh thiếp cho các phần sau */
+        .line-chat-box {
+            background-color: #7494c0;
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 600px;
+            margin: 25px auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .chat-msg { display: flex; flex-direction: column; max-width: 85%; }
+        .chat-msg.an { align-self: flex-start; }
+        .chat-msg.kim { align-self: flex-end; }
+        .chat-name { font-size: 0.8rem; color: white; margin-bottom: 3px; font-weight: bold; }
+        .msg-bubble {
+            padding: 12px 15px;
+            border-radius: 15px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            position: relative;
+        }
+        .an .msg-bubble { background-color: white; color: #333; border-bottom-left-radius: 2px; }
+        .kim .msg-bubble { background-color: #84ff7e; color: #333; border-bottom-right-radius: 2px; }
+        .msg-translate { font-size: 0.85rem; color: #555; font-style: italic; margin-top: 8px; display: block; border-top: 1px solid rgba(0,0,0,0.1); padding-top: 5px; }
+        .meishi-card {
+            background: #fff;
+            border: 1px solid #ccc;
+            width: 320px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 4px;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.05);
+            font-family: serif;
+        }
+
+        /* Sửa lỗi che ảnh: Điều chỉnh lại vị trí khung hội thoại */
+        .dialogue-overlay {
+            margin-top: -30px !important; /* Hạ thấp khung thoại xuống để không che mặt An */
+        }
+        .scene-container {
+            margin-bottom: 50px; /* Tạo khoảng cách với phần sau */
+        }
+        
+        /* Mobile responsive bổ sung */
+        @media (max-width: 600px) {
+            .story-intro {
+                margin: 10px;
+                padding: 15px;
+            }
+            .vocab-term {
+                font-size: 1.4rem;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="page-header">
+        <p style="color: #e67e22; font-weight: bold; margin-bottom: 5px;">HÀNH TRÌNH CỦA AN - BÀI 1</p>
+        <h2><ruby>初<rt>はじ</rt></ruby>めてのニュース：Tin Vui Từ Tokyo</h2>
+        <p>(Giới thiệu bản thân & Câu Danh từ)</p>
+    </div>
+
+    <!-- 1. BỐI CẢNH CÂU CHUYỆN (ĐÃ TỐI ƯU GIAO DIỆN) -->
+    <div class="story-intro">
+        <h3>1. Bối cảnh câu chuyện</h3>
+        <p>An là một cô gái 25 tuổi, vừa tốt nghiệp đại học tại Hà Nội. Ước mơ của cô là được làm việc thiết kế tại Nhật Bản. Sau bao ngày chờ đợi, hôm nay điện thoại của An rung lên.</p>
+        <p>An mở điện thoại. Một email từ công ty thiết kế ở Tokyo hiện ra: <strong>"THÔNG BÁO TRÚNG TUYỂN"</strong>. An reo lên: <em>"Mình làm được rồi! Mình sắp thành nhân viên công ty Nhật rồi!"</em></p>
+        <p>Để chuẩn bị cho ngày gặp gỡ, An đứng trước gương tập nói những câu tiếng Nhật đầu tiên:</p>
+    </div>
+
+    <!-- 2. KHUNG HỘI THOẠI -->
+    <div class="scene-container">
+        <img src="lesson1-An.jpg" alt="An tập giới thiệu bản thân" class="scene-background-image">
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nguồn dữ liệu hội thoại (Không đổi) -->
+    <div class="dialogue-source" style="display: none;">
+        <div class="scene" data-scene-name="Phòng riêng của An" data-background-image= "lesson1-An.jpg" >
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>初<rt>はじ</rt></ruby>めまして。</p>
+                        <p class="vietnamese-text">Xin chào (lần đầu gặp mặt).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>私<rt>わたし</rt></ruby>はアンです。</p>
+                        <p class="vietnamese-text">Tôi là An.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">ベトナム<ruby>人<rt>じん</rt></ruby>です。</p>
+                        <p class="vietnamese-text">Tôi là người Việt Nam.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>学生<rt>がくせい</rt></ruby>じゃありません。<ruby>会社員<rt>かいしゃいん</rt></ruby>です。</p>
+                        <p class="vietnamese-text">Tôi không phải là sinh viên. Tôi là nhân viên công ty.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="dialogue-line">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">どうぞよろしくお<ruby>願<rt>ねが</rt></ruby>いします。</p>
+                        <p class="vietnamese-text">Rất mong được giúp đỡ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+ <!-- 3. TỪ VỰNG ĐẦY ĐỦ (12 TỪ THEO GIÁO ÁN) -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>2. Từ Vựng (Vocabulary)</h3>
+            <p style="text-align: center; margin-bottom: 25px; color: #666;"><em>Bấm vào loa để nghe từ và câu ví dụ</em></p>
+            
+            <ul class="vocabulary-list">
+                <!-- 1. 私 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>私<rt>わたし</rt></ruby></h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Tôi</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>私<rt>わたし</rt></ruby>はアンです。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi là An.</p>
+                    </div>
+                </li>
+
+                <!-- 2. ～さん -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">～さん</h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Ông/Bà/Anh/Chị</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>田中<rt>たなか</rt></ruby>さんです。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Là anh Tanaka.</p>
+                    </div>
+                </li>
+
+                <!-- 3. ～人 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">～<ruby>人<rt>じん</rt></ruby></h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Người (nước...)</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">ベトナム<ruby>人<rt>じん</rt></ruby>です。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Là người Việt Nam.</p>
+                    </div>
+                </li>
+
+                <!-- 4. 先生 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>先生<rt>せんせい</rt></ruby></h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Giáo viên / Thầy cô</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>佐藤<rt>さとう</rt></ruby><ruby>先生<rt>せんせい</rt></ruby>は<ruby>日本人<rt>にほんじん</rt></ruby>です。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Cô Sato là người Nhật.</p>
+                    </div>
+                </li>
+
+                <!-- 5. 学生 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>学生<rt>がくせい</rt></ruby></h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Học sinh / Sinh viên</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">アンさんは<ruby>学生<rt>がくせい</rt></ruby>じゃありません。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">An không phải là sinh viên.</p>
+                    </div>
+                </li>
+
+                <!-- 6. 会社員 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>会社員<rt>かいしゃいん</rt></ruby></h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Nhân viên công ty</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>私<rt>わたし</rt></ruby>は<ruby>会社員<rt>かいしゃいん</rt></ruby>です。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi là nhân viên công ty.</p>
+                    </div>
+                </li>
+
+                <!-- 7. ベトナム -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">ベトナム</h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Việt Nam</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>私<rt>わたし</rt></ruby>はベトナム<ruby>人<rt>じん</rt></ruby>です。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi là người Việt Nam.</p>
+                    </div>
+                </li>
+
+                <!-- 8. 日本 -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>日本<rt>にほん</rt></ruby></h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Nhật Bản</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>田中<rt>たなか</rt></ruby>さんは<ruby>日本<rt>にほん</rt></ruby><ruby>人<rt>じん</rt></ruby>です。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Anh Tanaka là người Nhật.</p>
+                    </div>
+                </li>
+
+                <!-- 9. アメリカ -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">アメリカ</h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Mỹ (Hoa Kỳ)</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">マイラさんはアメリカ<ruby>人<rt>じん</rt></ruby>です。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Mira là người Mỹ.</p>
+                    </div>
+                </li>
+
+                <!-- 10. はい -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">はい</h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Vâng / Có</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">はい、アンです。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Vâng, là An đây.</p>
+                    </div>
+                </li>
+
+                <!-- 11. いいえ -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">いいえ</h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Không</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">いいえ、<ruby>違<rt>ちが</rt></ruby>います。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Không, nhầm rồi.</p>
+                    </div>
+                </li>
+
+                <!-- 12. 皆さん -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>皆<rt>みな</rt></ruby>さん</h4>
+                        <button class="vocab-play-btn">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Mọi người</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>皆<rt>みな</rt></ruby>さん、おはようございます。</p>
+                            <button class="vocab-play-btn">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Chào buổi sáng mọi người.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+<!-- 4. NGỮ PHÁP CHI TIẾT -->
+    <div class="grammar-section">
+        <div class="grammar-container" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 35px;">3. Ngữ Pháp (Grammar)</h2>
+            
+            <!-- A. TƯ DUY CỐT LÕI -->
+            <div class="grammar-card" style="border-left: 8px solid #3498db; background-color: #eef7ff;">
+                <h3 style="color: #2980b9;">💡 TƯ DUY CỐT LÕI: 3 LOẠI CÂU TIẾNG NHẬT</h3>
+                <div class="grammar-explanation">
+                    <p>Để học tốt N5, bạn cần phân biệt rõ ngay từ đầu 3 loại cấu trúc câu:</p>
+                    <ol>
+                        <li><strong>Câu Danh từ:</strong> A là B. <span style="color: #e67e22;">(Hôm nay chúng ta học loại này)</span></li>
+                        <li><strong>Câu Tính từ:</strong> A thì B (đẹp/xấu/đắt/rẻ). <em>(Sẽ học ở Bài 7)</em></li>
+                        <li><strong>Câu Động từ:</strong> A làm hành động B (ăn/uống/ngủ). <em>(Sẽ học ở Bài 4)</em></li>
+                    </ol>
+                    <p>Hôm nay chúng ta tập trung hoàn toàn vào <strong>CÂU DANH TỪ</strong> để An có thể tự giới thiệu mình.</p>
+                </div>
+            </div>
+
+            <!-- B. MẪU 1: KHẲNG ĐỊNH -->
+            <div class="grammar-card">
+                <h3>MẪU 1: KHẲNG ĐỊNH (N1 là N2)</h3>
+                <div class="grammar-formula" style="background-color: #f1f8e9; border: 1px solid #c5e1a5; padding: 15px; border-radius: 8px; font-size: 1.2rem; text-align: center; margin-bottom: 20px;">
+                    N1 <span class="grammar-point">は</span> N2 <span class="grammar-point">です</span>。
+                </div>
+                <div class="grammar-explanation">
+                    <ul>
+                        <li><strong>N1:</strong> Chủ ngữ (Tôi, Anh ấy, Cô ấy, Tên người...).</li>
+                        <li><strong>は (WA):</strong> Trợ từ xác định chủ ngữ. <span style="color: #c0392b; font-weight: bold;">Lưu ý: Viết là chữ HA nhưng phải đọc là WA.</span></li>
+                        <li><strong>N2:</strong> Danh từ chỉ tên, nghề nghiệp hoặc quốc tịch.</li>
+                        <li><strong>です (Desu):</strong> Tương đương chữ "là", dùng ở cuối câu để thể hiện sự lịch sự.</li>
+                    </ul>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>私<rt>わたし</rt></ruby><span class="grammar-point">は</span>アン<span class="grammar-point">です</span>。</p>
+                    <p class="example-vn">Tôi là An.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>田中<rt>たなか</rt></ruby>さん<span class="grammar-point">は</span><ruby>日本人<rt>にほんじん</rt></ruby><span class="grammar-point">です</span>。</p>
+                    <p class="example-vn">Anh Tanaka là người Nhật.</p>
+                </div>
+            </div>
+
+            <!-- C. MẪU 2: PHỦ ĐỊNH -->
+            <div class="grammar-card">
+                <h3>MẪU 2: PHỦ ĐỊNH (N1 không phải là N2)</h3>
+                <div class="grammar-formula" style="background-color: #fff3e0; border: 1px solid #ffe0b2; padding: 15px; border-radius: 8px; font-size: 1.2rem; text-align: center; margin-bottom: 20px;">
+                    N1 <span class="grammar-point">は</span> N2 <span class="grammar-point">じゃありません</span>。
+                </div>
+                <div class="grammar-explanation">
+                    <ul>
+                        <li><strong>じゃありません (Ja arimasen):</strong> Có nghĩa là "Không phải là".</li>
+                        <li>Đây là cách nói phủ định dùng trong giao tiếp hàng ngày.</li>
+                        <li><em>(Trong văn viết hoặc trường hợp cực kỳ trang trọng, người ta dùng: Dewa arimasen).</em></li>
+                    </ul>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>私<rt>わたし</rt></ruby><span class="grammar-point">は</span><ruby>学生<rt>がくせい</rt></ruby><span class="grammar-point">じゃありません</span>。</p>
+                    <p class="example-vn">Tôi không phải là sinh viên.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp">アンさん<span class="grammar-point">は</span><ruby>日本人<rt>にほんじん</rt></ruby><span class="grammar-point">じゃありません</span>。</p>
+                    <p class="example-vn">An không phải người Nhật.</p>
+                </div>
+            </div>
+
+            <!-- D. MẪU 3: NGHI VẤN -->
+            <div class="grammar-card">
+                <h3>MẪU 3: NGHI VẤN (N1 là N2 phải không?)</h3>
+                <div class="grammar-formula" style="background-color: #f3e5f5; border: 1px solid #e1bee7; padding: 15px; border-radius: 8px; font-size: 1.2rem; text-align: center; margin-bottom: 20px;">
+                    N1 <span class="grammar-point">は</span> N2 <span class="grammar-point">ですか</span>。
+                </div>
+                <div class="grammar-explanation">
+                    <ul>
+                        <li>Thêm chữ <strong>か (ka)</strong> vào cuối câu khẳng định để biến nó thành câu hỏi.</li>
+                        <li>Khi nói, bạn cần <strong>lên giọng</strong> ở cuối câu.</li>
+                        <li><strong>Cách trả lời:</strong>
+                            <br>- Đúng: <strong>はい、そうです。</strong> (Vâng, đúng vậy).
+                            <br>- Sai: <strong>いいえ、そうじゃありません。</strong> (Không, không phải vậy).
+                        </li>
+                    </ul>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp">あなた<span class="grammar-point">は</span>アンさん<span class="grammar-point">ですか</span>。</p>
+                    <p class="example-vn">Bạn là An phải không?</p>
+                </div>
+                <div style="margin-left: 20px; color: #555; font-style: italic; margin-bottom: 20px;">
+                    — はい、そうです。(Vâng, đúng vậy.)
+                </div>
+            </div>
+
+            <!-- E. MẪU 4: SỰ TƯƠNG ĐỒNG -->
+            <div class="grammar-card">
+                <h3>MẪU 4: SỰ TƯƠNG ĐỒNG (Cũng...)</h3>
+                <div class="grammar-formula" style="background-color: #e0f2f1; border: 1px solid #b2dfdb; padding: 15px; border-radius: 8px; font-size: 1.2rem; text-align: center; margin-bottom: 20px;">
+                    N1 <span class="grammar-point">も</span> N2 <span class="grammar-point">です</span>。
+                </div>
+                <div class="grammar-explanation">
+                    <ul>
+                        <li>Dùng trợ từ <strong>も (MO)</strong> thay thế cho <strong>は (WA)</strong>.</li>
+                        <li>Dùng khi chủ ngữ N1 có cùng tính chất, đặc điểm với người hoặc vật đã nhắc đến trước đó.</li>
+                        <li>Nghĩa là: "N1 <strong>cũng</strong> là N2".</li>
+                    </ul>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp">キムさん<span class="grammar-point">は</span>ベトナム<ruby>人<rt>じん</rt></ruby>です。</p>
+                    <p class="example-vn">Kim là người Việt Nam.</p>
+                </div>
+                <div class="example-block">
+                    <p class="example-jp"><ruby>私<rt>わたし</rt></ruby><span class="grammar-point">も</span>ベトナム<ruby>人<rt>じん</rt></ruby>です。</p>
+                    <p class="example-vn">Tôi <strong>cũng</strong> là người Việt Nam.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+<!-- 5. GIẢ LẬP TIN NHẮN (CHAT) -->
+
+<!-- 5. GIẢ LẬP TIN NHẮN (CHAT) - ĐÃ SỬA LỖI NÚT NGHE -->
+    <div class="reading-comprehension-section" style="background-color: #f0f2f5; padding: 40px 20px;">
+        <div class="reading-comprehension-container" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 10px;">4. Tin Nhắn Chúc Mừng (Chat)</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 30px;">An báo tin vui cho người bạn thân tên Kim</p>
+            
+            <div class="line-chat-box">
+                <!-- Tin nhắn 1: An -->
+                <div class="chat-msg an">
+                    <span class="chat-name">An</span>
+                    <div class="msg-bubble">
+                        <div class="example-jp" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <span class="jp-sentence">キムさん、<ruby>合格<rt>ごうかく</rt></ruby>しました！✨</span>
+                            <button class="vocab-play-btn" style="width: 25px; height: 25px; font-size: 0.8rem; margin-left: 10px;">🔊</button>
+                        </div>
+                        <span class="msg-translate">Kim ơi, tớ đỗ rồi!</span>
+                    </div>
+                </div>
+
+                <!-- Tin nhắn 2: Kim -->
+                <div class="chat-msg kim">
+                    <span class="chat-name">Kim</span>
+                    <div class="msg-bubble">
+                        <div class="example-jp" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <span class="jp-sentence">おめでとう！🎉<br>アンさんは<ruby>会社員<rt>かいしゃいん</rt></ruby>ですね。</span>
+                            <button class="vocab-play-btn" style="width: 25px; height: 25px; font-size: 0.8rem; margin-left: 10px;">🔊</button>
+                        </div>
+                        <span class="msg-translate">Chúc mừng bà nhé! An đã là nhân viên công ty rồi nhỉ.</span>
+                    </div>
+                </div>
+
+                <!-- Tin nhắn 3: An -->
+                <div class="chat-msg an">
+                    <span class="chat-name">An</span>
+                    <div class="msg-bubble">
+                        <div class="example-jp" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <span class="jp-sentence"><ruby>私<rt>わたし</rt></ruby>は<ruby>学生<rt>がくせい</rt></ruby>じゃありませんよ！💼</span>
+                            <button class="vocab-play-btn" style="width: 25px; height: 25px; font-size: 0.8rem; margin-left: 10px;">🔊</button>
+                        </div>
+                        <span class="msg-translate">Tớ không còn là sinh viên nữa đâu nhé!</span>
+                    </div>
+                </div>
+
+                <!-- Tin nhắn 4: Kim -->
+                <div class="chat-msg kim">
+                    <span class="chat-name">Kim</span>
+                    <div class="msg-bubble">
+                        <div class="example-jp" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <span class="jp-sentence">すごいですね！じゃあ、<ruby>私<rt>わたし</rt></ruby>は？</span>
+                            <button class="vocab-play-btn" style="width: 25px; height: 25px; font-size: 0.8rem; margin-left: 10px;">🔊</button>
+                        </div>
+                        <span class="msg-translate">Ghê chưa! Thế còn tớ là gì?</span>
+                    </div>
+                </div>
+
+                <!-- Tin nhắn 5: An -->
+                <div class="chat-msg an">
+                    <span class="chat-name">An</span>
+                    <div class="msg-bubble">
+                        <div class="example-jp" style="display: flex; justify-content: space-between; align-items: flex-start;">
+                            <span class="jp-sentence">キムさん<span class="grammar-point">も</span><ruby>会社員<rt>かいしゃいん</rt></ruby>です。😊</span>
+                            <button class="vocab-play-btn" style="width: 25px; height: 25px; font-size: 0.8rem; margin-left: 10px;">🔊</button>
+                        </div>
+                        <span class="msg-translate">Kim cũng là nhân viên công ty mà.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+ <!-- 6. ĐỌC HIỂU & BÀI TẬP -->
+    <div class="reading-comprehension-section" style="background-color: white;">
+        <div class="reading-comprehension-container" style="max-width: 800px; margin: 0 auto;">
+            <h2 style="text-align: center; color: #2c3e50;">5. Luyện Tập (Practice)</h2>
+            
+            <div class="reading-card" style="margin-bottom: 30px;">
+                <h3 style="text-align: center;">Đọc tấm danh thiếp của An</h3>
+                <div class="meishi-card">
+                    <p style="font-size: 1.4rem; border-bottom: 2px solid #333; padding-bottom: 5px; font-weight: bold;">アン (An)</p>
+                    <p><strong><ruby>国籍<rt>こくせき</rt></ruby>：</strong>ベトナム<ruby>人<rt>じん</rt></ruby></p>
+                    <p><strong><ruby>職業<rt>しょくぎょう</rt></ruby>：</strong>デザイン<ruby>会社<rt>かいしゃ</rt></ruby>の<ruby>社員<rt>しゃいん</rt></ruby></p>
+                    <p><strong><ruby>年齢<rt>ねんれい</rt></ruby>：</strong>２５<ruby>歳<rt>さい</rt></ruby></p>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <!-- Câu 1 -->
+                <div class="quiz-card">
+                    <p class="question-text">1. アンさんは<ruby>何人<rt>なにじん</rt></ruby>ですか。</p>
+                    <div class="options-container">
+                        <button class="option-btn">アメリカ<ruby>人<rt>じん</rt></ruby>です</button>
+                        <button class="option-btn" data-correct="true">ベトナム<ruby>人<rt>じん</rt></ruby>です</button>
+                        <button class="option-btn"><ruby>日本人<rt>にほんじん</rt></ruby>です</button>
+                    </div>
+                    <div class="explanation-box" style="display: none;">
+                        💡 <strong>Giải thích:</strong> Trong danh thiếp ghi rõ An là ベトナム人 (người Việt Nam).
+                    </div>
+                </div>
+                
+                <!-- Câu 2 -->
+                <div class="quiz-card">
+                    <p class="question-text">2. アンさんは<ruby>学生<rt>がくせい</rt></ruby>ですか。</p>
+                    <div class="options-container">
+                        <button class="option-btn">はい、<ruby>学生<rt>がくせい</rt></ruby>です</button>
+                        <button class="option-btn" data-correct="true">いいえ、<ruby>会社員<rt>かいしゃいん</rt></ruby>です</button>
+                    </div>
+                    <div class="explanation-box" style="display: none;">
+                        💡 <strong>Giải thích:</strong> An là "Shain" (nhân viên), đồng nghĩa với 会社員 (nhân viên công ty).
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. GÓC VĂN HÓA -->
+    <div class="grammar-section" style="background-color: #fff9e6; padding: 40px 20px;">
+        <div class="grammar-container" style="max-width: 800px; margin: 0 auto; border: 2px dashed #e67e22; padding: 25px; border-radius: 15px;">
+            <h3 style="color: #d35400; margin-top: 0;">🏯 Góc Văn Hóa: Quy tắc gọi tên "San"</h3>
+            <p>Trong tiếng Nhật, để lịch sự, bạn phải luôn thêm <strong>～さん (-san)</strong> vào sau tên của người khác (Ví dụ: Tanaka-san, Kim-san).</p>
+            <p><strong>Lưu ý đặc biệt:</strong> Tuyệt đối <strong>KHÔNG</strong> được thêm "-san" sau tên của chính mình khi giới thiệu.</p>
+            <p style="background: white; padding: 10px; border-radius: 8px;">
+                ✅ <strong>Đúng:</strong> <ruby>私<rt>わたし</rt></ruby>はアンです。<br>
+                ❌ <strong>Sai:</strong> <ruby>私<rt>わたし</rt></ruby>はアンさんです。
+            </p>
+            <p><em>Tự gọi mình là "-san" sẽ làm người Nhật thấy rất kỳ cục vì nó giống như bạn tự tôn vinh bản thân mình vậy!</em></p>
+        </div>
+    </div>
+
+
+
+
+    <!-- CÁC PHẦN TIẾP THEO SẼ DÁN VÀO ĐÂY -->
+
+
+
+
+
+
+    <script src="script-talk-homework1114.js"></script>
+</body>
+</html>
