@@ -244,11 +244,32 @@ document.addEventListener('DOMContentLoaded', () => {
                             };
                         };
 
-
+// ... code ở trên giữ nguyên ...
                         utterance.onend = () => stopAllActiveSpeech();
                         utterance.onerror = () => stopAllActiveSpeech();
 
+                        // FIX LỖI GARBAGE COLLECTION: Gán vào window để trình duyệt không tự xóa biến khi đang đọc
+                        window.currentUtterance = utterance;
+
+                        // FIX BẢO HIỂM: Nếu sau 300ms mà không thấy sự kiện word nào nổ ra (do máy họ chỉ có giọng Cloud), 
+                        // thì tự động bôi xanh cả câu để học viên không tưởng web bị lỗi.
+                        let hasBoundaryFired = false;
+                        if (!isIOS) {
+                            utterance.onboundary = (e) => {
+                                if (e.name === 'word') {
+                                    hasBoundaryFired = true;
+                                    speechMap.applyHighlight(e.charIndex, e.charLength);
+                                }
+                            };
+                            setTimeout(() => {
+                                if (!hasBoundaryFired && activeSpeechMap) {
+                                    activeSpeechMap.applyHighlight(0, activeSpeechMap.speakableText.length);
+                                }
+                            }, 300);
+                        }
+
                         speechSynthesis.speak(utterance);
+                        
                     };
                 }
                 if (counter) counter.textContent = `${lIdx + 1} / ${lines.length}`;
@@ -318,10 +339,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 };
 
                 // Kết thúc: Dọn dẹp
+
+
+// ... code ở trên giữ nguyên ...
                 utterance.onend = () => stopAllActiveSpeech();
                 utterance.onerror = () => stopAllActiveSpeech();
 
+                // FIX LỖI GARBAGE COLLECTION
+                window.currentUtterance = utterance;
+
+                // FIX BẢO HIỂM GIỌNG CLOUD
+                let hasBoundaryFired = false;
+                if (!isIOS) {
+                    utterance.onboundary = (event) => {
+                        if (event.name === 'word') {
+                            hasBoundaryFired = true;
+                            speechMap.applyHighlight(event.charIndex, event.charLength);
+                        }
+                    };
+                    setTimeout(() => {
+                        if (!hasBoundaryFired && activeSpeechMap) {
+                            activeSpeechMap.applyHighlight(0, activeSpeechMap.speakableText.length);
+                        }
+                    }, 300);
+                }
+
                 speechSynthesis.speak(utterance);
+               
             }
         });
     }
