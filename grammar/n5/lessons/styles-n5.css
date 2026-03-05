@@ -10,11 +10,18 @@
     color: #2c3e50;
     transition: background-color 0.1s ease;
 }
-.is-playing, .vocab-card.is-playing, .msg-bubble.is-playing {
+
+
+/* ĐÃ GỘP CHUNG CLASS ĐỔI MÀU VÀNG */
+.play-highlight-box.is-playing {
     background-color: #FFFCBC !important;
     border-color: #fce183 !important;
     transition: background-color 0.3s ease;
 }
+
+
+
+
 .vocab-play-btn.speaking-icon {
     animation: pulse-speaker 1s infinite;
     background-color: #d35400 !important;
@@ -24,6 +31,9 @@
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
+
+
+
 
 /* --- 1. CÀI ĐẶT CHUNG TỔNG THỂ --- */
 body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; line-height: 1.6; margin: 0; background-color: #f3eadc; }
@@ -183,3 +193,117 @@ rt { font-size: 0.6em; color: #7f8c8d; user-select: none; font-weight: normal; }
     .vocab-term { font-size: 1.4rem; }
 }
 @media (max-width: 400px) { .vocabulary-list { grid-template-columns: 1fr; } }
+
+
+/* thêm vào ngày 2026.03.05  =========================================================
+   8. CÁC CLASS TIỆN ÍCH DÙNG CHUNG (UTILITIES)
+   (Được gom từ Inline CSS)
+   ========================================================= */
+
+/* Tiêu đề & Căn lề */
+.section-title { text-align: center; color: #2c3e50; margin-bottom: 35px; }
+.section-title.mb-10 { margin-bottom: 10px; }
+.instruction-text { text-align: center; color: #666; margin-bottom: 25px; }
+.instruction-text em { font-style: italic; }
+
+/* Wrapper giới hạn chiều rộng chung */
+.content-wrapper { max-width: 800px; margin: 0 auto; }
+
+/* Màu nền phân chia khu vực */
+.bg-light-gray { background-color: #f0f2f5; }
+.bg-white { background-color: #ffffff; }
+.bg-culture { background-color: #fff9e6; }
+
+/* Flexbox tùy biến */
+.align-start { align-items: flex-start !important; }
+
+/* =========================================================
+   9. CÁC COMPONENT ĐẶC THÙ (NGỮ PHÁP & VĂN HÓA)
+   ========================================================= */
+
+/* Box tư duy cốt lõi (Ngữ pháp) */
+.core-concept-box {
+    border-left: 8px solid #3498db; 
+    background-color: #eef7ff;
+}
+.core-concept-box h3 { color: #2980b9; }
+
+/* Text nhấn mạnh màu cam */
+.text-orange { color: #e67e22; }
+
+/* Khối ví dụ trong Ngữ pháp đã làm sạch */
+.example-block-clean {
+    border: none; 
+    padding: 10px; 
+    margin-bottom: 10px;
+}
+.border-dashed-top { border-top: 1px dashed #ddd; margin-top: 5px; }
+
+/* Form danh thiếp (Bài tập) */
+.meishi-name {
+    font-size: 1.4rem; 
+    border-bottom: 2px solid #333; 
+    padding-bottom: 5px; 
+    font-weight: bold;
+}
+
+/* Góc Văn Hóa */
+.culture-box {
+    border: 2px dashed #e67e22; 
+    padding: 25px; 
+    border-radius: 15px;
+}
+.culture-box h3 { color: #d35400; margin-top: 0; }
+.culture-example {
+    background: white; 
+    padding: 10px; 
+    border-radius: 8px;
+}
+
+
+/* =========================================================
+   10. CHỨC NĂNG NÂNG CAO: BẬT/TẮT FURIGANA
+   ========================================================= */
+
+/* Trạng thái khi bị ẩn (Quan trọng nhất) */
+body.hide-furigana rt {
+    display: none !important;
+}
+
+/* Trang trí Nút nổi (Floating Button) */
+.furigana-toggle-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background-color: #34495e;
+    color: white;
+    border: 2px solid #2c3e50;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: inherit;
+}
+
+/* Hiệu ứng khi di chuột */
+.furigana-toggle-btn:hover {
+    background-color: #2c3e50;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* Đổi sang màu đỏ khi học viên chọn Tắt Furigana */
+.furigana-toggle-btn.is-hidden {
+    background-color: #e74c3c;
+    border-color: #c0392b;
+}
+.furigana-toggle-btn.is-hidden:hover {
+    background-color: #c0392b;
+}
