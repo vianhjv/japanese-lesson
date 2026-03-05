@@ -74,16 +74,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }, 500);
         },
 
-        getVoiceFor: function(charName) {
+             getVoiceFor: function(charName) {
             // 1. Ưu tiên 1: Tìm đúng giọng nhân vật đã cấu hình
             let voice = this.characterMap[charName];
             if (voice) return voice;
 
-            // 2. Ưu tiên 2: Nếu máy học viên không có giọng đó, tự động lấy giọng nữ phổ biến (Kyoko của iOS hoặc Google của Android/Win)
-            let fallbackVoice = this.japaneseVoices.find(v => v.name.includes('Kyoko') || v.name.includes('Google'));
+            // FIX: Lọc ra các giọng đọc CÓ SẴN TRONG MÁY (localService === true) 
+            // Vì chỉ giọng Local mới hỗ trợ highlight từng chữ (onboundary). Giọng mạng (Google Cloud) sẽ làm chết highlight.
+            let localVoices = this.japaneseVoices.filter(v => v.localService === true);
             
-            // 3. Ưu tiên 3: Nếu vẫn không có, lấy giọng tiếng Nhật ĐẦU TIÊN mà máy tính của họ có
-            return fallbackVoice || this.defaultVoice;} 
+            // 2. Ưu tiên 2: Tìm giọng phổ biến của Win/Mac/iOS trong danh sách Local
+            let fallbackVoice = localVoices.find(v => v.name.includes('Kyoko') || v.name.includes('Microsoft') || v.name.includes('Haruka') || v.name.includes('Ichiro'))
+                             || localVoices[0]; // Nếu không có tên quen thuộc, lấy giọng Local tiếng Nhật đầu tiên
+
+            // 3. Ưu tiên 3: Nếu máy hoàn toàn không có giọng Local, mới đành dùng giọng Google/Network (chấp nhận mất highlight từng chữ)
+            return fallbackVoice || this.japaneseVoices.find(v => v.name.includes('Google')) || this.defaultVoice;
+        }
     
 
     };
