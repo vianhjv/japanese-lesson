@@ -9,6 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     let activeSpeechMap = null;
     let activeHighlightContainer = null;
     let activePlayBtn = null;
+  // THÊM DÒNG NÀY: Bộ nhận diện thiết bị iOS (iPhone / iPad)
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+
+
 
     function stopAllActiveSpeech() {
         speechSynthesis.cancel();
@@ -69,9 +73,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (this.voicesLoaded || attempts++ > 10) clearInterval(interval);
             }, 500);
         },
+
         getVoiceFor: function(charName) {
-            return this.characterMap[charName] || this.defaultVoice;
-        }
+            // 1. Ưu tiên 1: Tìm đúng giọng nhân vật đã cấu hình
+            let voice = this.characterMap[charName];
+            if (voice) return voice;
+
+            // 2. Ưu tiên 2: Nếu máy học viên không có giọng đó, tự động lấy giọng nữ phổ biến (Kyoko của iOS hoặc Google của Android/Win)
+            let fallbackVoice = this.japaneseVoices.find(v => v.name.includes('Kyoko') || v.name.includes('Google'));
+            
+            // 3. Ưu tiên 3: Nếu vẫn không có, lấy giọng tiếng Nhật ĐẦU TIÊN mà máy tính của họ có
+            return fallbackVoice || this.defaultVoice;} 
+    
+
     };
 
 
@@ -210,10 +224,21 @@ document.addEventListener('DOMContentLoaded', () => {
                         utterance.lang = 'ja-JP';
                         utterance.voice = voiceManager.getVoiceFor(speaker?.dataset.character);
 
-                        utterance.onstart = () => btn.innerHTML = '⏹️';
-                        utterance.onboundary = (e) => {
-                            if (e.name === 'word') speechMap.applyHighlight(e.charIndex, e.charLength);
+// SỬA ĐOẠN NÀY ĐỂ CHỐNG LỖI CÂM TIẾNG TRÊN IPHONE
+                        utterance.onstart = () => {
+                            btn.innerHTML = '⏹️';
+                            // Nếu là iPhone: Highlight sáng cả câu luôn từ đầu
+                            if (isIOS) speechMap.applyHighlight(0, speechMap.speakableText.length);
                         };
+                        
+                        // Nếu KHÔNG PHẢI iPhone: Chạy highlight từng chữ mượt mà
+                        if (!isIOS) {
+                            utterance.onboundary = (e) => {
+                                if (e.name === 'word') speechMap.applyHighlight(e.charIndex, e.charLength);
+                            };
+                        };
+
+
                         utterance.onend = () => stopAllActiveSpeech();
                         utterance.onerror = () => stopAllActiveSpeech();
 
@@ -251,8 +276,9 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!textTarget) return;
 
             // 2. Tìm khu vực để tô nền vàng
-            const wrapper = btn.closest('.vocab-card, .msg-bubble, .grammar-card');
-
+           // const wrapper = btn.closest('.vocab-card, .msg-bubble, .grammar-card');
+            // 2. Tìm khu vực để tô nền vàng (Đã tối ưu dùng 1 class chung)
+             const wrapper = btn.closest('.play-highlight-box');
             // 3. Chuẩn bị
             stopAllActiveSpeech(); // Dừng mọi thứ cũ
             const speechMap = buildSpeechMap(textTarget);
@@ -268,14 +294,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 utterance.voice = voiceManager.getVoiceFor(btn.dataset.character || 'default');
 
                 // Bắt đầu đọc: Tô nền vàng + Icon rung
+
+
+// SỬA ĐOẠN NÀY ĐỂ CHỐNG LỖI CÂM TIẾNG TRÊN IPHONE
                 utterance.onstart = () => {
                     if (wrapper) wrapper.classList.add('is-playing');
                     btn.classList.add('speaking-icon');
+                    // Nếu là iPhone: Highlight xanh ngọc cả câu luôn từ đầu
+                    if (isIOS) speechMap.applyHighlight(0, speechMap.speakableText.length);
                 };
                 
-                // Đọc từng chữ: Highlight xanh ngọc
-                utterance.onboundary = (event) => {
-                    if (event.name === 'word') speechMap.applyHighlight(event.charIndex, event.charLength);
+                // Đọc từng chữ: Highlight xanh ngọc (Chỉ chạy trên Windows/Android/Mac)
+                if (!isIOS) {
+                    utterance.onboundary = (event) => {
+                        if (event.name === 'word') speechMap.applyHighlight(event.charIndex, event.charLength);
+                    };
                 };
 
                 // Kết thúc: Dọn dẹp
@@ -315,9 +348,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+
+// === PHẦN 5: CHỨC NĂNG BẬT/TẮT FURIGANA (CÓ LƯU TRẠNG THÁI) ===
+    function initFuriganaToggle() {
+        const toggleBtn = document.getElementById('furiganaToggle');
+        const body = document.body;
+        
+        if (!toggleBtn) return;
+
+        // 1. Kiểm tra xem máy học viên đã lưu trạng thái tắt từ lần trước chưa
+        const isFuriganaHidden = localStorage.getItem('hideN5Furigana') === 'true';
+        
+        // Hàm cập nhật Giao diện (Đổi chữ, đổi màu nút, ẩn/hiện chữ)
+        const updateUI = (isHidden) => {
+            if (isHidden) {
+                body.classList.add('hide-furigana');
+                toggleBtn.classList.add('is-hidden');
+                toggleBtn.querySelector('.text').textContent = 'Bật Furigana';
+            } else {
+                body.classList.remove('hide-furigana');
+                toggleBtn.classList.remove('is-hidden');
+                toggleBtn.querySelector('.text').textContent = 'Tắt Furigana';
+            }
+        };
+
+        // 2. Thiết lập trạng thái ngay khi vừa load web
+        updateUI(isFuriganaHidden);
+
+        // 3. Xử lý khi người dùng bấm nút
+        toggleBtn.addEventListener('click', () => {
+            // Xem trạng thái hiện tại đang là gì
+            const currentlyHidden = body.classList.contains('hide-furigana');
+            // Đảo ngược trạng thái
+            const willHide = !currentlyHidden;
+            
+            // Cập nhật giao diện
+            updateUI(willHide);
+            // Lưu vào bộ nhớ trình duyệt để dùng cho các bài học khác
+            localStorage.setItem('hideN5Furigana', willHide);
+        });
+    }
+
+
+
     // KHỞI CHẠY TẤT CẢ CÁC MODULE
     voiceManager.init();
     initStoryController();
     initGlobalSpeech();
     initQuiz();
+
+    initFuriganaToggle(); // <--- BẠN THÊM DÒNG NÀY VÀO ĐÂY NHÉ
 });
