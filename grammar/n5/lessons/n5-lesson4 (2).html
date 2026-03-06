@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 4: Một Ngày Của An | Hành trình của An</title>
+    <!-- Link tới file CSS dùng chung cho 30 bài -->
+    <link rel="stylesheet" href="styles-n5.css">
+</head>
+<body>
+
+    <!-- ==========================================
+         1. CÂU CHUYỆN CỦA AN (STORY)
+         ========================================== -->
+    <div class="story-intro">
+        <h3>1. Câu chuyện của An (Story)</h3>
+        <p>Để chuẩn bị cho cuộc sống bận rộn tại Nhật, An bắt đầu rèn luyện thói quen sinh hoạt quy củ ngay từ Việt Nam. Cô tự lập một bảng thời gian biểu và chia sẻ nó với người bạn Kim.</p>
+    </div>
+
+    <!-- KHUNG HIỂN THỊ HỘI THOẠI -->
+    <div class="scene-container">
+        <!-- Đổi tên file ảnh nền thành của bài 4 nếu bạn có -->
+        <img src="lesson4-bg.jpg" alt="Background" class="scene-background-image" id="mainBg">
+        
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NGUỒN DỮ LIỆU HỘI THOẠI -->
+    <div class="dialogue-source" style="display: none;">
+        <div class="scene" data-scene-name="Hỏi thăm lịch trình">
+            
+            <!-- Câu 1: Kim -->
+            <div class="dialogue-line" data-line-bg="photo/lesson4-An-Kim.jpg">
+                <div class="speaker-container"><span class="speaker kim" data-character="kim">Kim</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">アンさん、<ruby>毎朝<rt>まいあさ</rt></ruby> <ruby>何時<rt>なんじ</rt></ruby>に <ruby>起<rt>お</rt></ruby>きますか。</p>
+                        <p class="vietnamese-text">An ơi, mỗi sáng cậu thức dậy lúc mấy giờ?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Câu 2: An -->
+            <div class="dialogue-line" data-line-bg="photo/lesson4-An.jpg">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">６<ruby>時<rt>じ</rt></ruby>に<ruby>起<rt>お</rt></ruby>きます。</p>
+                        <p class="vietnamese-text">Tớ dậy lúc 6 giờ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Câu 3: Kim -->
+            <div class="dialogue-line" data-line-bg="photo/lesson4-An-Kim.jpg">
+                <div class="speaker-container"><span class="speaker kim" data-character="kim">Kim</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>早<rt>はや</rt></ruby>いですね。<ruby>勉強<rt>べんきょう</rt></ruby>は？</p>
+                        <p class="vietnamese-text">Sớm thế. Thế còn việc học?</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Câu 4: An -->
+            <div class="dialogue-line" data-line-bg=".">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>朝<rt>あさ</rt></ruby>８<ruby>時<rt>じ</rt></ruby>から １１<ruby>時<rt>じ</rt></ruby>まで <ruby>日本語<rt>にほんご</rt></ruby>を <ruby>勉強<rt>べんきょう</rt></ruby>します。</p>
+                        <p class="vietnamese-text">Tớ học tiếng Nhật từ 8 giờ sáng đến 11 giờ trưa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Câu 5: An -->
+            <div class="dialogue-line" data-line-bg=".">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>夜<rt>よる</rt></ruby>１１<ruby>時<rt>じ</rt></ruby>に<ruby>寝<rt>ね</rt></ruby>ます。</p>
+                        <p class="vietnamese-text">11 giờ đêm thì tớ ngủ.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ==========================================
+         2A. KANJI NHẬP MÔN (NHÓM 1)
+         ========================================== -->
+    <div class="grammar-section bg-white" style="padding-top: 10px; padding-bottom: 10px;">
+        <div class="grammar-container content-wrapper">
+            <h2 class="section-title mb-10">2. Kanji Nhập Môn (Số đếm & Thời gian)</h2>
+            <p class="instruction-text">Hôm nay chúng ta bắt đầu học những chữ Hán cơ bản nhất.</p>
+            
+            <table class="grammar-table" style="text-align: center;">
+                <thead>
+                    <tr>
+                        <th style="text-align: center; font-size: 1.2rem;">Chữ Hán</th>
+                        <th style="text-align: center;">Hán Việt</th>
+                        <th style="text-align: center;">Cách đọc (On/Kun)</th>
+                        <th style="text-align: left;">Ví dụ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">一</td>
+                        <td>NHẤT (1)</td>
+                        <td>Ichi</td>
+                        <td style="text-align: left;"><ruby>一<rt>いち</rt></ruby><ruby>時<rt>じ</rt></ruby> (1 giờ)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">二</td>
+                        <td>NHỊ (2)</td>
+                        <td>Ni</td>
+                        <td style="text-align: left;"><ruby>二<rt>に</rt></ruby><ruby>時<rt>じ</rt></ruby> (2 giờ)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">三</td>
+                        <td>TAM (3)</td>
+                        <td>San</td>
+                        <td style="text-align: left;"><ruby>三<rt>さん</rt></ruby><ruby>分<rt>ぷん</rt></ruby> (3 phút)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">四</td>
+                        <td>TỨ (4)</td>
+                        <td>Yon / Shi</td>
+                        <td style="text-align: left;"><ruby>四<rt>よ</rt></ruby><ruby>時<rt>じ</rt></ruby> (4 giờ - <span style="color:red">Chú ý!</span>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">五</td>
+                        <td>NGŨ (5)</td>
+                        <td>Go</td>
+                        <td style="text-align: left;"><ruby>五<rt>ご</rt></ruby><ruby>時<rt>じ</rt></ruby> (5 giờ)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">六</td>
+                        <td>LỤC (6)</td>
+                        <td>Roku</td>
+                        <td style="text-align: left;"><ruby>六<rt>ろく</rt></ruby><ruby>時<rt>じ</rt></ruby> (6 giờ)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">七</td>
+                        <td>THẤT (7)</td>
+                        <td>Nana / Shichi</td>
+                        <td style="text-align: left;"><ruby>七<rt>しち</rt></ruby><ruby>時<rt>じ</rt></ruby> (7 giờ)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">八</td>
+                        <td>BÁT (8)</td>
+                        <td>Hachi</td>
+                        <td style="text-align: left;"><ruby>八<rt>はち</rt></ruby><ruby>時<rt>じ</rt></ruby> (8 giờ)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">九</td>
+                        <td>CỬU (9)</td>
+                        <td>Kyuu / Ku</td>
+                        <td style="text-align: left;"><ruby>九<rt>く</rt></ruby><ruby>時<rt>じ</rt></ruby> (9 giờ - <span style="color:red">Chú ý!</span>)</td>
+                    </tr>
+                    <tr>
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #c0392b;">十</td>
+                        <td>THẬP (10)</td>
+                        <td>Juu</td>
+                        <td style="text-align: left;"><ruby>十<rt>じゅう</rt></ruby><ruby>時<rt>じ</rt></ruby> (10 giờ)</td>
+                    </tr>
+                    <tr style="background-color: #fffde7;">
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #2980b9;">時</td>
+                        <td>THỜI (Giờ)</td>
+                        <td>Ji</td>
+                        <td style="text-align: left;"><ruby>何時<rt>なんじ</rt></ruby> (Mấy giờ)</td>
+                    </tr>
+                    <tr style="background-color: #fffde7;">
+                        <td style="font-size: 1.8rem; font-weight: bold; color: #2980b9;">分</td>
+                        <td>PHÂN (Phút)</td>
+                        <td>Fun / Pun</td>
+                        <td style="text-align: left;"><ruby>五分<rt>ごふん</rt></ruby> (5 phút)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         2B. TỪ VỰNG (VOCABULARY)
+         ========================================== -->
+    <div class="vocabulary-section">
+        <div class="vocabulary-container">
+            <h3>3. Từ Vựng (Vocabulary)</h3>
+            <p class="instruction-text"><em>Bấm vào loa để nghe từ và câu ví dụ</em></p>
+            <ul class="vocabulary-list">
+                
+                <!-- 1. 今 -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>今<rt>いま</rt></ruby></h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Bây giờ</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>今<rt>いま</rt></ruby>、<ruby>何時<rt>なんじ</rt></ruby>ですか。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Bây giờ là mấy giờ?</p>
+                    </div>
+                </li>
+
+                <!-- 2. ～時 -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">～<ruby>時<rt>じ</rt></ruby></h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> ~ Giờ</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">６<ruby>時<rt>じ</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Là 6 giờ.</p>
+                    </div>
+                </li>
+
+                <!-- 3. ～分 -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">～<ruby>分<rt>ふん / ぷん</rt></ruby></h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> ~ Phút</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">５<ruby>分<rt>ふん</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Là 5 phút.</p>
+                    </div>
+                </li>
+
+                <!-- 4. 半 -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>半<rt>はん</rt></ruby></h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Rưỡi (30 phút)</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">６<ruby>時半<rt>じはん</rt></ruby>に <ruby>起<rt>お</rt></ruby>きます。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Thức dậy lúc 6 giờ rưỡi.</p>
+                    </div>
+                </li>
+
+                <!-- 5. 午前 -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>午前<rt>ごぜん</rt></ruby></h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Buổi sáng (AM)</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>午前<rt>ごぜん</rt></ruby>８<ruby>時<rt>じ</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Là 8 giờ sáng.</p>
+                    </div>
+                </li>
+
+                <!-- 6. 午後 -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>午後<rt>ごご</rt></ruby></h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Buổi chiều / tối (PM)</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>午後<rt>ごご</rt></ruby>９<ruby>時<rt>じ</rt></ruby>です。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Là 9 giờ tối.</p>
+                    </div>
+                </li>
+
+                <!-- 7. 起きます -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>起<rt>お</rt></ruby>きます</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Thức dậy</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">６<ruby>時<rt>じ</rt></ruby>に <ruby>起<rt>お</rt></ruby>きます。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tớ dậy lúc 6 giờ.</p>
+                    </div>
+                </li>
+
+                <!-- 8. 寝ます -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>寝<rt>ね</rt></ruby>ます</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Ngủ</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">１１<ruby>時<rt>じ</rt></ruby>に <ruby>寝<rt>ね</rt></ruby>ます。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tớ ngủ lúc 11 giờ.</p>
+                    </div>
+                </li>
+
+                <!-- 9. 働きます -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>働<rt>はたら</rt></ruby>きます</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Làm việc</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>会社<rt>かいしゃ</rt></ruby>で <ruby>働<rt>はたら</rt></ruby>きます。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Làm việc ở công ty.</p>
+                    </div>
+                </li>
+
+                <!-- 10. 休みます -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>休<rt>やす</rt></ruby>みます</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Nghỉ ngơi</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>昼<rt>ひる</rt></ruby>、<ruby>休<rt>やす</rt></ruby>みます。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Buổi trưa thì nghỉ ngơi.</p>
+                    </div>
+                </li>
+
+                <!-- 11. 勉強します -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>勉強<rt>べんきょう</rt></ruby>します</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Học tập</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>日本語<rt>にほんご</rt></ruby>を <ruby>勉強<rt>べんきょう</rt></ruby>します。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi học tiếng Nhật.</p>
+                    </div>
+                </li>
+
+                <!-- 12. 終わります -->
+                <li class="vocab-card play-highlight-box">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>終<rt>お</rt></ruby>わります</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Kết thúc</p></div>
+                    <div class="vocab-example">
+                        <div class="example-jp">
+                            <p class="jp-sentence">５<ruby>時<rt>じ</rt></ruby>に <ruby>終<rt>お</rt></ruby>わります。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Kết thúc lúc 5 giờ.</p>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+    <script src="script-n5.js"></script>
+</body>
+</html>
