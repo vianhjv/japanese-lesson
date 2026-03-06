@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài 10: Đi Siêu Thị | Hành trình của An</title>
+    <link rel="stylesheet" href="styles-n5.css">
+</head>
+<body class="bg-light-gray">
+
+    <!-- 1. DẪN NHẬP CÂU CHUYỆN -->
+    <div class="story-intro content-wrapper bg-white">
+        <h3>1. Câu chuyện của An (Story)</h3>
+        <p>An đang đẩy xe hàng tại khu vực thực phẩm của siêu thị Aeon Mall Hà Nội. Mẹ nhờ An mua một ít hoa quả và trứng để chuẩn bị bữa tối. Vì đây là siêu thị Nhật Bản nên các biển báo giá đều có tiếng Nhật. An quyết định coi đây là bài tập thực hành giao tiếp.</p>
+    </div>
+
+    <!-- KHUNG HIỂN THỊ HỘI THOẠI (Màn hình chính) -->
+    <div class="scene-container">
+        <!-- JS sẽ nạp ảnh vào đây. Chuẩn bị ảnh lesson10-bg.jpg (An đang ở quầy siêu thị) -->
+        <img src="photo/lesson10-An-shoppingmall.jpg" alt="Background" class="scene-background-image" id="mainBg" onerror="this.style.display='none'">
+        
+        <div class="dialogue-overlay">
+            <div class="dialogue-display-window"></div>
+            <div class="controls-wrapper">
+                <div id="sceneNav" class="scene-nav"></div>
+                <div class="dialogue-nav">
+                    <button id="prevBtn" class="nav-btn">Lùi</button>
+                    <span id="counter"></span>
+                    <button id="nextBtn" class="nav-btn">Tiếp</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NGUỒN DỮ LIỆU HỘI THOẠI -->
+    <div class="dialogue-source" style="display: none;">
+        <div class="scene" data-scene-name="Tại quầy thực phẩm">
+            
+            <div class="dialogue-line" data-line-bg="photo/lesson10-An-shoppingmall.jpg">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">すみません。りんごを ください。</p>
+                        <p class="vietnamese-text">Xin lỗi, cho tôi mua táo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line" data-line-bg="photo/lesson10-An-shopping-interaction.jpg">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tenin (Nhân viên)</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい、<span class="grammar-point">いくつ</span>ですか。</p>
+                        <p class="vietnamese-text">Vâng, quý khách mua mấy quả ạ?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line" data-line-bg=".">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><span class="grammar-point"><ruby>三<rt>みっ</rt></ruby>つ</span> ください。</p>
+                        <p class="vietnamese-text">Cho tôi 3 quả.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line" data-line-bg=".">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">それから、<ruby>卵<rt>たまご</rt></ruby>も お<ruby>願<rt>ねが</rt></ruby>いします。</p>
+                        <p class="vietnamese-text">Sau đó, làm ơn cho tôi cả trứng nữa.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line" data-line-bg=".">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tenin</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><ruby>卵<rt>たまご</rt></ruby>は <span class="grammar-point"><ruby>五<rt>いつ</rt></ruby>つ</span> ですね。</p>
+                        <p class="vietnamese-text">Trứng là 5 quả nhỉ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line" data-line-bg=".">
+                <div class="speaker-container"><span class="speaker an" data-character="an">An</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text">はい。これ<span class="grammar-point">だけ</span> です。<span class="grammar-point"><ruby>全部<rt>ぜんぶ</rt></ruby>で</span> いくらですか。</p>
+                        <p class="vietnamese-text">Vâng. Chỉ thế này thôi. Tổng cộng bao nhiêu tiền?</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dialogue-line" data-line-bg=".">
+                <div class="speaker-container"><span class="speaker tanaka" data-character="tanaka">Tenin</span></div>
+                <div class="dialogue-content-wrapper">
+                    <button class="dialogue-play-btn" aria-label="Nghe đoạn thoại">🔊</button>
+                    <div class="dialogue-texts">
+                        <p class="japanese-text"><span class="grammar-point"><ruby>全部<rt>ぜんぶ</rt></ruby>で</span> ５００<ruby>円<rt>えん</rt></ruby>です。</p>
+                        <p class="vietnamese-text">Tổng cộng là 500 Yên ạ.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- 2. KANJI -->
+    <div class="reading-comprehension-section bg-white">
+        <div class="reading-comprehension-container content-wrapper">
+            <h2 class="section-title mb-10">2. Chữ Hán (Kanji)</h2>
+            <p class="instruction-text">Để thanh toán, An cần đọc được các con số trên hóa đơn (Nhóm 1).</p>
+            
+            <div class="reading-card" style="overflow-x: auto;">
+                <table class="grammar-table">
+                    <thead>
+                        <tr>
+                            <th>Chữ Hán</th>
+                            <th>Hán Việt</th>
+                            <th>Nghĩa</th>
+                            <th>Cách đọc (On)</th>
+                            <th>Ví dụ</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>百</strong></td><td>BÁCH</td><td>Trăm</td><td>Hyaku</td><td>三<strong>百</strong> (Sanbyaku - 300)</td></tr>
+                        <tr><td><strong>千</strong></td><td>THIÊN</td><td>Nghìn</td><td>Sen / Zen</td><td>三<strong>千</strong> (Sanzen - 3000)</td></tr>
+                        <tr><td><strong>万</strong></td><td>VẠN</td><td>Mười nghìn</td><td>Man</td><td>一<strong>万</strong> (Ichiman - 10.000)</td></tr>
+                        <tr><td><strong>円</strong></td><td>YÊN</td><td>Yên Nhật</td><td>En</td><td>五百<strong>円</strong> (Gohyakuen - 500 Yên)</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. TỪ VỰNG -->
+    <div class="vocabulary-section bg-light-gray">
+        <div class="vocabulary-container content-wrapper">
+            <h2 class="section-title mb-10">3. Từ Vựng (Vocabulary)</h2>
+            <p class="instruction-text"><em>Bấm vào loa để nghe từ và câu ví dụ</em></p>
+            
+            <ul class="vocabulary-list">
+                <!-- Thực phẩm -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">りんご</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Táo</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence">りんごを <span class="grammar-point"><ruby>三<rt>みっ</rt></ruby>つ</span> <ruby>買<rt>か</rt></ruby>います。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi mua 3 quả táo.</p>
+                    </div>
+                </li>
+
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">みかん</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Quýt</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence">みかんを <ruby>食<rt>た</rt></ruby>べます。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi ăn quýt.</p>
+                    </div>
+                </li>
+
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>卵<rt>たまご</rt></ruby></h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Trứng</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>卵<rt>たまご</rt></ruby>は <span class="grammar-point"><ruby>五<rt>いつ</rt></ruby>つ</span> です。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Trứng thì có 5 quả.</p>
+                    </div>
+                </li>
+
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>肉<rt>にく</rt></ruby></h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Thịt</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>肉<rt>にく</rt></ruby>と <ruby>魚<rt>さかな</rt></ruby>を <ruby>買<rt>か</rt></ruby>います。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tôi mua thịt và cá.</p>
+                    </div>
+                </li>
+
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>野菜<rt>やさい</rt></ruby></h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Rau</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><ruby>野菜<rt>やさい</rt></ruby>を <ruby>食<rt>た</rt></ruby>べましょう。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Cùng ăn rau nào!</p>
+                    </div>
+                </li>
+
+                <!-- Mua sắm & Hỏi lượng -->
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">いくつ</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Mấy cái (Q)</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence">りんごは <span class="grammar-point">いくつ</span> ですか。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Táo thì mấy quả ạ?</p>
+                    </div>
+                </li>
+
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">いくら</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Bao nhiêu tiền (Q)</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence">これは <span class="grammar-point">いくら</span> ですか。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Cái này bao nhiêu tiền?</p>
+                    </div>
+                </li>
+
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term"><ruby>全部<rt>ぜんぶ</rt></ruby>で</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Tổng cộng (Adv)</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence"><span class="grammar-point"><ruby>全部<rt>ぜんぶ</rt></ruby>で</span> いくらですか。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Tổng cộng bao nhiêu tiền ạ?</p>
+                    </div>
+                </li>
+
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">～だけ</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Chỉ ~ (Part)</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence">これ<span class="grammar-point">だけ</span> です。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Chỉ cái này thôi.</p>
+                    </div>
+                </li>
+
+                <li class="vocab-card">
+                    <div class="vocab-word-header">
+                        <h4 class="vocab-term">これ</h4>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <div class="vocab-details"><p><span class="label">Nghĩa:</span> Cái này</p></div>
+                    <div class="vocab-example play-highlight-box" style="padding: 10px; border-radius: 8px; margin-top: 10px;">
+                        <div class="example-jp">
+                            <p class="jp-sentence">これは りんごです。</p>
+                            <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <p class="vi-sentence">Đây là quả táo.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+<!-- 4. NGỮ PHÁP -->
+    <div class="grammar-section bg-white">
+        <div class="grammar-container content-wrapper">
+            <h2 class="section-title">4. Ngữ Pháp (Grammar)</h2>
+            
+            <!-- TƯ DUY CỐT LÕI -->
+            <div class="grammar-card core-concept-box">
+                <h3>💡 TƯ DUY CỐT LÕI: SỐ ĐẾM ĐỒ VẬT CHUNG</h3>
+                <div class="grammar-explanation">
+                    <p>Trong bài này, chúng ta tập trung vào cách đếm đồ vật chung chung (quả táo, quả trứng, cái ghế, đồ vật nhỏ...). Đây là bảng số đếm quan trọng nhất trong tiếng Nhật sơ cấp.</p>
+                    <p><span class="text-orange">⚠️ Lưu ý:</span> Học viên cần học thuộc lòng bảng này, không có quy tắc phát âm giống số đếm 1-10 thông thường.</p>
+                </div>
+                
+                <div style="overflow-x: auto; margin-top: 15px;">
+                    <table class="grammar-table" style="font-size: 1.1rem; text-align: center;">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center;">Số lượng</th>
+                                <th style="text-align: center;">Hiragana</th>
+                                <th style="text-align: center;">Cách đọc</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="play-highlight-box"><td class="jp-sentence">1</td><td class="jp-sentence"><ruby>一つ<rt>ひとつ</rt></ruby></td><td>Hitotsu</td></tr>
+                            <tr class="play-highlight-box"><td class="jp-sentence">2</td><td class="jp-sentence"><ruby>二つ<rt>ふたつ</rt></ruby></td><td>Futatsu</td></tr>
+                            <tr class="play-highlight-box"><td class="jp-sentence">3</td><td class="jp-sentence"><ruby>三つ<rt>みっつ</rt></ruby></td><td>Mittsu</td></tr>
+                            <tr class="play-highlight-box"><td class="jp-sentence">4</td><td class="jp-sentence"><ruby>四つ<rt>よっつ</rt></ruby></td><td>Yottsu</td></tr>
+                            <tr class="play-highlight-box"><td class="jp-sentence">5</td><td class="jp-sentence"><ruby>五つ<rt>いつつ</rt></ruby></td><td>Itsutsu</td></tr>
+                            <tr class="play-highlight-box"><td class="jp-sentence">6</td><td class="jp-sentence"><ruby>六つ<rt>むっつ</rt></ruby></td><td>Muttsu</td></tr>
+                            <tr class="play-highlight-box"><td class="jp-sentence">7</td><td class="jp-sentence"><ruby>七つ<rt>ななつ</rt></ruby></td><td>Nanatsu</td></tr>
+                            <tr class="play-highlight-box"><td class="jp-sentence">8</td><td class="jp-sentence"><ruby>八つ<rt>やっつ</rt></ruby></td><td>Yattsu</td></tr>
+                            <tr class="play-highlight-box"><td class="jp-sentence">9</td><td class="jp-sentence"><ruby>九つ<rt>ここのつ</rt></ruby></td><td>Kokonotsu</td></tr>
+                            <tr class="play-highlight-box"><td class="jp-sentence">10</td><td class="jp-sentence"><ruby>十<rt>とお</rt></ruby></td><td>Too</td></tr>
+                            <tr class="play-highlight-box" style="background-color: #ffeaa7;"><td class="jp-sentence">?</td><td class="jp-sentence">いくつ</td><td>Ikutsu (Mấy cái?)</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="example-block example-block-clean play-highlight-box" style="margin-top: 15px; border: 1px dashed #3498db;">
+                    <div class="example-jp">
+                        <p class="jp-sentence">りんごを <span class="grammar-point"><ruby>三<rt>みっ</rt></ruby>つ</span> <ruby>買<rt>か</rt></ruby>います。</p>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <p class="example-vn">Tôi mua 3 quả táo.</p>
+                </div>
+            </div>
+
+            <!-- MẪU 2 -->
+            <div class="grammar-card">
+                <h3>MẪU 2: GIỚI HẠN "CHỈ" (Trợ từ DAKE)</h3>
+                <div class="grammar-formula">
+                    Danh từ + <span class="grammar-point">だけ</span>
+                </div>
+                <div class="grammar-explanation">
+                    <p>Ý nghĩa: Chỉ (duy nhất cái đó, không có cái khác).</p>
+                </div>
+
+                <div class="example-block example-block-clean play-highlight-box">
+                    <div class="example-jp">
+                        <p class="jp-sentence">これ<span class="grammar-point">だけ</span> です。</p>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <p class="example-vn">Chỉ cái này thôi.</p>
+                </div>
+
+                <div class="example-block example-block-clean play-highlight-box border-dashed-top">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><ruby>休<rt>やす</rt></ruby>みは <ruby>日曜日<rt>にちようび</rt></ruby><span class="grammar-point">だけ</span> です。</p>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <p class="example-vn">Ngày nghỉ chỉ có Chủ nhật.</p>
+                </div>
+            </div>
+
+            <!-- MẪU 3 -->
+            <div class="grammar-card">
+                <h3>MẪU 3: TỔNG CỘNG BAO NHIÊU (ZENBU DE)</h3>
+                <div class="grammar-formula">
+                    <span class="grammar-point"><ruby>全部<rt>ぜんぶ</rt></ruby>で</span> + ...
+                </div>
+                <div class="grammar-explanation">
+                    <p>Ý nghĩa: Dùng để hỏi hoặc tổng kết số lượng/tiền bạc.</p>
+                </div>
+
+                <div class="example-block example-block-clean play-highlight-box">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><span class="grammar-point"><ruby>全部<rt>ぜんぶ</rt></ruby>で</span> いくらですか。</p>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <p class="example-vn">Tổng cộng bao nhiêu tiền?</p>
+                </div>
+
+                <div class="example-block example-block-clean play-highlight-box border-dashed-top">
+                    <div class="example-jp">
+                        <p class="jp-sentence"><span class="grammar-point"><ruby>全部<rt>ぜんぶ</rt></ruby>で</span> <ruby>何人<rt>なんにん</rt></ruby>ですか。</p>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    <p class="example-vn">Tổng cộng có bao nhiêu người?</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. CHAT -->
+    <div class="reading-comprehension-section bg-light-gray">
+        <div class="reading-comprehension-container content-wrapper">
+            <h2 class="section-title mb-10">5. Tin Nhắn Đi Chợ (Chat)</h2>
+            <p class="instruction-text">Mẹ nhắn tin kiểm tra xem An đã mua xong chưa</p>
+            
+            <div class="line-chat-box">
+                <!-- Mẹ -->
+                <div class="chat-msg chat-left">
+                    <span class="chat-name">Mẹ</span>
+                    <div class="msg-bubble play-highlight-box">
+                        <div class="example-jp align-start">
+                            <span class="jp-sentence">アンちゃん、<ruby>卵<rt>たまご</rt></ruby>を <ruby>買<rt>か</rt></ruby>いましたか。</span>
+                            <button class="vocab-play-btn" data-character="suzuki" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <span class="msg-translate">An ơi, mua được trứng chưa?</span>
+                    </div>
+                </div>
+
+                <!-- An 1 -->
+                <div class="chat-msg chat-right">
+                    <span class="chat-name">An</span>
+                    <div class="msg-bubble play-highlight-box">
+                        <div class="example-jp align-start">
+                            <span class="jp-sentence">はい、<ruby>買<rt>か</rt></ruby>いましたよ。</span>
+                            <button class="vocab-play-btn" data-character="an" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <span class="msg-translate">Con mua rồi ạ.</span>
+                    </div>
+                </div>
+
+                <!-- An 2 -->
+                <div class="chat-msg chat-right" style="margin-top: -5px;">
+                    <div class="msg-bubble play-highlight-box">
+                        <div class="example-jp align-start">
+                            <span class="jp-sentence"><span class="grammar-point"><ruby>五<rt>いつ</rt></ruby>つ</span> <ruby>買<rt>か</rt></ruby>いました。🥚</span>
+                            <button class="vocab-play-btn" data-character="an" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <span class="msg-translate">Con mua 5 quả.</span>
+                    </div>
+                </div>
+
+                <!-- Mẹ -->
+                <div class="chat-msg chat-left">
+                    <span class="chat-name">Mẹ</span>
+                    <div class="msg-bubble play-highlight-box">
+                        <div class="example-jp align-start">
+                            <span class="jp-sentence"><ruby>肉<rt>にく</rt></ruby>は？🥩</span>
+                            <button class="vocab-play-btn" data-character="suzuki" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <span class="msg-translate">Có mua thịt không?</span>
+                    </div>
+                </div>
+
+                <!-- An 3 -->
+                <div class="chat-msg chat-right">
+                    <span class="chat-name">An</span>
+                    <div class="msg-bubble play-highlight-box">
+                        <div class="example-jp align-start">
+                            <span class="jp-sentence">いいえ、<ruby>卵<rt>たまご</rt></ruby>と りんご<span class="grammar-point">だけ</span> です。🍎</span>
+                            <button class="vocab-play-btn" data-character="an" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <span class="msg-translate">Không ạ, con chỉ mua trứng và táo thôi.</span>
+                    </div>
+                </div>
+
+                <!-- Mẹ -->
+                <div class="chat-msg chat-left">
+                    <span class="chat-name">Mẹ</span>
+                    <div class="msg-bubble play-highlight-box">
+                        <div class="example-jp align-start">
+                            <span class="jp-sentence">じゃ、<ruby>早<rt>はや</rt></ruby>く <ruby>帰<rt>かえ</rt></ruby>ってね。</span>
+                            <button class="vocab-play-btn" data-character="suzuki" aria-label="Nghe phát âm">🔊</button>
+                        </div>
+                        <span class="msg-translate">Ừ, thế về nhanh nhé.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. Luyện tập -->
+    <div class="reading-comprehension-section bg-white">
+        <div class="reading-comprehension-container content-wrapper">
+            <h2 class="section-title">6. Luyện Tập (Practice)</h2>
+            
+            <div class="reading-card" style="margin-bottom: 30px;">
+                <h3 class="section-title mb-10">Đọc hóa đơn siêu thị của An</h3>
+                <p class="instruction-text">Bấm vào nút loa để nghe đọc toàn bộ hóa đơn</p>
+                
+                <div class="meishi-card play-highlight-box" style="width: auto; max-width: 400px; padding: 20px;">
+                    <div class="example-jp align-start" style="border-bottom: 2px dashed #ccc; padding-bottom: 10px; margin-bottom: 10px;">
+                        <span class="meishi-name" style="color: #2c3e50; border: none;">🧾 レシート (Hóa Đơn)</span>
+                        <button class="vocab-play-btn" aria-label="Nghe phát âm">🔊</button>
+                    </div>
+                    
+                    <!-- Phần nội dung tiếng Nhật để đọc -->
+                    <div class="jp-sentence" style="line-height: 2.2; font-size: 1.15rem; font-family: monospace;">
+                        １．りんご： １００<ruby>円<rt>えん</rt></ruby> × <ruby>三<rt>みっ</rt></ruby>つ<br>
+                        ２．<ruby>卵<rt>たまご</rt></ruby>： ２０<ruby>円<rt>えん</rt></ruby> × <ruby>五<rt>いつ</rt></ruby>つ<br>
+                        -------------------------<br>
+                        <strong><ruby>合計<rt>ごうけい</rt></ruby>： ４００<ruby>円<rt>えん</rt></ruby></strong>
+                    </div>
+                    
+                    <!-- Phần Dịch sang tiếng Việt -->
+                    <div class="translation-content" style="margin-top: 15px; font-size: 0.95rem; line-height: 1.8;">
+                        <strong>Bản dịch:</strong><br>
+                        1. Táo: 100 Yên x 3 quả<br>
+                        2. Trứng: 20 Yên x 5 quả<br>
+                        -------------------------<br>
+                        <strong>Tổng cộng: 400 Yên</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <!-- Câu 1 -->
+                <div class="quiz-card">
+                    <p class="question-text">1. アンさんは <ruby>卵<rt>たまご</rt></ruby>を <ruby>幾<rt>いく</rt></ruby>つ <ruby>買<rt>か</rt></ruby>いましたか。<br><span style="font-size: 1rem; color: #666; font-weight: normal;">(An mua mấy quả trứng?)</span></p>
+                    <div class="options-container">
+                        <button class="option-btn"><ruby>三<rt>みっ</rt></ruby>つ</button>
+                        <button class="option-btn" data-correct="true"><ruby>五<rt>いつ</rt></ruby>つ</button>
+                    </div>
+                    <div class="explanation-box" style="display: none;">
+                        💡 <strong>Giải thích:</strong> Hóa đơn ghi rõ Trứng (たまご) số lượng là 5 (五つ).
+                    </div>
+                </div>
+                
+                <!-- Câu 2 -->
+                <div class="quiz-card">
+                    <p class="question-text">2. りんご <ruby>一<rt>ひと</rt></ruby>つは いくらですか。<br><span style="font-size: 1rem; color: #666; font-weight: normal;">(Giá một quả táo là bao nhiêu?)</span></p>
+                    <div class="options-container">
+                        <button class="option-btn" data-correct="true">１００<ruby>円<rt>えん</rt></ruby></button>
+                        <button class="option-btn">３００<ruby>円<rt>えん</rt></ruby></button>
+                    </div>
+                    <div class="explanation-box" style="display: none;">
+                        💡 <strong>Giải thích:</strong> Giá niêm yết trên hóa đơn là 100 Yên 1 quả, do mua 3 quả nên mới tính tiền là 300 Yên.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 7. Góc Văn Hóa -->
+    <div class="grammar-section bg-culture">
+        <div class="grammar-container content-wrapper culture-box">
+            <h3>🏯 Góc Văn Hóa: Đồng 100 Yên quyền lực & Mẹo học tiếng Nhật</h3>
+            <p>Ở Nhật Bản, đồng tiền xu 100 Yên (khoảng 20.000 VNĐ) cực kỳ quyền lực. Có cả một hệ thống cửa hàng gọi là <strong>Hyaku-en Shop (Cửa hàng 100 yên)</strong> giống như chuỗi Daiso.</p>
+            <p>Tại đó, An có thể mua mọi thứ từ vở, bút, đồ bếp, bánh kẹo... chỉ với giá 100 yên (chưa tính thuế).</p>
+            
+            <div class="culture-example" style="margin-top: 15px; border-left: 5px solid #27ae60; background: #e9f7ef;">
+                <p style="color: #2c3e50; font-style: italic; font-weight: 500; margin: 0;">
+                    "Xin giới thiệu với mọi người là cái cửa hàng 100 yên ở Nhật Bản ý, nó rất là hữu ích với những bạn mới bắt đầu học tiếng Nhật. Mọi người cứ ra cửa hàng 100 yên, đi vào phần bán sách vở cho trẻ em cấp 1, nó sẽ có sách luyện Hiragana, Katakana, Kotoba và cả Kanji nữa. Mọi người mua bộ đấy về luyện tập hàng ngày thì chắc chắn sẽ đọc, viết và nói tốt hơn rất nhiều. Nó rất nhỏ gọn, tiện mang đến chỗ làm hay trường học để học bất kỳ lúc nào!"
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- NÚT BẬT/TẮT FURIGANA -->
+    <button id="furiganaToggle" class="furigana-toggle-btn" aria-label="Bật tắt phiên âm Furigana">
+        <span class="icon">あ</span>
+        <span class="text">Tắt Furigana</span>
+    </button>
+
+    <script src="script-n5.js"></script>
+</body>
+</html>
