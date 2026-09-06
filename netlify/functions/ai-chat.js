@@ -5,7 +5,7 @@ exports.handler = async function(event, context) {
 
     try {
         const { message, currentText } = JSON.parse(event.body);
-        const apiKey = process.env.GEMINI_API_KEY; // Lấy khóa bí mật từ két sắt Netlify
+        const apiKey = process.env.GEMINI_API_KEY; // Lấy khóa bí mật từ két sắt Netlify 
         
         if (!apiKey) {
             return { statusCode: 500, body: JSON.stringify({ error: "Missing API Key on server" }) };
