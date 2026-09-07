@@ -32,7 +32,8 @@ Yêu cầu phản hồi:
 - Động viên học viên tự đặt câu dựa trên cấu trúc vừa học.`;
 
         // 3. Gọi trực tiếp Google Gemini API (model 1.5-flash)
-        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+        // ĐÃ CẬP NHẬT TÊN MODEL CHUẨN TẠI ĐÂY: gemini-1.5-flash-latest
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`;
 
         const response = await fetch(endpoint, {
             method: 'POST',
