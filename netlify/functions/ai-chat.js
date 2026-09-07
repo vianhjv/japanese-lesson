@@ -1,39 +1,78 @@
+// netlify/functions/ai-chat.js
 exports.handler = async function(event, context) {
+    // Chỉ chấp nhận method POST
     if (event.httpMethod !== 'POST') {
         return { statusCode: 405, body: 'Method Not Allowed' };
     }
 
     try {
-        const { message, currentText } = JSON.parse(event.body);
-        const apiKey = process.env.GEMINI_API_KEY; // Lấy khóa bí mật từ két sắt Netlify 
-        
+        const body = JSON.parse(event.body || '{}');
+        const userMessage = body.message || '';
+        const currentText = body.currentText || '';
+
+        // 1. Kiểm tra API Key từ biến môi trường của Netlify
+        const apiKey = process.env.GEMINI_API_KEY;
         if (!apiKey) {
-            return { statusCode: 500, body: JSON.stringify({ error: "Missing API Key on server" }) };
+            return {
+                statusCode: 200,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ reply: "⚠️ Lỗi: Server Netlify chưa nhận được biến môi trường GEMINI_API_KEY. Bạn hãy kiểm tra lại mục Environment Variables trên Netlify nhé!" })
+            };
         }
 
-        const systemInstruction = `Bạn là An (bạn đồng hành thân thiện) và Cô giáo tiếng Nhật (dịu dàng, chuyên nghiệp). 
-        Đoạn văn bản học viên đang xem trên trang web là: "${currentText}". 
-        Hãy trả lời thân thiện, hỗ trợ học tiếng Nhật, có giải thích và ví dụ nếu cần.`;
+        // 2. Kịch bản nhập vai Cô giáo & An
+        const systemInstruction = `Bạn là An (một người bạn học thân thiện, vui vẻ) và Cô giáo tiếng Nhật (kiên nhẫn, chuẩn mực).
+Nhiệm vụ của bạn là đồng hành, giải đáp từ vựng, ngữ pháp tiếng Nhật cho học viên.
+Ngữ cảnh hiện tại: Học viên đang xem/luyện tập đoạn văn bản tiếng Nhật sau:
+"${currentText}"
 
-        const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+Yêu cầu phản hồi:
+- Kết hợp lời nói của An hoặc Cô giáo (hoặc cả hai) một cách tự nhiên.
+- Dùng tiếng Việt giải thích kèm câu tiếng Nhật tương ứng.
+- Động viên học viên tự đặt câu dựa trên cấu trúc vừa học.`;
 
-        const response = await fetch(url, {
+        // 3. Gọi trực tiếp Google Gemini API (model 1.5-flash)
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+
+        const response = await fetch(endpoint, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-                contents: [{ role: "user", parts: [{ text: systemInstruction + "\n\nCâu hỏi: " + message }] }]
+                contents: [
+                    {
+                        role: "user",
+                        parts: [
+                            { text: systemInstruction + "\n\nHọc viên nói: " + userMessage }
+                        ]
+                    }
+                ]
             })
         });
 
         const data = await response.json();
-        const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Tụi mình chưa rõ lắm, bạn hỏi lại nhé!";
+
+        // Kiểm tra nếu Google trả về lỗi (ví dụ sai API key hoặc vượt quota)
+        if (data.error) {
+            return {
+                statusCode: 200,
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ reply: `⚠️ Google API báo lỗi: ${data.error.message}` })
+            };
+        }
+
+        const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Cô giáo và An đã nghe thấy rồi nhưng chưa hiểu ý em lắm, em nói rõ hơn nhé!";
 
         return {
             statusCode: 200,
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ reply: aiReply })
         };
-    } catch (error) {
-        return { statusCode: 500, body: JSON.stringify({ error: error.message }) };
+
+    } catch (err) {
+        return {
+            statusCode: 200,
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ reply: `⚠️ Lỗi xử lý backend: ${err.message}` })
+        };
     }
 };
