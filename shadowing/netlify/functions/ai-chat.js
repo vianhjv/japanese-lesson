@@ -14,34 +14,30 @@ exports.handler = async function(event, context) {
             return {
                 statusCode: 200,
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ reply: "⚠️ Lỗi: Server Netlify chưa nhận được biến môi trường GEMINI_API_KEY." })
+                body: JSON.stringify({ reply: "⚠️ Lỗi: Chưa có GEMINI_API_KEY trên Netlify." })
             };
         }
 
-        // LOGIC THÔNG MINH DỰA TRÊN VIỆC CÓ TEXT HAY KHÔNG:
+        // Tự động nhận diện xem ô Shadowing có bài đọc không
         let contextInstruction = "";
         if (currentText.length > 0) {
             contextInstruction = `Học viên ĐANG luyện tập đoạn văn bản tiếng Nhật sau:
 """
 ${currentText}
 """
-Hãy dựa vào đoạn văn này để giải thích từ vựng, ngữ pháp, kanji hoặc giúp học viên luyện dịch/đặt câu theo ngữ cảnh của bài.`;
+Hãy dựa vào đoạn văn này để giải thích từ vựng, ngữ pháp, kanji hoặc giúp học viên luyện đặt câu.`;
         } else {
-            contextInstruction = `Học viên HIỆN CHƯA dán bài đọc nào vào khung Shadowing ở trên (khung đang trống).
-Có thể học viên vừa học xong các bài N5, N4 ở các trang khác qua đây trò chuyện.
-Hãy hỏi học viên xem hôm nay bạn đang học bài nào, hoặc muốn cô giáo & An hỗ trợ giải thích cấu trúc ngữ pháp nào, rủ học viên cùng đặt câu luyện tập.`;
+            contextInstruction = `Học viên hiện CHƯA dán bài đọc nào vào ô phía trên (ô đang trống).
+Hãy hỏi học viên xem hôm nay bạn đang học bài nào bên N4 hay N5, muốn ôn cấu trúc ngữ pháp nào để cùng luyện tập.`;
         }
 
-        const systemInstruction = `Bạn là An (người bạn học cùng thân thiện, vui vẻ) và Cô giáo tiếng Nhật (dịu dàng, chuẩn mực).
-Nhiệm vụ: Đồng hành, hướng dẫn tiếng Nhật một cách tự nhiên và sinh động.
+        const systemInstruction = `Bạn là An (người bạn đồng hành thân thiện) và Cô giáo tiếng Nhật (dịu dàng, chuẩn mực).
+Nhiệm vụ: Đồng hành, hướng dẫn tiếng Nhật tự nhiên, sinh động.
 ${contextInstruction}
+Hãy giải thích bằng tiếng Việt dễ hiểu kèm câu tiếng Nhật tương ứng, khuyến khích học viên tự nói hoặc đặt câu.`;
 
-Quy tắc phản hồi:
-- Kết hợp lời thoại của An hoặc Cô giáo (hoặc cả hai) một cách tự nhiên.
-- Dùng tiếng Việt giải thích dễ hiểu, kèm theo câu tiếng Nhật và cách đọc tương ứng.
-- Khuyến khích học viên tự nói/gõ câu tiếng Nhật của mình.`;
-
-        const endpoint = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+        // DÙNG CHUẨN MODEL TRÊN MÀN HÌNH CỦA BẠN: gemini-3.5-flash-lite
+        const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash-lite:generateContent?key=${apiKey}`;
 
         const response = await fetch(endpoint, {
             method: 'POST',
@@ -68,7 +64,7 @@ Quy tắc phản hồi:
             };
         }
 
-        const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Cô giáo và An đã nghe rồi nhưng mạng hơi chập chờn, bạn nhắn lại nhé!";
+        const aiReply = data.candidates?.[0]?.content?.parts?.[0]?.text || "Cô giáo và An đã nghe thấy rồi nhưng chưa phản hồi được, bạn nhắn lại nhé!";
 
         return {
             statusCode: 200,
@@ -80,7 +76,7 @@ Quy tắc phản hồi:
         return {
             statusCode: 200,
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ reply: `⚠️ Lỗi xử lý backend: ${err.message}` })
+            body: JSON.stringify({ reply: `⚠️ Lỗi server: ${err.message}` })
         };
     }
 };
